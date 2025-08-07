@@ -1,0 +1,9 @@
+4 2   !Vertices e elementos
+0.0 0.0  !Coordenadas dos elementos   
+1.0 0.0
+1.0 1.0
+0.0 1.0
+1 2 3  !Incidencia nodal  
+1 3 4
+4    !Quantidade de nós do contorno 
+1 2 3 4  !Nós de contorno   

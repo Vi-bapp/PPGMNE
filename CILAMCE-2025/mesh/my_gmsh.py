@@ -38,7 +38,7 @@ gmsh.model.geo.synchronize()
 # --- Aqui você define o tipo de elemento ---
 # Ativa a recombinação para gerar malha de elementos quadriláteros.
 # Comente ou remova esta linha para ter uma malha triangular.
-#gmsh.option.setNumber("Mesh.RecombineAll", 1)
+gmsh.option.setNumber("Mesh.RecombineAll", 1)
 
 # Gera a malha (neste ponto, ela é linear, seja triangular ou quadrilátera).
 gmsh.model.mesh.generate(2)

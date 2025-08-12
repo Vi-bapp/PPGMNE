@@ -288,10 +288,9 @@ contains
             
             ! Calcula coordenadas de área (barycêntricas)
             area_tot = 0.5_wp * abs((x2-x1)*(y3-y1) - (x3-x1)*(y2-y1))
-            
-            xi1 = 0.5_wp * (x2-x)*(y3-y) - (x3-x)*(y2-y) / area_tot
-            xi2 = 0.5_wp * (x3-x)*(y1-y) - (x1-x)*(y3-y) / area_tot
-            xi3 = 0.5_wp * (x1-x)*(y2-y) - (x2-x)*(y1-y) / area_tot
+            xi1 = (0.5_wp * ((x2-x)*(y3-y) - (x3-x)*(y2-y))) / area_tot
+            xi2 = (0.5_wp * ((x3-x)*(y1-y) - (x1-x)*(y3-y))) / area_tot
+            xi3 = (0.5_wp * ((x1-x)*(y2-y) - (x2-x)*(y1-y))) / area_tot
             
             ! Verifica se ponto está dentro do triângulo
             inside = (xi1 >= -1.0e-12_wp) .and. (xi2 >= -1.0e-12_wp) .and. &
@@ -361,7 +360,7 @@ contains
                 u_ex = u_exact(xq, yq)
                 
                 ! Acumula erro
-                error_squared = error_squared + w(i) * (u_h - u_ex)**2 * area
+                error_squared = error_squared + w(i) * (u_h - u_ex)**2 * (2.0_wp * area)
             end do
         end do
         

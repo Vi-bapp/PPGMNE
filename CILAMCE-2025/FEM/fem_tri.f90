@@ -2,12 +2,18 @@
 !  FEM linear para -Δu = f em Ω ⊂ ℝ² com u = g em ∂Ω
 !  Implementação Modern Fortran com elementos triangulares
 !===============================================================
+
+!---------------------------------------------------------------
+! Módulo de precisão numérica
+!---------------------------------------------------------------
 module precision_mod
     use iso_fortran_env, only: real64, int32
     implicit none
     integer, parameter :: wp = real64
 end module precision_mod
 
+!---------------------------------------------------------------
+! Módulo para definir a malha FEM
 !---------------------------------------------------------------
 module fem_mesh_mod
     use precision_mod
@@ -70,10 +76,10 @@ contains
         
         ! Lê vértices de contorno (opcional)
         read(i, *, iostat=ios) nb
-        allocate(ids(nB))
-        if (ios == 0 .and. nB > 0) then
-            read(i, *, iostat=ios) (ids(j), j=1,nB)
-            if (ios == 0 .and. nb > 0) then
+        if (ios == 0 .and. nb > 0) then
+            allocate(ids(nb))
+            read(i, *, iostat=ios) (ids(j), j=1,nb)
+            if (ios == 0) then
                 do j = 1, nb
                     id = ids(j) 
                     if (id < 1 .or. id > this%nv) then
@@ -95,6 +101,8 @@ contains
     
 end module fem_mesh_mod
 
+!---------------------------------------------------------------
+! Módulo para calcular a geometria do triângulo
 !---------------------------------------------------------------
 module fem_geometry_mod
     use precision_mod
@@ -137,10 +145,6 @@ contains
         mesh%tri(tid)%centroid(2) = (y1 + y2 + y3) / 3.0_wp
         
         ! Gradientes das funções de forma lineares
-        ! ∇N₁ = (1/2A) * [y₂-y₃, x₃-x₂]
-        ! ∇N₂ = (1/2A) * [y₃-y₁, x₁-x₃]  
-        ! ∇N₃ = (1/2A) * [y₁-y₂, x₂-x₁]
-        
         inv_det = 1.0_wp / det_J
         
         ! Gradiente da função de forma N₁
@@ -160,10 +164,88 @@ contains
 end module fem_geometry_mod
 
 !---------------------------------------------------------------
+! Módulo para montagem local
+!---------------------------------------------------------------
+module fem_local_assembly_mod
+    use precision_mod
+    implicit none
+    private
+    
+    public :: assemble_local
+    
+contains
+
+    subroutine assemble_local(area, shape_grad, f_centroid, K_elem, F_elem)
+        !-----------------------------------------------------------------
+        ! Monta a matriz de rigidez e o vetor de carga locais
+        !-----------------------------------------------------------------
+        real(wp), intent(in) :: area
+        real(wp), intent(in) :: shape_grad(2,3)
+        real(wp), intent(in) :: f_centroid
+        real(wp), intent(out) :: K_elem(3,3)
+        real(wp), intent(out) :: F_elem(3)
+
+        integer :: i, j
+        
+        ! Matriz de rigidez elementar: K_ij = ∫ ∇Ni · ∇Nj dΩ
+        do i = 1, 3
+            do j = 1, 3
+                K_elem(i,j) = area * (shape_grad(1,i) * shape_grad(1,j) + &
+                                     shape_grad(2,i) * shape_grad(2,j))
+            end do
+        end do
+        
+        ! Vetor força elementar: F_i = ∫ f Ni dΩ
+        ! Usando regra de quadratura de 1 ponto (centroide)
+        F_elem = (area * f_centroid) / 3.0_wp  ! Ni = 1/3 no centroide
+        
+    end subroutine
+    
+end module fem_local_assembly_mod
+
+!---------------------------------------------------------------
+! Módulo de definição do problema (funções f, g, u_exact)
+!---------------------------------------------------------------
+module problem_definition_mod
+    use precision_mod
+    implicit none
+    private
+    
+    public :: f_rhs, g_bc, u_exact
+    
+contains
+
+    function f_rhs(x, y) result(val)
+        real(wp), intent(in) :: x, y
+        real(wp) :: val
+        real(wp), parameter :: pi = 3.14159265358979323846_wp
+        val = 2.0_wp * pi**2 * sin(pi*x) * sin(pi*y) 
+    end function
+    
+    function g_bc(x, y) result(val)
+        real(wp), intent(in) :: x, y
+        real(wp) :: val
+        val = 0.0_wp  ! Dirichlet homogêneo
+    end function
+    
+    function u_exact(x, y) result(val)
+        real(wp), intent(in) :: x, y
+        real(wp) :: val
+        real(wp), parameter :: pi = 3.14159265358979323846_wp
+        val = sin(pi*x) * sin(pi*y) 
+    end function
+
+end module problem_definition_mod
+
+!---------------------------------------------------------------
+! Módulo de montagem global do sistema
+!---------------------------------------------------------------
 module fem_assembly_mod
     use precision_mod
     use fem_mesh_mod
     use fem_geometry_mod
+    use fem_local_assembly_mod
+    use problem_definition_mod
     implicit none
     private
     
@@ -171,80 +253,57 @@ module fem_assembly_mod
     
 contains
     
-    subroutine fem_assemble_system(mesh, f, g, K, Load)
+    subroutine fem_assemble_system(mesh, K, F)
         !-----------------------------------------------------------------
-        ! Monta sistema global K*u = Load para FEM linear
+        ! Monta o sistema global K*u = F para FEM linear
         !-----------------------------------------------------------------
         type(fem_mesh_type), intent(inout) :: mesh
+        real(wp), allocatable, intent(out) :: K(:,:)
+        real(wp), allocatable, intent(out) :: F(:)
         
-        interface
-            function f(x,y) result(val)
-                import :: wp
-                real(wp), intent(in) :: x, y
-                real(wp) :: val
-            end function
-            function g(x,y) result(val)
-                import :: wp
-                real(wp), intent(in) :: x, y
-                real(wp) :: val
-            end function
-        end interface
-        
-        real(wp), allocatable, intent(out) :: K(:,:), Load(:)
-        
-        integer :: N, i, j, t
-        integer :: v1, v2, v3
+        integer :: N
+        integer :: i, j, t
         real(wp) :: K_elem(3,3), F_elem(3)
-        real(wp) :: area, fbar
         integer :: global_i, global_j
-        real(wp) :: gi
         
         N = mesh%nv
-        allocate(K(N,N),Load(N))
-        K = 0.0_wp; Load = 0.0_wp
+        
+        ! Alocação e inicialização
+        allocate(K(N, N))
+        allocate(F(N))
+        K = 0.0_wp
+        F = 0.0_wp
         
         ! Loop sobre todos os triângulos
         do t = 1, mesh%ntri
             call compute_triangle_geometry(mesh, t)
             
-            ! Índices globais dos vértices
-            v1 = mesh%tri(t)%v(1); v2 = mesh%tri(t)%v(2); v3 = mesh%tri(t)%v(3)
-            area = mesh%tri(t)%area
+            ! Monta matriz e vetor locais
+            call assemble_local(mesh%tri(t)%area, mesh%tri(t)%shape_grad, &
+                                f_rhs(mesh%tri(t)%centroid(1), mesh%tri(t)%centroid(2)), &
+                                K_elem, F_elem)
             
-            ! Matriz de rigidez elementar: K_ij = ∫ ∇Ni · ∇Nj dΩ
-            do i = 1, 3
-                do j = 1, 3
-                    K_elem(i,j) = area * (mesh%tri(t)%shape_grad(1,i) * mesh%tri(t)%shape_grad(1,j) + &
-                                         mesh%tri(t)%shape_grad(2,i) * mesh%tri(t)%shape_grad(2,j))
-                end do
-            end do
-            
-            ! Vetor força elementar: F_i = ∫ f Ni dΩ
-            ! Usando regra de quadratura de 1 ponto (centroide)
-            fbar = f(mesh%tri(t)%centroid(1), mesh%tri(t)%centroid(2))
-            F_elem = (area * fbar) / 3.0_wp  ! Ni = 1/3 no centroide
-            
-            ! Espalhamento na matriz global
+            ! Espalhamento nas matrizes e vetores globais
             do i = 1, 3
                 global_i = mesh%tri(t)%v(i)
-                Load(global_i) = Load(global_i) + F_elem(i)
                 do j = 1, 3
                     global_j = mesh%tri(t)%v(j)
-                    K(global_i, global_j) = K(global_i, global_j) + K_elem(i,j)
+                    K(global_i, global_j) = K(global_i, global_j) + K_elem(i, j)
                 end do
+                F(global_i) = F(global_i) + F_elem(i)
             end do
         end do
         
-        ! Aplicação das condições de contorno de Dirichlet
+        ! Aplica condições de contorno de Dirichlet
         do i = 1, N
             if (mesh%vert(i)%on_boundary) then
-                gi = g(mesh%vert(i)%x, mesh%vert(i)%y)
-                ! Modificação do sistema para impor u_i = gi
-                Load = Load - gi * K(:,i)
-                K(i,:) = 0.0_wp
-                K(:,i) = 0.0_wp
-                K(i,i) = 1.0_wp
-                Load(i) = gi
+                ! Valor do contorno
+                F(i) = g_bc(mesh%vert(i)%x, mesh%vert(i)%y)
+                
+                ! Zera linha e coluna e coloca 1 na diagonal
+                K(i, :) = 0.0_wp
+                K(:, i) = 0.0_wp
+                K(i, i) = 1.0_wp
             end if
         end do
         
@@ -253,13 +312,16 @@ contains
 end module fem_assembly_mod
 
 !---------------------------------------------------------------
+! Módulo de pós-processamento
+!---------------------------------------------------------------
 module fem_postprocess_mod
     use precision_mod
     use fem_mesh_mod
+    use problem_definition_mod
     implicit none
     private
     
-    public :: fem_evaluate_solution, fem_compute_error
+    public :: fem_evaluate_solution, fem_compute_error, write_solution
     
 contains
     
@@ -309,20 +371,12 @@ contains
         
     end function
     
-    function fem_compute_error(mesh, u, u_exact) result(l2_error)
+    function fem_compute_error(mesh, u) result(l2_error)
         !-----------------------------------------------------------------
         ! Calcula erro L² usando quadratura de 3 pontos
         !-----------------------------------------------------------------
         type(fem_mesh_type), intent(in) :: mesh
         real(wp), intent(in) :: u(:)
-        
-        interface
-            function u_exact(x,y) result(val)
-                import :: wp
-                real(wp), intent(in) :: x, y
-                real(wp) :: val
-            end function
-        end interface
         
         real(wp) :: l2_error
         
@@ -368,85 +422,8 @@ contains
         
     end function
     
-end module fem_postprocess_mod
-
-!---------------------------------------------------------------
-program fem2d
-    use precision_mod
-    use fem_mesh_mod
-    use fem_assembly_mod
-    use fem_postprocess_mod
-    implicit none
-    
-    type(fem_mesh_type) :: mesh
-    real(wp), allocatable :: K(:,:), F(:), u(:)
-    integer :: n, info
-    integer, allocatable :: ipiv(:)
-    real(wp) :: l2_error
-    character(len=100) :: filename
-    
-    write(*,'(a)') '=== Método dos Elementos Finitos Linear ==='
-    write(*,'(a)') 'Resolvendo -Δu = f com u = g em ∂Ω'
-    write(*,'(a)') ''
-    
-    ! Leitura da malha
-    write(*,'(a)') 'Arquivo de malha:'
-    read(*,'(a)') filename
-    filename = filename // '.dat'
-    call mesh%read_mesh(filename)
-    write(*,'(a,i0,a,i0,a)') 'Malha carregada: ', mesh%nv, ' vértices, ', &
-                             mesh%ntri, ' triângulos'
-    
-    ! Montagem do sistema
-    call fem_assemble_system(mesh, f_rhs, g_bc, K, F)
-    write(*,'(a)') 'Sistema linear montado'
-    
-    ! Solução via LAPACK
-    n = size(K, 1)
-    allocate(u(n), ipiv(n))
-    
-    ! Copia F para u (será sobrescrito com a solução)
-    u = F
-    
-    call dgesv(n, 1, K, n, ipiv, u, n, info)
-    if (info /= 0) then
-        write(*,'(a,i0)') 'Erro em dgesv: ', info
-        stop
-    end if
-    
-    write(*,'(a)') 'Sistema linear resolvido'
-    
-    ! Cálculo do erro
-    l2_error = fem_compute_error(mesh, u, u_exact)
-    write(*,'(a,es12.4)') 'Erro L²: ', l2_error
-    
-    ! Saída da solução
-    call write_solution(mesh, u)
-    write(*,'(a)') 'Solução salva em "solution_fem.dat"'
-    
-contains
-    
-    function f_rhs(x, y) result(val)
-        real(wp), intent(in) :: x, y
-        real(wp) :: val
-        real(wp), parameter :: pi = 3.14159265358979323846_wp
-        val = 2.0_wp * pi**2 * sin(pi*x) * sin(pi*y) 
-    end function
-    
-    function g_bc(x, y) result(val)
-        real(wp), intent(in) :: x, y
-        real(wp) :: val
-        val = 0.0_wp  ! Dirichlet homogêneo
-    end function
-    
-    function u_exact(x, y) result(val)
-        real(wp), intent(in) :: x, y
-        real(wp) :: val
-        real(wp), parameter :: pi = 3.14159265358979323846_wp
-        val = sin(pi*x) * sin(pi*y) 
-    end function
-    
     subroutine write_solution(mesh, u)
+        ! Escreve a solução completa (nós livres e de contorno)
         type(fem_mesh_type), intent(in) :: mesh
         real(wp), intent(in) :: u(:)
         real(wp) :: x, y, u_ex, error
@@ -466,4 +443,72 @@ contains
         close(10)
     end subroutine
     
+end module fem_postprocess_mod
+
+!---------------------------------------------------------------
+! Programa principal
+!---------------------------------------------------------------
+program fem2d
+    use precision_mod
+    use fem_mesh_mod
+    use fem_assembly_mod
+    use fem_postprocess_mod
+    use problem_definition_mod
+    
+    implicit none
+    
+    type(fem_mesh_type) :: mesh
+    real(wp), allocatable :: K(:,:), u(:)
+    real(wp), allocatable :: F(:)
+    
+    integer :: n_nodes, info
+    integer, allocatable :: ipiv(:)
+    real(wp) :: l2_error
+    character(len=100) :: filename
+    
+    write(*,'(a)') '=== Método dos Elementos Finitos Linear (com LAPACK) ==='
+    write(*,'(a)') 'Resolvendo -Δu = f com u = g em ∂Ω'
+    write(*,'(a)') ''
+    
+    ! Leitura da malha
+    write(*,'(a)') 'Arquivo de malha:'
+    read(*,'(a)') filename
+    filename = trim(filename)//'.dat'
+    call mesh%read_mesh(filename)
+    write(*,'(a,i0,a,i0,a)') 'Malha carregada: ', mesh%nv, ' vértices, ', &
+                             mesh%ntri, ' triângulos'
+    
+    n_nodes = mesh%nv
+    
+    ! Montagem do sistema
+    call fem_assemble_system(mesh, K, F)
+    write(*,'(a)') 'Sistema linear montado (matriz global)'
+    
+    ! Solução do sistema K * u = F
+    ! A solução será armazenada no vetor F
+    allocate(u(n_nodes), ipiv(n_nodes))
+    u = F
+    
+    ! Chamada da rotina DGESV do LAPACK para resolver o sistema
+    ! K será sobrescrita com a decomposição LU
+    ! F (u) será sobrescrita com a solução
+    call dgesv(n_nodes, 1, K, n_nodes, ipiv, u, n_nodes, info)
+    
+    if (info == 0) then
+        write(*,'(a)') 'Sistema linear resolvido com sucesso!'
+    else
+        write(*,'(a,i0)') 'Erro ao resolver sistema linear, INFO = ', info
+        stop
+    end if
+    
+    ! Pós-processamento
+    l2_error = fem_compute_error(mesh, u)
+    write(*,'(a,es12.4)') 'Erro L²: ', l2_error
+    
+    ! Saída da solução
+    call write_solution(mesh, u)
+    write(*,'(a)') 'Solução salva em "solution_fem.dat"'
+    
 end program fem2d
+
+

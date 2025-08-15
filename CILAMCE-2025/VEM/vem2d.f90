@@ -350,6 +350,70 @@ contains
     end subroutine
 end module assembly_mod
 
+! --- MÓDULO PARA APLICAÇÃO DAS CONDIÇÕES DE CONTORNO ---
+module boundary_conditions_mod
+    use precision_mod
+    use mesh_mod
+    use problem_definitions_mod
+    implicit none
+    private
+    public :: apply_boundary_conditions
+    
+contains
+    !-----------------------------------------------------------------
+    ! Sub-rotina para identificar DOFs, aplicar condições de contorno e preparar o sistema reduzido
+    !-----------------------------------------------------------------
+    subroutine apply_boundary_conditions(mesh, K, Load, K_ii, F_reduced, internal_dofs, boundary_dofs, N_i, N_b)
+        type(mesh_type), intent(in) :: mesh
+        real(wp), intent(in) :: K(:,:), Load(:)
+        real(wp), allocatable, intent(out) :: K_ii(:,:), F_reduced(:)
+        integer, allocatable, intent(out) :: internal_dofs(:), boundary_dofs(:)
+        integer, intent(out) :: N_i, N_b
+        real(wp), allocatable :: u_b(:), K_ib(:,:), F_i(:)
+        integer :: i, j, N_total
+        
+        N_total = mesh%nv
+        
+        ! Identificação dos DOFs internos e de contorno
+        N_b = count(mesh%vert(:)%on_boundary)
+        N_i = N_total - N_b
+        
+        allocate(boundary_dofs(N_b), internal_dofs(N_i))
+        N_i = 0; N_b = 0
+        do i=1, N_total
+            if (mesh%vert(i)%on_boundary) then
+                N_b = N_b + 1
+                boundary_dofs(N_b) = i
+            else
+                N_i = N_i + 1
+                internal_dofs(N_i) = i
+            end if
+        end do
+        
+        ! Aplicação das condições de contorno (u_b = g_bc nos vértices de contorno)
+        allocate(u_b(N_b))
+        do i=1, N_b
+            u_b(i) = g_bc(mesh%vert(boundary_dofs(i))%x, mesh%vert(boundary_dofs(i))%y)
+        end do
+        
+        ! Extrai as sub-matrizes e sub-vetores
+        allocate(K_ii(N_i,N_i), K_ib(N_i,N_b), F_i(N_i))
+        do i = 1, N_i
+            do j = 1, N_i
+                K_ii(i,j) = K(internal_dofs(i), internal_dofs(j))
+            end do
+            do j = 1, N_b
+                K_ib(i,j) = K(internal_dofs(i), boundary_dofs(j))
+            end do
+            F_i(i) = Load(internal_dofs(i))
+        end do
+        
+        ! Constrói o vetor de carga reduzido
+        allocate(F_reduced(N_i))
+        F_reduced = F_i - matmul(K_ib, u_b)
+    end subroutine apply_boundary_conditions
+end module boundary_conditions_mod
+
 ! --- MÓDULO PARA CÁLCULO DE ERRO ---
 module vem_error_mod
     use precision_mod
@@ -410,6 +474,7 @@ program main
     use precision_mod
     use mesh_mod
     use assembly_mod
+    use boundary_conditions_mod
     use vem_error_mod
     use problem_definitions_mod  ! Importa o módulo com as funções do problema
     use iso_fortran_env
@@ -417,10 +482,10 @@ program main
     implicit none
     
     type(mesh_type) :: mesh
-    real(wp), allocatable :: K(:,:), Load(:), u(:), u_i(:), u_b(:)
-    real(wp), allocatable :: K_ii(:,:), K_ib(:,:), F_i(:), F_reduced(:)
+    real(wp), allocatable :: K(:,:), Load(:), u(:), u_i(:)
+    real(wp), allocatable :: K_ii(:,:), F_reduced(:)
     real(wp) :: l2_error_val
-    integer :: i, j, N_total, N_b, N_i, info
+    integer :: i, N_total, N_i, N_b, info
     integer, allocatable :: internal_dofs(:), boundary_dofs(:)
     integer, allocatable :: ipiv(:)
     character(len=256) :: mesh_filename
@@ -428,71 +493,38 @@ program main
     ! --- RESOLUÇÃO DO PROBLEMA ---
     
     ! 1. Leitura da malha
-    write(*,*) 'Digite o nome do arquivo da malha (ex: malha.txt):'
+    write(*,*) 'Digite o nome do arquivo da malha:'
     read(*,'(a)') mesh_filename
+    mesh_filename = trim(mesh_filename)//'.dat'
     call mesh%read_mesh(trim(mesh_filename))
     N_total = mesh%nv
     
     ! 2. Montagem do sistema global (sem imposição forte)
     call assemble_system(mesh, K, Load)
     
-    ! 3. Identificação dos DOFs internos e de contorno
-    N_b = count(mesh%vert(:)%on_boundary)
-    N_i = N_total - N_b
+    ! 3. Aplicação das condições de contorno e preparação do sistema reduzido
+    call apply_boundary_conditions(mesh, K, Load, K_ii, F_reduced, internal_dofs, boundary_dofs, N_i, N_b)
     
-    allocate(boundary_dofs(N_b), internal_dofs(N_i))
-    N_i = 0; N_b = 0
-    do i=1, N_total
-        if (mesh%vert(i)%on_boundary) then
-            N_b = N_b + 1
-            boundary_dofs(N_b) = i
-        else
-            N_i = N_i + 1
-            internal_dofs(N_i) = i
-        end if
-    end do
-    
-    ! 4. Particionamento do sistema para resolver DOFs internos
-    allocate(u_b(N_b))
-    do i=1, N_b
-        u_b(i) = g_bc(mesh%vert(boundary_dofs(i))%x, mesh%vert(boundary_dofs(i))%y)
-    end do
-    
-    ! Extrai as sub-matrizes e sub-vetores
-    allocate(K_ii(N_i,N_i), K_ib(N_i,N_b), F_i(N_i))
-    do i = 1, N_i
-        do j = 1, N_i
-            K_ii(i,j) = K(internal_dofs(i), internal_dofs(j))
-        end do
-        do j = 1, N_b
-            K_ib(i,j) = K(internal_dofs(i), boundary_dofs(j))
-        end do
-        F_i(i) = Load(internal_dofs(i))
-    end do
-    
-    ! Constrói o vetor de carga reduzido
-    F_reduced = F_i - matmul(K_ib, u_b)
-    
-    ! 5. Resolve o sistema reduzido para u_i
+    ! 4. Resolve o sistema reduzido para u_i
     allocate(u_i(N_i), ipiv(N_i))
     call dgesv(N_i, 1, K_ii, N_i, ipiv, F_reduced, N_i, info)
     if (info/=0) stop 'Falha em dgesv ao resolver sistema interno.'
     u_i = F_reduced
     
-    ! 6. Reconstrução da solução global
+    ! 5. Reconstrução da solução global
     allocate(u(N_total))
     do i=1, N_i
         u(internal_dofs(i)) = u_i(i)
     end do
     do i=1, N_b
-        u(boundary_dofs(i)) = u_b(i)
+        u(boundary_dofs(i)) = g_bc(mesh%vert(boundary_dofs(i))%x, mesh%vert(boundary_dofs(i))%y)
     end do
     
-    ! 7. Cálculo e exibição do erro
+    ! 6. Cálculo e exibição do erro
     l2_error_val = vem_compute_l2_error(mesh, u)
     write(*,'(a,es24.14)') 'Erro L2 da solução VEM: ', l2_error_val
     
-    ! 8. Saída dos resultados
+    ! 7. Saída dos resultados
     open(unit=10, file='solution.dat', status='replace')
     do i=1, N_total
         write(10,'(3(es24.14))') mesh%vert(i)%x, mesh%vert(i)%y, u(i)

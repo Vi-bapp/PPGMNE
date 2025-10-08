@@ -15,7 +15,7 @@ print("\n--- Carregando a malha do arquivo 'output.msh' ---")
 
 # Carrega o arquivo de malha existente
 try:
-    gmsh.open("16x16_t.msh")
+    gmsh.open("mesh.msh")
     print("Arquivo 'output.msh' carregado com sucesso.")
 except Exception as e:
     print(f"Erro ao carregar o arquivo: {e}")

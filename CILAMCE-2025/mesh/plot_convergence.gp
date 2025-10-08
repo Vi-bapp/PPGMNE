@@ -1,6 +1,6 @@
 # Define o terminal de saída para PNG (imagem)
 set terminal pngcairo enhanced font "Arial,12"
-set output 'convergence_l2_structured.png'
+set output 'convergence_l2.png'
 
 # Define as escalas dos eixos como logarítmicas
 set logscale x

@@ -1,0 +1,83 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{natbib}
+\usepackage{listings}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+\begin{document}
+
+\indent A análise dinâmica é o estudo da resposta de um corpo quando submetido a uma carga dinâmica. Algumas difernças são notáveis quando 
+comparadas a análise estática de estruturas. Os graus de liberdade análisado já não mais são mais os  deslocamentos dos 
+nós da estrutura, mas agoro os deslocamantos de pontos de massa. As funções que antes dependiam apenas do espaço agora também 
+estarão em função do tempo.
+
+\indent Uma maneira comum de representação de sistêmas diâmicos é por meio de um sistema massa-mola. Nesse sistema, as principais forças 
+atuantes são os carregamentos externos, uma força resistênte elastica — geralmente derivada da rigidez do sistema estudado — e em 
+alguns casos um força representando o amortecimento do sistema., como pode ser observado na figura \ref{fig:1}.
+\vspace{5mm}
+\begin{figure}[h]
+    \centering
+    % \includegraphics[scale=0.5]{1.png}
+    \caption{Sistema de 1 grau de liberdade com força elástica.}
+    \label{fig:1}
+\end{figure}
+\vspace{5mm}
+
+\indent Uma forma de construção das equações dinâmicas é através da soma vetorial em cada massa, com base no princípio de D'Alambert. 
+O princípio de D'Alambert é uma força fictícia baseada na segunda lei de newton, onde "A resultante das forças é igual à derivada do 
+momento linear", 
+\vspace{5mm}
+\begin{equation}
+    f = \frac{d}{dt}\left( m\frac{du}{dt} \right).
+    \label{eq.1}
+\end{equation}
+\vspace{5mm}
+E para o caso de um sistema com múltiplos graus de liberdade:
+\vspace{5mm}
+\begin{equation}
+    \left( f_i - \frac{d}{dt}\left( m_i\frac{du_i}{dt} \right) \right) + \left( L_i - \frac{d}{dt}\left( m_i\frac{dJ_i}{dt} \right) \right) = 0.
+    \label{eq.2}
+\end{equation}
+\vspace{5mm}
+Onde $f_i$ é a soma de forças em cada grau de liberdade, $L_i$ a soma de momentos e $J_i$ o momento angular. \textcolor{red}{Check the formulas}
+
+\indent Como comentado por \cite{}, para sistemas com multiplos graus de liberdade, 
+uma soma vetorial pode se tornardemasiadamente complexa, de modo a que uma abordagem energética se torna mais simples. O método dos 
+deslocamantos postula que em estruturas sob equilíbrio estático, ao aplicar um deslocamento virtual no sistema, o trabalho realizado deve 
+ser nulo. A aplicação dos deslocamentos virtuais permite a conversão de uma soma vetorial em uma escalar, desse modo:
+\vspace{5mm}
+\begin{equation}
+    \left( f_i - \frac{d}{dt}\left( m_i\frac{du_i}{dt} \right) \right)\delta u + \left( L_i - \frac{d}{dt}\left( m_i\frac{dJ_i}{dt} \right) 
+    \right) \delta u  = 0.
+\end{equation}
+\vspace{5mm}
+
+\indent Mesmo com a aplicação do método dos deslocamentos virtuais ainda restam produtos escalares, que deverão se contornados. Da força de 
+inércia: 
+\begin{equation}
+    \ddot{\vec{u}_j} \delta \vec{u}_j = \frac{d}{dt} \left( \dot{\vec{u}_j} \delta \vec{u}_j \right) - \dot{\vec{u}_j} \delta 
+\dot{\vec{u}}_j = \frac{d}{dt} \left( \dot{\vec{u}_j} \delta \vec{u}_j \right) - \delta \left( \frac{1}{2}\dot{\vec{u}_j} 
+\dot{\vec{u}}_j \right). 
+\end{equation}
+Ampliando a formulação para sistemas com multiplos graus de liberdade:
+\begin{equation}
+    \Sigma_{j=1}^{N} m_j \ddot{\vec{u}_j} \delta \vec{u}_j = \Sigma_{j=1}^{N} m_j  \frac{d}{dt} \left( \dot{\vec{u}_j} \delta 
+    \vec{u}_j \right) - \Sigma_{j=1}^{N} m_j \delta \left( \frac{1}{2}\dot{\vec{u}_j} \dot{\vec{u}}_j \right).
+\end{equation}
+Note que o segundo
+termo corresponde a energia cinética, desse modo: 
+\begin{equation}
+    \Sigma_{j=1}^{N} m_j \ddot{\vec{u}_j} \delta \vec{u}_j = \Sigma_{j=1}^{N} m_j \frac{d}{dt} \left( \dot{\vec{u}_j} \delta 
+    \vec{u}_j \right) - \delta T_j.
+\end{equation}
+
+
+
+
+\end{document}

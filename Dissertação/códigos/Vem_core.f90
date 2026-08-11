@@ -21,7 +21,7 @@ module vem_core_mod
     public :: compute_vem_stability
     public :: matrix_trace
     public :: dp
-
+    public :: read_2D_loads
 
 
     type :: node_type
@@ -49,6 +49,22 @@ module vem_core_mod
         procedure :: read_mesh
         procedure :: set_dof_constraint
     end type mesh_type
+
+    ! Estrutura para Cargas Distribuídas no Contorno (Arestas)
+    type :: EdgeLoadDef
+        integer :: elem_id
+        integer :: edge_id
+        real(dp) :: q1(2)  ! Componentes x e y no nó inicial da aresta
+        real(dp) :: q2(2)  ! Componentes x e y no nó final da aresta
+    end type EdgeLoadDef
+
+    ! Estrutura para Cargas Distribuídas no Domínio
+    type :: DomainLoadDef
+        integer :: elem_id
+        real(dp) :: q0
+        real(dp) :: qx
+        real(dp) :: qy
+    end type DomainLoadDef
 
 contains
 
@@ -138,6 +154,76 @@ contains
 
         close(i)
     end subroutine read_mesh
+
+    !---------------------------------------------------------------------------
+    ! Subrotina para leitura de todos os tipos de cargas de um arquivo
+    !---------------------------------------------------------------------------
+    subroutine read_2D_loads(filename, nnodes, ndof, F_global, edge_loads, domain_loads)
+        
+        implicit none
+        
+        character(len=*), intent(in) :: filename
+        integer, intent(in) :: nnodes, ndof
+        real(dp), intent(inout) :: F_global(:) 
+        
+        ! Arrays alocáveis de saída para as cargas distribuídas
+        type(EdgeLoadDef), allocatable, intent(out) :: edge_loads(:)
+        type(DomainLoadDef), allocatable, intent(out) :: domain_loads(:)
+        
+        integer :: i_unit, ios, n_items, i, node_idx, dof_idx, global_eq
+        real(dp) :: val
+        character(len=512) :: line
+        character(len=500) :: io_err
+        
+        ! Inicializa o vetor de forças global (apenas para garantir)
+        F_global = 0.0_dp
+        
+        open(newunit=i_unit, file=filename, status='old', action='read', iostat=ios, iomsg=io_err)
+        if (ios /= 0) error stop 'Erro ao abrir arquivo de cargas: ' // trim(io_err)
+        
+        do
+            read(i_unit, '(A)', iostat=ios) line
+            if (ios /= 0) exit ! Fim do arquivo
+            
+            line = adjustl(line)
+            
+            ! Ignora linhas vazias e comentários
+            if (len_trim(line) == 0 .or. line(1:1) == '!' .or. line(1:1) == '#') cycle
+            
+            ! Identifica o bloco de leitura
+            if (line(1:6) == '*NODAL') then
+                read(i_unit, *) n_items
+                do i = 1, n_items
+                    read(i_unit, *) node_idx, dof_idx, val
+                    if (node_idx >= 1 .and. node_idx <= nnodes .and. dof_idx <= ndof) then
+                        global_eq = (node_idx - 1) * ndof + dof_idx
+                        F_global(global_eq) = F_global(global_eq) + val
+                    end if
+                end do
+                
+            else if (line(1:5) == '*EDGE') then
+                read(i_unit, *) n_items
+                allocate(edge_loads(n_items))
+                do i = 1, n_items
+                    read(i_unit, *) edge_loads(i)%elem_id, edge_loads(i)%edge_id, &
+                                    edge_loads(i)%q1(1), edge_loads(i)%q1(2), &
+                                    edge_loads(i)%q2(1), edge_loads(i)%q2(2)
+                end do
+                
+            else if (line(1:7) == '*DOMAIN') then
+                read(i_unit, *) n_items
+                allocate(domain_loads(n_items))
+                do i = 1, n_items
+                    read(i_unit, *) domain_loads(i)%elem_id, &
+                                    domain_loads(i)%q0, &
+                                    domain_loads(i)%qx, &
+                                    domain_loads(i)%qy
+                end do
+            end if
+        end do
+        
+        close(i_unit)
+    end subroutine read_2D_loads
 
     subroutine set_dof_constraint(this, node_id, dof_id, is_constrained, bc_val, spring_k)
         class(mesh_type), intent(inout) :: this
@@ -549,7 +635,5 @@ contains
         end do
         close(unit_num)
     end subroutine write_solution
-
-
 
 end module vem_core_mod

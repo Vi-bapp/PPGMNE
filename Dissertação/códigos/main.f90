@@ -2,13 +2,15 @@
 ! PROGRAMA PRINCIPAL - ANÁLISE DE VIBRAÇÕES LIVRES VEM
 !===============================================================================
 program main_free_vibration
+    use, intrinsic :: iso_fortran_env, only: dp => real64
     use vem_core_mod
     use gnuplot_archive_mod
     use math_geometry_mod
     use vem_operators_mod
     use vem_concrete_operators_mod
     use dynamics_mod
-
+    use measures_mod
+    
     implicit none
 
     type(mesh_type) :: mesh
@@ -37,6 +39,10 @@ program main_free_vibration
     real(dp) :: omega, freq_hz, rho, C_mat(3,3)
     real(dp), parameter :: pi = 3.14159265358979323846_dp
     character(len=256) :: mode_filename
+
+    !Time and conditioning variables
+    real(dp) :: t_start, t_end, t_montagem, t_solucao
+    
     
 
 
@@ -86,6 +92,9 @@ program main_free_vibration
 
     allocate(elem_mats(mesh%nelem))
     k_order = mesh%k_order
+
+    ! --- START MOUNTING TIMING ---
+    t_start = get_wall_time()
 
     ! Pre-alocação das matrizes locais
     do eid = 1, mesh%nelem
@@ -204,7 +213,11 @@ program main_free_vibration
         call assemble_matrix(mesh, eid, elem_mats(eid)%Kel, K)
         call assemble_matrix(mesh, eid, elem_mats(eid)%Mel, M)
     end do
-    
+
+    ! --- END MOUNTING TIMING ---
+    t_end = get_wall_time()
+    t_montagem = t_end - t_start
+
     ! Solução do Problema de Autovalores
     call get_dof_maps(mesh, internal_dofs, boundary_dofs, N_i, N_b)
     
@@ -216,7 +229,17 @@ program main_free_vibration
         call partition_matrix(K, internal_dofs, boundary_dofs, A_ii=K_ii) 
         call partition_matrix(M, internal_dofs, boundary_dofs, A_ii=M_ii) 
 
+        ! --- CONDICIONAMENTO ---
+        call conditioning(K_ii, N_i) ! Mede o condicionamento da matriz de rigidez interna
+
+        ! --- START SOLVER TIMING ---
+        t_start = get_wall_time()
+
         call solve_generalized_eigenvalue(K_ii, M_ii, N_i, eigenvalues, eigenvectors)
+
+        ! --- END SOLVER TIMING ---
+        t_end = get_wall_time()
+        t_solucao = t_end - t_start
 
         write(*,'(a)') 'MODO | autovalor (w^2) | f (Hz)'
         do mode_idx = 1, min(5, N_i)
@@ -240,11 +263,22 @@ program main_free_vibration
             call export_gnuplot_deformed_mesh(mesh, phi_full, 0.2_dp, trim(mode_filename))
 
             deallocate(phi_full)
+
         end do
+        call print_run_times(t_montagem, t_solucao) ! Prints o tempo de montagem e solução para cada modo
+
+        ! Exportar os 3 primeiros modos de vibração para o gnuplot, incluindo a superfície deformada
+        do i = 1, 3
+        ! Aqui você extrai o autovetor global (precisa mapear os graus de liberdade internos de volta para a malha completa, inserindo zeros nas restrições de contorno)
+            call export_mode_surface(mesh, eigenvectors(:, i), i)
+        end do
+
         deallocate(K_ii, M_ii, eigenvalues, eigenvectors) 
     else
             write(*,'(a)') 'Aviso: Nao ha graus de liberdade livres para solucao.'
     end if
+
+    
 
     
 end program main_free_vibration

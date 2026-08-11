@@ -43,8 +43,6 @@
 \RequirePackage{amsfonts} % símbolos matemáticos, negrito e afins
 %% https://ctan.org/pkg/amsfonts
 
-\RequirePackage{amssymb} % vários símbolos
-
 \RequirePackage{nccmath} % comandos matemáticos
 %% https://ctan.org/pkg/nccmath
 
@@ -66,7 +64,7 @@
 
 
 % ----------------- Figuras e tabelas ---------------------------------
-\RequirePackage{graphicx} % feito para adicionar figuras
+\RequirePackage[final]{graphicx} % feito para adicionar figuras
 %% https://ctan.org/pkg/graphicx
 
 \RequirePackage{float} % feito para configurar figuras
@@ -102,10 +100,18 @@
 \RequirePackage{xcolor} % adiciona cores diferentonas para fonte e para background
 %% https://en.wikibooks.org/wiki/LaTeX/Colors
 
+% Define a pasta padrão para busca de imagens
+\graphicspath{{figuras/}}
+
 % Adicionando fundo na capa
 \makeatletter
 \renewcommand{\imprimircapa}{%
     \begin{capa}%
+        \begin{tikzpicture}[remember picture, overlay]
+            \node at (current page.center) {%
+                \includegraphics[width=0.6\paperwidth]{UFPR.pdf}%
+            };
+        \end{tikzpicture}%
         \center
         \ABNTEXchapterfont\Large UNIVERSIDADE FEDERAL DO PARANÁ \\
         \vspace*{1cm}

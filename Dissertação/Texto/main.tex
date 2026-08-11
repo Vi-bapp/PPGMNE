@@ -4,23 +4,21 @@
 \usepackage[utf8]{inputenc}
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage{pacotes}
-\usepackage{listings}
 
 
-\titulo{--texto do título--}
-\tituloestrangeiro{--texto do título estrangeiro--}
+\titulo{Análise de estruturas em estado plano em vibração livre com o método dos elementos virtuais}
+\tituloestrangeiro{Analysis of plane state structures in free vibration with the virtual elements method}
 \autor{Vinícius Belmar Almeida Prado Pohl}
-\orientador{Marcos Arndt}
-\coorientador{}
+\orientador[Dr.]{Marcos Arndt}
 \data{2026}
 \instituicao{
     Universidade Federal do Paraná (UFPR) \par
-    Programa de Pós-Graduação em Métodos \par
-    Numéricos em Engenharia (PPGMNE)
+    Programa de Pós-Graduação em Métodos Numéricos em Engenharia \par
+    Mestrado Acadêmico em Métodos Numéricos em Engenharia
 }
-\tipotrabalho{Dissertação de Mestrado}
+\tipotrabalho{Trabalho Acadêmico}
 \local{Curitiba, PR}
-\preambulo{Trabalho acadêmico como requisito para a obtenção do título de Mestre.}
+\preambulo{Trabalho acadêmico como requisito para obtenção do título de mestre em Métodos Numéricos em Engenharia.}
 
 % informações do PDF
 \makeatletter
@@ -88,11 +86,14 @@
 
 
 \textual % a partir daqui são os elementos textuais.
+\include{Introducao.tex}
+\include{cap_2.tex}
+\include{cap_3.tex}
+\include{cap_4.tex}
 % \include{XXX} % adicionar os .tex da pasta inputs
 
-
 \postextual % a partir daqui são os elementos pós-textuais.
-%\bibliography{ref} % O alerta amarelo ("Empty `thebibliography' environment on input line 8.") é porque não há citações ainda
+\bibliography{ref} % O alerta amarelo ("Empty `thebibliography' environment on input line 8.") é porque não há citações ainda
 % \chapter{APÊNDICE}
 % \chapter{anexo}
 \end{document}

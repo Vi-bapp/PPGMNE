@@ -10,7 +10,7 @@ module dynamics_mod
     public :: newmark_init, newmark_step
     public :: cd_init, cd_step
 
-contains
+    contains
 
     subroutine solve_generalized_eigenvalue(K_ii, M_ii, N_i, eigenvalues, eigenvectors)
         integer, intent(in) :: N_i

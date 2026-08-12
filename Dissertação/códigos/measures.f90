@@ -1,73 +1,188 @@
 module measures_mod
     use, intrinsic :: iso_fortran_env, only: dp => real64
+    use Math_geometry_mod
+
     implicit none
     private
 
     public :: get_wall_time, print_run_times, conditioning
+    public :: compute_vem_error
+    public :: compute_L2_error, compute_H1_error
 
-contains
+    ! =========================================================
+    ! INTERFACES ABSTRATAS 
+    ! =========================================================
+    
+    ! Funções Analíticas Exatas
+    interface
+        ! Função escalar para o erro L2 (ex: u(x,y))
+        subroutine exact_scalar_func(x, y, exact_val)
+            import :: dp
+            implicit none
+            real(dp), intent(in)  :: x, y
+            real(dp), intent(out) :: exact_val(1)
+        end subroutine exact_scalar_func
+
+        ! Função vetorial para o erro H1 (ex: grad_u(x,y))
+        subroutine exact_vector_func(x, y, exact_val)
+            import :: dp
+            implicit none
+            real(dp), intent(in)  :: x, y
+            real(dp), intent(out) :: exact_val(2)
+        end subroutine exact_vector_func
+    end interface
+
+    ! Nova interface para avaliação dos monômios (sem vetor normal)
+    interface
+        subroutine error_eval_interface(x_pt, y_pt, xc, yc, h_E, p_exp, q_exp, dof_dir, op_val)
+            import :: dp
+            real(dp), intent(in) :: x_pt, y_pt, xc, yc, h_E
+            integer, intent(in)  :: p_exp, q_exp, dof_dir
+            real(dp), intent(out):: op_val(:)
+        end subroutine error_eval_interface
+    end interface
+
+    contains
 
     ! Returns the current system time in seconds
     function get_wall_time() result(t)
         real(dp) :: t
-        integer(8) :: count, rate
-        call system_clock(count, rate)
-        t = real(count, dp) / real(rate, dp)
+        integer(8) :: count, count_rate
+        call system_clock(count, count_rate)
+        if (count_rate > 0) then
+            t = real(count, dp) / real(count_rate, dp)
+        else
+            t = 0.0_dp
+        end if
     end function get_wall_time
 
-    ! Prints the computational times formatted for your tables
+    subroutine conditioning(A, n)
+        integer, intent(in) :: n
+        real(dp), intent(in) :: A(n,n)
+        real(dp) :: cond_num
+        real(dp), allocatable :: A_tmp(:,:), S(:), work(:)
+        integer :: info, lwork
+        real(dp) :: work_query(1)
+
+        if (n <= 0) return
+        allocate(A_tmp(n,n), S(n))
+        A_tmp = A
+
+        lwork = -1
+        call dgesvd('N', 'N', n, n, A_tmp, n, S, A_tmp, n, A_tmp, n, work_query, lwork, info)
+        if (info == 0) then
+            lwork = nint(work_query(1))
+            allocate(work(lwork))
+            call dgesvd('N', 'N', n, n, A_tmp, n, S, A_tmp, n, A_tmp, n, work, lwork, info)
+            deallocate(work)
+            if (info == 0 .and. S(n) > 0.0_dp) then
+                cond_num = S(1) / S(n)
+                write(*, '(A, ES14.6)') 'Numero de Condicionamento (K_ii): ', cond_num
+            end if
+        end if
+        deallocate(A_tmp, S)
+    end subroutine conditioning
+
     subroutine print_run_times(t_montagem, t_solucao)
         real(dp), intent(in) :: t_montagem, t_solucao
-        real(dp) :: t_total
-
-        t_total = t_montagem + t_solucao
-
-        print *, "--- TEMPOS COMPUTACIONAIS (S) ---"
-        print *, "Montagem das Matrizes: ", t_montagem
-        print *, "Solução do Sistema:    ", t_solucao
-        print *, "Tempo Total:           ", t_total
+        write(*, '(A)') '=================================================='
+        write(*, '(A, F10.4, A)') 'Tempo de Montagem Global : ', t_montagem, ' s'
+        write(*, '(A, F10.4, A)') 'Tempo de Solucao do Eigensolver: ', t_solucao, ' s'
+        write(*, '(A, F10.4, A)') 'Tempo Total              : ', t_montagem + t_solucao, ' s'
+        write(*, '(A)') '=================================================='
     end subroutine print_run_times
 
-    ! Calculates the conditioning of a symmetric matrix
-    subroutine conditioning(K_mat, n)
-        integer, intent(in) :: n
-        real(dp), intent(in) :: K_mat(n,n)
+    ! Discrete nodal error
+    subroutine compute_vem_error(nnodes, u_num, u_exact_vec, err_L2, err_H1)
+        integer, intent(in) :: nnodes
+        real(dp), intent(in) :: u_num(:), u_exact_vec(:)
+        real(dp), intent(out) :: err_L2, err_H1
+        real(dp) :: sum_sq
+        integer :: i
+        sum_sq = 0.0_dp
+        do i = 1, size(u_num)
+            sum_sq = sum_sq + (u_num(i) - u_exact_vec(i))**2
+        end do
+        err_L2 = sqrt(sum_sq / real(nnodes, dp))
+        err_H1 = sqrt(sum_sq)
+    end subroutine compute_vem_error
+
+    ! =========================================================
+    ! CÁLCULO DO ERRO L2 (Contínuo via Integração Numérica)
+    ! =========================================================
+    subroutine compute_L2_error(exact_func, op_func, n_mon, p_exp, q_exp, u_coeffs, &
+                                xc, yc, h_E, n_gauss, x_g, y_g, w_g, err_L2)
         
-        character :: norm = 'I' ! Norma infinito
-        integer :: info, lda
-        real(dp) :: anorm, rcond
-        real(dp), allocatable :: work(:), K_fatorada(:,:)
-        integer, allocatable :: iwork(:)
+        procedure(exact_scalar_func)  :: exact_func
+        procedure(error_eval_interface) :: op_func
+        integer, intent(in)  :: n_mon                 
+        integer, intent(in)  :: p_exp(:), q_exp(:)    
+        real(dp), intent(in) :: u_coeffs(:)           
+        real(dp), intent(in) :: xc, yc, h_E           
+        integer, intent(in)  :: n_gauss               
+        real(dp), intent(in) :: x_g(:), y_g(:), w_g(:)
+        real(dp), intent(out):: err_L2
         
-        ! Declare the external LAPACK function and its return type
-        real(dp) :: dlansy
-        external :: dlansy
-
-        lda = n
-        allocate(work(3*n), iwork(n), K_fatorada(n,n))
+        real(dp) :: exact_val(1), op_val(1), num_val
+        real(dp) :: integral_res
+        integer  :: g, i
         
-        ! Copy the original matrix because LAPACK overwrites it
-        K_fatorada = K_mat
+        integral_res = 0.0_dp
+        
+        do g = 1, n_gauss
+            call exact_func(x_g(g), y_g(g), exact_val)
+            
+            num_val = 0.0_dp
+            do i = 1, n_mon
+                ! Chamada atualizada sem o dummy_normal
+                call op_func(x_g(g), y_g(g), xc, yc, h_E, p_exp(i), q_exp(i), 1, op_val)
+                num_val = num_val + u_coeffs(i) * op_val(1)
+            end do
+            
+            integral_res = integral_res + ((exact_val(1) - num_val)**2) * w_g(g)
+        end do
+        
+        err_L2 = sqrt(integral_res)
+    end subroutine compute_L2_error
 
-        ! Calcula a norma da matriz antes da fatoração
-        anorm = dlansy(norm, 'U', n, K_mat, lda, work)
-
-        ! Fatoração de Cholesky (DPOTRF)
-        call dpotrf('U', n, K_fatorada, lda, info)
-
-        if (info == 0) then
-            ! Executa a estimativa do recíproco do número de condição (DPOCON)
-            call dpocon('U', n, K_fatorada, lda, anorm, rcond, work, iwork, info)
-            if (info == 0) then
-                print *, "Número de Condição Estimado: ", 1.0_dp / rcond
-            else
-                print *, "Erro ao estimar o condicionamento (dpocon)."
-            end if
-        else
-            print *, "Erro: Matriz K não é definida positiva (dpotrf falhou)."
-        end if
-
-        deallocate(work, iwork, K_fatorada)
-    end subroutine conditioning
+    ! =========================================================
+    ! CÁLCULO DO ERRO H1 (Seminorma Contínua via Integração)
+    ! =========================================================
+    subroutine compute_H1_error(exact_grad, op_func, n_mon, p_exp, q_exp, u_coeffs, &
+                                xc, yc, h_E, n_gauss, x_g, y_g, w_g, err_H1)
+        
+        procedure(exact_vector_func)  :: exact_grad
+        procedure(error_eval_interface) :: op_func
+        integer, intent(in)  :: n_mon                 
+        integer, intent(in)  :: p_exp(:), q_exp(:)    
+        real(dp), intent(in) :: u_coeffs(:)           
+        real(dp), intent(in) :: xc, yc, h_E           
+        integer, intent(in)  :: n_gauss               
+        real(dp), intent(in) :: x_g(:), y_g(:), w_g(:)
+        real(dp), intent(out):: err_H1
+        
+        real(dp) :: exact_val(2), op_val(2), num_val(2)
+        real(dp) :: diff_sq, integral_res
+        integer  :: g, i
+        
+        integral_res = 0.0_dp
+        
+        do g = 1, n_gauss
+            call exact_grad(x_g(g), y_g(g), exact_val)
+            
+            num_val = 0.0_dp
+            do i = 1, n_mon
+                ! Chamada atualizada sem o dummy_normal
+                call op_func(x_g(g), y_g(g), xc, yc, h_E, p_exp(i), q_exp(i), 1, op_val)
+                num_val(1) = num_val(1) + u_coeffs(i) * op_val(1)
+                num_val(2) = num_val(2) + u_coeffs(i) * op_val(2)
+            end do
+            
+            diff_sq = (exact_val(1) - num_val(1))**2 + (exact_val(2) - num_val(2))**2
+            integral_res = integral_res + diff_sq * w_g(g)
+        end do
+        
+        err_H1 = sqrt(integral_res)
+    end subroutine compute_H1_error
 
 end module measures_mod

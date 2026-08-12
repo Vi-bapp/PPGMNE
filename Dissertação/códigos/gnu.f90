@@ -14,7 +14,7 @@ module gnuplot_archive_mod
     public :: export_gnuplot_metrics
     public :: export_gnuplot_spectrum
 
-contains
+    contains
 
     !---------------------------------------------------------------------------
     ! Exporta o contorno dos elementos poligonais da malha original

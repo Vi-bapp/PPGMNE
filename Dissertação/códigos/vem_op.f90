@@ -1,5 +1,5 @@
 !===============================================================================
-! MÓDULO DE OPERADORES GENÉRICOS VEM
+! MÓDULO DE OPERADORES GENÉRICOS VEM (CORRIGIDO)
 !===============================================================================
 module vem_operators_mod
     use math_geometry_mod
@@ -7,11 +7,11 @@ module vem_operators_mod
     private
 
     public :: compute_matrix_B_boundary, compute_matrix_B_domain, compute_matrix_B, invert_and_project
-    public :: compute_D, compute_D_eps
+    public :: compute_D, compute_D_eps, compute_matrix_Q
     public :: compute_matrix_G, apply_P0
     public :: operator_interface, coeff_operator_interface
 
-    abstract interface
+    interface
         subroutine operator_interface(x_pt, y_pt, xc, yc, h_E, p_exp, q_exp, &
                                      normal, dof_dir, op_val)
             import :: dp
@@ -22,7 +22,7 @@ module vem_operators_mod
         end subroutine operator_interface
     end interface
 
-    abstract interface
+    interface
         subroutine coeff_operator_interface(p_in, q_in, h_E, dof_dir, n_terms, p_out, q_out, coeffs)
             import :: dp
             integer, intent(in)  :: p_in, q_in, dof_dir
@@ -33,8 +33,10 @@ module vem_operators_mod
         end subroutine coeff_operator_interface
     end interface
 
-contains
+    contains
 
+    ! CORREÇÃO: Passagem de sign_factor = -1.0_dp para o termo de domínio (Eq. 4.28/4.49)
+    ! e remoção do bloqueio para dim_op = 1
     subroutine compute_matrix_B(B, n_mon, n_dofs, n_verts, deg_k, dim_op, &
                                 edge_dof_map, edge_length, normals, &
                                 gauss_pts, gauss_w, n_gauss, &
@@ -59,13 +61,16 @@ contains
                                        edge_dof_map, edge_length, normals, &
                                        gauss_pts, gauss_w, n_gauss, &
                                        node_coords, xc, yc, h_E, op_func)
-        if (dim_op >= 2 .and. present(op_coeff_func) .and. present(area)) then
+                                       
+        if (present(op_coeff_func) .and. present(area)) then
             call compute_matrix_B_domain(B, n_mon, n_dofs, dim_op, deg_k, &
                                          area, h_E, n_internal, internal_dof_map, &
-                                         p_internal, q_internal, op_coeff_func)
+                                         p_internal, q_internal, op_coeff_func, &
+                                         sign_factor = -1.0_dp)
         end if
     end subroutine compute_matrix_B
 
+    ! CORREÇÃO: Mapeamento dinâmico do índice de linha row_idx para evitar sobrescrita
     subroutine compute_matrix_B_domain(B, n_mon, n_dofs, dim_op, deg_k, area, h_E, &
                                        n_internal, internal_dof_map, &
                                        p_internal, q_internal, op_coeff_func, sign_factor)
@@ -94,7 +99,7 @@ contains
         call get_monomial_exponents(deg_k, n_mon, p_mon, q_mon)
 
         do m = 1, n_mon
-            do d = 1, 2
+            do d = 1, min(2, dim_op)
                 call op_coeff_func(p_mon(m), q_mon(m), h_E, d, n_terms, p_out, q_out, coeffs)
 
                 do t = 1, n_terms
@@ -103,7 +108,7 @@ contains
                     if (match_idx > 0) then
                         col_idx = internal_dof_map(match_idx, d)
                         if (col_idx > 0 .and. col_idx <= n_dofs) then
-                            row_idx = dim_op * (m - 1) + 1
+                            row_idx = dim_op * (m - 1) + d
                             B(row_idx, col_idx) = B(row_idx, col_idx) + s_factor * coeffs(t) * area
                         end if
                     end if
@@ -165,46 +170,35 @@ contains
         deallocate(p_mon, q_mon)
     end subroutine compute_matrix_B_boundary
 
-    !===========================================================================
-    ! COMPUTE_D_GENERIC
-    ! Calcula a matriz D = dof_i(p_alpha) para qualquer ordem k >= 1
-    !===========================================================================
     subroutine compute_D(D_mat, boundary_pts, n_boundary_pts, k, xc, yc, h_E, &
-                                ndof, area, polygon_coords, n_verts)
-        real(dp), intent(out) :: D_mat(:,:)        ! Dimensão: (n_dofs x (ndof * n_mon))
-        real(dp), intent(in)  :: boundary_pts(:,:) ! Coordenadas dos nós de borda (n_boundary_pts x 2)
-        integer, intent(in)   :: n_boundary_pts    ! Número total de nós na borda
-        integer, intent(in)   :: k                 ! Ordem polinomial do VEM
-        real(dp), intent(in)  :: xc, yc, h_E       ! Geometria do elemento
-        integer, intent(in)   :: ndof              ! Graus de liberdade por nó (1 para escalar, 2 para 2D)
-        real(dp), intent(in), optional :: area     ! Área do elemento |E| (necessário se k >= 2)
-        real(dp), intent(in), optional :: polygon_coords(:,:) ! Vértices do polígono (necessário se k >= 2)
-        integer, intent(in), optional  :: n_verts  ! Número de vértices (necessário se k >= 2)
+                         ndof, area, polygon_coords, n_verts)
+        real(dp), intent(out) :: D_mat(:,:)        
+        real(dp), intent(in)  :: boundary_pts(:,:) 
+        integer, intent(in)   :: n_boundary_pts    
+        integer, intent(in)   :: k                 
+        real(dp), intent(in)  :: xc, yc, h_E       
+        integer, intent(in)   :: ndof              
+        real(dp), intent(in), optional :: area     
+        real(dp), intent(in), optional :: polygon_coords(:,:) 
+        integer, intent(in), optional  :: n_verts  
 
         integer :: n_mon, n_mon_int, v, m, m_int, d, col_base, row_idx, k_int
-        integer, allocatable :: p_exp(:), q_exp(:)         ! Expoentes da base P_k
-        integer, allocatable :: p_int(:), q_int(:)         ! Expoentes da base P_{k-2}
+        integer, allocatable :: p_exp(:), q_exp(:)         
+        integer, allocatable :: p_int(:), q_int(:)         
         real(dp) :: rx, ry, m_val, int_mon_val
 
-        ! 1. Número de monômios da base P_k
         n_mon = ((k + 1) * (k + 2)) / 2
-
         allocate(p_exp(n_mon), q_exp(n_mon))
         call get_monomial_exponents(k, n_mon, p_exp, q_exp)
 
         D_mat = 0.0_dp
 
-        !-----------------------------------------------------------------------
-        ! PARTE 1: Graus de Liberdade de Borda (Avaliação Pontual dos Nós)
-        !-----------------------------------------------------------------------
         do v = 1, n_boundary_pts
             rx = (boundary_pts(v,1) - xc) / h_E
             ry = (boundary_pts(v,2) - yc) / h_E
 
             do m = 1, n_mon
                 m_val = (rx**p_exp(m)) * (ry**q_exp(m))
-                
-                ! Mapeamento bloco a bloco segundo ndof
                 do d = 1, ndof
                     row_idx  = ndof * (v - 1) + d
                     col_base = ndof * (m - 1) + d
@@ -213,13 +207,10 @@ contains
             end do
         end do
 
-        !-----------------------------------------------------------------------
-        ! PARTE 2: Graus de Liberdade Internos / Momento de Domínio (para k >= 2)
-        !-----------------------------------------------------------------------
         k_int = k - 2
         if (k_int >= 0) then
             if (.not. present(area) .or. .not. present(polygon_coords) .or. .not. present(n_verts)) then
-                error stop "compute_D_generic: Area e dados do poligono sao obrigatorios para k >= 2"
+                error stop "compute_D: Area e dados do poligono sao obrigatorios para k >= 2"
             end if
 
             n_mon_int = ((k_int + 1) * (k_int + 2)) / 2
@@ -228,13 +219,11 @@ contains
 
             do m_int = 1, n_mon_int
                 do m = 1, n_mon
-                    ! Integral do produto dos monômios: \int_E (p_alpha * m_m) dE / |E|
                     int_mon_val = compute_monomial_domain_integral( &
                                     p_exp(m) + p_int(m_int), q_exp(m) + q_int(m_int), &
                                     xc, yc, h_E, polygon_coords, n_verts) / area
 
                     do d = 1, ndof
-                        ! Linha do DoF interno correspondente no vetor global do elemento
                         row_idx  = ndof * n_boundary_pts + ndof * (m_int - 1) + d
                         col_base = ndof * (m - 1) + d
                         D_mat(row_idx, col_base) = int_mon_val
@@ -248,61 +237,53 @@ contains
         deallocate(p_exp, q_exp)
     end subroutine compute_D
 
-    !===========================================================================
-    ! COMPUTE_D_EPS_GENERIC
-    ! Calcula a matriz D_eps para a projeção de deformações para qualquer k >= 1
-    !===========================================================================
-    subroutine compute_D_eps(D_mat, boundary_pts, n_boundary_pts, k_eps, &
-                                    xc, yc, h_E, ndof, area, polygon_coords, n_verts)
-        real(dp), intent(out) :: D_mat(:,:)        ! Dimensão: (n_dofs x (3 * n_mon_eps))
-        real(dp), intent(in)  :: boundary_pts(:,:) ! Coordenadas dos nós de borda
-        integer, intent(in)   :: n_boundary_pts    ! Número de nós na borda
-        integer, intent(in)   :: k_eps             ! Grau da deformacao (k_eps = k - 1)
-        real(dp), intent(in)  :: xc, yc, h_E       ! Centroide e diâmetro
-        integer, intent(in)   :: ndof              ! Graus de liberdade por nó (ndof = 2)
-        real(dp), intent(in), optional :: area     ! Área do elemento
+    !===============================================================================
+    ! SUBROTINA COMPUTE_D_EPS (Conforme Seções 3.1.2, 3.2.2 e 3.3.2 do artigo)
+    !===============================================================================
+    subroutine compute_D_eps(D_mat, boundary_pts, n_boundary_pts, k_order, &
+                         xc, yc, h_E, ndof, area, polygon_coords, n_verts)
+        real(dp), intent(out) :: D_mat(:,:)        
+        real(dp), intent(in)  :: boundary_pts(:,:) 
+        integer, intent(in)   :: n_boundary_pts    
+        integer, intent(in)   :: k_order             
+        real(dp), intent(in)  :: xc, yc, h_E       
+        integer, intent(in)   :: ndof              
+        real(dp), intent(in), optional :: area     
         real(dp), intent(in), optional :: polygon_coords(:,:)
         integer, intent(in), optional  :: n_verts
 
-        integer :: n_mon_eps, n_mon_int, v, m, m_int, dof_x, dof_y, col_base, k_int, row_x, row_y
+        integer :: n_mon, n_mon_int, v, m, m_int, d, col_base, row_idx, k_int
         integer, allocatable :: p_exp(:), q_exp(:)
         integer, allocatable :: p_int(:), q_int(:)
         real(dp) :: rx, ry, m_val, int_mon_val
 
-        n_mon_eps = ((k_eps + 1) * (k_eps + 2)) / 2
-
-        allocate(p_exp(n_mon_eps), q_exp(n_mon_eps))
-        call get_monomial_exponents(k_eps, n_mon_eps, p_exp, q_exp)
+        ! Número de monômios escalares de P_k(E)
+        n_mon = ((k_order + 1) * (k_order + 2)) / 2
+        allocate(p_exp(n_mon), q_exp(n_mon))
+        call get_monomial_exponents(k_order, n_mon, p_exp, q_exp)
 
         D_mat = 0.0_dp
 
-        !-----------------------------------------------------------------------
-        ! 1. Nós de Borda: Mapeamento dos DoFs de Deslocamento Nodal
-        !-----------------------------------------------------------------------
+        ! 1. Graus de liberdade de fronteira (Vértices e nós internos das arestas)
         do v = 1, n_boundary_pts
             rx = (boundary_pts(v,1) - xc) / h_E
             ry = (boundary_pts(v,2) - yc) / h_E
 
-            dof_x = ndof * (v - 1) + 1
-            dof_y = ndof * (v - 1) + 2
-
-            do m = 1, n_mon_eps
+            do m = 1, n_mon
                 m_val = (rx**p_exp(m)) * (ry**q_exp(m))
-                col_base = 3 * (m - 1)
-
-                ! Componente u_x afeta eps_xx (col 1) e u_y afeta eps_yy (col 2)
-                D_mat(dof_x, col_base + 1) = m_val
-                D_mat(dof_y, col_base + 2) = m_val
+                do d = 1, ndof
+                    row_idx  = ndof * (v - 1) + d
+                    col_base = ndof * (m - 1) + d
+                    D_mat(row_idx, col_base) = m_val
+                end do
             end do
         end do
 
-        !-----------------------------------------------------------------------
-        ! 2. DoFs de Domínio (Se k_eps >= 1, isto é, k >= 2)
-        !-----------------------------------------------------------------------
-        k_int = k_eps - 1  ! Grau dos momentos internos para deformação = k - 2
+        ! 2. Graus de liberdade internos (Momentos no domínio para k >= 2)
+        k_int = k_order - 2
         if (k_int >= 0) then
             if (.not. present(area) .or. .not. present(polygon_coords) .or. .not. present(n_verts)) then
-                error stop "compute_D_eps_generic: Dados geometricos ausentes para k >= 2"
+                error stop "compute_D_eps: Dados geometricos sao obrigatorios para k >= 2"
             end if
 
             n_mon_int = ((k_int + 1) * (k_int + 2)) / 2
@@ -310,17 +291,17 @@ contains
             call get_monomial_exponents(k_int, n_mon_int, p_int, q_int)
 
             do m_int = 1, n_mon_int
-                do m = 1, n_mon_eps
+                do m = 1, n_mon
+                    ! Cálculo de (1/|E|) * \int_E (q_{m_int} * q_m) dE
                     int_mon_val = compute_monomial_domain_integral( &
-                                    p_exp(m) + p_int(m_int), q_exp(m) + q_int(m_int), &
-                                    xc, yc, h_E, polygon_coords, n_verts) / area
+                                p_exp(m) + p_int(m_int), q_exp(m) + q_int(m_int), &
+                                xc, yc, h_E, polygon_coords, n_verts) / area
 
-                    row_x = ndof * n_boundary_pts + ndof * (m_int - 1) + 1
-                    row_y = ndof * n_boundary_pts + ndof * (m_int - 1) + 2
-                    col_base = 3 * (m - 1)
-
-                    D_mat(row_x, col_base + 1) = int_mon_val
-                    D_mat(row_y, col_base + 2) = int_mon_val
+                    do d = 1, ndof
+                        row_idx  = ndof * n_boundary_pts + ndof * (m_int - 1) + d
+                        col_base = ndof * (m - 1) + d
+                        D_mat(row_idx, col_base) = int_mon_val
+                    end do
                 end do
             end do
 
@@ -331,14 +312,12 @@ contains
     end subroutine compute_D_eps
 
     subroutine compute_matrix_G(G, k_eps, xc, yc, h_E, area, polygon_coords, n_verts)
-        ! G matrix size: (3 * n_mon) x (3 * n_mon)
-        ! k_eps = k - 1 (degree of strain polynomials)
         integer, intent(in)  :: k_eps, n_verts
         real(dp), intent(in) :: xc, yc, h_E, area, polygon_coords(n_verts, 2)
         real(dp), intent(out):: G(:,:)
 
         integer :: n_mon, m, j, r_base, c_base
-        real(dp) :: int_qq ! integral of q_m * q_j over element E
+        real(dp) :: int_qq 
         integer, allocatable :: p_exp(:), q_exp(:)
 
         n_mon = ((k_eps + 1) * (k_eps + 2)) / 2
@@ -349,18 +328,16 @@ contains
 
         do m = 1, n_mon
             do j = 1, n_mon
-                ! Compute \int_E q_m * q_j dE using polygonal domain integration
                 int_qq = compute_monomial_domain_integral(p_exp(m)+p_exp(j), q_exp(m)+q_exp(j), &
                                                        xc, yc, h_E, polygon_coords, n_verts)
             
-                ! Assemble 3x3 block: int_qq * I_3
                 r_base = 3 * (m - 1)
                 c_base = 3 * (j - 1)
 
                 G(r_base + 1, c_base + 1) = int_qq ! eps_xx
                 G(r_base + 2, c_base + 2) = int_qq ! eps_yy
                 G(r_base + 3, c_base + 3) = int_qq ! gamma_xy
-         end do
+            end do
         end do
 
         deallocate(p_exp, q_exp)
@@ -371,30 +348,63 @@ contains
         integer, intent(in) :: k_order, n_verts, n_monomials, loc_dof, ndof
         real(dp), intent(inout) :: B(ndof*n_monomials, loc_dof)
 
-        integer :: d, v, row_idx, col_idx, boundary_dofs, int_dof_idx
+        integer :: d, v, row_idx, col_idx
 
-        boundary_dofs = n_verts * k_order * ndof
-
+        ! Para os 2 primeiros monômios constantes (translações de corpo rígido em x e y)
         do d = 1, ndof
-            ! Row index for constant monomial m_1 = 1 for component d
             row_idx = d
             B(row_idx, :) = 0.0_dp
 
-            if (k_order == 1) then
-                ! For k = 1: P_0(phi_i) = 1 / N_V for vertex DOFs matching component d
-                do v = 1, n_verts
-                    col_idx = ndof * (v - 1) + d
+            ! Preenche o peso 1/N_v para a componente correspondente em TODOS os vértices
+            do v = 1, n_verts
+                ! No mapeamento global do elemento, o nó 'v' possui os DoFs em: (v-1)*ndof + d
+                col_idx = ndof * (v - 1) + d
+                if (col_idx <= loc_dof) then
                     B(row_idx, col_idx) = 1.0_dp / real(n_verts, dp)
-                end do
-            else
-                ! For k >= 2: P_0(phi_i) = 1 for the 1st internal moment DOF (m_1 = 1)
-                int_dof_idx = boundary_dofs + d
-                if (int_dof_idx <= loc_dof) then
-                    B(row_idx, int_dof_idx) = 1.0_dp
                 end if
-            end if
+            end do
         end do
     end subroutine apply_P0
+
+    subroutine compute_matrix_Q(H0, Pi_nabla, k_order, n_monomials, ndof, loc_dof, &
+                               n_internal, internal_dof_map, area, Q_mat)
+        real(dp), intent(in)  :: H0(:,:), Pi_nabla(:,:)
+        integer, intent(in)   :: k_order, n_monomials, ndof, loc_dof
+        integer, intent(in)   :: n_internal
+        integer, intent(in), optional :: internal_dof_map(:,:)
+        real(dp), intent(in)  :: area
+        real(dp), intent(out) :: Q_mat(ndof * n_monomials, loc_dof)
+
+        integer :: i, d, row_idx, col_idx, m_int, n_mon_int
+        integer, allocatable :: p_mon(:), q_mon(:)
+
+        ! 1. Aproximação base via projeção cinemática/de deformação: Q = H0 * Pi_nabla
+        ! Para k = 1, todos os monômios utilizam esta relação ortogonal
+        Q_mat = matmul(H0, Pi_nabla)
+
+        ! 2. Para k >= 2, os monômios de grau <= k-2 usam diretamente os GDs internos
+        if (k_order >= 2 .and. n_internal > 0) then
+            n_mon_int = get_num_monomials(k_order - 2)
+            allocate(p_mon(n_monomials), q_mon(n_monomials))
+            call get_monomial_exponents(k_order, n_monomials, p_mon, q_mon)
+
+            do i = 1, n_mon_int
+                do d = 1, ndof
+                    row_idx = ndof * (i - 1) + d
+                    
+                    ! Zeramos a linha calculada via Pi_eps
+                    Q_mat(row_idx, :) = 0.0_dp
+                    
+                    ! Atribuímos o valor diretamente ao grau de liberdade interno correspondente
+                    col_idx = internal_dof_map(i, d)
+                    if (col_idx > 0 .and. col_idx <= loc_dof) then
+                        Q_mat(row_idx, col_idx) = area
+                    end if
+                end do
+            end do
+            deallocate(p_mon, q_mon)
+        end if
+    end subroutine compute_matrix_Q
 
     subroutine invert_and_project(G, B, Pi)
         real(dp), intent(in)  :: G(:,:), B(:,:)
@@ -403,16 +413,29 @@ contains
         integer :: n_rows, n_cols, info
         integer, allocatable :: ipiv(:)
         real(dp), allocatable :: G_lu(:,:)
+        real(dp) :: norm_G
 
         n_rows = size(G, 1)
         n_cols = size(B, 2)
+
+        if (size(B, 1) /= n_rows) then
+            error stop "Erro em invert_and_project: Numero de linhas de G e B sao incompativeis!"
+        end if
+
+        norm_G = maxval(abs(G))
+        if (norm_G < 1.0e-14_dp) then
+            error stop "Erro em invert_and_project: Matriz G e nula ou degenerada (norma ~ 0)."
+        end if
 
         allocate(G_lu(n_rows, n_rows), ipiv(n_rows))
         G_lu = G
         Pi = B
 
         call dgetrf(n_rows, n_rows, G_lu, n_rows, ipiv, info)
-        if (info /= 0) error stop "Erro na fatoracao LU de G em invert_and_project"
+        if (info /= 0) then
+            write(*, '(A, I0)') "Erro LAPACK DGETRF em invert_and_project. Info = ", info
+            error stop "Erro na fatoracao LU de G em invert_and_project"
+        end if
 
         call dgetrs('N', n_rows, n_cols, G_lu, n_rows, ipiv, Pi, n_rows, info)
         if (info /= 0) error stop "Erro na resolucao do sistema G * Pi = B"

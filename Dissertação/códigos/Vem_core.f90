@@ -1,10 +1,7 @@
-!===============================================================================
-! MÓDULO PRINCIPAL DE ESTRUTURA E MONTAGEM VEM
-!===============================================================================
 module vem_core_mod
     use math_geometry_mod
     use vem_operators_mod
-    use vem_concrete_operators_mod
+    use Vem_operators_aux
     implicit none
     private
 
@@ -12,7 +9,7 @@ module vem_core_mod
     public :: get_dof_maps, partition_matrix, partition_vector
     public :: assemble_matrix, assemble_vector
     public :: apply_dirichlet_and_springs
-    public :: compute_vem_errors, write_solution
+    public :: write_solution
     public :: compute_vem_domain_trapezoidal_load
     public :: compute_vem_edge_trapezoidal_load
     public :: compute_matrix_H0_exact
@@ -20,9 +17,9 @@ module vem_core_mod
     public :: compute_vem_mass_consistency
     public :: compute_vem_stability
     public :: matrix_trace
+    public :: build_edge_dof_map
     public :: dp
     public :: read_2D_loads
-
 
     type :: node_type
         real(dp) :: x, y
@@ -35,6 +32,8 @@ module vem_core_mod
     type :: element_type
         integer, allocatable :: nodes(:)
         integer, allocatable :: vertices(:)
+        integer, allocatable :: edges(:)
+        integer, allocatable :: int(:)
         real(dp) :: area = 0.0_dp
         real(dp) :: diameter = 0.0_dp
         real(dp) :: centroid(2) = 0.0_dp
@@ -50,15 +49,13 @@ module vem_core_mod
         procedure :: set_dof_constraint
     end type mesh_type
 
-    ! Estrutura para Cargas Distribuídas no Contorno (Arestas)
     type :: EdgeLoadDef
         integer :: elem_id
         integer :: edge_id
-        real(dp) :: q1(2)  ! Componentes x e y no nó inicial da aresta
-        real(dp) :: q2(2)  ! Componentes x e y no nó final da aresta
+        real(dp) :: q1(2)
+        real(dp) :: q2(2)
     end type EdgeLoadDef
 
-    ! Estrutura para Cargas Distribuídas no Domínio
     type :: DomainLoadDef
         integer :: elem_id
         real(dp) :: q0
@@ -66,7 +63,7 @@ module vem_core_mod
         real(dp) :: qy
     end type DomainLoadDef
 
-contains
+    contains
 
     subroutine read_next_valid_line(unit_num, line)
         integer, intent(in) :: unit_num
@@ -85,7 +82,7 @@ contains
         character(len=*), intent(in)    :: filename
         integer, intent(in), optional   :: n_dofs
         integer :: i, j, nnodes_local, ne_local, ios, n_elem_nodes, n_dir, n_spring
-        integer :: node_idx, dof_idx
+        integer :: node_idx, dof_idx, n_v, n_e, n_i
         real(dp) :: val
         character(len=500) :: io_err
         character(len=512) :: line
@@ -120,11 +117,21 @@ contains
             read(line, *) n_elem_nodes
     
             allocate(this%elem(j)%nodes(n_elem_nodes))
-            allocate(this%elem(j)%vertices(n_elem_nodes)) ! Add allocation for vertices
     
             call read_next_valid_line(i, line)
             read(line, *) this%elem(j)%nodes
-            this%elem(j)%vertices = this%elem(j)%nodes     ! Assign node IDs to vertices
+
+            n_v = count(this%node(this%elem(j)%nodes)%type_id == 1)
+            n_e = count(this%node(this%elem(j)%nodes)%type_id == 2)
+            n_i = count(this%node(this%elem(j)%nodes)%type_id == 3)
+
+            allocate(this%elem(j)%vertices(n_v))
+            allocate(this%elem(j)%edges(n_e))
+            allocate(this%elem(j)%int(n_i))
+
+            if (n_v > 0) this%elem(j)%vertices = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 1)
+            if (n_e > 0) this%elem(j)%edges    = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 2)
+            if (n_i > 0) this%elem(j)%int      = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 3)
         end do
 
         call read_next_valid_line(i, line)
@@ -155,18 +162,11 @@ contains
         close(i)
     end subroutine read_mesh
 
-    !---------------------------------------------------------------------------
-    ! Subrotina para leitura de todos os tipos de cargas de um arquivo
-    !---------------------------------------------------------------------------
     subroutine read_2D_loads(filename, nnodes, ndof, F_global, edge_loads, domain_loads)
-        
-        implicit none
-        
         character(len=*), intent(in) :: filename
         integer, intent(in) :: nnodes, ndof
         real(dp), intent(inout) :: F_global(:) 
         
-        ! Arrays alocáveis de saída para as cargas distribuídas
         type(EdgeLoadDef), allocatable, intent(out) :: edge_loads(:)
         type(DomainLoadDef), allocatable, intent(out) :: domain_loads(:)
         
@@ -175,7 +175,6 @@ contains
         character(len=512) :: line
         character(len=500) :: io_err
         
-        ! Inicializa o vetor de forças global (apenas para garantir)
         F_global = 0.0_dp
         
         open(newunit=i_unit, file=filename, status='old', action='read', iostat=ios, iomsg=io_err)
@@ -183,14 +182,11 @@ contains
         
         do
             read(i_unit, '(A)', iostat=ios) line
-            if (ios /= 0) exit ! Fim do arquivo
+            if (ios /= 0) exit
             
             line = adjustl(line)
-            
-            ! Ignora linhas vazias e comentários
             if (len_trim(line) == 0 .or. line(1:1) == '!' .or. line(1:1) == '#') cycle
             
-            ! Identifica o bloco de leitura
             if (line(1:6) == '*NODAL') then
                 read(i_unit, *) n_items
                 do i = 1, n_items
@@ -236,6 +232,66 @@ contains
         if (present(bc_val))   this%node(node_id)%bc_val(dof_id)   = bc_val
         if (present(spring_k)) this%node(node_id)%spring_k(dof_id) = spring_k
     end subroutine set_dof_constraint
+
+    subroutine build_edge_dof_map(elem, k_order, ndof, edge_dof_map)
+        type(element_type), intent(in) :: elem
+        integer, intent(in) :: k_order, ndof
+        integer, allocatable, intent(out) :: edge_dof_map(:,:,:)
+
+        integer :: n_verts, n_gauss_1d, e_idx, j_edge, d
+        integer :: g_v1, g_v2, g_edge, loc_v1, loc_v2, loc_edge, v2_idx, edge_pos
+
+        n_verts = size(elem%vertices)
+        n_gauss_1d = k_order + 1
+
+        if (allocated(edge_dof_map)) deallocate(edge_dof_map)
+        allocate(edge_dof_map(n_gauss_1d, ndof, n_verts))
+        edge_dof_map = 0
+
+        do e_idx = 1, n_verts
+            ! 1. Vértice Inicial (Pontos de Gauss t = 0)
+            g_v1 = elem%vertices(e_idx)
+            loc_v1 = find_local_node_index(elem%nodes, g_v1)
+            do d = 1, ndof
+                edge_dof_map(1, d, e_idx) = ndof * (loc_v1 - 1) + d
+            end do
+
+            ! 2. Nós Intermediários de Aresta (0 < t < 1, para k >= 2)
+            if (k_order >= 2) then
+                do j_edge = 1, k_order - 1
+                    edge_pos = (e_idx - 1) * (k_order - 1) + j_edge
+                    g_edge = elem%edges(edge_pos)
+                    loc_edge = find_local_node_index(elem%nodes, g_edge)
+                    do d = 1, ndof
+                        edge_dof_map(1 + j_edge, d, e_idx) = ndof * (loc_edge - 1) + d
+                    end do
+                end do
+            end if
+
+            ! 3. Vértice Final (Pontos de Gauss t = 1)
+            v2_idx = mod(e_idx, n_verts) + 1
+            g_v2 = elem%vertices(v2_idx)
+            loc_v2 = find_local_node_index(elem%nodes, g_v2)
+            do d = 1, ndof
+                edge_dof_map(n_gauss_1d, d, e_idx) = ndof * (loc_v2 - 1) + d
+            end do
+        end do
+
+        contains
+
+        pure function find_local_node_index(nodes, target_node) result(loc_idx)
+            integer, intent(in) :: nodes(:), target_node
+            integer :: loc_idx, i
+            loc_idx = 0
+            do i = 1, size(nodes)
+                if (nodes(i) == target_node) then
+                    loc_idx = i
+                    return
+                end if
+            end do
+        end function find_local_node_index
+
+    end subroutine build_edge_dof_map
 
     pure function matrix_trace(A) result(tr)
         real(dp), intent(in) :: A(:,:)
@@ -349,7 +405,7 @@ contains
         deallocate(is_fixed_vec, bc_vec, spring_vec)
     end subroutine apply_dirichlet_and_springs
 
-    subroutine compute_matrix_H0_exact(x, y, n, k, xc, yc, h_E, n_monomials, ndof, H0)
+    subroutine compute_matrix_H0_exact(x, y, n, k, n_monomials, ndof, xc, yc, h_E, H0)
         integer, intent(in) :: n, k, n_monomials, ndof
         real(dp), intent(in) :: x(n), y(n), xc, yc, h_E
         real(dp), intent(out) :: H0(ndof*n_monomials, ndof*n_monomials)
@@ -457,6 +513,28 @@ contains
         f_edge(3) = (L_edge / 6.0_dp) * (q1_vec(1) + 2.0_dp * q2_vec(1))
         f_edge(4) = (L_edge / 6.0_dp) * (q1_vec(2) + 2.0_dp * q2_vec(2))
     end subroutine compute_vem_edge_trapezoidal_load
+
+    subroutine compute_vem_domain_load_Q(Q0, body_force, loc_dof, n_monomials, ndof, F_elem)
+        real(dp), intent(in)  :: Q0(:,:)         ! Matriz Q0 (ndof * n_monomials, loc_dof)
+        real(dp), intent(in)  :: body_force(:)   ! Vetor de força de corpo [bx, by]
+        integer, intent(in)   :: loc_dof, n_monomials, ndof
+        real(dp), intent(out) :: F_elem(loc_dof) ! Vetor de carga elementar
+
+        real(dp), allocatable :: b_coeffs(:)
+
+        allocate(b_coeffs(ndof * n_monomials))
+        b_coeffs = 0.0_dp
+
+        ! Atribuição dos componentes constantes no espaço de monômios (m_1 = 1)
+        ! Para ndof = 2: índice 1 representa bx, índice 2 representa by
+        b_coeffs(1) = body_force(1)
+        if (ndof >= 2) b_coeffs(2) = body_force(2)
+
+        ! Integração direta via matriz Q0: F_E = Q0^T * b_coeffs
+        F_elem = matmul(transpose(Q0), b_coeffs)
+
+        deallocate(b_coeffs)
+    end subroutine compute_vem_domain_load_Q
 
     subroutine get_dof_maps(mesh, internal_dofs, boundary_dofs, N_i, N_b)
         type(mesh_type), intent(in) :: mesh
@@ -602,22 +680,6 @@ contains
             end do
         end do
     end subroutine assemble_vector
-
-    subroutine compute_vem_errors(mesh, u_num, u_exact_vec, err_L2, err_H1)
-        type(mesh_type), intent(in) :: mesh
-        real(dp), intent(in) :: u_num(:), u_exact_vec(:)
-        real(dp), intent(out) :: err_L2, err_H1
-        real(dp) :: sum_sq
-        integer :: i
-
-        sum_sq = 0.0_dp
-        do i = 1, size(u_num)
-            sum_sq = sum_sq + (u_num(i) - u_exact_vec(i))**2
-        end do
-
-        err_L2 = sqrt(sum_sq / real(mesh%nnodes, dp))
-        err_H1 = sqrt(sum_sq)
-    end subroutine compute_vem_errors
 
     subroutine write_solution(mesh, u, filename)
         type(mesh_type), intent(in) :: mesh

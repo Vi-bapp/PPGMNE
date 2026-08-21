@@ -1,0 +1,48 @@
+! =====================================================================
+! 1. CABEÇALHO DA MALHA
+! [Nº de Nós]  [Nº de Elementos]  [Ordem VEM (k)]  [DOFs por Nó]
+! Gmsh equivalent: Count de $Nodes, Count de 2D $Elements
+! =====================================================================
+4  1  1  2
+
+! =====================================================================
+! 2. COORDENADAS E TIPOS DOS NÓS
+! [X]  [Y]  [type_id: 1=Vértice]
+! Gmsh equivalent: Seção $Nodes (coordenadas x, y, desconsiderando z)
+! =====================================================================
+! Nó 1
+0.00000000000000E+00  0.00000000000000E+00  1
+! Nó 2
+1.00000000000000E+00  0.00000000000000E+00  1
+! Nó 3
+1.00000000000000E+00  1.00000000000000E+00  1
+! Nó 4
+0.00000000000000E+00  1.00000000000000E+00  1
+
+
+! =====================================================================
+! 3. CONECTIVIDADE DOS ELEMENTOS (Polígonos/VEM)
+! Para cada elemento:
+!   Linha 1: [Nº de nós no elemento]
+!   Linha 2: [Lista dos IDs dos nós em ordem anti-horária]
+! Gmsh equivalent: Seção $Elements (Filtrar apenas elementos 2D)
+! =====================================================================
+! Elemento 1 (Quadrilátero - 4 nós)
+4
+1  2  3  4
+
+! =====================================================================
+! 4. CONDIÇÕES DE CONTORNO DE DIRICHLET (Deslocamentos Prescritos)
+! Linha 1: [Quantidade de DOFs restringidos (n_dir)]
+! Subsequentes: [ID do Nó]  [ID do DOF: 1=u_x, 2=u_y]  [Valor Prescrito]
+! Gmsh equivalent: Physical Line de Engaste / Apoios Fixos
+! =====================================================================
+0
+
+! =====================================================================
+! 5. MOLAS ELÁSTICAS CONCENTRADAS
+! Linha 1: [Quantidade de molas (n_spring)]
+! Subsequentes: [ID do Nó]  [ID do DOF: 1=k_x, 2=k_y]  [Rigidez K_s]
+! Gmsh equivalent: Physical Point com rigidez aplicada
+! =====================================================================
+0                            ! Nenhuma mola neste teste

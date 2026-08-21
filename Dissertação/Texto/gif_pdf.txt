@@ -1,0 +1,47 @@
+O "jeitinho" existe, mas ele exige um esforço extra de preparação, pois o formato PDF não foi originalmente desenhado para entender arquivos `.gif` animados.
+
+Para documentos em LaTeX (incluindo o `abntex2`), a técnica padrão não é "inserir o arquivo GIF", mas sim **simular a animação** usando uma sequência de imagens estáticas.
+
+Aqui está o passo a passo de como fazer isso:
+
+### 1. O "Pulo do Gato": Converter o GIF em imagens
+
+O pacote que permite animações no LaTeX, chamado `animate`, não lê arquivos GIF diretamente. Você precisará converter o seu arquivo `.gif` em uma série de imagens individuais (`frame-0.png`, `frame-1.png`, etc.).
+
+* Você pode usar ferramentas como o **ImageMagick** (via linha de comando) ou sites conversores de "GIF para sequência de PNGs".
+
+### 2. Usando o pacote `animate`
+
+Após ter a sequência de imagens (ex: `grafico-0.png` até `grafico-20.png`), você utiliza o pacote `animate` no seu documento:
+
+```latex
+\usepackage{animate}
+
+...
+
+\begin{figure}[htb]
+    \centering
+    \animategraphics[loop, autoplay, width=0.7\textwidth]{10}{grafico-}{0}{20}
+    \caption{Gráfico animado do processo.}
+\end{figure}
+
+```
+
+**O que cada parte faz:**
+
+* `{10}`: É a taxa de quadros por segundo (FPS).
+* `{grafico-}`: É o prefixo do nome dos seus arquivos.
+* `{0}{20}`: É o número do primeiro e do último frame.
+* `loop, autoplay`: Faz a animação rodar automaticamente e reiniciar ao terminar.
+
+### Avisos importantes para o seu projeto:
+
+1. **Compatibilidade do Leitor:** Essa animação **não funcionará** em visualizadores de PDF simples (como o visualizador padrão do Chrome, Edge ou navegadores de celular). O leitor de PDF precisa suportar **JavaScript** para rodar a animação. Os mais recomendados são o **Adobe Acrobat Reader** e o **PDF-XChange**.
+2. **Documento Online:** Como você mencionou que o documento será disponibilizado online, **cuidado**: a maioria das pessoas que abrir o seu PDF pelo navegador (clicando no link) verá apenas uma imagem estática (o primeiro frame).
+3. **A "Solução Profissional" para Web:** Se o objetivo é que qualquer pessoa veja a animação pelo navegador sem precisar baixar o PDF ou usar um leitor específico, a recomendação de ouro é:
+* Não coloque o GIF no PDF.
+* Coloque um **QR Code** ou um link clicável na legenda da imagem que leve para uma página web onde o GIF (ou vídeo) esteja hospedado. É a forma mais segura de garantir que seu leitor terá a experiência visual que você deseja, independentemente de onde ele abra o arquivo.
+
+
+
+**Resumo:** Se você quer que o PDF seja "mágico" e funcione para você e para quem usa Acrobat Reader, o pacote `animate` é o caminho. Se você quer garantir que **todo mundo** veja o gráfico animado online, insira uma imagem estática com um link clicável para o arquivo original.

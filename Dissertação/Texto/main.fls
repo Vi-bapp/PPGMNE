@@ -484,6 +484,12 @@ INPUT c:/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-protractor.te
 INPUT c:/texlive/2024/texmf-dist/tex/latex/tkz-euclide/tkz-draw-eu-protractor.tex
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryscopes.code.tex
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryscopes.code.tex
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/abntex2/abntex2cite.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/abntex2/abntex2cite.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/abntex2/abntex2abrev.sty
@@ -536,13 +542,17 @@ INPUT c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex
 INPUT c:/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex
+INPUT c:/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty
 INPUT c:/texlive/2024/texmf-dist/tex/latex/graphics/color.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+INPUT c:/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT ./main.aux
 INPUT ./main.aux
 INPUT main.aux
-INPUT ./Introducao.aux
-INPUT ./Introducao.aux
-INPUT Introducao.aux
+INPUT ./cap_1.aux
+INPUT ./cap_1.aux
+INPUT cap_1.aux
 INPUT ./cap_2.aux
 INPUT ./cap_2.aux
 INPUT cap_2.aux
@@ -552,6 +562,9 @@ INPUT cap_3.aux
 INPUT ./cap_4.aux
 INPUT ./cap_4.aux
 INPUT cap_4.aux
+INPUT ./apendice.aux
+INPUT ./apendice.aux
+INPUT apendice.aux
 OUTPUT main.aux
 OUTPUT main.pdf
 INPUT c:/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
@@ -624,27 +637,202 @@ INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
-INPUT ./Introducao.tex
-OUTPUT Introducao.aux
-INPUT ./Introducao.tex
-INPUT ./Introducao.tex
-INPUT Introducao.tex
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecss1095.tfm
+INPUT ./cap_1.tex
+OUTPUT cap_1.aux
+INPUT ./cap_1.tex
+INPUT ./cap_1.tex
+INPUT cap_1.tex
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1000.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecti1000.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0800.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0600.tfm
 INPUT ./cap_2.tex
 OUTPUT cap_2.aux
 INPUT ./cap_2.tex
 INPUT ./cap_2.tex
 INPUT cap_2.tex
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm0700.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx5.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT ./cap_3.tex
 OUTPUT cap_3.aux
 INPUT ./cap_3.tex
 INPUT ./cap_3.tex
 INPUT cap_3.tex
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/ecrm1095.tfm
+INPUT ./figuras/Capitulo_3/1-a.png
+INPUT ./figuras/Capitulo_3/1-a.png
+INPUT ./figuras/Capitulo_3/1-a.png
+INPUT ./figuras/Capitulo_3/1-a.png
+INPUT ./figuras/Capitulo_3/1-a.png
+INPUT ./figuras/Capitulo_3/1-b.png
+INPUT ./figuras/Capitulo_3/1-b.png
+INPUT ./figuras/Capitulo_3/1-b.png
+INPUT ./figuras/Capitulo_3/1-b.png
+INPUT ./figuras/Capitulo_3/1-b.png
+INPUT ./figuras/Capitulo_3/2-a.png
+INPUT ./figuras/Capitulo_3/2-a.png
+INPUT ./figuras/Capitulo_3/2-a.png
+INPUT ./figuras/Capitulo_3/2-a.png
+INPUT ./figuras/Capitulo_3/2-a.png
+INPUT ./figuras/Capitulo_3/2-b.png
+INPUT ./figuras/Capitulo_3/2-b.png
+INPUT ./figuras/Capitulo_3/2-b.png
+INPUT ./figuras/Capitulo_3/2-b.png
+INPUT ./figuras/Capitulo_3/2-b.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT ./figuras/Capitulo_3/3.png
+INPUT ./figuras/Capitulo_3/3.png
+INPUT ./figuras/Capitulo_3/3.png
+INPUT ./figuras/Capitulo_3/3.png
+INPUT ./figuras/Capitulo_3/3.png
+INPUT ./figuras/Capitulo_3/4-a.png
+INPUT ./figuras/Capitulo_3/4-a.png
+INPUT ./figuras/Capitulo_3/4-a.png
+INPUT ./figuras/Capitulo_3/4-a.png
+INPUT ./figuras/Capitulo_3/4-a.png
+INPUT ./figuras/Capitulo_3/4-b.png
+INPUT ./figuras/Capitulo_3/4-b.png
+INPUT ./figuras/Capitulo_3/4-b.png
+INPUT ./figuras/Capitulo_3/4-b.png
+INPUT ./figuras/Capitulo_3/4-b.png
+INPUT ./figuras/Capitulo_3/5.png
+INPUT ./figuras/Capitulo_3/5.png
+INPUT ./figuras/Capitulo_3/5.png
+INPUT ./figuras/Capitulo_3/5.png
+INPUT ./figuras/Capitulo_3/5.png
+INPUT ./figuras/Capitulo_3/6.png
+INPUT ./figuras/Capitulo_3/6.png
+INPUT ./figuras/Capitulo_3/6.png
+INPUT ./figuras/Capitulo_3/6.png
+INPUT ./figuras/Capitulo_3/6.png
+INPUT ./figuras/Capitulo_3/7.png
+INPUT ./figuras/Capitulo_3/7.png
+INPUT ./figuras/Capitulo_3/7.png
+INPUT ./figuras/Capitulo_3/7.png
+INPUT ./figuras/Capitulo_3/7.png
+INPUT ./figuras/Capitulo_3/8.png
+INPUT ./figuras/Capitulo_3/8.png
+INPUT ./figuras/Capitulo_3/8.png
+INPUT ./figuras/Capitulo_3/8.png
+INPUT ./figuras/Capitulo_3/8.png
+INPUT ./figuras/Capitulo_3/9.png
+INPUT ./figuras/Capitulo_3/9.png
+INPUT ./figuras/Capitulo_3/9.png
+INPUT ./figuras/Capitulo_3/9.png
+INPUT ./figuras/Capitulo_3/9.png
+INPUT ./figuras/Capitulo_3/10.png
+INPUT ./figuras/Capitulo_3/10.png
+INPUT ./figuras/Capitulo_3/10.png
+INPUT ./figuras/Capitulo_3/10.png
+INPUT ./figuras/Capitulo_3/10.png
+INPUT ./figuras/Capitulo_3/T1.png
+INPUT ./figuras/Capitulo_3/T1.png
+INPUT ./figuras/Capitulo_3/T1.png
+INPUT ./figuras/Capitulo_3/T1.png
+INPUT ./figuras/Capitulo_3/T1.png
+INPUT ./figuras/Capitulo_3/T2.png
+INPUT ./figuras/Capitulo_3/T2.png
+INPUT ./figuras/Capitulo_3/T2.png
+INPUT ./figuras/Capitulo_3/T2.png
+INPUT ./figuras/Capitulo_3/T2.png
+INPUT ./figuras/Capitulo_3/T3.png
+INPUT ./figuras/Capitulo_3/T3.png
+INPUT ./figuras/Capitulo_3/T3.png
+INPUT ./figuras/Capitulo_3/T3.png
+INPUT ./figuras/Capitulo_3/T3.png
+INPUT ./figuras/Capitulo_3/T4.png
+INPUT ./figuras/Capitulo_3/T4.png
+INPUT ./figuras/Capitulo_3/T4.png
+INPUT ./figuras/Capitulo_3/T4.png
+INPUT ./figuras/Capitulo_3/T4.png
+INPUT ./figuras/Capitulo_3/T5.png
+INPUT ./figuras/Capitulo_3/T5.png
+INPUT ./figuras/Capitulo_3/T5.png
+INPUT ./figuras/Capitulo_3/T5.png
+INPUT ./figuras/Capitulo_3/T5.png
+INPUT ./figuras/Capitulo_3/11.png
+INPUT ./figuras/Capitulo_3/11.png
+INPUT ./figuras/Capitulo_3/11.png
+INPUT ./figuras/Capitulo_3/11.png
+INPUT ./figuras/Capitulo_3/11.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib8.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib6.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmssbx10.tfm
 INPUT ./cap_4.tex
 OUTPUT cap_4.aux
 INPUT ./cap_4.tex
 INPUT ./cap_4.tex
 INPUT cap_4.tex
+INPUT ./figuras/Capítulo 4/4.1.png
+INPUT ./figuras/Capítulo 4/4.1.png
+INPUT ./figuras/Capítulo 4/4.1.png
+INPUT ./figuras/Capítulo 4/4.1.png
+INPUT ./figuras/Capítulo 4/4.1.png
+INPUT ./figuras/Capítulo 4/4.2a.png
+INPUT ./figuras/Capítulo 4/4.2a.png
+INPUT ./figuras/Capítulo 4/4.2a.png
+INPUT ./figuras/Capítulo 4/4.2a.png
+INPUT ./figuras/Capítulo 4/4.2a.png
+INPUT ./figuras/Capítulo 4/4.2b.png
+INPUT ./figuras/Capítulo 4/4.2b.png
+INPUT ./figuras/Capítulo 4/4.2b.png
+INPUT ./figuras/Capítulo 4/4.2b.png
+INPUT ./figuras/Capítulo 4/4.2b.png
+INPUT ./figuras/Capítulo 4/4.3.png
+INPUT ./figuras/Capítulo 4/4.3.png
+INPUT ./figuras/Capítulo 4/4.3.png
+INPUT ./figuras/Capítulo 4/4.3.png
+INPUT ./figuras/Capítulo 4/4.3.png
+INPUT ./figuras/Capítulo 4/4.4.png
+INPUT ./figuras/Capítulo 4/4.4.png
+INPUT ./figuras/Capítulo 4/4.4.png
+INPUT ./figuras/Capítulo 4/4.4.png
+INPUT ./figuras/Capítulo 4/4.4.png
+INPUT ./figuras/Capítulo 4/4.5.png
+INPUT ./figuras/Capítulo 4/4.5.png
+INPUT ./figuras/Capítulo 4/4.5.png
+INPUT ./figuras/Capítulo 4/4.5.png
+INPUT ./figuras/Capítulo 4/4.5.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmr12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss12.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT ./figuras/Capítulo 4/4.6.png
+INPUT ./figuras/Capítulo 4/4.6.png
+INPUT ./figuras/Capítulo 4/4.6.png
+INPUT ./figuras/Capítulo 4/4.6.png
+INPUT ./figuras/Capítulo 4/4.6.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmss8.tfm
 INPUT ./main.bbl
 INPUT ./main.bbl
 INPUT main.bbl
@@ -654,11 +842,16 @@ INPUT main.brf
 INPUT ./main.brf
 INPUT ./main.brf
 OUTPUT main.brf
+INPUT ./Apendice.tex
+OUTPUT apendice.aux
+INPUT ./Apendice.tex
+INPUT ./Apendice.tex
+INPUT Apendice.tex
 OUTPUT main.toc
 INPUT main.aux
-INPUT ./Introducao.aux
-INPUT ./Introducao.aux
-INPUT Introducao.aux
+INPUT ./cap_1.aux
+INPUT ./cap_1.aux
+INPUT cap_1.aux
 INPUT ./cap_2.aux
 INPUT ./cap_2.aux
 INPUT cap_2.aux
@@ -668,15 +861,44 @@ INPUT cap_3.aux
 INPUT ./cap_4.aux
 INPUT ./cap_4.aux
 INPUT cap_4.aux
+INPUT ./apendice.aux
+INPUT ./apendice.aux
+INPUT apendice.aux
 INPUT ./main.brf
 INPUT ./main.brf
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb
 INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb
+INPUT c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb

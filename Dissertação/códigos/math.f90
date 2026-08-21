@@ -8,6 +8,7 @@ module math_geometry_mod
 
     public :: dp
     public :: combination, eye, inverse_matrix, polygon_geometry, polygon_moment
+    public :: matrix_trace, kronecker_product
     public :: get_monomial_exponents, find_monomial_index
     public :: get_gauss_lobatto 
     public :: solve_linear_system
@@ -144,6 +145,16 @@ module math_geometry_mod
         end do
     end function eye
 
+    pure function matrix_trace(A) result(tr)
+        real(dp), intent(in) :: A(:,:)
+        real(dp) :: tr
+        integer :: i
+        tr = 0.0_dp
+        do i = 1, min(size(A, 1), size(A, 2))
+            tr = tr + A(i, i)
+        end do
+    end function matrix_trace
+
     function inverse_matrix(A) result(Ainv)
         real(dp), intent(in) :: A(:,:)
         real(dp) :: Ainv(size(A,1), size(A,2))
@@ -165,6 +176,29 @@ module math_geometry_mod
             error stop 'Erro na fatoracao LU do LAPACK em inverse_matrix.'
         end if
     end function inverse_matrix
+
+    pure function kronecker_product(A, B) result(K)
+        double precision, intent(in) :: A(:, :), B(:, :)
+        double precision :: K(size(A,1)*size(B,1), size(A,2)*size(B,2))
+        
+        integer :: m, n, p, q, i, j
+        integer :: r_start, r_end, c_start, c_end
+
+        m = size(A, 1); n = size(A, 2)
+        p = size(B, 1); q = size(B, 2)
+
+        do j = 1, n
+            c_start = (j - 1) * q + 1
+            c_end   = j * q
+            
+            do i = 1, m
+                r_start = (i - 1) * p + 1
+                r_end   = i * p
+                
+                K(r_start:r_end, c_start:c_end) = A(i, j) * B
+            end do
+        end do
+    end function kronecker_product
 
     pure subroutine polygon_geometry(x, y, n, area, xc, yc, h_E)
         integer, intent(in) :: n

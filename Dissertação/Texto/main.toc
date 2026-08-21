@@ -3,12 +3,44 @@
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
 \contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase []{Introdução}}{9}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Objetivos}{11}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Objetivos específicos}{11}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Metodologia}{11}{section.1.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase []{Revisão bibliográfica}}{11}{chapter.2}%
+\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase []{ Revisão bibliográfica}}{15}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Desenvolvimento do método e principais formulações}{15}{section.2.1}%
+\contentsline {section}{\numberline {2.2}O método dos elementos virtuais em problemas de elasticidade.}{20}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Pequenas deformações:}{21}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Grandes deformações:}{23}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}O método dos elementos virtuais em problemas de dinâmica}{23}{section.2.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase []{O problema dinâmico}}{13}{chapter.3}%
+\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase []{O problema dinâmico}}{27}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Análise dinâmica de estruturas}{27}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Conceitos Básicos}{27}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Modos de vibração}{31}{subsection.3.1.2}%
+\contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{33}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{34}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{41}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{43}{subsubsection.3.2.2.1}%
+\contentsline {section}{\numberline {3.3}Métodos aproximados}{45}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{45}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{48}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca com análise modal para equação de vibração livre não amortecidas.}{50}{subsubsection.3.3.2.1}%
+\contentsline {subsection}{\numberline {3.3.3}Métodos de galerkin com discretização do domínio}{50}{subsection.3.3.3}%
 \setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{O método dos elementos virtuais}}{15}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{O método dos elementos virtuais}}{53}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais:}{53}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Espaço de solução}{57}{section.4.2}%
+\contentsline {section}{\numberline {4.3}O elemento virtual}{58}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Operadores de projeção:}{60}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$:}{63}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$:}{69}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$:}{70}{subsection.4.4.3}%
+\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa:}{72}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{73}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{74}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}Implementação:}{77}{section.4.6}%
 \vspace {\cftbeforechapterskip }
 \setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{17}{section*.7}%
+\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{79}{section*.26}%
+\contentsline {section}{\numberline {4.7}Apêndice A - Tabela com pontos e pesos de Gauss-Lobatto}{80}{section.4.7}%

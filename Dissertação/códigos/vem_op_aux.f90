@@ -9,6 +9,7 @@ module Vem_operators_aux
 
     public :: op_identity, op_grad, op_lap, op_eps_l2_boundary, op_eps_boundary
     public :: op_coeff_lap, op_coeff_div, op_coeff_grad, eval_monomial_derivatives
+    public :: op_coeff_eps_div, op_coeff_lap_generic
 
     contains
 
@@ -150,5 +151,53 @@ module Vem_operators_aux
 
         call eval_grad_coeffs(p_in, q_in, h_E, dof_dir, n_terms, p_out, q_out, coeffs)
     end subroutine op_coeff_grad
+
+    ! Exemplo para op_coeff_eps_div
+    subroutine op_coeff_eps_div(p_in, q_in, h_E, row_op, dof_dir, n_terms, p_out, q_out, coeffs)
+    use math_geometry_mod, only: dp, eval_div_coeffs
+    implicit none
+    integer, intent(in)  :: p_in, q_in, row_op
+    integer, intent(in)  :: dof_dir            ! <-- DEVE SER intent(in)
+    real(dp), intent(in) :: h_E
+    integer, intent(out) :: n_terms
+    integer, intent(out) :: p_out(:), q_out(:)
+    real(dp), intent(out):: coeffs(:)
+    
+    integer :: deriv_dir
+    
+    deriv_dir = 0
+    if (row_op == 1 .and. dof_dir == 1) then
+        deriv_dir = 1
+    else if (row_op == 2 .and. dof_dir == 2) then
+        deriv_dir = 2
+    else if (row_op == 3) then
+        if (dof_dir == 1) deriv_dir = 2
+        if (dof_dir == 2) deriv_dir = 1
+    end if
+
+    if (deriv_dir > 0) then
+        call eval_div_coeffs(p_in, q_in, h_E, deriv_dir, n_terms, p_out, q_out, coeffs)
+    else
+        n_terms = 0
+    end if
+    end subroutine op_coeff_eps_div
+
+    ! Exemplo para op_coeff_lap_generic
+    subroutine op_coeff_lap_generic(p_in, q_in, h_E, row_op, dof_dir, n_terms, p_out, q_out, coeffs)
+        use math_geometry_mod, only: dp, eval_lap_coeffs
+        implicit none
+        integer, intent(in)  :: p_in, q_in, row_op, dof_dir
+        real(dp), intent(in) :: h_E
+        integer, intent(out) :: n_terms
+        integer, intent(out) :: p_out(:), q_out(:)
+        real(dp), intent(out):: coeffs(:)
+
+        ! CORREÇÃO: Aplica a todos os componentes alinhados (X com X, Y com Y)
+        if (row_op == dof_dir) then
+            call eval_lap_coeffs(p_in, q_in, h_E, n_terms, p_out, q_out, coeffs)
+        else
+            n_terms = 0
+        end if
+    end subroutine op_coeff_lap_generic
 
 end module Vem_operators_aux

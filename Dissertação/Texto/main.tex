@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[brazilian,hyperpageref]{backref}
 \usepackage{pacotes}
+\usepackage{subcaption}
 
 
 \titulo{Análise de estruturas em estado plano em vibração livre com o método dos elementos virtuais}
@@ -86,7 +87,7 @@
 
 
 \textual % a partir daqui são os elementos textuais.
-\include{Introducao.tex}
+\include{cap_1.tex}
 \include{cap_2.tex}
 \include{cap_3.tex}
 \include{cap_4.tex}
@@ -94,6 +95,6 @@
 
 \postextual % a partir daqui são os elementos pós-textuais.
 \bibliography{ref} % O alerta amarelo ("Empty `thebibliography' environment on input line 8.") é porque não há citações ainda
-% \chapter{APÊNDICE}
+\include{apendice.tex}
 % \chapter{anexo}
 \end{document}

@@ -1,1 +1,229 @@
-\chapter{Revisão bibliográfica}
+\chapter{ Revisão bibliográfica}
+\section{Desenvolvimento do método e principais formulações}
+%Explicar história do surgimento do (MFDM) 
+\indent O método das diferenças finitas miméticas (MFDM) é uma técnica númericas em malhas poligonais que preserva as identidades 
+fundamentais do calculo vetorial e as leis da consevação física, diferindo-se dos métodos tradicionais de diferenças finitas que aproximam
+as derivadas usando a expansão da série de Taylor em pontos discretos que pode acabar quebrando propriedades matemáticas globais.
+No MFDM, as váriaveis são alocadas de acordo com a topologia do problema atribuindo propriedades físicas a entidades geométricas como nós, 
+faces e células. 
+\indent As evoluções do MFDM tornavam a apresentação da técnica cada vez mais similar à do Método dos Elementos Finitos (FEM). Ao atrelar os 
+graus de liberdade a funções-teste no elemento, as disparidades em relação à técnica original cresceram a ponto de a formulação se assemelhar 
+a uma generalização do FEM. Essas diferenças levaram à documentação, por [1], de uma nova técnica numérica batizada de Método dos Elementos 
+Virtuais (VEM). Para expor a nova metodologia, foi lançada uma série de artigos que apresentavam as principais características do método, bem 
+como demonstrações dos critérios de convergência e de unicidade dos graus de liberdade para os exemplos apresentados.\\
+\indent No artigo fundacional do método, por motivos de simplificação, tomou-se a equação de Poisson como exemplo de aplicação a equações 
+elípticas — sem variação no tempo — e em campos escalares. Subsequentemente, [2] desenvolveram os princípios do Método dos Elementos Virtuais 
+aplicado a campos vetoriais, estudando os critérios de convergência e a unicidade dos graus de liberdade voltados a problemas de elasticidade 
+linear compressível e quase incompressível.  \\
+\indent Embora a aplicação do método em campos vetoriais representasse um avanço significativo, tanto ela quanto a equação de Poisson tratavam 
+de elementos com conformidade $H^1$. Isso significa que apenas a variável de campo da equação diferencial deve possuir conformidade no 
+elemento. Para expandir esse cenário, [3] apresentaram os fundamentos e os critérios de convergência do método aplicado ao problema de flexão 
+de placas de Kirchhoff-Love, solucionando o problema de conformidade $H^2$, no qual a variação da variável de campo da equação diferencial 
+também deve ser conforme no elemento. Buscando generalizar a conformidade do espaço, [4] desenvolveram uma família de elementos capaz de se 
+adaptar não apenas a malhas não estruturadas, mas também a problemas de regularidade arbitrária $C^{\alpha}$. \\
+\indent Na formulação clássica do Método dos Elementos Virtuais, a aproximação da solução no elemento por funções polinomiais é realizada com 
+a utilização de um projetor na norma $H^p$. Ao trabalhar com a equação em sua forma variacional, o termo-fonte e a matriz de massa (quando 
+presente) não apresentam operadores elípticos em suas formas bilineares. A aproximação desses termos por um projetor no espaço $H^p$, apesar 
+de aceitável, não era ideal. Esse gargalo impeliu [5] a desenvolverem uma expansão da formulação clássica, criando um novo operador de 
+projeção $L^2$-ortogonal como um espaço de solução estendido para a aproximação desses termos. A partir da implementação desse novo operador, 
+[11] apresentaram uma formulação generalizada para qualquer operador elíptico, e não apenas para o Laplaciano como havia sido feito em [1] e 
+[11]. Paralelamente, [12] ampliou a formulação para espaços $H^1(\text{div})$ e $H^1(\text{rot})\text{-conforme}$, permitindo computar 
+equações diferenciais em campos vetoriais com operadores divergente e rotacional, os quais são de grande utilidade em problemas de formulação
+mista\footnote{A solução de uma equação diferencial é uma função, como a função dos desloacamento, sendo essa chamada de variável 
+de campo. Em algumas formulações, a equação diferencial possui mais de uma variável de campo, por exemplo pressão e temperatura, ou 
+deslocamento e tensão de maneira que seja resolvida para duas variáveis de campo simultaneamento. As formulações que apresentam esse
+tipo de equação diferencial de duas variáveis de campo são chamadas de formulações mistas}.  \\
+\indent Enquanto os trabalhos anteriores apresentavam as formulações iniciais do método, nenhum deles abordava os aspectos de implementação 
+prática. Em busca de preencher essa lacuna, [6] escreveram um guia voltado à equação de Poisson desenvolvida no artigo fundacional do método,
+ considerando também as contribuições mais recentes, como a expansão da formulação através da introdução do operador de projeção 
+ $L^2$-ortogonal. Este artigo, de grande importância histórica, expõe as características de implementação computacional do método, divergindo 
+ dos trabalhos anteriores que focavam estritamente nos aspectos matemáticos. Posteriormente, outros trabalhos foram dedicados à apresentação 
+ da implementação computacional. Dentre eles, [7] expõe considerações relacionadas à programação com um código de exemplo em MATLAB para a 
+ equação de Poisson em aproximações lineares, e [8] busca aprimorar esse programa por meio da vetorização do código. Por fim, a lacuna das 
+ aplicações em MATLAB para formulações de alta ordem e outros operadores foi preenchida em [9,10]. \\
+\indent Formulações não conformes são caracterizadas por possuírem condições "relaxadas" de continuidade no contorno, o que garante maior 
+flexibilidade. Aplicações não conformes são de grande utilidade em problemas da mecânica do contínuo, tais como fluxo de fluidos e problemas 
+de elasticidade. Essas formulações surgiram inicialmente no Método dos Elementos Finitos, e [13] as adaptou ao Método dos Elementos Virtuais 
+para elementos bi e tridimensionais, englobando qualquer grau de precisão. Na mesma linha, [14] desenvolveu uma estrutura abstrata unificada 
+para as formulações conforme e não conforme de maneira que, para esta última, a construção do projetor $L^2$ dependa apenas dos graus de 
+liberdade. \\
+\indent [16] realizou um estudo sobre o mau condicionamento da matriz de rigidez, levando em consideração as bases polinomiais e a 
+estabilização utilizada. Em seus resultados, nota-se que as técnicas de estabilização avaliadas apresentam pequenas diferenças entre si 
+quanto ao efeito no condicionamento da matriz. Em relação à escolha das bases polinomiais, conclui-se que para problemas de alta ordem ou 
+quando os elementos são mal formados — como contornos pequenos ou com formato de estrela não uniforme —, existem outras bases que se adequam 
+melhor do que os monômios escalados tradicionalmente utilizados. [17] expandiu esse estudo para problemas em três dimensões. No trabalho, os 
+autores propõem variações para as bases nos graus de liberdade das faces/volume e de estabilização, resultando em métodos numericamente mais 
+robustos. Com base nos resultados, os autores sugerem diferentes tipos de base a depender do método de refino utilizado, seja ele $h$ ou $p$.\\ 
+\indent Assim como o Método dos Elementos Finitos possui a família serendipity de elementos, uma adaptação dessa família para o Método dos 
+Elementos Virtuais foi desenvolvida por [18]. Essa mimetização dos elementos serendipity foi fortemente influenciada pela compatibilidade 
+entre os dois métodos. Os elementos virtuais serendipity assemelham-se fortemente aos de elementos finitos, mas mantêm a principal 
+característica do VEM: a capacidade de adotar elementos com formatos e número de nós arbitrários, com a exceção de um elemento quadrilateral 
+assumindo a forma de um triângulo. \\
+\indent Como o Método dos Elementos Virtuais não precisa de uma expressão explícita para as funções de base e é diretamente definido no 
+espaço físico, [19] lançou as bases para o desenvolvimento do VEM com contornos curvos em problemas elípticos. O método apresentado consiste 
+na utilização de funções polinomiais no parâmetro $t$ para a aresta curva do elemento. No trabalho, os autores apresentam a construção do 
+método, a teoria de convergência, testes numéricos e as técnicas de integração a serem usadas para esses elementos.  \\
+\indent Uma peculiaridade da formulação para curvas com funções paramétricas é que o espaço possui funções constantes, mas não lineares. Em 
+problemas lineares, por exemplo, por mais que a formulação possua convergência, ela não passa no teste de Irons. Para contornar essa barreira, 
+[20] desenvolveu um espaço de funções aprimorado, com uma construção não convencional que se situa parcialmente em um espaço físico e 
+parcialmente mapeada de um espaço de parâmetros. Outra solução, desenvolvida por [21], preserva os polinômios e garante que o resultado não 
+dependa da escolha de parametrização da curva. \\
+\indent Uma característica marcante do Método dos Elementos Virtuais é a necessidade de utilização de um termo de estabilização. Como 
+destacado por [34], o termo de estabilização possui efeitos tanto na estabilidade quanto no condicionamento do método, mas permanece sendo 
+um componente escolhido de maneira arbitrária. Buscando superar esse dilema, os autores desenvolveram uma formulação melhorada do método 
+utilizando projeções polinomiais de maior ordem; a modificação proposta remove a necessidade do uso do termo de estabilização. Em problemas 
+de elasticidade, a extensão dessa formulação livre de estabilização foi realizada por [31]. Visando evitar a utilização de graus de liberdade 
+internos em aproximações de maior ordem, [32] estenderam o Método dos Elementos Virtuais sem estabilização para a família serendipity de 
+elementos virtuais. \\
+\indent Mesmo que a solução numérica do Método dos Elementos Virtuais pertença a um espaço contínuo, ela não pode ser acessada sem a 
+resolução de uma equação diferencial parcial em cada elemento polítopo — como será visto em seções posteriores. Desse modo, apenas uma 
+projeção de um espaço polinomial descontínuo é acessível, resultando em uma solução descontínua. Outra dificuldade encontrada no método é a 
+introdução de um termo de estabilização inerentemente isotrópico; esse termo injeta uma medida de isotropia na solução discreta que, ao lidar 
+com problemas anisotrópicos, polui os resultados. Para contornar isso, [36] propõem o uso do método das bases reduzidas\footnote{O Método de 
+Bases Reduzidas (Reduced Basis Method - RBM) é uma técnica para acelerar simulações numéricas complexas. Ele substitui equações pesadas por 
+um modelo simplificado "mais leve", construído a partir de poucas soluções conhecidas do problema, permitindo obter respostas rápidas mantendo 
+boa precisão.} para avaliar localmente as funções de base de maneira computacionalmente barata. A técnica de bases reduzidas é eficiente na 
+solução de equações diferenciais parciais paramétricas em que é necessário solucionar diversas vezes uma mesma equação para diferentes 
+parâmetros. Ao considerar a equação diferencial parcial que define as funções de base do VEM como uma equação parametrizada de um elemento 
+fixo, toma-se a geometria poligonal do elemento como parâmetro. Essa ferramenta pode ser usada no pós-processamento para a obtenção de uma 
+função $H^1$ — considerando um problema de segunda ordem —, útil para visualização e para analisar valores em pontos internos. Outra 
+possibilidade da utilização conjunta das bases reduzidas e do VEM é a reconstrução das funções de base para o desenvolvimento de um termo de 
+estabilização mais adequado ao problema a ser solucionado.  \\
+\indent Em problemas com domínios e/ou dados não suaves, as soluções de problemas elípticos podem conter singularidades fracas. Essas 
+singularidades pioram a taxa de convergência de métodos que assumem uma maior regularidade, como o Método dos Elementos Finitos e o 
+Método dos Elementos Virtuais. Uma das soluções mais amplamente adotadas para o tratamento de descontinuidades e singularidades no domínio é 
+a utilização de aproximações enriquecidas baseadas na estrutura da partição da unidade, tais como o Método dos Elementos Finitos Estendidos 
+(X-FEM) ou o Método dos Elementos Finitos Generalizados (G-FEM). Buscando suplantar as singularidades e descontinuidades, [39] generalizaram 
+os conceitos dos métodos de elementos finitos com partição da unidade para o Método dos Elementos Virtuais, criando assim o Método dos 
+Elementos Virtuais Estendidos (X-VEM). \\
+\indent Uma revisão bibliográfica quanto à aproximação de autovalores com o Método dos Elementos Virtuais foi realizada por [46]. Os autores 
+comentam que, para a análise de estabilidade em problemas transientes, é essencial um bom conhecimento das propriedades do esquema de 
+discretização espectral. Além disso, a presença de formas de estabilização pode introduzir automodos adicionais artificialmente, tornando 
+necessário garantir que eles não poluam a porção do espectro de interesse. Após a apresentação de um esquema prático para problemas de 
+autovalores, os autores discutem os efeitos dos parâmetros de estabilização e comentam que certas escolhas de parâmetros fazem com que a 
+solução discreta convirja para a contínua com ótima ordem assintótica em refinos $p$ ou $h$. 
+\section{O método dos elementos virtuais em problemas de elasticidade.}
+\indent As aplicações voltadas a problemas elásticos datam desde o início do desenvolvimento do Método dos Elementos Virtuais. No artigo 
+publicado por [2], são tratados os casos compressíveis e quase incompressíveis em problemas lineares elásticos, apresentando a solução 
+numérica pelo Método dos Elementos Virtuais em duas dimensões. Assim como na maioria dos artigos iniciais, os autores fazem uma breve 
+apresentação do problema e das características do método, focando seus esforços em provar a eficiência e as propriedades de convergência da 
+técnica recém-desenvolvida. Uma extensão desse trabalho foi feita por [22] para problemas tridimensionais, apresentando tanto a formulação e 
+os aspectos teóricos do método, quanto os seus detalhes de implementação. \\
+\indent Como variação ao esquema padrão do Método dos Elementos Virtuais, [30] propõem um esquema duplo híbrido em problemas lineares 
+elásticos no estado plano. As variáveis do problema passam a ser tanto os campos de deslocamentos quanto os de tensões. No esquema 
+apresentado, as tensões são inicialmente consideradas para satisfazer as equações de equilíbrio localmente em cada elemento, sendo então 
+exigido que maximizem a energia complementar local. Outro aspecto é que os campos de deslocamento são utilizados apenas nos contornos entre 
+elementos, assumindo a função de um multiplicador de Lagrange para as restrições de continuidade de tração. \\
+\indent Costumeiramente, a recuperação dos campos de tensões no Método dos Elementos Virtuais é feita utilizando o mesmo operador de projeção 
+empregado para a avaliação dos campos de deformações. Em elementos poligonais não triangulares, os deslocamentos podem gerar campos de 
+deformações complexos e, por consequência, causar perda de informação nos campos de tensões subjacentes. Buscando suplantar essa barreira, 
+[35] desenvolvem uma adaptação para o Método dos Elementos Virtuais da técnica de recuperação por compatibilidade em patches, tradicionalmente 
+utilizada junto ao Método dos Elementos Finitos. \\
+\indent Indo além da análise determinística, [37] apresentam uma variação estocástica do Método dos Elementos Virtuais para problemas lineares 
+elásticos que possuam propriedades materiais aleatórias e carregamentos estocásticos. No modelo proposto pelos autores, as equações virtuais 
+podem ser resolvidas com os mesmos algoritmos utilizados pelo Método dos Elementos Finitos, como a simulação de Monte Carlo, entre outros. 
+Além dos algoritmos clássicos, os autores desenvolveram dois métodos numéricos para a solução das equações dos elementos virtuais 
+estocásticos: um baseado em uma expansão polinomial caótica e outro fundamentado em uma aproximação intrusiva fraca. 
+\subsection{Pequenas deformações:}
+\indent O estudo de problemas elásticos não lineares e inelásticos para pequenas deformações foi iniciado em [23]. O esquema apresentado pelos 
+autores permite a inclusão de um algoritmo de leis constitutivas independente da formulação do Método dos Elementos Virtuais, similar ao que 
+é feito no Método dos Elementos Finitos. Na mesma linha, [15] apresenta uma estrutura matricial para o método voltado à equação da 
+elasticidade. Usando a metodologia proposta, o problema pode ser facilmente estendido para casos de não linearidade quando comparado às 
+primeiras formulações desenvolvidas. Em contrapartida aos métodos tradicionais, a forma proposta pelos autores realiza a aproximação para a 
+deformação ao invés dos deslocamentos.  \\
+\indent Dando continuidade ao trabalho desenvolvido por [15], a extensão para casos inelásticos foi desenvolvida por [26]. Os autores abordam 
+três principais casos inelásticos: o primeiro é o de viscosidade isotrópica de Maxwell generalizada; o segundo trata-se da plasticidade 
+clássica de von Mises com encruamento (endurecimento) isotrópico linear ou cinemático; e o terceiro aborda o comportamento constitutivo de 
+uma liga com memória de forma, modelado por meio de uma abordagem fenomenológica macroscópica. A abordagem da formulação utilizada pelos 
+autores permite a utilização de algoritmos constitutivos de "caixa preta", independentes da formulação utilizada para o Método dos Elementos 
+Virtuais. \\
+\indent Os problemas de não linearidade até então abordados aproximavam a equação diferencial com funções lineares. Embora os resultados 
+tivessem sido satisfatórios, [28] propuseram um estudo sobre o comportamento do Método dos Elementos Virtuais para funções quadráticas em 
+casos hiperelásticos compressíveis isotrópicos. Considerando que aproximações de maior ordem no VEM resultam em nós extras e variáveis 
+internas no elemento, a abordagem utilizada pelos autores deu-se através da família serendipity de elementos virtuais. Duas estratégias 
+diferentes de estabilização foram estudadas pelos autores no escopo do problema abordado. \\
+\indent Formulações mistas no regime de pequenas deformações com o uso da formulação variacional de Hellinger-Reissner em duas dimensões foram 
+propostas por [27]. O esquema apresentado é de baixa ordem, com tensores de Cauchy a priori simétricos. O modelo proposto para a solução do 
+problema aproxima o campo de deformações com graus de liberdade de tração, enquanto o campo de deslocamentos no polígono consiste, em essência, 
+em movimentos de corpo rígido. Enquanto o campo de deslocamentos é aproximado com o uso de funções polinomiais, o campo de deformações 
+discreto possui uma construção similar à da velocidade discreta do problema de Stokes. A abordagem em três dimensões foi posteriormente 
+elaborada por [29]. \\
+\indent Outra proposição de formulação variacional mista foi feita por [33]. No artigo, os autores apresentam o Método dos Elementos Virtuais 
+para a formulação de Hu-Washizu. Devido à baixa imposição de compatibilidade, o modelo de deformações é independente do modelo de 
+deslocamentos; os autores aproveitam essa liberdade para o desenvolvimento de uma formulação autoestabilizada. Através de testes numéricos, 
+demonstra-se que os elementos virtuais propostos são livres de locking, tanto para o caso quase incompressível quanto para elementos altamente 
+distorcidos ou com formato não convexo. 
+\subsection{Grandes deformações:}
+\indent No campo das deformações finitas, dentre os trabalhos iniciais desenvolvidos, cabe citar [24]. Duas formulações foram propostas para a 
+solução do problema: uma formulação mista com dois campos e outra baseada em deslocamento equivalente. A principal característica dessas 
+formulações é a utilização da alteração média de volume no elemento, que pode ser computada de maneira exata em elementos virtuais poligonais 
+e poliédricos sob qualquer campo de deformação. Outra contribuição foi o desenvolvimento de um novo esquema de estabilização baseado no traço 
+do tensor do módulo tangente material. \\
+\indent Uma investigação voltada à não linearidade de deformações finitas no regime elastoplástico foi elaborada por [25], na qual os autores 
+desenvolvem uma nova formulação centrada na minimização da expressão da energia incremental. Uma característica marcante do modelo por eles 
+desenvolvido é basear-se em uma pseudo-energia de deformação ao invés da forma fraca convencional. A formulação apresentada lida basicamente 
+com constantes e vetores, tornando-se matematicamente simples. Outro destaque do trabalho é a introdução de um novo tipo de termo de 
+estabilização, envolvendo uma energia de deformação definida positiva modificada.  \\
+\indent Na análise de grandes deformações, uma das alternativas de implementação é o uso da abordagem corrotacional. A abordagem 
+corrotacional considera os efeitos de grandes deslocamentos e rotações como uma decomposição cinemática dos grandes deslocamentos de corpo 
+rígido e das pequenas deformações. [38] abordam o problema utilizando a formulação sem estabilização inicialmente desenvolvida por [34], 
+explorando uma aproximação livre de divergência. 
+\section{O método dos elementos virtuais em problemas de dinâmica}
+\indent Em problemas com variação no tempo, um dos primeiros trabalhos a tratar sobre o tema foi o de [40], no qual apresentaram o método para 
+problemas parabólicos tomando como base a equação da difusão dependente do tempo. Os autores desenvolveram uma análise teórica completa para 
+o erro entre o problema contínuo e o semidiscreto. As aproximações hiperbólicas foram desenvolvidas por [41] com base nas equações de onda 
+dependentes do tempo, empregando uma abordagem idêntica àquela utilizada em problemas parabólicos. Problemas semilineares hiperbólicos foram 
+tratados posteriormente por [45]. \\
+\indent Em elastodinâmica, [43] realizaram investigações teóricas e numéricas de desempenho do Método dos Elementos Virtuais em problemas 
+dependentes do tempo. Os autores avaliam a eficiência do método tanto para malhas de geometrias diversas com refino $h$ quanto para o aumento 
+do grau de aproximação polinomial através do refino $p$. Estudos em elementos não convexos foram conduzidos por [44], que aplicaram em seu 
+trabalho uma discretização não convexa em domínios bi e tridimensionais. Eles utilizaram um esquema explícito de integração no tempo, cujo 
+passo de tempo crítico é aproximado por meio do máximo autovalor local. Destaca-se no trabalho a introdução de um esquema de estabilização 
+baseado em uma matriz diagonal. \\
+\indent Estudos relacionados à convergência numérica para integrações explícitas no tempo e à estabilidade do Método dos Elementos Virtuais 
+em elastodinâmica bidimensional e tridimensional foram executados por [47]. Dentre as abordagens propostas pelos autores, destaca-se a 
+extensão do VEM para o uso do método B-bar\footnote{O método $\bar{B}$ ($B$-bar) é uma técnica de integração seletiva no Método dos Elementos
+Finitos projetada para evitar o bloqueio volumétrico (volumetric locking) em materiais quase incompressíveis. Ele funciona decompondo a matriz 
+de deformação-deslocamento $\mathbf{B}$ em partes desviatórias e volumétricas, substituindo esta última por um valor médio reduzido 
+($\bar{\mathbf{B}}$) para evitar o enrijecimento artificial do elemento.} voltado ao estudo de sólidos quase incompressíveis. Os autores 
+afirmam que é necessária apenas a modificação do termo de estabilização para estabilizar a parte deviatórica da matriz de rigidez. A estimativa 
+do passo de tempo crítico é realizada de duas maneiras distintas: o máximo autovalor de um sistema local e o tamanho efetivo do elemento. Dos 
+resultados obtidos, destaca-se que o escalonamento diagonal gera massas nodais positivas no VEM — o que não é observado com a técnica de soma 
+de linhas (row-sum) em elementos não convexos, mesmo para espaços polinomiais lineares. A aparição de massas negativas junto à técnica de 
+soma de linhas foi relacionada a instabilidades numéricas. \\
+\indent [48] propuseram a investigação teórica e numérica do Método dos Elementos Virtuais de alta ordem aplicado ao fenômeno de propagação de 
+ondas em meios elásticos. Diferente de trabalhos anteriores, os autores realizam a discretização da matriz de rigidez baseando-se na projeção 
+ortogonal do gradiente simétrico, e não no projetor elíptico. Os autores avaliam o desempenho do método em relação à convergência, estabilidade e análise de dispersão-dissipação para diversos grupos distintos de malhas. 
+\indent Modelagens dinâmicas não lineares para grandes deformações foram abordadas por [49] em elementos bi e tridimensionais não amortecidos, 
+utilizando o esquema de Newmark para a integração no tempo. Para o termo de estabilização, a técnica empregada foi a mesma desenvolvida por 
+[54], com a integração sendo realizada em uma submalha triangulada com os mesmos nós da malha original. No trabalho, demonstrou-se que a parte 
+dinâmica não necessita de estabilização para garantir a exatidão e a convergência do procedimento, a menos que a análise de autovalores seja 
+estritamente necessária. Utilizando a estrutura proposta pelos autores, não é preciso estabilizar a matriz de massa, todavia os autores 
+ressalvam que isso só é válido para problemas em que as equações não são dominadas por reações\footnote{Na modelagem de problemas físicos com
+equações diferenciais, são combinados três termos: difusivos, advectivos e reativos. Esses termos estão relacionados às derivadas da variável de
+campo. Termos reativos são aqueles que não possuem derivada temporal, como o termo de massa em problemas dinâmicos. Assim, problemas dominados
+pelo termo reativo são aqueles que a parcela reativa apresenta maior contribuição que difusiva e/ou advectiva}. \\
+\indent Em problemas elastoplásticos dinâmicos, [50] adaptou o método para problemas tridimensionais de deformações finitas com o uso de uma 
+formulação mista, levando em consideração o caso de incompressibilidade plástica. O comportamento elastoplástico do sólido é modelado com base 
+em um esquema de integração numérica (mais precisamente o método de Newmark), com a vantagem de que as matrizes tangentes e de massa são 
+combinadas para a solução. Além da formulação pura de deslocamento, a formulação mista de Hu-Washizu também é utilizada. 
+\indent Enquanto a maioria dos problemas numéricos dinâmicos realiza a separação do tempo e do espaço, [51] utilizaram uma abordagem holística 
+de espaço-tempo através do Método dos Elementos Virtuais. Os autores destacam que o fato de o VEM possuir flexibilidade na quantidade de nós 
+para lidar com o refino da malha torna-se uma grande vantagem. Assim, o método pode ser utilizado de maneira eficiente e com acurácia em 
+malhas construídas com continuidade $C^0$ para diferentes densidades de discretização. \\
+\indent Em análises lineares dinâmicas explícitas tridimensionais, a presença de tetraedros sliver (elementos muito finos ou 
+degenerados) em malhas de elementos finitos diminui dramaticamente o passo crítico de tempo, tornando o progresso da simulação praticamente 
+inviável. Para mitigar isso, [52] realizaram um estudo no qual utilizaram elementos virtuais na região vizinha ao elemento degenerado de modo
+a criar um elemento poliédrico virtual. Como o Método dos Elementos Virtuais é compatível com o Método dos Elementos Finitos(Contanto 
+que usem o mesmo grau de interpolação), os autores puderam avaliar o efeito da qualidade do formato do poliedro na estimativa do passo crítico 
+de tempo em simulações elastodinâmicas explícitas. Problemas de vibração em placas de Kirchhoff-Love foram abordados por [42]. Os autores 
+iniciam com uma formulação variacional do problema espectral dependendo apenas do deslocamento transversal da placa. Estabeleceu-se que o 
+esquema resultante oferece uma aproximação correta do espectro e provê ótimas estimativas de ordem de erro para as autofunções, além de uma 
+ordem dupla para os autovalores, ou seja, o esquema dos autores não cria falsas frequências de vibração atingindo precisão máxima teórica
+e com o dobro de velocidade para as freqûencias naturais.\\
+\indent Em equações de placas, [53] considerou uma equação de quarta ordem não linear e não local para a demonstração de deformações em 
+placas finas e esbeltas. O Método dos Elementos Virtuais foi utilizado na discretização da variável espacial, combinando-se a um esquema 
+implícito de integração no tempo. Conforme notado pelos autores, a aparição de termos locais diminui a estrutura esparsa do Jacobiano do 
+esquema completamente discreto. Para contornar essa perda, os autores introduziram um novo termo e recuperaram a estrutura esparsa do 
+Jacobiano. Para diminuir o custo computacional sem comprometer a taxa de convergência, os autores propuseram um esquema totalmente 
+linearizado. 

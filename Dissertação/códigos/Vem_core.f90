@@ -12,11 +12,7 @@ module vem_core_mod
     public :: write_solution
     public :: compute_vem_domain_trapezoidal_load
     public :: compute_vem_edge_trapezoidal_load
-    public :: compute_matrix_H0_exact
     public :: compute_vem_stiffness_consistency
-    public :: compute_vem_mass_consistency
-    public :: compute_vem_stability
-    public :: matrix_trace
     public :: build_edge_dof_map
     public :: dp
     public :: read_2D_loads
@@ -33,7 +29,9 @@ module vem_core_mod
         integer, allocatable :: nodes(:)
         integer, allocatable :: vertices(:)
         integer, allocatable :: edges(:)
-        integer, allocatable :: int(:)
+        real(dp), allocatable :: Pi_eps(:,:)
+        real(dp), allocatable :: Pi_nabla(:,:)
+        real(dp), allocatable :: Pi_0(:,:)
         real(dp) :: area = 0.0_dp
         real(dp) :: diameter = 0.0_dp
         real(dp) :: centroid(2) = 0.0_dp
@@ -81,25 +79,30 @@ module vem_core_mod
         class(mesh_type), intent(inout) :: this
         character(len=*), intent(in)    :: filename
         integer, intent(in), optional   :: n_dofs
-        integer :: i, j, nnodes_local, ne_local, ios, n_elem_nodes, n_dir, n_spring
-        integer :: node_idx, dof_idx, n_v, n_e, n_i
+        integer :: i, j, nnodes_file, ne_local, ios, n_elem_nodes, n_dir, n_spring
+        integer :: node_idx, dof_idx, n_v, n_e, elem_idx
+        integer, allocatable :: temp_nodes(:)
         real(dp) :: val
-        character(len=500) :: io_err
-        character(len=512) :: line
+        character(len=2000) :: io_err
+        character(len=2000) :: line
 
         open(newunit=i, file=filename, status='old', action='read', iostat=ios, iomsg=io_err)
         if (ios /= 0) error stop 'Erro ao abrir arquivo de malha: ' // trim(io_err)
 
+        ! 1. CABEÇALHO DA MALHA
         call read_next_valid_line(i, line)
-        read(line, *, iostat=ios) nnodes_local, ne_local, this%k_order, this%ndof
+        read(line, *, iostat=ios) nnodes_file, ne_local, this%k_order, this%ndof
         if (ios /= 0) error stop 'Erro na leitura do cabecalho da malha.'
         if (present(n_dofs)) this%ndof = n_dofs
 
-        this%nnodes = nnodes_local
-        this%nelem = ne_local
-        allocate(this%node(nnodes_local), this%elem(ne_local))
+        this%nnodes = nnodes_file
+        this%nelem  = ne_local
 
-        do j = 1, nnodes_local
+        allocate(this%node(this%nnodes))
+        allocate(this%elem(this%nelem))
+
+        ! Alocação base dos nós
+        do j = 1, this%nnodes
             allocate(this%node(j)%is_fixed(this%ndof))
             allocate(this%node(j)%bc_val(this%ndof))
             allocate(this%node(j)%spring_k(this%ndof))
@@ -107,33 +110,49 @@ module vem_core_mod
             this%node(j)%is_fixed = .false.
             this%node(j)%bc_val   = 0.0_dp
             this%node(j)%spring_k = 0.0_dp
+        end do
 
+        ! 2. LEITURA DOS NÓS FÍSICOS (Vértices e Arestas)
+        do j = 1, this%nnodes
             call read_next_valid_line(i, line)
             read(line, *) this%node(j)%x, this%node(j)%y, this%node(j)%type_id
         end do
 
-        do j = 1, ne_local
+        ! 3. CONECTIVIDADE DOS ELEMENTOS
+        do elem_idx = 1, this%nelem
             call read_next_valid_line(i, line)
             read(line, *) n_elem_nodes
-    
-            allocate(this%elem(j)%nodes(n_elem_nodes))
-    
+
+            allocate(temp_nodes(n_elem_nodes))
+
+            ! Obtém a linha limpa com os nós e lê diretamente da memória em 'line'
             call read_next_valid_line(i, line)
-            read(line, *) this%elem(j)%nodes
+            read(line, *, iostat=ios) temp_nodes
+            if (ios /= 0) error stop 'Erro na leitura dos nós do elemento.'
 
-            n_v = count(this%node(this%elem(j)%nodes)%type_id == 1)
-            n_e = count(this%node(this%elem(j)%nodes)%type_id == 2)
-            n_i = count(this%node(this%elem(j)%nodes)%type_id == 3)
+            ! Remove fechamento redundante se existir
+            if (n_elem_nodes > 1 .and. temp_nodes(n_elem_nodes) == temp_nodes(1)) then
+                n_elem_nodes = n_elem_nodes - 1
+            end if
 
-            allocate(this%elem(j)%vertices(n_v))
-            allocate(this%elem(j)%edges(n_e))
-            allocate(this%elem(j)%int(n_i))
+            allocate(this%elem(elem_idx)%nodes(n_elem_nodes))
+            this%elem(elem_idx)%nodes(1:n_elem_nodes) = temp_nodes(1:n_elem_nodes)
+            deallocate(temp_nodes)
 
-            if (n_v > 0) this%elem(j)%vertices = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 1)
-            if (n_e > 0) this%elem(j)%edges    = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 2)
-            if (n_i > 0) this%elem(j)%int      = pack(this%elem(j)%nodes, this%node(this%elem(j)%nodes)%type_id == 3)
+            ! Classificação topológica isolada
+            n_v = count(this%node(this%elem(elem_idx)%nodes)%type_id == 1)
+            n_e = count(this%node(this%elem(elem_idx)%nodes)%type_id == 2)
+
+            allocate(this%elem(elem_idx)%vertices(n_v))
+            allocate(this%elem(elem_idx)%edges(n_e))
+
+            if (n_v > 0) this%elem(elem_idx)%vertices = pack(this%elem(elem_idx)%nodes, &
+                this%node(this%elem(elem_idx)%nodes)%type_id == 1)
+            if (n_e > 0) this%elem(elem_idx)%edges    = pack(this%elem(elem_idx)%nodes, &
+                this%node(this%elem(elem_idx)%nodes)%type_id == 2)
         end do
 
+        ! 4. CONDIÇÕES DE CONTORNO DE DIRICHLET
         call read_next_valid_line(i, line)
         read(line, *, iostat=ios) n_dir
         if (ios == 0 .and. n_dir > 0) then
@@ -147,6 +166,7 @@ module vem_core_mod
             end do
         end if
 
+        ! 5. MOLAS ELÁSTICAS CONCENTRADAS
         call read_next_valid_line(i, line)
         read(line, *, iostat=ios) n_spring
         if (ios == 0 .and. n_spring > 0) then
@@ -293,16 +313,6 @@ module vem_core_mod
 
     end subroutine build_edge_dof_map
 
-    pure function matrix_trace(A) result(tr)
-        real(dp), intent(in) :: A(:,:)
-        real(dp) :: tr
-        integer :: i
-        tr = 0.0_dp
-        do i = 1, min(size(A, 1), size(A, 2))
-            tr = tr + A(i, i)
-        end do
-    end function matrix_trace
-
     subroutine compute_vem_stiffness_consistency(Pi_eps, G_eps, C_mat, K_C)
         real(dp), intent(in)  :: Pi_eps(:,:), G_eps(:,:), C_mat(3,3)
         real(dp), intent(out) :: K_C(:,:)
@@ -324,28 +334,6 @@ module vem_core_mod
         
         deallocate(C_expanded, C_G)
     end subroutine compute_vem_stiffness_consistency
-
-    subroutine compute_vem_mass_consistency(Pi_0, H0, rho, M_C)
-        real(dp), intent(in)  :: Pi_0(:,:), H0(:,:)
-        real(dp), intent(in)  :: rho
-        real(dp), intent(out) :: M_C(:,:)
-        M_C = rho * matmul(transpose(Pi_0), matmul(H0, Pi_0))
-    end subroutine compute_vem_mass_consistency
-
-    subroutine compute_vem_stability(D, Pi, alpha_param, S_mat)
-        real(dp), intent(in)  :: D(:,:), Pi(:,:)
-        real(dp), intent(in)  :: alpha_param
-        real(dp), intent(out) :: S_mat(:,:)
-        integer :: ndof
-        real(dp), allocatable :: I_mat(:,:), Proj(:,:)
-
-        ndof = size(D, 1)
-        allocate(I_mat(ndof, ndof), Proj(ndof, ndof))
-        I_mat = eye(ndof)
-        Proj  = I_mat - matmul(D, Pi)
-        S_mat = alpha_param * matmul(transpose(Proj), Proj)
-        deallocate(I_mat, Proj)
-    end subroutine compute_vem_stability
 
     subroutine apply_dirichlet_and_springs(mesh, K_global, F_global, K_ff, F_mod, free_dofs)
         type(mesh_type), intent(in) :: mesh
@@ -404,39 +392,6 @@ module vem_core_mod
         end do
         deallocate(is_fixed_vec, bc_vec, spring_vec)
     end subroutine apply_dirichlet_and_springs
-
-    subroutine compute_matrix_H0_exact(x, y, n, k, n_monomials, ndof, xc, yc, h_E, H0)
-        integer, intent(in) :: n, k, n_monomials, ndof
-        real(dp), intent(in) :: x(n), y(n), xc, yc, h_E
-        real(dp), intent(out) :: H0(ndof*n_monomials, ndof*n_monomials)
-        integer :: i, j, p, q, d, idx1, idx2
-        real(dp) :: raw_moment
-        integer, allocatable :: p_exp(:), q_exp(:)
-        real(dp) :: x_shift(n), y_shift(n)
-
-        H0 = 0.0_dp
-        x_shift = x - xc
-        y_shift = y - yc
-
-        allocate(p_exp(n_monomials), q_exp(n_monomials))
-        call get_monomial_exponents(k, n_monomials, p_exp, q_exp)
-
-        do i = 1, n_monomials
-            do j = 1, n_monomials
-                p = p_exp(i) + p_exp(j)
-                q = q_exp(i) + q_exp(j)
-                call polygon_moment(x_shift, y_shift, n, p, q, raw_moment)
-                raw_moment = raw_moment / (h_E**(p + q))
-
-                do d = 1, ndof
-                    idx1 = ndof * (i - 1) + d
-                    idx2 = ndof * (j - 1) + d
-                    H0(idx1, idx2) = raw_moment
-                end do
-            end do
-        end do
-        deallocate(p_exp, q_exp)
-    end subroutine compute_matrix_H0_exact
 
     subroutine compute_vem_domain_trapezoidal_load(vert_x, vert_y, n_verts, k, ndof, &
                                                    q0, qx, qy, Pi_0, f_elem)
@@ -570,13 +525,13 @@ module vem_core_mod
     subroutine partition_matrix(A, internal_dofs, boundary_dofs, A_ii, A_ib, A_bi, A_bb)
         real(dp), intent(in) :: A(:,:)
         integer, intent(in)  :: internal_dofs(:), boundary_dofs(:)
-        real(dp), allocatable, intent(out), optional :: A_ii(:,:), A_ib(:,:), A_bi(:,:), A_bb(:,:)
+        real(dp), allocatable, intent(out) :: A_ii(:,:), A_ib(:,:), A_bi(:,:), A_bb(:,:)
         integer :: N_i, N_b, i, j
 
         N_i = size(internal_dofs)
         N_b = size(boundary_dofs)
 
-        if (present(A_ii) .and. N_i > 0) then
+        if (N_i > 0) then
             allocate(A_ii(N_i, N_i))
             do i = 1, N_i
                 do j = 1, N_i
@@ -585,7 +540,7 @@ module vem_core_mod
             end do
         end if
 
-        if (present(A_ib) .and. N_i > 0 .and. N_b > 0) then
+        if (N_i > 0 .and. N_b > 0) then
             allocate(A_ib(N_i, N_b))
             do i = 1, N_i
                 do j = 1, N_b
@@ -594,7 +549,7 @@ module vem_core_mod
             end do
         end if
 
-        if (present(A_bi) .and. N_b > 0 .and. N_i > 0) then
+        if (N_b > 0 .and. N_i > 0) then
             allocate(A_bi(N_b, N_i))
             do i = 1, N_b
                 do j = 1, N_i
@@ -603,7 +558,7 @@ module vem_core_mod
             end do
         end if
 
-        if (present(A_bb) .and. N_b > 0) then
+        if (N_b > 0) then
             allocate(A_bb(N_b, N_b))
             do i = 1, N_b
                 do j = 1, N_b
@@ -697,5 +652,66 @@ module vem_core_mod
         end do
         close(unit_num)
     end subroutine write_solution
+
+    subroutine setup_system(mesh, n_global_dofs)
+        class(mesh_type), intent(in) :: mesh
+        integer, intent(out) :: n_global_dofs
+        
+        ! O tamanho global depende APENAS dos nós de contorno lidos no arquivo
+        n_global_dofs = mesh%nnodes * mesh%ndof
+        
+        ! Aqui você alocaria sua matriz global K_global(n_global_dofs, n_global_dofs)
+        ! e o vetor de forças F_global(n_global_dofs)
+        
+    end subroutine setup_system
+
+    subroutine static_condensation(K_full, F_full, n_p, n_i, K_cond, F_cond)
+        real(dp), intent(in)  :: K_full(:,:)
+        real(dp), intent(in)  :: F_full(:)
+        integer,  intent(in)  :: n_p  ! Número de DOFs do perímetro
+        integer,  intent(in)  :: n_i  ! Número de DOFs internos
+        real(dp), intent(out) :: K_cond(n_p, n_p)
+        real(dp), intent(out) :: F_cond(n_p)
+        
+        real(dp), allocatable :: K_pp(:,:), K_pi(:,:), K_ip(:,:), K_ii(:,:)
+        real(dp), allocatable :: F_p(:), F_i(:), temp_mat(:,:), temp_vec(:)
+        integer,  allocatable :: ipiv(:)
+        integer :: info
+        
+        ! Se não houver DOFs internos (ex: k=1), retorna a própria matriz
+        if (n_i == 0) then
+            K_cond = K_full
+            F_cond = F_full
+            return
+        end if
+        
+        ! 1. Extração dos Blocos
+        allocate(K_pp(n_p, n_p)); K_pp = K_full(1:n_p, 1:n_p)
+        allocate(K_pi(n_p, n_i)); K_pi = K_full(1:n_p, n_p+1:n_p+n_i)
+        allocate(K_ip(n_i, n_p)); K_ip = K_full(n_p+1:n_p+n_i, 1:n_p)
+        allocate(K_ii(n_i, n_i)); K_ii = K_full(n_p+1:n_p+n_i, n_p+1:n_p+n_i)
+        
+        allocate(F_p(n_p)); F_p = F_full(1:n_p)
+        allocate(F_i(n_i)); F_i = F_full(n_p+1:n_p+n_i)
+        
+        ! 2. Resolução de K_ii * X = K_ip (Equivalente a X = inv(K_ii) * K_ip)
+        allocate(temp_mat(n_i, n_p)); temp_mat = K_ip
+        allocate(ipiv(n_i))
+        call dgesv(n_i, n_p, K_ii, n_i, ipiv, temp_mat, n_i, info)
+        if (info /= 0) error stop "Erro na condensacao: K_ii singular"
+        
+        ! K_cond = K_pp - K_pi * X
+        K_cond = K_pp - matmul(K_pi, temp_mat)
+        
+        ! 3. Resolução de K_ii * Y = F_i (Equivalente a Y = inv(K_ii) * F_i)
+        ! Como K_ii foi sobrescrita pelo dgesv (fatoração LU), precisamos recarregar
+        K_ii = K_full(n_p+1:n_p+n_i, n_p+1:n_p+n_i)
+        allocate(temp_vec(n_i)); temp_vec = F_i
+        call dgesv(n_i, 1, K_ii, n_i, ipiv, temp_vec, n_i, info)
+        
+        ! F_cond = F_p - K_pi * Y
+        F_cond = F_p - matmul(K_pi, temp_vec)
+        
+    end subroutine static_condensation
 
 end module vem_core_mod

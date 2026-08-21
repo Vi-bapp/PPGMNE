@@ -9,9 +9,17 @@ module dynamics_mod
     public :: solve_generalized_eigenvalue
     public :: newmark_init, newmark_step
     public :: cd_init, cd_step
+    
+    ! Novas subrotinas para Análise Modal
+    public :: compute_modal_coords
+    public :: reconstruct_displacement
+    public :: compute_modal_free_response
 
     contains
 
+    !---------------------------------------------------------------------------
+    ! Resolve o problema de autovalor generalizado: K * phi = lambda * M * phi
+    !---------------------------------------------------------------------------
     subroutine solve_generalized_eigenvalue(K_ii, M_ii, N_i, eigenvalues, eigenvectors)
         integer, intent(in) :: N_i
         real(dp), intent(in) :: K_ii(N_i, N_i), M_ii(N_i, N_i)
@@ -44,6 +52,109 @@ module dynamics_mod
         deallocate(A_tmp, B_tmp, work)
     end subroutine solve_generalized_eigenvalue
 
+    !---------------------------------------------------------------------------
+    ! PROJEÇÃO MODAL: Calcula q_n a partir de u -> q_n = (phi_n^T * M * u) / m_n
+    !---------------------------------------------------------------------------
+    subroutine compute_modal_coords(N, N_modes, u, M, Phi, q)
+        integer, intent(in) :: N, N_modes
+        real(dp), intent(in) :: u(N)               ! Deslocamento no espaço físico
+        real(dp), intent(in) :: M(N, N)            ! Matriz de massa global/reduzida
+        real(dp), intent(in) :: Phi(N, N_modes)    ! Matriz com modos nas colunas
+        real(dp), allocatable, intent(out) :: q(:) ! Coordenadas modais [N_modes]
+
+        real(dp) :: Mu(N), Mphi(N), m_n, p_n
+        integer :: i
+
+        allocate(q(N_modes))
+        Mu = matmul(M, u)
+
+        do i = 1, N_modes
+            Mphi = matmul(M, Phi(:, i))
+            m_n  = dot_product(Phi(:, i), Mphi)  ! Massa modal m_n = phi_n^T * M * phi_n
+            p_n  = dot_product(Phi(:, i), Mu)    ! phi_n^T * M * u
+            
+            if (abs(m_n) > 1.0e-14_dp) then
+                q(i) = p_n / m_n
+            else
+                q(i) = 0.0_dp
+            end if
+        end do
+    end subroutine compute_modal_coords
+
+    !---------------------------------------------------------------------------
+    ! RECONSTRUÇÃO FÍSICA: Calcula u = sum( q_n * phi_n ) = Phi * q
+    !---------------------------------------------------------------------------
+    subroutine reconstruct_displacement(N, N_modes, q, Phi, u)
+        integer, intent(in) :: N, N_modes
+        real(dp), intent(in) :: q(N_modes)          ! Coordenadas modais
+        real(dp), intent(in) :: Phi(N, N_modes)     ! Modos ortonormais/modais
+        real(dp), allocatable, intent(out) :: u(:)  ! Deslocamento reconstruído [N]
+
+        integer :: i
+
+        allocate(u(N))
+        u = 0.0_dp
+
+        do i = 1, N_modes
+            u = u + q(i) * Phi(:, i)
+        end do
+    end subroutine reconstruct_displacement
+
+    !---------------------------------------------------------------------------
+    ! RESPOSTA TEMPORAL EM VIBRAÇÃO LIVRE: q_n(t)
+    !---------------------------------------------------------------------------
+    subroutine compute_modal_free_response(N_modes, t, omega, q0, dq0, xi, q_t)
+        integer, intent(in) :: N_modes
+        real(dp), intent(in) :: t                     ! Tempo atual
+        real(dp), intent(in) :: omega(N_modes)        ! Frequencias naturais (rad/s)
+        real(dp), intent(in) :: q0(N_modes)           ! Condicao inicial q_n(0)
+        real(dp), intent(in) :: dq0(N_modes)          ! Condicao inicial dq_n/dt(0)
+        real(dp), intent(in), optional :: xi(N_modes) ! Taxa de amortecimento modal
+        real(dp), allocatable, intent(out) :: q_t(:)  ! Resposta q_n(t) (Memória estática/pré-alocada)
+    
+        real(dp) :: omega_d, omega_star, A, B, xi_loc
+        integer :: i
+
+        allocate(q_t(N_modes))
+        ! Loop iterando sobre os modos de vibração 'i'
+        do i = 1, N_modes
+        
+            ! Trata o argumento opcional de amortecimento
+            xi_loc = 0.0d0
+            if (present(xi)) xi_loc = xi(i)
+
+            if (xi_loc < 1.0d0) then
+                ! Caso 1: Subamortecido (inclui Não-Amortecido xi = 0)
+                if (xi_loc > 0.0d0) then
+                    omega_d = omega(i) * sqrt(1.0d0 - xi_loc**2)
+                    A = q0(i)
+                    B = (dq0(i) + xi_loc * omega(i) * q0(i)) / omega_d
+                    q_t(i) = exp(-xi_loc * omega(i) * t) * (A * cos(omega_d * t) + B * sin(omega_d * t))
+                else
+                !    Sem amortecimento (xi = 0)
+                    q_t(i) = q0(i) * cos(omega(i) * t) + (dq0(i) / omega(i)) * sin(omega(i) * t)
+                end if
+            
+            else if (xi_loc == 1.0d0) then
+                ! Caso 2: Criticamente amortecido
+                A = q0(i)
+                B = dq0(i) + omega(i) * q0(i)
+                q_t(i) = exp(-omega(i) * t) * (A + B * t)
+            
+            else
+                ! Caso 3: Superamortecido
+                omega_star = omega(i) * sqrt(xi_loc**2 - 1.0d0)
+                A = q0(i)
+                B = (dq0(i) + xi_loc * omega(i) * q0(i)) / omega_star
+                q_t(i) = exp(-xi_loc * omega(i) * t) * (A * cosh(omega_star * t) + B * sinh(omega_star * t))
+            end if
+
+        end do
+    end subroutine compute_modal_free_response
+
+    !---------------------------------------------------------------------------
+    ! Métodos de Integração Temporal Passo a Passo (Newmark / Diferença Central)
+    !---------------------------------------------------------------------------
     subroutine newmark_init(n, dt, beta, gamma, M, C, K, K_eff)
         integer, intent(in) :: n
         real(dp), intent(in) :: dt, beta, gamma
@@ -88,7 +199,7 @@ module dynamics_mod
         allocate(K_copy(n,n))
         K_copy = K_eff
         call solve_linear_system(K_copy, F_eff, u_next, n)
-        deallocate(K_copy) ! Correção do Memory Leak
+        deallocate(K_copy)
 
         do concurrent (i = 1:n)
             a_next(i) = a0 * (u_next(i) - u_curr(i)) - a2 * v_curr(i) - a3 * a_curr(i)
@@ -119,7 +230,7 @@ module dynamics_mod
         allocate(M_copy(n,n))
         M_copy = M
         call solve_linear_system(M_copy, rhs, a0, n)
-        deallocate(M_copy) ! Correção do Memory Leak
+        deallocate(M_copy)
 
         do concurrent (i = 1:n)
             u_prev(i) = u0(i) - dt * v0(i) + (0.5_dp * dt**2) * a0(i)
@@ -144,7 +255,7 @@ module dynamics_mod
         allocate(M_eff_copy(n,n))
         M_eff_copy = M_eff
         call solve_linear_system(M_eff_copy, F_eff, u_next, n)
-        deallocate(M_eff_copy) ! Correção do Memory Leak
+        deallocate(M_eff_copy)
 
         u_prev = u_curr
         u_curr = u_next

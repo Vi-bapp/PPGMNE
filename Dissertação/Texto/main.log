@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  11 AUG 2026 15:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  21 AUG 2026 11:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1185,13 +1185,35 @@ Local configuration file tkz-euclide.cfg found and used
 2024/04/19 5.10c tkz-obj-eu-protractor.tex
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryscopes.code.tex
 File: tikzlibraryscopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2024/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+\@float@every@algorithm=\toks51
+\c@algorithm=\count418
+) (c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+ (c:/texlive/2024/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count419
+\c@ALG@rem=\count420
+\c@ALG@nested=\count421
+\ALG@tlm=\skip266
+\ALG@thistlm=\skip267
+\c@ALG@Lnr=\count422
+\c@ALG@blocknr=\count423
+\c@ALG@storecount=\count424
+\c@ALG@tmpcounter=\count425
+\ALG@tmplength=\skip268
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
 ) (c:/texlive/2024/texmf-dist/tex/latex/abntex2/abntex2cite.sty
 Package: abntex2cite 2018/11/24 v-1.9.7 abnTeX2
  (c:/texlive/2024/texmf-dist/tex/latex/abntex2/abntex2abrev.sty)
-\minimumbiblabelwidth=\skip266
-\ABCIauxlen=\skip267
-\c@ABCIaux=\count418
-\c@ABCImax=\count419
+\minimumbiblabelwidth=\skip269
+\ABCIauxlen=\skip270
+\c@ABCIaux=\count426
+\c@ABCImax=\count427
  (c:/texlive/2024/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
 ) (c:/texlive/2024/texmf-dist/tex/generic/iftex/ifxetex.sty
@@ -1199,78 +1221,89 @@ Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 ) (c:/texlive/2024/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
-\biblabelsep=\skip268
+\biblabelsep=\skip271
 LaTeX Info: Redefining \newblock on input line 591.
 LaTeX Info: Redefining \cite on input line 618.
-\ABCItoken=\toks51
+\ABCItoken=\toks52
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgfplots/pgfplots.sty (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
 Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
  (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
-\t@pgfplots@toka=\toks52
-\t@pgfplots@tokb=\toks53
-\t@pgfplots@tokc=\toks54
+\t@pgfplots@toka=\toks53
+\t@pgfplots@tokb=\toks54
+\t@pgfplots@tokc=\toks55
 \pgfplots@tmpa=\dimen370
-\c@pgfplots@coordindex=\count420
-\c@pgfplots@scanlineindex=\count421
+\c@pgfplots@coordindex=\count428
+\c@pgfplots@scanlineindex=\count429
  (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex
 Package pgfplots: loading complementary utilities for your pgf version...
-\t@pgf@toka=\toks55
-\t@pgf@tokb=\toks56
-\t@pgf@tokc=\toks57
+\t@pgf@toka=\toks56
+\t@pgf@tokb=\toks57
+\t@pgf@tokc=\toks58
 (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
-\c@pgfplotsarray@tmp=\count422
+\c@pgfplotsarray@tmp=\count430
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
-\c@pgfplotstable@counta=\count423
-\t@pgfplotstable@a=\toks58
+\c@pgfplotstable@counta=\count431
+\t@pgfplotstable@a=\toks59
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count424
+\c@pgfplotslibrarysurf@no=\count432
  (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
-\pgfplots@numplots=\count425
+\pgfplots@numplots=\count433
 \pgfplots@xmin@reg=\dimen371
 \pgfplots@xmax@reg=\dimen372
 \pgfplots@ymin@reg=\dimen373
 \pgfplots@ymax@reg=\dimen374
 \pgfplots@zmin@reg=\dimen375
 \pgfplots@zmax@reg=\dimen376
-)))
-Package hyperref Info: Option `colorlinks' set `true' on input line 35.
- (./main.aux (./Introducao.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux))
+)) (c:/texlive/2024/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2024/07/06 v1.0i Color table columns (DPC)
+\everycr=\toks60
+\minrowclearance=\skip272
+\rownum=\count434
+)) (c:/texlive/2024/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2023/07/28 v1.6b Sub-captions (AR)
+Package caption Info: New subtype `subfigure' on input line 238.
+\c@subfigure=\count435
+Package caption Info: New subtype `subtable' on input line 238.
+\c@subtable=\count436
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 36.
+ (./main.aux (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./apendice.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-Package hyperref Info: Link coloring ON on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+Package hyperref Info: Link coloring ON on input line 40.
 \myptabbox=\box134
-\myptabboxwidth=\skip269
-LaTeX Info: Redefining \microtypecontext on input line 39.
-Package microtype Info: Applying patch `item' on input line 39.
-Package microtype Info: Applying patch `toc' on input line 39.
-Package microtype Info: Applying patch `eqnum' on input line 39.
-Package microtype Info: Applying patch `footnote' on input line 39.
-Package microtype Info: Applying patch `verbatim' on input line 39.
+\myptabboxwidth=\skip273
+LaTeX Info: Redefining \microtypecontext on input line 40.
+Package microtype Info: Applying patch `item' on input line 40.
+Package microtype Info: Applying patch `toc' on input line 40.
+Package microtype Info: Applying patch `eqnum' on input line 40.
+Package microtype Info: Applying patch `footnote' on input line 40.
+Package microtype Info: Applying patch `verbatim' on input line 40.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 39.
+LaTeX Info: Redefining \showhyphens on input line 40.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -1314,28 +1347,28 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (
 (c:/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-brazil.trsl
 File: translations-basic-dictionary-brazil.trsl (brazil translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `brazil'. on input line 39.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `brazil'. on input line 40.
  (c:/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-german.trsl
 File: translations-basic-dictionary-german.trsl (german translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 39.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `german'. on input line 40.
  (c:/texlive/2024/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
-Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 39.
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 40.
  (c:/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count426
+\scratchcounter=\count437
 \scratchdimen=\dimen377
 \scratchbox=\box135
-\nofMPsegments=\count427
-\nofMParguments=\count428
-\everyMPshowfont=\toks59
-\MPscratchCnt=\count429
+\nofMPsegments=\count438
+\nofMParguments=\count439
+\everyMPshowfont=\toks61
+\MPscratchCnt=\count440
 \MPscratchDim=\dimen378
-\MPnumerator=\count430
-\makeMPintoPDFobject=\count431
-\everyMPtoPDFconversion=\toks60
+\MPnumerator=\count441
+\makeMPintoPDFobject=\count442
+\everyMPtoPDFconversion=\toks62
 ) (c:/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1353,9 +1386,9 @@ pdfTeX warning: pdflatex.exe (file ./figuras/UFPR.pdf): PDF inclusion: found PDF
 <figuras/UFPR.pdf, id=7, 597.23125pt x 845.1575pt>
 File: figuras/UFPR.pdf Graphic file (type pdf)
 <use figuras/UFPR.pdf>
-Package pdftex.def Info: figuras/UFPR.pdf  used on input line 41.
+Package pdftex.def Info: figuras/UFPR.pdf  used on input line 42.
 (pdftex.def)             Requested size: 358.50836pt x 507.34344pt.
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 41.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 42.
 (c:/texlive/2024/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -1372,13 +1405,13 @@ Package microtype Info: Loading generic protrusion settings for font family
 [2
 
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/texlive/2024/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
  (c:/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/texlive/2024/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1389,7 +1422,7 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 \makeatother
+l.44 \makeatother
                  \cleardoublepage [1
 
 
@@ -1399,7 +1432,7 @@ l.43 \makeatother
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.43 \makeatother\cleardoublepage
+l.44 \makeatother\cleardoublepage
                                   [2
 
 ]
@@ -1414,78 +1447,481 @@ l.43 \makeatother\cleardoublepage
 
 [6
 
-] (./main.toc)
+] (./main.toc
+Underfull \vbox (badness 6978) has occurred while \output is active []
 
-[7]
 
-[8
 
-]
-\openout2 = `Introducao.aux'.
+[7])
 
- (./Introducao.tex)
+[8]
+\openout2 = `cap_1.aux'.
+
+ (./cap_1.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 
 [9
 
 
+
 ]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[10{c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
+
+[11]
+
+[12]
+
+[13])
+
+[14]
 \openout2 = `cap_2.aux'.
 
  (./cap_2.tex
-
-[10
-
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-])
+[15
 
-[11]
+
+
+
+]
+Underfull \vbox (badness 3657) has occurred while \output is active []
+
+
+
+[16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[17]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[18]
+
+[19]
+
+[20]
+
+[21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[22])
+
+[23]
+
+[24]
+
+[25]
+
+[26]
 \openout2 = `cap_3.aux'.
 
  (./cap_3.tex
+Underfull \hbox (badness 10000) in paragraph at lines 12--34
 
-[12
+ []
+
+
+
+[27
 
 
 
 
-])
+]
+<figuras/capitulo_3/1-a.png, id=275, 513.92pt x 265.99374pt>
+File: figuras/capitulo_3/1-a.png Graphic file (type png)
+<use figuras/capitulo_3/1-a.png>
+Package pdftex.def Info: figuras/capitulo_3/1-a.png  used on input line 43.
+(pdftex.def)             Requested size: 188.21288pt x 97.41364pt.
+<figuras/capitulo_3/1-b.png, id=276, 513.92pt x 216.81pt>
+File: figuras/capitulo_3/1-b.png Graphic file (type png)
+<use figuras/capitulo_3/1-b.png>
+Package pdftex.def Info: figuras/capitulo_3/1-b.png  used on input line 50.
+(pdftex.def)             Requested size: 188.21288pt x 79.40129pt.
 
-[13]
+
+[28 <./figuras/Capitulo_3/1-a.png> <./figuras/Capitulo_3/1-b.png>]
+<figuras/capitulo_3/2-a.png, id=284, 361.35pt x 351.3125pt>
+File: figuras/capitulo_3/2-a.png Graphic file (type png)
+<use figuras/capitulo_3/2-a.png>
+Package pdftex.def Info: figuras/capitulo_3/2-a.png  used on input line 67.
+(pdftex.def)             Requested size: 188.21288pt x 182.98373pt.
+<figuras/capitulo_3/2-b.png, id=285, 513.92pt x 146.5475pt>
+File: figuras/capitulo_3/2-b.png Graphic file (type png)
+<use figuras/capitulo_3/2-b.png>
+Package pdftex.def Info: figuras/capitulo_3/2-b.png  used on input line 74.
+(pdftex.def)             Requested size: 188.21288pt x 53.66939pt.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmss' (encoding: OT1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+
+[29 <./figuras/Capitulo_3/2-a.png> <./figuras/Capitulo_3/2-b.png>]
+<figuras/capitulo_3/3.png, id=295, 376.40625pt x 162.6075pt>
+File: figuras/capitulo_3/3.png Graphic file (type png)
+<use figuras/capitulo_3/3.png>
+Package pdftex.def Info: figuras/capitulo_3/3.png  used on input line 100.
+(pdftex.def)             Requested size: 418.25368pt x 180.6999pt.
+
+
+[30 <./figuras/Capitulo_3/3.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 128--136
+
+ []
+
+<figuras/capitulo_3/4-a.png, id=302, 513.92pt x 208.78pt>
+File: figuras/capitulo_3/4-a.png Graphic file (type png)
+<use figuras/capitulo_3/4-a.png>
+Package pdftex.def Info: figuras/capitulo_3/4-a.png  used on input line 145.
+(pdftex.def)             Requested size: 188.21288pt x 76.4605pt.
+<figuras/capitulo_3/4-b.png, id=303, 513.92pt x 221.82875pt>
+File: figuras/capitulo_3/4-b.png Graphic file (type png)
+<use figuras/capitulo_3/4-b.png>
+Package pdftex.def Info: figuras/capitulo_3/4-b.png  used on input line 152.
+(pdftex.def)             Requested size: 188.21288pt x 81.23929pt.
+
+
+[31]
+
+[32 <./figuras/Capitulo_3/4-a.png> <./figuras/Capitulo_3/4-b.png>]
+<figuras/capitulo_3/5.png, id=321, 454.69875pt x 230.8625pt>
+File: figuras/capitulo_3/5.png Graphic file (type png)
+<use figuras/capitulo_3/5.png>
+Package pdftex.def Info: figuras/capitulo_3/5.png  used on input line 227.
+(pdftex.def)             Requested size: 418.25368pt x 212.36084pt.
+
+
+[33]
+
+[34 <./figuras/Capitulo_3/5.png>]
+<figuras/capitulo_3/6.png, id=337, 513.92pt x 225.84375pt>
+File: figuras/capitulo_3/6.png Graphic file (type png)
+<use figuras/capitulo_3/6.png>
+Package pdftex.def Info: figuras/capitulo_3/6.png  used on input line 265.
+(pdftex.def)             Requested size: 418.25368pt x 183.80428pt.
+
+
+[35 <./figuras/Capitulo_3/6.png>]
+<figuras/capitulo_3/7.png, id=347, 383.4325pt x 372.39125pt>
+File: figuras/capitulo_3/7.png Graphic file (type png)
+<use figuras/capitulo_3/7.png>
+Package pdftex.def Info: figuras/capitulo_3/7.png  used on input line 312.
+(pdftex.def)             Requested size: 418.25368pt x 406.23366pt.
+<figuras/capitulo_3/8.png, id=349, 459.7175pt x 446.66875pt>
+File: figuras/capitulo_3/8.png Graphic file (type png)
+<use figuras/capitulo_3/8.png>
+Package pdftex.def Info: figuras/capitulo_3/8.png  used on input line 344.
+(pdftex.def)             Requested size: 418.25368pt x 406.40103pt.
+
+
+[36]
+
+[37 <./figuras/Capitulo_3/7.png>]
+
+[38 <./figuras/Capitulo_3/8.png>]
+<figuras/capitulo_3/9.png, id=369, 513.92pt x 322.20375pt>
+File: figuras/capitulo_3/9.png Graphic file (type png)
+<use figuras/capitulo_3/9.png>
+Package pdftex.def Info: figuras/capitulo_3/9.png  used on input line 358.
+(pdftex.def)             Requested size: 418.25368pt x 262.22746pt.
+
+
+[39 <./figuras/Capitulo_3/9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 429--430
+
+ []
+
+
+
+[40]
+
+[41]
+
+[42]
+<figuras/capitulo_3/10.png, id=422, 362.35374pt x 278.03876pt>
+File: figuras/capitulo_3/10.png Graphic file (type png)
+<use figuras/capitulo_3/10.png>
+Package pdftex.def Info: figuras/capitulo_3/10.png  used on input line 574.
+(pdftex.def)             Requested size: 418.25368pt x 320.93846pt.
+
+
+[43]
+
+[44 <./figuras/Capitulo_3/10.png>]
+<figuras/Capitulo_3/T1.png, id=441, 136.51pt x 173.64874pt>
+File: figuras/Capitulo_3/T1.png Graphic file (type png)
+<use figuras/Capitulo_3/T1.png>
+Package pdftex.def Info: figuras/Capitulo_3/T1.png  used on input line 631.
+(pdftex.def)             Requested size: 56.9055pt x 72.38614pt.
+<figuras/Capitulo_3/T2.png, id=442, 130.4875pt x 168.63pt>
+File: figuras/Capitulo_3/T2.png Graphic file (type png)
+<use figuras/Capitulo_3/T2.png>
+Package pdftex.def Info: figuras/Capitulo_3/T2.png  used on input line 632.
+(pdftex.def)             Requested size: 56.9055pt x 73.53871pt.
+<figuras/Capitulo_3/T3.png, id=443, 158.5925pt x 180.675pt>
+File: figuras/Capitulo_3/T3.png Graphic file (type png)
+<use figuras/Capitulo_3/T3.png>
+Package pdftex.def Info: figuras/Capitulo_3/T3.png  used on input line 633.
+(pdftex.def)             Requested size: 56.9055pt x 64.8279pt.
+<figuras/Capitulo_3/T4.png, id=444, 148.555pt x 250.9375pt>
+File: figuras/Capitulo_3/T4.png Graphic file (type png)
+<use figuras/Capitulo_3/T4.png>
+Package pdftex.def Info: figuras/Capitulo_3/T4.png  used on input line 634.
+(pdftex.def)             Requested size: 56.9055pt x 96.12303pt.
+<figuras/Capitulo_3/T5.png, id=445, 180.675pt x 167.62625pt>
+File: figuras/Capitulo_3/T5.png Graphic file (type png)
+<use figuras/Capitulo_3/T5.png>
+Package pdftex.def Info: figuras/Capitulo_3/T5.png  used on input line 635.
+(pdftex.def)             Requested size: 56.9055pt x 52.79486pt.
+
+Overfull \hbox (174.59032pt too wide) in paragraph at lines 628--638
+[][]
+ []
+
+
+
+[45]
+
+[46 <./figuras/Capitulo_3/T1.png> <./figuras/Capitulo_3/T2.png> <./figuras/Capitulo_3/T3.png> <./figuras/Capitulo_3/T4.png> <./figuras/Capitulo_3/T5.png>]
+Overfull \hbox (362.6876pt too wide) in paragraph at lines 685--695
+[][]
+ []
+
+
+
+[47]
+
+[48]
+Overfull \hbox (2.37543pt too wide) detected at line 786
+[][][][][] \OML/cmm/m/it/12 ^^Z '[] ' d\OT1/cmr/m/n/12 
+ [] + [][] \OML/cmm/m/it/12 ^^O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ) : \U/msb/m/n/12 D\OML/cmm/m/it/12 ^^O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 
+ [] + [][] \OML/cmm/m/it/12 ^^O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ) : \U/msb/m/n/12 C\OML/cmm/m/it/12 ^^O\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 '\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 
+ \OML/cmm/m/it/12 u \OT1/cmr/m/n/12 = [][] \OML/cmm/m/it/12 ' b d\OT1/cmr/m/n/12 
+ + [][] \OML/cmm/m/it/12 ' \OMS/cmsy/m/n/12 ^^A \OML/cmm/m/it/12 t[] d\OT1/cmr/m/n/12 ^^@
+ []
+
+
+
+[49]
+
+[50]
+<figuras/capitulo_3/11.png, id=506, 513.92pt x 253.94875pt>
+File: figuras/capitulo_3/11.png Graphic file (type png)
+<use figuras/capitulo_3/11.png>
+Package pdftex.def Info: figuras/capitulo_3/11.png  used on input line 872.
+(pdftex.def)             Requested size: 418.25368pt x 206.6777pt.
+
+
+[51 <./figuras/Capitulo_3/11.png>])
+
+[52]
 \openout2 = `cap_4.aux'.
 
  (./cap_4.tex
+<figuras/Capítulo 4/4.1.png, id=524, 513.92pt x 505.89pt>
+File: figuras/Capítulo 4/4.1.png Graphic file (type png)
+<use figuras/Capítulo 4/4.1.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.1.png  used on input line 15.
+(pdftex.def)             Requested size: 418.25368pt x 411.72162pt.
+<figuras/Capítulo 4/4.2a.png, id=526, 513.92pt x 348.30125pt>
+File: figuras/Capítulo 4/4.2a.png Graphic file (type png)
+<use figuras/Capítulo 4/4.2a.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.2a.png  used on input line 33.
+(pdftex.def)             Requested size: 188.21288pt x 127.55672pt.
+<figuras/Capítulo 4/4.2b.png, id=527, 513.92pt x 388.45125pt>
+File: figuras/Capítulo 4/4.2b.png Graphic file (type png)
+<use figuras/Capítulo 4/4.2b.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.2b.png  used on input line 40.
+(pdftex.def)             Requested size: 188.21288pt x 142.26067pt.
 
-[14
+
+[53
 
 
 
 
-])
+]
 
-[15] (./main.bbl (./main.brf)
+[54 <./figuras/Capítulo 4/4.1.png>]
+<figuras/Capítulo 4/4.3.png, id=539, 513.92pt x 390.45876pt>
+File: figuras/Capítulo 4/4.3.png Graphic file (type png)
+<use figuras/Capítulo 4/4.3.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.3.png  used on input line 60.
+(pdftex.def)             Requested size: 418.25368pt x 317.7772pt.
+
+
+[55 <./figuras/Capítulo 4/4.2a.png> <./figuras/Capítulo 4/4.2b.png>]
+
+[56 <./figuras/Capítulo 4/4.3.png>]
+
+[57]
+Overfull \hbox (102.55533pt too wide) detected at line 159
+[][][]\OML/cmm/m/it/12 V[] \OT1/cmr/m/n/12 := []
+ []
+
+<figuras/Capítulo 4/4.4.png, id=563, 463.7325pt x 217.81375pt>
+File: figuras/Capítulo 4/4.4.png Graphic file (type png)
+<use figuras/Capítulo 4/4.4.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.4.png  used on input line 179.
+(pdftex.def)             Requested size: 418.25368pt x 196.45596pt.
+
+
+[58]
+<figuras/Capítulo 4/4.5.png, id=572, 513.92pt x 133.49875pt>
+File: figuras/Capítulo 4/4.5.png Graphic file (type png)
+<use figuras/Capítulo 4/4.5.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.5.png  used on input line 208.
+(pdftex.def)             Requested size: 418.25368pt x 108.64874pt.
+
+
+[59 <./figuras/Capítulo 4/4.4.png>]
+
+[60 <./figuras/Capítulo 4/4.5.png>]
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 273.
+
+
+
+[61]
+
+[62]
+Overfull \hbox (92.59698pt too wide) detected at line 351
+[][][]\OML/cmm/m/it/12 H[] \OT1/cmr/m/n/12 = [] [][] = [] []
+ []
+
+
+
+[63]
+
+[64]
+<figuras/Capítulo 4/4.6.png, id=632, 383.4325pt x 271.0125pt>
+File: figuras/Capítulo 4/4.6.png Graphic file (type png)
+<use figuras/Capítulo 4/4.6.png>
+Package pdftex.def Info: figuras/Capítulo 4/4.6.png  used on input line 441.
+(pdftex.def)             Requested size: 418.25368pt x 295.64174pt.
+
+
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 477--477
+
+ []
+
+
+
+[66 <./figuras/Capítulo 4/4.6.png>]
+
+[67]
+
+LaTeX Warning: Command \textellipsis invalid in math mode on input line 496.
+
+
+Overfull \hbox (260.91953pt too wide) detected at line 505
+\OML/cmm/m/it/12 ^^_[] [] \OT1/cmr/m/n/12 = [] = [] [] \OML/cmm/m/it/12 ^^_[] [] \OT1/cmr/m/n/12 = [] = []
+ []
+
+
+
+[68]
+
+[69]
+
+[70]
+
+LaTeX Warning: Command \textendash invalid in math mode on input line 657.
+
+
+
+[71]
+
+[72]
+
+Package amsmath Warning: Bracket group [M] at formula start!
+(amsmath)                It could be a misspelled positional argument.
+(amsmath)                If it belongs to the formula add a \relax in
+(amsmath)                front to hide it on input line 690.
+
+
+Overfull \hbox (125.91853pt too wide) detected at line 718
+\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 M\OT1/cmr/m/n/12 ][] = \OML/cmm/m/it/12 ^^Z [][]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 ^^E[])\OML/cmm/m/it/12 '[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 ^^E[])\OML/cmm/m/it/12 '[]d\OT1/cmr/m/n/12 
+[] = \OML/cmm/m/it/12 ^^Z [][] \OT1/cmr/m/n/12 = [] \OML/cmm/m/it/12 ^^Z [] ^^_[]\OT1/cmr/m/n/12 ((\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 ^^E[])\OML/cmm/m/it/12 '[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 ^^_[]\OT1/cmr/m/n/12 ((\OML/cmm/m/it/12 I \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 ^^E[])\OML/cmm/m/it/12 '[]\OT1/cmr/m/n/12 )
+ []
+
+
+
+[73]
+Overfull \hbox (33.84035pt too wide) detected at line 747
+[][][]\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 K\OT1/cmr/m/n/12 ][] = [][]([](^^E[]\OML/cmm/m/it/12 '[]\OT1/cmr/m/n/12 ))[]\U/msb/m/n/12 C[]\OT1/cmr/m/n/12 (^^E[]\OML/cmm/m/it/12 '[]\OT1/cmr/m/n/12 ) \OML/cmm/m/it/12 d\OT1/cmr/m/n/12 
+ + [][] \OML/cmm/m/it/12 ^^O [][] \U/msb/m/n/12 C\OML/cmm/m/it/12 ^^O [] d\OT1/cmr/m/n/12 
+
+ []
+
+
+
+[74]
+Overfull \hbox (32.25623pt too wide) in paragraph at lines 801--802
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[75]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 808.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+[76]
+
+[77])
+
+[78] (./main.bbl (./main.brf)
 \tf@brf=\write5
 \openout5 = `main.brf'.
 
 
-
-[16
-
-
-
-]
 bibitemlist
 
 LaTeX Warning: Empty `thebibliography' environment on input line 8.
 
 )
 
-[17]
+[79
+
+
+
+]
+\openout2 = `apendice.aux'.
+
+ (./Apendice.tex)
+
+[80
+
+]
+
+[81]
 \tf@toc=\write6
 \openout6 = `main.toc'.
 
- (./main.aux (./Introducao.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux))
+ (./main.aux (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./apendice.aux))
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -1494,18 +1930,18 @@ Package rerunfilecheck Info: File `main.brf' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 49721 strings out of 473584
- 1154652 string characters out of 5732363
- 1931908 words of memory out of 5000000
- 71645 multiletter control sequences out of 15000+600000
- 573702 words of font info for 97 fonts, out of 8000000 for 9000
+ 51630 strings out of 473584
+ 1184621 string characters out of 5732363
+ 1957908 words of memory out of 5000000
+ 72960 multiletter control sequences out of 15000+600000
+ 596504 words of font info for 268 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,107p,1235b,1085s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb>
-Output written on main.pdf (19 pages, 327913 bytes).
+ 99i,21n,107p,1258b,1116s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1095.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1440.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfss2488.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx1728.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+Output written on main.pdf (83 pages, 1702295 bytes).
 PDF statistics:
- 199 PDF objects out of 1000 (max. 8388607)
- 154 compressed objects within 2 object streams
- 33 named destinations out of 1000 (max. 500000)
- 28762 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 1129 PDF objects out of 1200 (max. 8388607)
+ 933 compressed objects within 10 object streams
+ 322 named destinations out of 1000 (max. 500000)
+ 86492 words of extra memory for PDF output out of 89155 (max. 10000000)
 

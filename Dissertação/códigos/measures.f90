@@ -56,31 +56,83 @@ module measures_mod
         end if
     end function get_wall_time
 
+    !Condicionamento das matrizes
     subroutine conditioning(A, n)
+        use, intrinsic :: ieee_arithmetic, only: ieee_is_nan
         integer, intent(in) :: n
         real(dp), intent(in) :: A(n,n)
-        real(dp) :: cond_num
-        real(dp), allocatable :: A_tmp(:,:), S(:), work(:)
-        integer :: info, lwork
+        real(dp) :: cond_num 
+
+        real(dp), allocatable :: A_tmp(:,:), W(:), work(:), abs_w(:)
+        integer :: info, lwork, i, n_zero_modes, first_nonzero_idx
         real(dp) :: work_query(1)
+        real(dp) :: min_sv, max_sv, zero_tol
+
+        cond_num = -1.0_dp
 
         if (n <= 0) return
-        allocate(A_tmp(n,n), S(n))
+
+        if (any(ieee_is_nan(A))) then
+            write(*, '(A)') 'Erro: Matriz K_ii contem valores NaN/Inf antes do calculo.'
+            return
+        end if
+
+        allocate(A_tmp(n,n), W(n), abs_w(n))
         A_tmp = A
 
+        ! Consulta tamanho de workspace para LAPACK dsyev
         lwork = -1
-        call dgesvd('N', 'N', n, n, A_tmp, n, S, A_tmp, n, A_tmp, n, work_query, lwork, info)
+        call dsyev('N', 'U', n, A_tmp, n, W, work_query, lwork, info)
+
         if (info == 0) then
             lwork = nint(work_query(1))
             allocate(work(lwork))
-            call dgesvd('N', 'N', n, n, A_tmp, n, S, A_tmp, n, A_tmp, n, work, lwork, info)
+        
+            A_tmp = A 
+            call dsyev('N', 'U', n, A_tmp, n, W, work, lwork, info)
             deallocate(work)
-            if (info == 0 .and. S(n) > 0.0_dp) then
-                cond_num = S(1) / S(n)
-                write(*, '(A, ES14.6)') 'Numero de Condicionamento (K_ii): ', cond_num
+    
+            if (info == 0) then
+                abs_w = abs(W)
+                max_sv = maxval(abs_w)
+                
+                ! Tolerância relativa para autovalores nulos (modos de corpo rígido)
+                zero_tol = 1.0e-10_dp * max_sv
+
+                n_zero_modes = 0
+                first_nonzero_idx = 0
+
+                ! Varia sobre autovalores ordenados identificando o primeiro modo não-nulo
+                do i = 1, n
+                    if (abs_w(i) <= zero_tol) then
+                        n_zero_modes = n_zero_modes + 1
+                    else
+                        if (first_nonzero_idx == 0) first_nonzero_idx = i
+                    end if
+                end do
+
+                if (first_nonzero_idx > 0) then
+                    min_sv = abs_w(first_nonzero_idx)
+                    cond_num = max_sv / min_sv
+
+                    if (n_zero_modes > 0) then
+                        write(*, '(A, I0, A)') 'Info: Detectado(s) ', n_zero_modes, &
+                            ' modo(s) nulo(s) (corpo livre ou sem restricoes).'
+                        write(*, '(A, ES14.6)') 'Numero de Condicionamento Efetivo (K_ii): ', cond_num
+                    else
+                        write(*, '(A, ES14.6)') 'Numero de Condicionamento (K_ii): ', cond_num
+                    end if
+                else
+                    write(*, '(A)') 'Erro: Todos os autovalores sao numericamente nulos.'
+                end if
+            else
+                write(*, '(A, I0)') 'Erro: dsyev falhou na execucao. INFO = ', info
             end if
+        else
+            write(*, '(A, I0)') 'Erro: dsyev falhou na consulta de memoria. INFO = ', info
         end if
-        deallocate(A_tmp, S)
+
+        deallocate(A_tmp, W, abs_w)
     end subroutine conditioning
 
     subroutine print_run_times(t_montagem, t_solucao)

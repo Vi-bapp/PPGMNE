@@ -1,46 +1,48 @@
-\changetocdepth {4}
-\babel@toc {brazil}{}\relax 
-\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {1}\MakeTextUppercase []{Introdução}}{9}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Objetivos}{11}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Objetivos específicos}{11}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Metodologia}{11}{section.1.3}%
-\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {2}\MakeTextUppercase []{ Revisão bibliográfica}}{15}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Desenvolvimento do método e principais formulações}{15}{section.2.1}%
-\contentsline {section}{\numberline {2.2}O método dos elementos virtuais em problemas de elasticidade.}{20}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}Pequenas deformações:}{21}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}Grandes deformações:}{23}{subsection.2.2.2}%
-\contentsline {section}{\numberline {2.3}O método dos elementos virtuais em problemas de dinâmica}{23}{section.2.3}%
-\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {3}\MakeTextUppercase []{O problema dinâmico}}{27}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Análise dinâmica de estruturas}{27}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Conceitos Básicos}{27}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Modos de vibração}{31}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{33}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{34}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{41}{subsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{43}{subsubsection.3.2.2.1}%
-\contentsline {section}{\numberline {3.3}Métodos aproximados}{45}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{45}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{48}{subsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca com análise modal para equação de vibração livre não amortecidas.}{50}{subsubsection.3.3.2.1}%
-\contentsline {subsection}{\numberline {3.3.3}Métodos de galerkin com discretização do domínio}{50}{subsection.3.3.3}%
-\setlength {\cftchapterindent }{0em} \setlength {\cftchapternumwidth }{\cftlastnumwidth }
-\contentsline {chapter}{\chapternumberline {4}\MakeTextUppercase []{O método dos elementos virtuais}}{53}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais:}{53}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Espaço de solução}{57}{section.4.2}%
-\contentsline {section}{\numberline {4.3}O elemento virtual}{58}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Operadores de projeção:}{60}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$:}{63}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$:}{69}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$:}{70}{subsection.4.4.3}%
-\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa:}{72}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{73}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{74}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}Implementação:}{77}{section.4.6}%
-\vspace {\cftbeforechapterskip }
-\setlength {\cftchapterindent }{\cftlastnumwidth } \setlength {\cftchapternumwidth }{2em}
-\contentsline {chapter}{\MakeTextUppercase []{Refer\^encias}}{79}{section*.26}%
-\contentsline {section}{\numberline {4.7}Apêndice A - Tabela com pontos e pesos de Gauss-Lobatto}{80}{section.4.7}%
+\babel@toc {brazilian}{}\relax 
+\babel@toc {brazilian}{}\relax 
+\babel@toc {brazilian}{}\relax 
+\babel@toc {english}{}\relax 
+\babel@toc {brazilian}{}\relax 
+\contentsline {chapter}{\numberline {1}Introdução}{13}{chapter.8}%
+\contentsline {section}{\numberline {1.1}Objetivos}{14}{section.9}%
+\contentsline {section}{\numberline {1.2}Objetivos específicos}{14}{section.10}%
+\contentsline {section}{\numberline {1.3}Metodologia}{14}{section.14}%
+\contentsline {chapter}{\numberline {2} Revisão bibliográfica}{18}{chapter.37}%
+\contentsline {section}{\numberline {2.1}Desenvolvimento do método e principais formulações}{18}{section.38}%
+\contentsline {section}{\numberline {2.2}O método dos elementos virtuais em problemas de elasticidade.}{21}{section.41}%
+\contentsline {subsection}{\numberline {2.2.1}Pequenas deformações:}{22}{subsection.42}%
+\contentsline {subsection}{\numberline {2.2.2}Grandes deformações:}{23}{subsection.43}%
+\contentsline {section}{\numberline {2.3}O método dos elementos virtuais em problemas de dinâmica}{24}{section.44}%
+\contentsline {chapter}{\numberline {3}O problema dinâmico}{27}{chapter.47}%
+\contentsline {section}{\numberline {3.1}Análise dinâmica de estruturas}{27}{section.48}%
+\contentsline {subsection}{\numberline {3.1.1}Conceitos Básicos}{27}{subsection.49}%
+\contentsline {subsection}{\numberline {3.1.2}Modos de vibração}{30}{subsection.54}%
+\contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{32}{section.65}%
+\contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{32}{subsection.66}%
+\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{39}{subsection.88}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{42}{subsubsection.103}%
+\contentsline {section}{\numberline {3.3}Métodos aproximados}{42}{section.109}%
+\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{44}{subsection.110}%
+\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{45}{subsection.115}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca com análise modal para equação de vibração livre não amortecidas.}{46}{subsubsection.131}%
+\contentsline {subsection}{\numberline {3.3.3}Método de Galerkin com discretização do domínio}{47}{subsection.135}%
+\contentsline {chapter}{\numberline {4}O método dos elementos virtuais}{49}{chapter.143}%
+\contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais:}{49}{section.144}%
+\contentsline {section}{\numberline {4.2}Espaço de solução}{52}{section.153}%
+\contentsline {section}{\numberline {4.3}O elemento virtual}{54}{section.159}%
+\contentsline {section}{\numberline {4.4}Operadores de projeção:}{55}{section.163}%
+\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$:}{57}{subsection.173}%
+\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$:}{64}{subsection.198}%
+\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$:}{65}{subsection.205}%
+\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa:}{66}{section.214}%
+\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{67}{subsection.219}%
+\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{68}{subsection.226}%
+\contentsline {section}{\numberline {4.6}Implementação:}{70}{section.232}%
+\contentsline {chapter}{\numberline {5}Problemas de vibração livre com o método dos elementos virtuais}{72}{chapter.235}%
+\contentsline {section}{\numberline {5.1}Chapa com furo circular}{73}{section.236}%
+\contentsline {section}{\numberline {5.2}Barragem de terra}{85}{section.256}%
+\contentsline {section}{\numberline {5.3}Parede estrutural}{96}{section.277}%
+\contentsline {chapter}{\numberline {6}Conclusão}{108}{chapter.299}%
+\contentsline {chapter}{REFER\^ENCIAS}{110}{chapter*.300}%
+\contentsline {section}{\numberline {.1}Apêndice A - Tabela com pontos e pesos de Gauss-Lobatto}{118}{section.301}%
+\contentsfinish 

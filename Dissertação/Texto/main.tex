@@ -1,100 +1,192 @@
-\documentclass[12pt, a4paper, twoside, chapter=TITLE, subsection=TITLE, section=TITLE, subsubsection=TITLE, subsubsubsection=TITLE, english, german, brazil]{abntex2}
+% Este documento destina-se a servir como modelo para a produção de documentos
+% de pesquisa do PPGINF/UFPR, como projetos, dissertações e teses. A classe de
+% documento se chama "ppginf" (arquivo ppginf.cls) e define o formato básico
+% do documento. O texto está organizado em capítulos que são colocados em
+% subdiretórios separados. São definidos exemplos para a inclusão de figuras,
+% códigos-fonte e a definição de tabelas.
+%
+% Produzido por Carlos Maziero (maziero@inf.ufpr.br).
 
+%=====================================================
 
-\usepackage[utf8]{inputenc}
-\usepackage[brazilian,hyperpageref]{backref}
-\usepackage{pacotes}
-\usepackage{subcaption}
+% Opções da classe ppginf:
+%
+% - defesa    : versão para entregar à banca; tem espaçamento 1,5
+%               e omite algumas páginas iniciais (agradecimentos, etc)
+% - final     : versão pós-defesa, para enviar à biblioteca;
+%               tem espaçamento simples e todas as páginas iniciais.
+% - oneside   : somente frente; use quando for gerar somente o PDF.
+% - twoside   : frente/verso; use se precisar de uma versão impressa.
+% - metadados : inclui metadados no PDF (por default não inclui)
+% - ...       : demais opções aceitas pela classe "book"
 
+% ATENÇÂO: este modelo tem suporte para português e inglês.
+% As duas línguas devem ser informadas como opção da classe;
+% a língua principal do documento deve vir POR ÚLTIMO.
 
-\titulo{Análise de estruturas em estado plano em vibração livre com o método dos elementos virtuais}
-\tituloestrangeiro{Analysis of plane state structures in free vibration with the virtual elements method}
-\autor{Vinícius Belmar Almeida Prado Pohl}
-\orientador[Dr.]{Marcos Arndt}
-\data{2026}
-\instituicao{
-    Universidade Federal do Paraná (UFPR) \par
-    Programa de Pós-Graduação em Métodos Numéricos em Engenharia \par
-    Mestrado Acadêmico em Métodos Numéricos em Engenharia
+% Versão para a defesa (português)
+\documentclass[defesa,oneside,english,brazilian]{ppginf}
+
+% Versão para a defesa (inglês)
+%\documentclass[defesa,oneside,brazilian,english]{ppginf}
+
+% Versão final para a biblioteca da UFPR (português)
+%\documentclass[final,oneside,english,brazilian]{ppginf}
+
+% Versão final para a biblioteca da UFPR (inglês)
+%\documentclass[final,oneside,brazilian,english]{ppginf}
+
+% Versão final para impressão (frente/verso, português)
+%\documentclass[final,twoside,english,brazilian]{ppginf}
+
+% Versão final para impressão (frente/verso, inglês)
+%\documentclass[final,twoside,brazilian,english]{ppginf}
+
+% configurações de diversos pacotes, inclusive a fonte usada no texto
+\input{packages}
+
+%=====================================================
+
+\begin {document}
+
+% Principais dados, usados para gerar as páginas iniciais.
+% Campos não utilizados podem ser comentados.
+
+% título
+\title{Análise de vibração livre em estruturas no estado plano de tensões através do método dos elementos virtuais}
+
+% palavras-chave e keywords (p/ resumo, abstract e metadados).
+% A primeira inicia com maiúscula, as demais com minúscula (exceto
+% nomes e siglas); separar com ";" e finalizar com ponto final.
+\pchave{Método dos Elementos Virtuais; Análise de Vibração Livre; Dinâmica
+Estrutural; Estado Plano.}
+\keyword{Virtual Element Method; Free-vibration analisys; Structural Dynamics; Plane State.}
+
+% autoria
+\author{Vinícius Belmar Almeida Prado Pohl}
+\advisor{Marcos Arndt}
+%\coadvisor{}
+
+\IfLanguageName{brazilian}
+{
+  \instit{UFPR}{Universidade Federal do Paraná}
+  \field{Mecânica Computacional} 
+  \local{Curitiba}
 }
-\tipotrabalho{Trabalho Acadêmico}
-\local{Curitiba, PR}
-\preambulo{Trabalho acadêmico como requisito para obtenção do título de mestre em Métodos Numéricos em Engenharia.}
+{
+  % a Bib/UFPR exige que tudo seja em português, exceto o título :-(
+  % \instit{UFPR}{Federal University of Paraná}
+  % \field{Computational Mechanics}
+  % \local{Curitiba -- Brazil}
+  \instit{UFPR}{Universidade Federal do Paraná}
+  \field{Mecânica Computacional} 
+  \local{Curitiba}
+}
 
-% informações do PDF
-\makeatletter
-\hypersetup{
-    pdftitle={\@title},
-    pdfauthor={\@author},
-    pdfsubject={\imprimirpreambulo},
-    pdfkeywords={PALAVRAS}{CHAVE}{EM}{PORTUGUES},
-    pdfcreator={LaTeX with abnTeX2},
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    urlcolor=blue
-    }
-\makeatother
-\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+% data (só o ano)
+\date{2026}
 
-\begin{document}
-\pretextual 
-\imprimircapa
-\imprimirfolhaderosto[]* % talvez dê merda na numeração das páginas
-\makeatother\cleardoublepage
+% imagem de fundo da capa (se não desejar, basta comentar)
+\coverimage{0-iniciais\fundo-capa.pdf}
+
+%=====================================================
+
+%% Descrição do documento (obviamente, descomentar somente UMA!)
+
+% Por exigência da biblioteca da UFPR, a descrição do documento deve ser
+% em português, mesmo em documentos em outras línguas. Vá entender...
+
+% tese de doutorado
+%\descr{Tese apresentada como requisito parcial à obtenção do grau de Doutor em Ciência da Computação no Programa de Pós-Graduação em Informática, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% exame de qualificação de doutorado
+%\descr{Documento apresentado como requisito parcial ao exame de qualificação de Doutorado no Programa de Pós-Graduação em Informática, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% dissertação de mestrado
+\descr{Dissertação apresentada como requisito à obtenção do grau de Mestre em Métodos Numéricos no Programa de Pós-Graduação em Métodos Numéricos em Engenharia, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% exame de qualificação de mestrado
+%\descr{Documento apresentado como requisito parcial ao exame de qualificação de Mestrado no Programa de Pós-Graduação em Informática, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% trabalho de conclusão de curso
+%\descr{Trabalho apresentado como requisito parcial à conclusão do Curso de Bacharelado em XYZ, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% trabalho de disciplina
+%\descr{Trabalho apresentado como requisito parcial à conclusão da disciplina XYZ no Curso de Bacharelado em XYZ, Setor de Ciências Exatas, da Universidade Federal do Paraná}
+
+% doctorate thesis
+%\descr{Thesis presented as a partial requirement for the degree of Doctor in Computer Science in the Graduate Program in Informatics, Exact Sciences Sector, of the Federal University of Paraná, Brazil}
+
+% doctorate qualification
+%\descr{Document presented as a partial requirement for the doctoral qualification exam in the Graduate Program in Informatics, Exact Sciences Sector, of the Federal University of Paraná, Brazil}
+
+% MSc dissertation
+%\descr{Dissertation presented as a partial requirement for the degree of Master of Sciences in Informatics in the Graduate Program in Informatics, Exact Sciences Sector, of the Federal University of Paraná, Brazil.}
+
+% MSc qualification
+%\descr{Document presented as a partial requirement for the Master of Sciences qualification exam in the Graduate Program in Informatics, Exact Sciences Sector, of the Federal University of Paraná, Brazil}
+
+%=====================================================
+
+% define estilo das páginas iniciais (capas, resumo, sumário, etc)
+\frontmatter
+\pagestyle{frontmatter}
+
+% produz capa e folha de rosto
+\titlepage
+
+% páginas que só aparecem na versão final (a inclusão é automática)
+\include{0-iniciais/catalografica}	% ficha catalográfica
+\include{0-iniciais/aprovacao}		% folha de aprovação
+%\include{0-iniciais/dedica}		% dedicatória
+%\include{0-iniciais/agradece}		% agradecimentos
+
+% resumo (português) e abstract (inglês)
+\include{0-iniciais/resumo}
+\include{0-iniciais/abstract}
+
+% listas  de figuras, tabelas, abreviações/siglas, símbolos
+\listoffigures				% figuras (automática)
+\clearpage
+\listoftables				% tabelas (automática)
+\include{0-iniciais/abreviaturas}	% abreviaturas/siglas, preenchida à mão
+\include{0-iniciais/simbolos}		% símbolos, idem
 
 
-\begin{resumo}[Resumo] 
-    ------- Resumo em português. -----  \\
-    \vspace{\onelineskip}
-    \noindent
-    \textbf{Palavras-chave}: latex. abntex. editoração de texto.
-\end{resumo}
+% sumário
+\tableofcontents			% sumário
 
-\begin{resumo}[Abstract]
-    \begin{otherlanguage*}{english}
-        ------ abstract. ---- \\
-        \vspace{\onelineskip}
-        \noindent
-        \textbf{Keywords}: latex. abntex. publication de textes.
-    \end{otherlanguage*}
-\end{resumo}
+%=====================================================
 
+% define estilo do corpo do documento (capítulos e apêndices)
+\mainmatter
+\pagestyle{mainmatter}
+\include{cap_1}
+\include{cap_2}
+\include{cap_3}
+\include{cap_4}
+\include{Cap_5}
+\include{Conclusoes}
 
-% \pdfbookmark[0]{\listfigurename}{lof}
-% \listoffigures*
-% \cleardoublepage
+%=====================================================
 
+% ATENÇÃO:
+% - o estilo da bibliografia é definido no arquivo packages.tex
+% - evite usar \cite{}; prefira \citep{} e \citet{}
 
-% \pdfbookmark[0]{\listtablename}{lot}
-% \listoftables*
-% \cleardoublepage
+% base de bibliografia (arquivo .bib do BibTeX)
+\bibliography{referencias}
+%\bibliography{file1,file2,file3} % se tiver mais de um arquivo BibTeX
 
+%=====================================================
 
-% \begin{siglas}
-%   \item[sigla] significado da sigla;
-% \end{siglas}
+% inclusão de apêndices
+\appendix
 
+\include{Apendice}
 
-% \begin{simbolos}
-%     \item[simbolo] descrição;
-% \end{simbolos}
+%=====================================================
 
-
-\pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
-\cleardoublepage
-
-
-\textual % a partir daqui são os elementos textuais.
-\include{cap_1.tex}
-\include{cap_2.tex}
-\include{cap_3.tex}
-\include{cap_4.tex}
-% \include{XXX} % adicionar os .tex da pasta inputs
-
-\postextual % a partir daqui são os elementos pós-textuais.
-\bibliography{ref} % O alerta amarelo ("Empty `thebibliography' environment on input line 8.") é porque não há citações ainda
-\include{apendice.tex}
-% \chapter{anexo}
 \end{document}
+
+%=====================================================

@@ -1,11 +1,11 @@
-\chapter{Introdução}
+\chapter{Introdução} 
 \indent A análise estrutural é uma ramo da mecânica dos sólidos que estuda o comportamento de estruturas quando aplicados esforços que 
 resultam em alterações de sua configuração inicial. Em muitos casos práticos de engenharia esses esforços apresentam pequena variação em 
 relação ao tempo, permitindo que a estrutura seja analisada estaticamente. Todavia, os esforços que variam em relação ao tempo ou que 
 mobilizem as forças inerciais da estrutura devem ter uma análise mais apurada considerando os efeitos dinâmicos.\\
 \indent Em estruturas civis, a análise dos efeitos dinâmicos é de suma importância seja quanto ao conforto dos usuários quanto a 
 estabilidade das estruturas. Quando forças externas atuam com uma frequência próxima à uma das frequencias naturais da estrutura, 
-ocorre o efeito de ressonância que produz excessivos deslocamentos e possíveis falhas [1]. Mesmo garantindo a 
+ocorre o efeito de ressonância que produz excessivos deslocamentos e possíveis falhas \citet{mechanicalvibrations2017}. Mesmo garantindo a 
 estabilidade, a verificação do conforto dos usuários apresenta um papel crucial na análise da estrutura e através 
 da análise dinâmica pode-se verificar a necessidade de enrijecer a estrutura ou adicionar sistemas de amortecimento para 
 atendimento desse critério.\\
@@ -13,36 +13,36 @@ atendimento desse critério.\\
 dinâmica é uma tarefa muito mais árdua, mesmo para modelos simples. Na engenharia civil era costumeiro a evasão da análise dinâmica, 
 substituindo-a por uma análise estática com coeficientes de majoração dinâmicos. %Rever esse trecho, está conceitualmente errado
 Mas, com o passar do tempo, as estruturas têm tornado-se cada vez mais esbeltas e portanto mais suscetíveis a vibrações, o quê faz-se 
-imprescindível a realização da análise dinâmica de estruturas. [3].\\
+imprescindível a realização da análise dinâmica de estruturas. \citet{modelagemestruturasacomistas2017}.\\
 \indent O processo envolvido na análise estrutural se inicia com a elaboração de um modelo mecânico representativo da estrutura. Os modelos 
 são classificados como analíticos, estatísticos, ou mistos, e essa distinção ocorre através da forma como as equações são obtidas, em sendo 
 que os modelos analíticos são modelados através de um princípio físico enquanto que modelos empíricos, ou estatísticos, são obtidos através de 
-ensaios [2]. Realizando um paralelo com a análise dinâmica, um modelo estatístico é construído, por exemplo, através de um ensaio de túnel 
+ensaios \citet{licoesemmecanicaestruturasdinamica2022a}. Realizando um paralelo com a análise dinâmica, um modelo estatístico é construído, por exemplo, através de um ensaio de túnel 
 de vento enquanto que um modelo analítico é formulado através dos princípios da mecânica do contínuo.\\
 \indent Solucionar um modelo analítico, com exceção daqueles com geometrias simples ou condições de contorno específicas, é um processo 
 trabalhoso e em muitos casos infrutífero, e para isso é comum o emprego de métodos numéricos. Um dos métodos mais amplamente utilizados é o 
 método Método dos elementos Elementos finitos Finitos (MEF) que particiona um domínio complexo em subdomínios que podem ser aproximados. 
-A aplicação do método dos elementos finitosMEF na análise de estruturas, derivado de um aumento do poder computacional, permitiu a elaboração 
-de modelos estruturais muito mais complexos se comparados aos que eram feitos utilizados até 40 anos atrás [1], porém, vale ressaltar, que a 
+A aplicação do método dos MEF na análise de estruturas, derivado de um aumento do poder computacional, permitiu a elaboração 
+de modelos estruturais muito mais complexos se comparados aos que eram feitos utilizados até 40 anos atrás \citet{mechanicalvibrations2017}, porém, vale ressaltar, que a 
 resposta obtida -- assim como por outras técnicas numéricas -- é aproximada. \\
 \indent O MEF, apesar de já consagrado na comunidade científica e técnica, apresenta restrições com relação a geometria da malha, como os 
 elmentos possuirem numero de nós e padrão geometrico fixo, a depender da familia de elementos, e elementos muito distorcidos resultam em
 erros na solução numérica. O desfecho são dificuldades de modelagem e solução de problemas onde existe a reconfiguração da malha, resultando 
 em elementos cuja distorção pode afetar a precisão da solução. Buscando solucionar o problema de malhas foi desenvolvido o Método dos 
 Elementos Virtuais (MEV), que possibilita a construção de elementos de formato arbitrário mantendo a mesma estrutura do método de Galerkin 
-utilizado pelo MEF. Como destacado em [4], o MEV possui dentre suas vantagens a sua capacidade de possuir arestas com 180° e nós convexos. 
+utilizado pelo MEF. Como destacado em \citet{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a}, o MEV possui dentre suas vantagens a sua capacidade de possuir arestas com 180° e nós convexos. 
 A etapa de pré-processamento do modelo é mais rápida considerando que não existe preocupação com a conformidade da malha, ou seja, uma malha 
 que não possua elementos com grande distoção, principalmente ao levar em conta que a elaboração de uma malha conforme demanda considerável 
 quantidade de tempo.\\
 \indent Em trabalhos anteriores desenvolvidos no programa de pós-graduação, foram desenvolvidas formulações para a análise dinâmica de 
-problemas em estado plano comparando o MEF com o Método dos Elementos Finitos Generalizado (MEFG) [5][6][7]. Este trabalho busca ser pioneiro 
+problemas em estado plano comparando o MEF com o Método dos Elementos Finitos Generalizado (MEFG) \citet{torii2012analise},\citet{cittadin2020enriquecimento} e \citet{custodio2022metodo}. Este trabalho busca ser pioneiro 
 na utilização do MEV dentro do programa Programa de Pós-graduação em Métodos Numéricos em Engenharia e comparar a acurácia dos resultados 
 obtidos pelo método com os trabalhos previamente desenvolvidos por outros alunos.
 
 \section{Objetivos}
 
-\indent Investigar o comportamento do Método dos Elementos Virtuais (MEV) na análise de vibração 
-livre e transiente em problemas de estado plano de tensões e deformações.
+\indent Investigar o comportamento do MEV na análise de vibração 
+livre em problemas de estado plano de tensões e deformações.
 
 \section{Objetivos específicos}
 
@@ -78,24 +78,24 @@ utilizadas as seguintes métricas
         \item Capacidade de aproximação (CA)
     \end{enumerate}
     
-\indent O erro relativo absoluto das frequências naturais para cada modo de vibração é calculado através de:
+\indent O erro absoluto das frequências naturais para cada modo de vibração é calculado através de:
 
 \begin{equation}
-    \left| e \right|_{rel} = \left| \frac{\omega - \tilde{\omega}}{\omega} \right|.
+    e_{abs} = \left| \frac{\omega - \tilde{\omega}}{\omega} \right|.
     \label{eq:1.1}
 \end{equation}
 
-Com $\omega$ sendo a frequência de referência e $\tilde{\omega}$ a frequência obtida pelo método dos elementos virtuais. Para avalição de
+Com $\omega$ sendo a frequência de referência e $\tilde{\omega}$ a frequência obtida pelo MEV. Para avalição de
 um desempenho médio representativo dos dados utiliza-se a MAPE. Para cada malha, a MAPE é medida pelo quociente entre a soma dos erros 
-relativos absolutos e a quantidade de modos analisados:	
+absolutos e a quantidade de modos analisados:	
 
 \begin{equation}
-    |e|_{MAPE} = \frac{\sum_{i=1}^{n_{modos}}|e|_{rel,i} }{n_{modos}}.
+    e_{MAPE} = \frac{\sum_{i=1}^{n_{modos}}|e|_{rel,i} }{n_{modos}}.
     \label{eq:1.2}
 \end{equation}
 
-\indent A média relativa não pondera os resultados das frequências, de tal forma que um modo que possua um erro relativo alto seja 
-desconsiderado por causa de outro modo com erro relativo ótimo. Destarte, para estudo da eficiência global das malhas, será utilizado o NRMSE:
+\indent A média absoluta não pondera os resultados das frequências, de tal forma que um modo que possua um erro absoluto alto seja 
+desconsiderado por causa de outro modo com erro absoluto ótimo. Destarte, para estudo da eficiência global das malhas, será utilizado o NRMSE:
 
 \begin{equation}
     e_{NRMSE} = \sqrt{\frac{\sum_{i=1}^{n_{modos}} (\omega_i - \tilde{\omega}_i)^2}{\sum_{i=1}^{n_{modos}} (\omega_i)^2 }}. 
@@ -125,7 +125,7 @@ refino $h$ atinge um teto de aproximação. O parâmetro é calculado por:
 
 \indent Outra relação do CAD está relacionada ao ganho de acurácia em relação a malha mais grossa e de maneira inversa a malha mais refinada. 
 Para o cálculo do CAD será utilizada a média geométrica como base.\\
-\indent Visando à comparação entre métodos, um índice similar ao CAD é proposto, o ganho de precisão relativa (GPR). Esse índice mede a melhora
+\indent Visando à comparação entre métodos, um índice similar ao CAD é proposto, o ganho de precisão relativo (GPR). Esse índice mede a melhora
 de precisão normada entre eu método nemérico e outro de referência. O índice é calculado como:
 
 \begin{equation}
@@ -154,6 +154,7 @@ utilizado neste trabalho para comparação do ganho de precisão entre o MEV e o
 
 \indent Neste trabalho a formulação do MEV e outras rotinas computacionais são implementadas através de um solver programado em Modern Fortran
 e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas são feitas com auxílio do Google planilhas.
+
 
 
 

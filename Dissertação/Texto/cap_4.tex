@@ -3,51 +3,47 @@
 \section{Introdução ao método dos elementos virtuais:}
 
 
-    \indent O método dos elementos virtuais, similar ao método dos elementos finitos, é uma técnica numérica voltada à solução de equações 
-    diferenciais mediante a divisão do domínio em parcelas menores e mais simples de serem solucionadas. A principal característica do método 
-    dos elementos virtuais é a independência entre a ordem de aproximação e a quantidade de graus de liberdade no elemento. Unindo isso ao 
+    \indent O MEV, similar ao MEF, é uma técnica numérica voltada à solução de equações 
+    diferenciais mediante a divisão do domínio em parcelas menores e mais simples de serem solucionadas. A principal característica do MEV é a independência entre a ordem de aproximação e a quantidade de graus de liberdade no elemento. Unindo isso ao 
     aspecto da geometria do elemento ser indiferente aos resultados permite a existência de elementos diversos em uma mesma malha como pode 
     ser observado na Figura~\ref{fig:4.1}.
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.1 - Malha voronoi com elementos em formato de animais.}
+        \caption{Malha voronoi com elementos em formato de animais.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.1.png}
         \label{fig:4.1}
-        \caption{Fonte: [1]}
+        {\small \textbf{Fonte:} \citet{virtualelementformulationphasefieldmodelingductilefracture2019}}
     \end{figure}
 
     \indent O método foi projetado para lidar com discretizações politopais de formato arbitrário, o que é particularmente conveniente na construção 
     de malhas para geometrias complexas. Ele provou-se robusto ao lidar com malhas de formatos arbitrários, mesmo aquelas que possuem nós 
-    soltos Figura~\ref{fig:4.2} ou elementos com ângulos convexos. Como destacado por [2], a geração e reconstrução de malhas com a correção dos 
-    elementos defeituosos é um processo que consome tempo na etapa de pré-processamento do método dos elementos finitos, etapa que o método 
-    dos elementos virtuais permite desconsiderar. 
+    soltos Figura~\ref{fig:4.2} ou elementos com ângulos convexos. Como destacado por \citet{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a}, a geração e reconstrução de malhas com a correção dos 
+    elementos defeituosos é um processo que consome tempo na etapa de pré-processamento do MEF, etapa que o MEV permite desconsiderar. 
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.2}
+        \caption{Elemento com nós soltos, a) e com arestas convexas b).}
         \label{fig:4.2}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{a) Elemento com nós soltos.}
             \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.2a.png}
             \label{fig:4.2a}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{b) Elemento com nós convexos.}
             \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.2b.png}
             \label{fig:4.2b}
         \end{subfigure}
-        \caption{Fonte: Autor}
+        {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}
 
 
 	\indent A principal característica do método, e o motivo do nome "virtual", é que as funções de base utilizadas na aproximação não são 
-    conhecidas explicitamente. Segundo [3], "A cada conjunto de graus de liberdade, associamos uma função que não é necessariamente um 
+    conhecidas explicitamente. Segundo \citet{vem2017virtual}, "A cada conjunto de graus de liberdade, associamos uma função que não é necessariamente um 
     polinômio, mas sim uma função suave — uma solução de um problema de EDP no interior do elemento". Essa definição é crucial para a 
-    distinção entre o método dos elementos virtuais e o método dos elementos finitos, no qual as funções de base estão estritamente atreladas 
+    distinção entre o MEV e o MEF, no qual as funções de base estão estritamente atreladas 
     à forma do elemento. \\
     \indent Um domínio $\Omega \subset \mathbb{R}^2$ é particionado em um conjunto de elementos poligonais arbitrários não sobrepostos, 
     $\Omega_v$, com contorno $\partial \Omega_v$ composto por arestas retas $e_i$, cujos vértices $V_i$ são denominados nós. O diâmetro, as 
@@ -56,10 +52,10 @@
     
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.3 - Geometria do elementos.}
+        \caption{Geometria de um elemento.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.3.png}
         \label{fig:4.3}
-        \caption{Fonte: [1]}
+        {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}
 
     \indent A área de um polígono pode ser calculada através das coordenadas dos vértices utilizando a fórmula de Gauss:
@@ -88,7 +84,7 @@
         \label{eq:4.3}
     \end{equation}
 
-    \indent O método dos elementos virtuais é construído de modo que a solução do problema possa ser obtida mesmo sem saber qual é a parcela 
+    \indent O MEV é construído de modo que a solução do problema possa ser obtida mesmo sem saber qual é a parcela 
     exata do complemento. Como o método é aproximado através de funções polinomiais, introduz-se uma base polinomial 
     $\{\mathbf{p}_\alpha\}_{\alpha = 1,...,n_k}$ pertencente ao espaço de polinômios de ordem $k$ no elemento 
     $\Omega$, $\mathbb{P}_{k}(\Omega)$. A dimensão do espaço de um polinômio de grau $k$ para problemas em $\mathbb{R}^2$ é obtida por: 
@@ -98,11 +94,11 @@
         \label{eq:4.4}
     \end{equation}
 
-    \indent Em formulações de elementos virtuais, é muito comum a utilização de bases ao invés de uma expansão polinomial pura. [1] Comenta 
+    \indent Em formulações de elementos virtuais, é muito comum a utilização de bases ao invés de uma expansão polinomial pura. \citet{wriggers2024virtual} Comenta 
     que o uso de bases é frequente na literatura de elementos virtuais para construir matrizes tangentes com valores de condicionamento 
     reduzidos, sendo os monômios escalados uma das bases mais utilizadas. "Eles são uma base centrada no centroide do elemento onde cada 
     coordenada é escalada pelo inverso do diâmetro do elemento, por exemplo, coincidindo com a base canônica em um politopo centrado na origem 
-    e escalado para ter diâmetro unitário" [8]. Define-se os monômios escalados por: 
+    e escalado para ter diâmetro unitário" \citet{virtualelementmethodoverviewformulations2024a}. Define-se os monômios escalados por: 
 
     \begin{equation}
         \xi = \left( \frac{x_1 - \bar{x}_1}{h_E} \right) \hspace{1cm} \eta = \left( \frac{x_2 - \bar{x}_2}{h_E} \right)
@@ -132,7 +128,7 @@
         \label{eq:4.7}
     \end{equation}
 
-    \indent Como indicado por [4], outros operadores diferenciais de segunda ordem podem ser utilizados no lugar do laplaciano. Contudo, para 
+    \indent Como indicado por \citet{basicprinciplesvirtualelementmethods2013a}, outros operadores diferenciais de segunda ordem podem ser utilizados no lugar do laplaciano. Contudo, para 
     a equação de Laplace (utilizada como base pelos autores) ou a equação de Cauchy abordada no presente trabalho, a escolha do laplaciano é a 
     mais adequada. Como o laplaciano da variável de campo é aproximado por um polinômio de grau $k - 2$, em problemas cuja interpolação é de 
     primeira ordem o laplaciano é nulo, o que torna as funções no interior do elemento harmônicas.  \\ 
@@ -150,7 +146,7 @@
      resposta não tende ao infinito, justificando o uso de funções polinomiais para aproximação. 
     \indent O espaço de soluções definido na Eq.~\ref{eq:4.7} permite obter gradientes ou outros operadores diferenciais de primeira ordem projetados, 
     mas a variável de campo em si permanece desconhecida no interior do elemento. Isso traz limitações no momento de computar o termo de carga 
-    ou a matriz de massa. Para superar essa restrição, um espaço de solução aumentado foi introduzido por [17], baseando-se em uma projeção 
+    ou a matriz de massa. Para superar essa restrição, um espaço de solução aumentado foi introduzido por \citet{virtualelementmethod50linesmatlab2017}, baseando-se em uma projeção 
     $L^2$: 
 
     \begin{equation}
@@ -175,10 +171,10 @@
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.4 - Geometria do elementos.}
+        \caption{Elemento virtual.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.4.png}
         \label{fig:4.4}
-        \caption{Fonte: [6]}
+        {\small \textbf{Fonte:} \citet{wriggers2024virtual}}
     \end{figure}
 
 
@@ -204,10 +200,10 @@
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.5 - Geometria do elementos.}
+        \caption{Figura 4.5 - Geometria do elemento.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.5.png}
         \label{fig:4.5}
-        \caption{Fonte: [6]}
+        {\small \textbf{Fonte:} \citet{wriggers2024virtual}}
     \end{figure}
 
 
@@ -227,7 +223,7 @@
     Exemplo 4.1. Para uma aproximação de ordem 2, construa a matriz $N_2^P$.
     \vspace{1cm}
     $N_2^{P} = \begin{Bmatrix} 1 & \xi & \eta & \xi^2 & \xi \eta & \eta^2 \end{Bmatrix}$. 
-    \end{minipage} }
+    \end{minipage} }\vspace{5mm}
 
     \indent Como o projetor resulta em uma função polinomial, a projeção da base pode ser descrita por: 
 
@@ -261,7 +257,7 @@
         \vspace{1cm}
         Para as deformações: $$\epsilon(N^P)=\frac{1}{h_E}\begin{Bmatrix}0&1&0&2\xi&\eta&0\\0&0&1&0&\xi&2\eta\\0&1&1&2\xi& \xi  + \eta&2\eta\end{Bmatrix}$$.\\
         Para o gradiente:$$\nabla(N^P)=\frac{1}{h_E}\begin{Bmatrix}0&1&0&2\xi&\eta&0\\0&0&1&0&\xi&2\eta \end{Bmatrix}$$. 
-    \end{minipage} }
+    \end{minipage} }\vspace{5mm}
 
 
 
@@ -270,7 +266,7 @@
     problemas com dois graus de liberdade por nó: 
 
     \begin{equation}
-        N^V = \begin{bmatrix} \varphi_1 & 0 & \varphi_2 & 0 & \ldots & \varphi_{ndof} & 0 \\ 0 & \varphi_1 & 0 & \varphi_2 & … & 0 & \varphi_{ndof} \end{bmatrix}.
+        N^V = \begin{bmatrix} \varphi_1 & 0 & \varphi_2 & 0 & \ldots & \varphi_{ndof} & 0 \\ 0 & \varphi_1 & 0 & \varphi_2 & \ldots & 0 & \varphi_{ndof} \end{bmatrix}.
         \label{eq:4.16}
     \end{equation}
 
@@ -301,7 +297,7 @@
     Cada função de base está associada a um único grau de liberdade. Para $\varphi_i$: $u_i = 1$ e $u_j = 0$.\\
     Sabe-se que: $$u_{h|\Gamma_e} = \sum_{j=1}^{k+1} M_j(\xi) u_j$$. Ao aplicar o somatório para uma função de base $\varphi_i$ na aresta: 
     $$\varphi_{i|\Gamma_e}(\xi) = M_1(\xi).0 + \ldots + M_i(\xi).1 + \ldots M_{k+1}(\xi).0 = M_i(\xi)$$.
-    \end{minipage} }
+    \end{minipage} }\vspace{5mm}
 
 	\indent Em uma mesma equação diferencial podem existir diferentes projetores para cada parcela da forma variacional, desde que a definição 
     do espaço de deslocamentos Eq.~\ref{eq:4.7} seja respeitada. \\
@@ -314,14 +310,14 @@
         \label{eq:4.20}
     \end{equation}
 
-    \indent A segunda abordagem utiliza o método de Galerkin. Como constatado por [6], a projeção por Galerkin apresenta a vantagem de evitar 
+    \indent A segunda abordagem utiliza o método de Galerkin. Como constatado por \citet{wriggers2024virtual}, a projeção por Galerkin apresenta a vantagem de evitar 
     cinemática e relações constitutivas não lineares. \\
-    \indent De modo análogo ao esquema elaborado em [7], dois operadores distintos serão utilizados para a implementação do problema 
+    \indent De modo análogo ao esquema elaborado em \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}, dois operadores distintos serão utilizados para a implementação do problema 
     elastodinâmico: o primeiro é desenvolvido para a matriz de massa e o segundo para a matriz de rigidez. 
 
 \subsection{Projetor \texorpdfstring{$\Pi_{k}^{\nabla}$}{Pi k nabla}:}
 
-    \indent O projetor $\Pi_k^\nabla$ foi desenvolvido em [4] como um dos primeiros operadores de projeção atrelados ao método dos elementos 
+    \indent O projetor $\Pi_k^\nabla$ foi desenvolvido em \citet{basicprinciplesvirtualelementmethods2013a} como um dos primeiros operadores de projeção atrelados ao método dos elementos 
     virtuais. Concebido inicialmente para solução do problema de Laplace, esse operador também se aplica a problemas de elasticidade, visto 
     que tanto as tensões quanto às deformações dependem do gradiente. \\
     \indent O desenvolvimento desse projetor é feito por meio da ortogonalização dos gradientes entre a função polinomial e o resíduo da 
@@ -375,7 +371,7 @@
     \end{equation}
 
     \indent O lado esquerdo ($\mathcal{G}^{(\nabla)}$) contém apenas termos polinomiais e pode ser avaliado diretamente via integração 
-    numérica (como as técnicas propostas por [10-15]). Todavia, o lado direito ($\mathcal{B}^{(\nabla)}$) envolve as funções virtuais 
+    numérica (como as técnicas propostas por \citet{bivariatesplineconstructionorthonormalpolynomialspolygonaldomainsitsapplicationsquadrature2026}, \citet{productgausscubaturepolygonsbasedgreensintegrationformula2007}, \citet{calculationarbitrarymomentspolygonsa} e \citet{numericalintegrationpolynomialsdiscontinuousfunctionsirregularconvexpolygonspolyhedrons2011}). Todavia, o lado direito ($\mathcal{B}^{(\nabla)}$) envolve as funções virtuais 
     desconhecidas $\varphi$. Para contornar essa limitação, aplica-se o teorema da divergência: 
     
     \begin{equation}
@@ -412,7 +408,7 @@
     simplificar o cálculo da matriz $\mathcal{B}^{(\nabla)}$ :
     
     \begin{equation}
-        B(\varphi_i, m_i)^{(\nabla)} = \sum_{j=1}^{n_e} l_e \sum_{q=1}^{k+1} w_q \left[\nabla H_k^P(\xi_j,\eta_j) \right]^T N_E - \nabla^2 \left[H_k^P(\xi_j,\eta_j)\right]^T \{\mathbf{m}_i\} 
+        \mathcal{B}(\varphi_i, m_i)^{(\nabla)} = \sum_{j=1}^{n_e} l_e \sum_{q=1}^{k+1} w_q \left[\nabla H_k^P(\xi_j,\eta_j) \right]^T N_E - \nabla^2 \left[H_k^P(\xi_j,\eta_j)\right]^T \{\mathbf{m}_i\} 
         \label{eq:4.29}
     \end{equation}
 
@@ -426,7 +422,7 @@
 
     \indent Diferentes abordagens existem para o cálculo da parcela de contorno, alguns autores consideram os valores como variáveis -- os
      momentos nas arestas -- e evitam o uso de técnicas de quadratura. Outros simplificam a expressão para ser calculada em função das arestas 
-     em que o grau de liberdade está localizado. Para $k = 1$, [16] apresenta uma equação simplificada para os coeficientes da matriz 
+     em que o grau de liberdade está localizado. Para $k = 1$, \citet{virtualelementmethod50linesmatlab2017} apresenta uma equação simplificada para os coeficientes da matriz 
      $\mathcal{B}$ em relação às arestas, Figura~\ref{fig:4.6}:
     
     \begin{equation}
@@ -437,10 +433,10 @@
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.6 - Geometria do elementos.}
+        \caption{Relação geométrica entre duas arestas.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.6.png}
         \label{fig:4.6}
-        \caption{Fonte: [1]}
+        {\small \textbf{Fonte:} \citet{virtualelementmethod50linesmatlab2017}}
     \end{figure}
 
 
@@ -474,7 +470,7 @@
         Para o terceiro grau de liberdade:\\
         $$P_0\varphi_3 = \frac{1}{5} \sum_{i=1}^{5} \varphi_3(V_i) = \frac{1}{5} \left( \varphi_3(V_1) + \ldots + \varphi_3(V_5)  \right).$$ Considerando que as funções de base possuem a propriedade do delta de Kronecker, $\varphi_i(V_j) = \delta_{ij}$, a equação se simplifica para: $P_0\varphi_3 = \frac{1}{5}$.
         Em aproximações de segunda ordem existe apenas um momento interno equivalente ao último grau de liberdade. O momento interno é: $$\mathbf{m} = \frac{1}{|\Omega_v|} \int_{\Omega_v} \varphi_7 .$$ Ao aplicar o operador sobre constantes: $$P_0\varphi_7 = \frac{1}{|\Omega_v|} \int_{\Omega_v} \varphi_7 .$$ O que equivale ao próprio momento interno. Assim, $P_0\varphi_7 = \mathbf{m}$.
-    \end{minipage} }
+    \end{minipage} }\vspace{5mm}
 
 	\indent Sem a aplicação de $P_0$, a matriz $\mathcal{G}^{(\nabla)}$ é singular. Com a inclusão da restrição, obtém-se o vetor de 
     coeficientes e a projeção no espaço polinomial: 
@@ -484,16 +480,16 @@
         \label{eq:4.34}
     \end{equation}
 
-    \indent Um polinômio pode ser descrito tanto através de uma expansão de bases polinomiais: $$p(x) = \sum_{i=1}^{N_{poly}} p_\alpha (x) 
+    \indent Um polinômio pode ser descrito tanto como uma expansão de bases polinomiais: $$p(x) = \sum_{i=1}^{N_{poly}} p_\alpha (x) 
     a_\alpha.$$ Como também pode ser descrito através das bases nodais: $$p(x) = \sum_{i=1}^{N_{poly}} \varphi_i (x) d_i.$$ Para converter o 
-    projetor da base polinomial para a base canônica é realizado um mapa do espaço de solução sobre si mesmo: $$\Pi^{\nabla}: V_k(E) 
+    projetor da base polinomial para a base canônica é realizado um mapa do espaço de solução sobre si: $$\Pi^{\nabla}: V_k(E) 
     \rightarrow V_k(E).$$ A conversão da base polinomial para a base canônica é feita através da matriz $\mathcal{D}$.\\
     \indent A matriz $\mathcal{D}$ compreende dos valores que os polinômios utilizados na base assumem nos graus de liberdade do elemento. A 
     conversão da base polinomial para a base nodal é realizada pela matriz $\mathcal{D}$, cujos elementos correspondem à aplicação dos 
     funcionais dos graus de liberdade $\chi_i$ sobre os polinômios da base $p_\alpha$: 
     
     \begin{equation}
-        \mathcal{D}_{i\alpha} = \chi_i(p_\alpha) \hspace{5mm} \forall \hspace{5mm} i \in \{1, \ldots, n_{dof} \}, \, \alpha \in \{ 1, …, N_{poly} \}.
+        \mathcal{D}_{i\alpha} = \chi_i(p_\alpha) \hspace{5mm} \forall \hspace{5mm} i \in \{1, \ldots, n_{dof} \}, \, \alpha \in \{ 1, \ldots, N_{poly} \}.
         \label{eq:4.35}
     \end{equation}
 
@@ -501,9 +497,9 @@
         Exemplo 4.5. Em um polígono com 5 vértices e aproximação $k=1$, encontre o terceiro grau de liberdade, com as coordenadas $(5,0)$, determine o valor de $\mathcal{D}$ para o conjunto de monômios $p_2$. O elemento possui diâmetro igual a 4 e a coordenada do centroide é (2,3). \\
         \vspace{2cm}
         Solução: \\[5mm]
-        Para $D_{23}$:  $$\chi_3\left(p_2\right) = \begin{Bmatrix} \begin{pmatrix} \left(\frac{x - \bar{x}}{h_e}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{x - \bar{x}}{h_e}\right) \end{pmatrix} \end{Bmatrix} = \begin{Bmatrix} \begin{pmatrix} \left(\frac{5 - 2}{4}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{5 - 2}{4}\right) \end{pmatrix} \end{Bmatrix} \\ \chi_3\left(p_2\right) = \begin{Bmatrix} \begin{pmatrix} \left(\frac{5 - 2}{4}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{5 - 2}{4}\right) \end{pmatrix} \end{Bmatrix} = \begin{Bmatrix} \begin{pmatrix} \frac{3}{4} \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \frac{3}{4} \end{pmatrix} \end{Bmatrix}$$
+        Para $\mathcal{D}_{23}$:  $$\begin{aligned} \chi_3\left(p_2\right) = \begin{Bmatrix} \begin{pmatrix} \left(\frac{x - \bar{x}}{h_e}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{x - \bar{x}}{h_e}\right) \end{pmatrix} \end{Bmatrix} \\= \begin{Bmatrix} \begin{pmatrix} \left(\frac{5 - 2}{4}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{5 - 2}{4}\right) \end{pmatrix} \end{Bmatrix} \\ \chi_3\left(p_2\right) \\= \begin{Bmatrix} \begin{pmatrix} \left(\frac{5 - 2}{4}\right) \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \left(\frac{5 - 2}{4}\right) \end{pmatrix} \end{Bmatrix} \\= \begin{Bmatrix} \begin{pmatrix} \frac{3}{4} \\ 0\end{pmatrix} & \begin{pmatrix} 0 \\ \frac{3}{4} \end{pmatrix} \end{Bmatrix} \end{aligned}$$
     \end{minipage} }
-
+    \vspace{5mm}\vspace{5mm}
 
     \indent A relação entre os graus de liberdade $d_i$ e os coeficientes $a_\alpha$ é expressa por: 
     
@@ -539,7 +535,7 @@
 
 \subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{0}$}{Pi k 0}:}
 
-    \indent O projetor $\Pi_{k}^0$, em contrapartida à $\Pi_{k}^\nabla$ que projeta o gradiente de $u_h$, realiza a projeção do campo de 
+    \indent O projetor $\Pi_{k}^0$, em contrapartida, à $\Pi_{k}^\nabla$ que projeta o gradiente de $u_h$, realiza a projeção do campo de 
     eslocamentos. Essa característica o torna ideal para aproximação dos termos de massa e de forças de corpo (termo fonte). Diferente de 
     $\Pi_{k}^\nabla$ que realiza uma ortogonalização do tipo $H^1$, o projetor $\Pi_{k}^0$ vai executar uma ortogonalização do tipo $L^2$:
     
@@ -564,7 +560,7 @@
 
     \indent O lado esquerdo possui apenas termos polinomiais e é computável utilizando as técnicas de integração numérica comentadas 
     anteriormente, todavia, dessa vez não há atalhos. Para fins de reprodutibilidade, a integração da matriz $\mathcal{H}$ foi efetuada com a 
-    técnica de integração de momentos sobre polígonos arbitrários descrita em [13].\\
+    técnica de integração de momentos sobre polígonos arbitrários descrita em \citet{calculationarbitrarymomentspolygonsa}.\\
     \indent Na matriz $\mathcal{Q}$ (lado direito da Eq.~\ref{eq:4.42}), o teorema da divergência não pode ser aplicado. Para resolver a integração das 
     funções virtuais $v_h$, utiliza-se o espaço de solução aumentado definido na Eq.~\ref{eq:4.9}. Os momentos internos fornecem o valor de 
     $(v_h, p_k)_{\Omega_v}$ para monômios de grau até $k-2$. Para os termos de grau $k-1$ e $k$, aplica-se a propriedade do espaço estendido 
@@ -591,7 +587,7 @@
 
 \subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{\epsilon}$}{Pi k-1 epsilon}:}
 
-    \indent O projetor $\Pi_{k-1}^\epsilon$ foi proposto por [9] para problemas de elasticidade. Embora o operador $\Pi_k^\nabla$ aproxime o 
+    \indent O projetor $\Pi_{k-1}^\epsilon$ foi proposto por \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} para problemas de elasticidade. Embora o operador $\Pi_k^\nabla$ aproxime o 
     gradiente, a presença de termos de ordem $k$ induz a representação de modos rígidos. Com o objetivo de filtrar os movimentos de corpo 
     rígido, o projetor $\Pi_{k-1}^\epsilon$ projeta diretamente o tensor de deformações no espaço de polinômios de ordem $k-1$: 
 
@@ -628,10 +624,10 @@
     \end{equation}
 	
     \indent Em uma abordagem similar ao que foi feito para o projetor gradiente, a parcela do contorno é obtida da quadratura de Gauss-Lobatto
-    \footnote{A tebela com os pontos e pesos se encontra no anexo A}. A parcela $B$ é calculada como:
+    \footnote{A tabela com os pontos e pesos se encontra no anexo A}. A parcela $B$ é calculada como:
 
     \begin{equation}
-        B(\varphi_i, m_i)^{(\nabla)} = \sum_{j=1}^{n_e} l_e \sum_{q=1}^{k+1} w_q \left[H_k^P(\xi_j,\eta_j) \right]^T N_E - \nabla \cdot \left[H_k^P(\xi_j,\eta_j)\right]^T \{\mathbf{m}_i\} 
+        \mathcal{B}(\varphi_i, m_i)^{(\nabla)} = \sum_{j=1}^{n_e} l_e \sum_{q=1}^{k+1} w_q \left[H_k^P(\xi_j,\eta_j) \right]^T N_E - \nabla \cdot \left[H_k^P(\xi_j,\eta_j)\right]^T \{\mathbf{m}_i\} 
         \label{eq:4.50}
     \end{equation}
 
@@ -642,8 +638,8 @@
         \label{eq:4.51}
     \end{equation}  
 
-    \indent Devido a natureza da relação de ortogonalização utilizada no projetor $\Pi_{k-1}^\epsilon$, a relação entre $\mathcal{G} = 
-    \mathcal{B}\mathcal{D}$ não é válida. A Obtenção da matriz $\mathcal{G}^{\epsilon}$ deve ser feita do mesmo modo que a matriz 
+    \indent Devido à natureza da relação de ortogonalização utilizada no projetor $\Pi_{k-1}^\epsilon$, a relação entre $\mathcal{G} = 
+    \mathcal{B}\mathcal{D}$ é inválida. A obtenção da matriz $\mathcal{G}^{\epsilon}$ deve ser feita do mesmo modo que a matriz 
     $\mathcal{H}$.  A implementação para avaliação do projetor segue os mesmos passos de $\Pi_k^\nabla$, porém sem a necessidade do operador 
     de projeção de constantes $P_0$, porque o operador de deformação já elimina naturalmente os movimentos de corpo rígido com uma aproximação 
     de $k-1$. Dessa maneira:
@@ -653,8 +649,8 @@
         \label{eq:4.52}
     \end{equation}
 
-    \indent A matriz $\mathcal{D}^{\epsilon}$ ainda deve ser obtida para as operações envolvidas no termo de estabilidade. [9] afirma que o 
-    cálculo da matriz $\mathcal{D}^{\epsilon}$ é feito da mesma maneira que $\mathcal{D}^{\nabla}$, usando $k$ ao invés de $k–1$. 
+    \indent A matriz $\mathcal{D}^{\epsilon}$ ainda deve ser obtida para as operações envolvidas no termo de estabilidade. \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} afirma que o 
+    cálculo da matriz $\mathcal{D}^{\epsilon}$ é feito da mesma maneira que $\mathcal{D}^{\nabla}$, usando $k$ ao invés de $k-1$. 
 
 \section{Matrizes de rigidez e massa:}
 
@@ -662,14 +658,14 @@
     estabilidade.
     \begin{enumerate}
         \item Consistência: Garante que a solução discreta seja exata quando a solução analítica for um polinômio de grau menor ou igual a $k$: $$a^K(v_h,p) = a_h^K(v_h,p) \hspace{5mm}p \in \mathbb{P}_k(K).$$ 
-        \item Estabilidade: Garante a positividade da forma bilinear discreta no espaço de elementos virtuais [9], escalando adequadamente em 
+        \item Estabilidade: Garante a positividade da forma bilinear discreta no espaço de elementos virtuais \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}, escalando adequadamente em 
         relação à forma contínua: $$c_1 \leq x \leq c_2$$
     \end{enumerate}
 
-    \indent Como explicado por [18], a propriedade de consistência afirma que a solução deve ser exata para polinômios de grau menor ou igual 
+    \indent Como explicado por \citet{virtualelementmethodwheelrailcontactproblems2021}, a propriedade de consistência afirma que a solução deve ser exata para polinômios de grau menor ou igual 
     àquele do espaço associado com o elemento. Para estabilidade existem duas constantes ao qual não possuem limites superior ou inferior, 
     apenas devem existir. Portanto, a forma bilinear deve escalar como a forma contínua. 	\\
-    \indent Das formulações elasto dinâmicas, Eq.~\ref{eq:3.57}, definem-se as formas bilineares da massa e rigidez: 
+    \indent Das formulações elastodinâmicas, Eq.~\ref{eq:3.57}, definem-se as formas bilineares da massa e rigidez: 
 
     \begin{equation}
         [M] = \int_{\Omega_v} \rho \varphi \varphi d\Omega_v,
@@ -687,7 +683,7 @@
     
     \begin{equation}
         \begin{aligned} 
-            [M]  = \rho\int_{\Omega_v}\Pi_k^0(\varphi) \Pi_k^0(\varphi) d\Omega_v +  2\rho\int_{\Omega_v}\Pi_k^0(\varphi)  (I - \Pi_k^0) \varphi d\Omega_v + \\  \rho\int_{\Omega_v} (I - \Pi_k^0) \varphi  (I - \Pi_k^0) \varphi d\Omega_v 
+            [M]  = \rho \int_{\Omega_v}\Pi_k^0(\varphi) \Pi_k^0(\varphi) d\Omega_v +  2\rho \int_{\Omega_v}\Pi_k^0(\varphi)  (I - \Pi_k^0) \varphi d\Omega_v + \\  \rho\int_{\Omega_v} (I - \Pi_k^0) \varphi  (I - \Pi_k^0) \varphi d\Omega_v 
         \end{aligned}
         \label{eq:4.55}
     \end{equation}
@@ -709,13 +705,16 @@
         \label{eq:4.57}
     \end{equation}
 
-    \indent Nota-se que não foi necessário um procedimento de integração para a solução da matriz de rigidez. [20] afirma que o termo de 
-    consistência deve ser computado de maneira exata enquanto que o termo de estabilidade pode ser aproximado. \\
+    \indent Nota-se que não foi necessário um procedimento de integração para a solução da matriz de rigidez. \citet{hitchhikersguidevirtualelementmethod2014a} afirma que o termo de 
+    consistência deve ser computado de maneira exata enquanto o termo de estabilidade pode ser aproximado. \\
     \indent O resíduo, $(I - \Pi_k^0)q$, atua como um filtro para funções polinomiais, onde para uma função $q \in \mathbb{P}_k(\Omega_v)$ o 
     resíduo é nulo. Uma implicação desta afirmação é a nulidade do resíduo no contorno do elemento, assim garantindo que a estabilização não 
     interfira no teste de consistência física do elemento. O termo de estabilidade é expresso através da diferença nos graus de liberdade: 
-    $$[M]^{stab}_{ij} = \rho\int_{\Omega_v} (I - \Pi_k^0) \varphi_i  (I - \Pi_k^0) \varphi_j d\Omega_v = \rho\left((I - \Pi_k^0) \varphi_i ,
-    (I - \Pi_k^0) \varphi_j \right)_{\Omega_v} = \\ \rho\sum_{r=1}^{n_{dof}} \chi_r((I - \Pi_k^0) \varphi_i  )\chi_r((I - \Pi_k^0) \varphi_j)$$
+    $$\begin{aligned}
+        [M]^{stab}_{ij} = \rho\int_{\Omega_v} (I - \Pi_k^0) \varphi_i  (I - \Pi_k^0) \varphi_j d\Omega_v = \\ 
+        \rho\left((I - \Pi_k^0) \varphi_i ,(I - \Pi_k^0) \varphi_j \right)_{\Omega_v} = \\ 
+        \rho\sum_{r=1}^{n_{dof}} \chi_r((I - \Pi_k^0) \varphi_i  )\chi_r((I - \Pi_k^0) \varphi_j)
+    \end{aligned}$$
 
     \begin{equation}
         [M]^{stab} = \rho \left[ (I - \mathcal{D}\Pi^0)^T (I - \mathcal{D}\Pi^0) \right]
@@ -729,12 +728,14 @@
         \label{eq:4.59}
     \end{equation}
 
-    onde $S_M$ é um operador de estabilização. [19] sugere a seguinte escolha para a matriz de estabilização da massa:
+    onde $S_M$ é um operador de estabilização. \citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020} sugere a seguinte escolha para a matriz de estabilização da massa:
     
     \begin{equation}
-        [M]^{stab} = \rho |\Omega_v| (I - \mathcal{D}\Pi^0)^T (I - \mathcal{D}\Pi^0) 
+        [M]^{stab} = \tau_m (I - \mathcal{D}\Pi^0)^T (I - \mathcal{D}\Pi^0),
         \label{eq:4.60}
     \end{equation}
+
+    com $tau_m$ equivalente à $\rho |\Omega_v|$.    
 
 \subsection{Matriz de rigidez}	
 
@@ -759,21 +760,21 @@
     de estabilidade pode ser aproximado por: 
 
     \begin{equation}
-        [K]^{stab} = (I - \mathcal{D}\Pi_{k}^\nabla)^T \Lambda (I - \mathcal{D}\Pi_{k}^\nabla)
+        [K]^{stab} = \tau_k (I - \mathcal{D}\Pi_{k}^\nabla)^T (I - \mathcal{D}\Pi_{k}^\nabla),
         \label{eq:4.63}
     \end{equation}
 
-    onde $\Lambda$ é um parâmetro escalar de amortecimento/estabilização relacionado à rigidez do elemento ou às propriedades constitutivas 
-    do material. [19] sugere: 
+    onde $\tau_k$ é um parâmetro escalar de amortecimento/estabilização relacionado à parcela de consistência ou às propriedades constitutivas 
+    do material. \citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020} sugere: 
     
     \begin{equation}
-        \Lambda = \max \left( \text{tr}([K]^{cons}), \, \alpha_0 \frac{\text{tr}(\mathbb{C})}{n_c} \right), \quad \text{com } \alpha_0 = \frac{1}{3}, \, n_c = \text{size}(\mathbb{C}, 1)
+        \tau_k = \max \left( \text{tr}([K]^{cons}), \, \alpha_0 \frac{\text{tr}(\mathbb{C})}{n_c} \right), \quad \text{com } \alpha_0 = \frac{1}{3}, \, n_c = \text{size}(\mathbb{C}, 1)
         \label{eq:4.64}
     \end{equation}
 
         
     \indent Essa propriedade garante que a estabilização seja escalada de maneira similar a matriz constitutiva ao mesmo tempo que é limitada 
-    inferiormente pelo traço da matriz constituiva e um parâmtro $alpha_0$ defindo pelo usuário. Essa estabilização será utilizada na maior 
+    inferiormente pelo traço da matriz constitutiva e um parâmetro $alpha_0$ definido pelo usuário. Essa estabilização será utilizada na maior 
     parte deste trabalho.\\
     \indent A matriz de rigidez elementar completa é expressa por: 
     
@@ -782,7 +783,7 @@
         \label{eq:4.65}
     \end{equation}
 
-    \fbox{ \begin{minipage}{1.0\textwidth} 
+    \fbox{ \centering\begin{minipage}{.9\textwidth} 
         Exemplo 4.6. Prove que os termos de consistência e de estabilidade são desacoplados.
         \vspace{5mm}
         \indent A forma bilinear discreta em um domínio $K$ é: $$a^K_h(v_h,q) = \int_K \mathbb{C}\Pi_{k-1}^0(\epsilon(v_h)) : 
@@ -799,6 +800,7 @@
         (I-\Pi_{k-1}^0)\epsilon(v_h) : (I-\Pi_{k-1}^0)\epsilon(q) dK = \int_K \mathbb{C}(I-\Pi_{k}^\nabla)v_h : (I-\Pi_{k}^\nabla)q dK = 0.$$ 
         Destarte provando o desacoplamento do termo de consistência do termo de estabilidade.
     \end{minipage} }
+    \vspace{5mm}
 
 \section{Implementação:}
 
@@ -857,7 +859,7 @@
 
     \indent Para as deformações, em E1.~\ref{eq:4.15} foi determinada uma forma de cálculo através da derivação de $u_h$, entretanto, elas 
     podem ser aproximadas diretamente pelo operador $\Pi_{k-1}^{\epsilon}$ da mesma maneira que é feito para $u_h$.\\
-    \indent Tal qual o método dos elementos finitos na formulação clássica, também é necessária a utilização dos procedimentos de recuperação 
+    \indent Tal qual o MEF na formulação clássica, também é necessária a utilização dos procedimentos de recuperação 
     de tensões. 
     \indent Para se ter uma aproximação de $u_h$ e $\epsilon(u_h)$ considerando a utilização do termo não polinomial, é necessária a aplicação 
     de técnicas de recuperação de funções na etapa de pós-processamento.

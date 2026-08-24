@@ -1,8 +1,491 @@
-\providecommand{\abntreprintinfo}[1]{%
- \citeonline{#1}}
-\setlength{\labelsep}{0pt}\begin{thebibliography}{}
-\providecommand{\abntrefinfo}[3]{}
-\providecommand{\abntbstabout}[1]{}
-\abntbstabout{v-1.9.7 }
+\begin{thebibliography}{}
+
+\bibitem[Adak et~al., 2022]{adak2022convergence}
+Adak, D., Mora, D.  e Natarajan, S. (2022).
+\newblock Convergence analysis of virtual element method for nonlinear nonlocal dynamic plate equation.
+\newblock {\em Journal of Scientific Computing}, 91(1):1.
+
+\bibitem[Adak et~al., 2019]{virtualelementmethodsemilinearhyperbolicproblemspolygonalmeshes2019}
+Adak, D., Natarajan, E.  e Kumar, S. (2019).
+\newblock Virtual element method for semilinear hyperbolic problems on polygonal meshes.
+\newblock {\em International Journal of Computer Mathematics}, 96(5):971--991.
+
+\bibitem[Ahmad et~al., 2013]{equivalentprojectorsvirtualelementmethods2013a}
+Ahmad, B., Alsaedi, A., Brezzi, F., Marini, L.  e Russo, A. (2013).
+\newblock Equivalent projectors for virtual element methods.
+\newblock {\em Computers \& Mathematics with Applications}, 66(3):376--391.
+
+\bibitem[Aldakheel et~al., 2019]{virtualelementformulationphasefieldmodelingductilefracture2019}
+Aldakheel, F., Hudobivnik, B.  e Wriggers, P. (2019).
+\newblock {{VIRTUAL ELEMENT FORMULATION FOR PHASE-FIELD MODELING OF DUCTILE FRACTURE}}.
+\newblock {\em International Journal for Multiscale Computational Engineering}, 17(2):181--200.
+
+\bibitem[Antonietti et~al., 2016]{virtualelementmethodtopologyoptimizationpolygonalmeshesnumericalstudy2016}
+Antonietti, P.~F., Bruggi, M., Scacchi, S.  e Verani, M. (2016).
+\newblock On the {{Virtual Element Method}} for {{Topology Optimization}} on polygonal meshes: A numerical study.
+
+\bibitem[Antonietti et~al., 2021]{antonietti2021arbitrary}
+Antonietti, P.~F., Manzini, G., Mazzieri, I., Mourad, H.~M.  e Verani, M. (2021).
+\newblock The arbitrary-order virtual element method for linear elastodynamics models: Convergence, stability and dispersion-dissipation analysis.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 122(4):934--971.
+
+\bibitem[Antonietti et~al., 2020]{antonietti2020virtual}
+Antonietti, P.~F., Manzini, G., Mourad, H.~M.  e Verani, M. (2020).
+\newblock The virtual element method for linear elastodynamics models: Design, analysis, and implementation.
+\newblock Technical Report / MOX Report 58/2019, Politecnico di Milano and Los Alamos National Laboratory.
+
+\bibitem[Artioli et~al., 2020a]{curvilinearvirtualelements2dsolidmechanicsapplications2020}
+Artioli, E., Beir{\~a}o Da~Veiga, L.  e Dassi, F. (2020a).
+\newblock Curvilinear {{Virtual Elements}} for {{2D}} solid mechanics applications.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 359:112667.
+
+\bibitem[Artioli et~al., 2017a]{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}
+Artioli, E., Beir{\~a}o Da~Veiga, L., Lovadina, C.  e Sacco, E. (2017a).
+\newblock Arbitrary order {{2D}} virtual elements for polygonal meshes: Part {{I}}, elastic problem.
+\newblock {\em Computational Mechanics}, 60(3):355--377.
+
+\bibitem[Artioli et~al., 2017b]{arbitraryorder2dvirtualelementspolygonalmeshespartiiinelasticproblem2017a}
+Artioli, E., Beir{\~a}o Da~Veiga, L., Lovadina, C.  e Sacco, E. (2017b).
+\newblock Arbitrary order {{2D}} virtual elements for polygonal meshes: Part {{II}}, inelastic problem.
+\newblock {\em Computational Mechanics}, 60(4):643--657.
+
+\bibitem[Artioli et~al., 2017c]{stressdisplacementvirtualelementmethodplaneelasticityproblems2017a}
+Artioli, E., {de~Miranda}, S., Lovadina, C.  e Patruno, L. (2017c).
+\newblock A stress/displacement {{Virtual Element}} method for plane elasticity problems.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 325:155--174.
+
+\bibitem[Artioli et~al., 2019]{equilibriumbasedstressrecoveryprocedurevem2019}
+Artioli, E., De~Miranda, S., Lovadina, C.  e Patruno, L. (2019).
+\newblock An equilibrium-based stress recovery procedure for the {{VEM}}.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 117(8):885--900.
+
+\bibitem[Artioli et~al., 2020b]{dualhybridvirtualelementmethodplaneelasticityproblems2020}
+Artioli, E., De~Miranda, S., Lovadina, C.  e Patruno, L. (2020b).
+\newblock A dual hybrid virtual element method for plane elasticity problems.
+\newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis}, 54(5):1725--1750.
+
+\bibitem[Ayuso De~Dios et~al., 2016]{nonconformingvirtualelementmethod2016}
+Ayuso De~Dios, B., Lipnikov, K.  e Manzini, G. (2016).
+\newblock The nonconforming virtual element method.
+\newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis}, 50(3):879--904.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2013]{basicprinciplesvirtualelementmethods2013a}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Cangiani, A., Manzini, G., Marini, L.~D.  e Russo, A. (2013).
+\newblock {{BASIC PRINCIPLES OF VIRTUAL ELEMENT METHODS}}.
+\newblock {\em Mathematical Models and Methods in Applied Sciences}, 23(01):199--214.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2016a]{serendipitynodalvemspaces2016}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.  e Russo, A. (2016a).
+\newblock Serendipity {{Nodal VEM}} spaces.
+\newblock {\em Computers \& Fluids}, 141:2--12.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2014]{hitchhikersguidevirtualelementmethod2014a}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2014).
+\newblock The {{Hitchhiker}}'s {{Guide}} to the {{Virtual Element Method}}.
+\newblock {\em Mathematical Models and Methods in Applied Sciences}, 24(08):1541--1573.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2016b]{virtualelementmethodgeneralsecondorderellipticproblemspolygonalmeshes2016}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2016b).
+\newblock Virtual {{Element Method}} for general second-order elliptic problems on polygonal meshes.
+\newblock {\em Mathematical Models and Methods in Applied Sciences}, 26(04):729--750.
+
+\bibitem[Beir{\~a}o~da Veiga et~al., 2017]{vem2017virtual}
+Beir{\~a}o~da Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2017).
+\newblock The virtual element method.
+\newblock Special Lecture / Overview on Virtual Element Methods.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2020]{polynomialpreservingvirtualelementscurvededges2020}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2020).
+\newblock Polynomial preserving virtual elements with curved edges.
+\newblock {\em Mathematical Models and Methods in Applied Sciences}, 30(08):1555--1590.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2015]{virtualelementmethodelasticinelasticproblemspolytopemeshes2015a}
+Beir{\~a}o Da~Veiga, L., Lovadina, C.  e Mora, D. (2015).
+\newblock A {{Virtual Element Method}} for elastic and inelastic problems on polytope meshes.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 295:327--346.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2019]{virtualelementmethodcurvededges2019}
+Beir{\~a}o Da~Veiga, L., Russo, A.  e Vacca, G. (2019).
+\newblock The {{Virtual Element Method}} with curved edges.
+\newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis}, 53(2):375--404.
+
+\bibitem[Benvenuti et~al., 2019]{extendedvirtualelementmethodlaplaceproblemsingularitiesdiscontinuities2019a}
+Benvenuti, E., Chiozzi, A., Manzini, G.  e Sukumar, N. (2019).
+\newblock Extended virtual element method for the {{Laplace}} problem with singularities and discontinuities.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 356:571--597.
+
+\bibitem[Berrone et~al., 2025]{lowestorderstabilizationfreevirtualelementmethod2dpoissonequation2025}
+Berrone, S., Borio, A.  e Marcon, F. (2025).
+\newblock Lowest order stabilization free virtual element method for the {{2D Poisson}} equation.
+\newblock {\em Computers \& Mathematics with Applications}, 177:78--99.
+
+\bibitem[Boffi et~al., 2022]{virtualelementapproximationeigenvalueproblems2022a}
+Boffi, D., Gardini, F.  e Gastaldi, L. (2022).
+\newblock Virtual {{Element Approximation}} of {{Eigenvalue Problems}}.
+\newblock Em Antonietti, P.~F., Beir{\~a}o Da~Veiga, L.  e Manzini, G., editores, {\em The {{Virtual Element Method}} and Its {{Applications}}}, volume~31, p\'aginas 275--320. Springer International Publishing, Cham.
+
+\bibitem[Boffi et~al., 2026]{boffi2026virtual}
+Boffi, D., Gardini, F.  e Gastaldi, L. (2026).
+\newblock Virtual element approximation of eigenvalue problems: is the stabilization of the right hand side necessary?
+\newblock {\em arXiv preprint arXiv:2604.03751}.
+
+\bibitem[Braun et~al., 2001]{braun2001encyclopedia}
+Braun, S.~G., Ewins, D.~J.  e Rao, S.~S., editores (2001).
+\newblock {\em Encyclopedia of Vibration}.
+\newblock Academic Press, San Diego, 1st edition.
+
+\bibitem[Brezzi e Marini, 2013]{virtualelementmethodsplatebendingproblems2013a}
+Brezzi, F. e Marini, L.~D. (2013).
+\newblock Virtual {{Element Methods}} for plate bending problems.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 253:455--462.
+
+\bibitem[Budynas e Sadegh, 2020]{roarksformulasstressstrainninthedition2020}
+Budynas, R.~G. e Sadegh, A.~M. (2020).
+\newblock {\em Roark's {{Formulas}} for {{Stress}} and {{Strain}}, {{Ninth Edition}}}.
+\newblock McGraw-Hill Education, New York, N.Y, ninth edition edition.
+
+\bibitem[Cangiani et~al., 2016]{conformingnonconformingvirtualelementmethodsellipticproblems2016a}
+Cangiani, A., Manzini, G.  e Sutton, O.~J. (2016).
+\newblock Conforming and nonconforming virtual element methods for elliptic problems.
+\newblock {\em IMA Journal of Numerical Analysis}, p\'agina drw036.
+
+\bibitem[Chen e Sukumar, 2023]{stabilizationfreeserendipityvirtualelementmethodplaneelasticity2023}
+Chen, A. e Sukumar, N. (2023).
+\newblock Stabilization-free serendipity virtual element method for plane elasticity.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 404:115784.
+
+\bibitem[Chen e Wen, 2020]{chen2020programming}
+Chen, L. e Wen, M. (2020).
+\newblock Programming of linear virtual element methods.
+\newblock Lecture Notes / Course Materials, University of California, Irvine.
+
+\bibitem[Cheung et~al., 2000]{refinednonconformingplanequadrilateralelement2000}
+Cheung, Y., Zhang, Y.  e Chen, W. (2000).
+\newblock A refined nonconforming plane quadrilateral element.
+\newblock {\em Computers \& Structures}, 78(5):699--709.
+
+\bibitem[Chi et~al., 2017]{basicformulationsvirtualelementmethodvemfinitedeformations2017}
+Chi, H., Da~Veiga, L.~B.  e Paulino, G. (2017).
+\newblock Some basic formulations of the virtual element method ({{VEM}}) for finite deformations.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 318:148--192.
+
+\bibitem[Chopra, 2023]{chopra2023dynamics}
+Chopra, A.~K. (2023).
+\newblock {\em Dynamics of Structures: Theory and Applications to Earthquake Engineering}.
+\newblock Pearson, Pearson, 6th edition.
+
+\bibitem[Cihan et~al., 2021a]{3dmixedvirtualelementformulationdynamicelastoplasticanalysis2021a}
+Cihan, M., Hudobivnik, B., Aldakheel, F.  e Wriggers, P. (2021a).
+\newblock {{3D}} mixed virtual element formulation for dynamic elasto-plastic analysis.
+\newblock {\em Computational Mechanics}, 68(3):1--18.
+
+\bibitem[Cihan et~al., 2021b]{virtualelementformulationfinitestrainelastodynamics2021}
+Cihan, M., Hudobivnik, B., Aldakheel, F.  e Wriggers, P. (2021b).
+\newblock Virtual {{Element Formulation}} for {{Finite Strain Elastodynamics}}.
+\newblock {\em Computer Modeling in Engineering \& Sciences}, 129(3):1151--1180.
+
+\bibitem[Cittadin, 2020]{cittadin2020enriquecimento}
+Cittadin, C.~C. (2020).
+\newblock Enriquecimento seletivo com uso do m{\'e}todo dos elementos finitos generalizados na an{\'a}lise din{\^a}mica de problemas de estado plano.
+\newblock Disserta{\c{c}}{\~a}o de mestrado, Universidade Federal do Paran{\'a}, Curitiba, PR, Brasil.
+
+\bibitem[Clough e Chopra, 1966]{earthquakestressanalysisearthdams1966}
+Clough, R.~W. e Chopra, A.~K. (1966).
+\newblock Earthquake {{Stress Analysis}} in {{Earth Dams}}.
+\newblock {\em Journal of the Engineering Mechanics Division}, 92(2):197--211.
+
+\bibitem[Credali et~al., 2024]{reducedbasisstabilizationpostprocessingvirtualelementmethod2024a}
+Credali, F., Bertoluzza, S.  e Prada, D. (2024).
+\newblock Reduced basis stabilization and post-processing for the virtual element method.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 420:116693.
+
+\bibitem[Cust{\'o}dio, 2022]{custodio2022metodo}
+Cust{\'o}dio, R. (2022).
+\newblock O m{\'e}todo dos elementos finitos generalizados aplicado com elementos triangulares na an{\'a}lise din{\^a}mica de estruturas em estado plano.
+\newblock Disserta{\c{c}}{\~a}o de mestrado, Universidade Federal do Paran{\'a}, Curitiba, PR, Brasil.
+
+\bibitem[Da~Veiga et~al., 2013]{virtualelementslinearelasticityproblems2013}
+Da~Veiga, L.~B., Brezzi, F.  e Marini, L.~D. (2013).
+\newblock Virtual {{Elements}} for {{Linear Elasticity Problems}}.
+\newblock {\em SIAM Journal on Numerical Analysis}, 51(2):794--812.
+
+\bibitem[{da Veiga} et~al., 2014]{hdivhcurlconformingvem2014}
+{da Veiga}, L.~B., Brezzi, F., Marini, L.~D.  e Russo, A. (2014).
+\newblock H(div) and {{H}}(curl)-conforming {{VEM}}.
+
+\bibitem[Da~Veiga et~al., 2018]{exponentialconvergencehpvirtualelementmethodpresencecornersingularities2018}
+Da~Veiga, L.~B., Chernov, A., Mascotto, L.  e Russo, A. (2018).
+\newblock Exponential convergence of the hp virtual element method in presence of corner singularities.
+\newblock {\em Numerische Mathematik}, 138(3):581--613.
+
+\bibitem[{da Veiga} et~al., 2016]{stabilityanalysisvirtualelementmethod2016a}
+{da Veiga}, L.~B., Lovadina, C.  e Russo, A. (2016).
+\newblock Stability {{Analysis}} for the {{Virtual Element Method}}.
+
+\bibitem[Da~Veiga e Manzini, 2014]{virtualelementmethodarbitraryregularity2014}
+Da~Veiga, L.~B. e Manzini, G. (2014).
+\newblock A virtual element method with arbitrary regularity.
+\newblock {\em IMA Journal of Numerical Analysis}, 34(2):759--781.
+
+\bibitem[Dassi et~al., 2020]{threedimensionalhellingerreissnervirtualelementmethodlinearelasticityproblems2020}
+Dassi, F., Lovadina, C.  e Visinoni, M. (2020).
+\newblock A three-dimensional {{Hellinger}}--{{Reissner}} virtual element method for linear elasticity problems.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 364:112910.
+
+\bibitem[Dassi e Mascotto, 2018]{exploringhighorderthreedimensionalvirtualelementsbasesstabilizations2018}
+Dassi, F. e Mascotto, L. (2018).
+\newblock Exploring high-order three dimensional virtual elements: {{Bases}} and stabilizations.
+\newblock {\em Computers \& Mathematics with Applications}, 75(9):3379--3401.
+
+\bibitem[De~Bellis et~al., 2019]{serendipityvirtualelementformulationnonlinearelasticity2019}
+De~Bellis, M., Wriggers, P.  e Hudobivnik, B. (2019).
+\newblock Serendipity virtual element formulation for nonlinear elasticity.
+\newblock {\em Computers \& Structures}, 223:106094.
+
+\bibitem[D{\'i}az e Sigmund, 1995]{checkerboardpatternslayoutoptimization1995}
+D{\'i}az, A. e Sigmund, O. (1995).
+\newblock Checkerboard patterns in layout optimization.
+\newblock {\em Structural Optimization}, 10(1):40--45.
+
+\bibitem[Farlow, 1993]{farlow1993partial}
+Farlow, S.~J. (1993).
+\newblock {\em Partial Differential Equations for Scientists and Engineers}.
+\newblock Dover Books on Mathematics. Dover Publications, unabridged edition.
+
+\bibitem[Finlayson, 1972]{finlayson1972method}
+Finlayson, B.~A. (1972).
+\newblock {\em The Method of Weighted Residuals and Variational Principles}, volume~87 de {\em Mathematics in Science and Engineering}.
+\newblock Academic Press, New York.
+
+\bibitem[Gain et~al., 2014]{gain2014virtual}
+Gain, A., Talischi, C.  e Kry, P.~G. (2014).
+\newblock On the virtual element method for three-dimensional linear elasticity problems on arbitrary polyhedral meshes.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 282:132--160.
+
+\bibitem[Gibson, 2016]{principlescompositematerialmechanics2016}
+Gibson, R.~F. (2016).
+\newblock {\em Principles of {{Composite Material Mechanics}}}.
+\newblock CRC Press, 0 edition.
+
+\bibitem[Herrera et~al., 2023]{numericalimplementationhighorder2dvirtualelementmethodmatlab2023a}
+Herrera, C., {Corrales-Barquero}, R., {Arroyo-Esquivel}, J.  e Calvo, J.~G. (2023).
+\newblock A numerical implementation for the high-order {{2D}} virtual element method in {{MATLAB}}.
+\newblock {\em Numerical Algorithms}, 92(3):1707--1721.
+
+\bibitem[Hillen et~al., 2019]{hillen2019partial}
+Hillen, T., Leonard, I.~E.  e van Roessel, H. (2019).
+\newblock {\em Partial Differential Equations: Theory and Completely Solved Problems}.
+\newblock Springer, 1st edition.
+
+\bibitem[Hughes, 1987]{hughes1987finite}
+Hughes, T. J.~R. (1987).
+\newblock {\em The Finite Element Method: Linear Static and Dynamic Finite Element Analysis}.
+\newblock Prentice-Hall, Englewood Cliffs, NJ.
+
+\bibitem[Lai, 2026]{bivariatesplineconstructionorthonormalpolynomialspolygonaldomainsitsapplicationsquadrature2026}
+Lai, M.-J. (2026).
+\newblock A {{Bivariate Spline Construction}} of {{Orthonormal Polynomials}} over {{Polygonal Domains}} and {{Its Applications}} to {{Quadrature}}.
+
+\bibitem[Lai et~al., 2010]{introductioncontinuummechanics2010}
+Lai, W.~M., {krempl}, E.  e Rubin, D. (2010).
+\newblock {\em Introduction to {{Continuum Mechanics}}}.
+\newblock Elsevier.
+
+\bibitem[Lamperti et~al., 2023]{huwashizuvariationalapproachselfstabilizedvirtualelements2dlinearelastostatics2023}
+Lamperti, A., Cremonesi, M., Perego, U., Russo, A.  e Lovadina, C. (2023).
+\newblock A {{Hu}}--{{Washizu}} variational approach to self-stabilized virtual elements: {{2D}} linear elastostatics.
+\newblock {\em Computational Mechanics}, 71(5):935--955.
+
+\bibitem[Lepe et~al., 2020]{virtualelementmethodstekloveigenvalueproblemallowingsmalledges2020a}
+Lepe, F., Mora, D., Rivera, G.  e Vel{\'a}squez, I. (2020).
+\newblock A virtual element method for the {{Steklov}} eigenvalue problem allowing small edges.
+
+\bibitem[Leung et~al., 2004]{analytictrapezoidalfourierpelementvibratingplaneproblems2004}
+Leung, A., Zhu, B., Zheng, J.  e Yang, H. (2004).
+\newblock Analytic trapezoidal {{Fourier}} p-element for vibrating plane problems.
+\newblock {\em Journal of Sound and Vibration}, 271(1-2):67--81.
+
+\bibitem[Mascotto, 2018]{illconditioningvirtualelementmethodstabilizationsbases2018}
+Mascotto, L. (2018).
+\newblock Ill-conditioning in the virtual element method: {{Stabilizations}} and bases.
+\newblock {\em Numerical Methods for Partial Differential Equations}, 34(4):1258--1281.
+
+\bibitem[Mase et~al., 2010]{continuummechanicsengineers2010}
+Mase, G.~T., Mase, G.~E., Smelser, R.~E.  e Smelser, R.~E. (2010).
+\newblock {\em Continuum Mechanics for Engineers}.
+\newblock {{CRC}} Series in Computational Mechanics and Applied Analysis. CRC Press/Taylor \& Francis, Boca Raton, Fla., 3. ed edition.
+
+\bibitem[Mazilli et~al., 2022]{licoesemmecanicaestruturasdinamica2022a}
+Mazilli, C., Andr{\'e}, J., Bucalem, M.  e Cif{\'u}, S. (2022).
+\newblock {\em {Li\c c\~oes em mec\^anica das estruturas: din\^amica}}.
+\newblock N\'umero~2 em {Li\c c\~oes em mec\^anica das estruturas:}. Editora Edgard Blucher.
+
+\bibitem[Mengolini et~al., 2019]{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a}
+Mengolini, M., Benedetto, M.~F.  e Arag{\'o}n, A.~M. (2019).
+\newblock An engineering perspective to the virtual element method and its interplay with the standard finite element method.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 350:995--1023.
+
+\bibitem[Moherdaui, 2021]{virtualelementmethodwheelrailcontactproblems2021}
+Moherdaui, T.~F. (2021).
+\newblock {\em The Virtual Element Method for Wheel-Rail Contact Problems.}
+\newblock Mestrado em {{Engenharia}} de {{Estruturas}}, Universidade de S\~ao Paulo, S\~ao Paulo.
+
+\bibitem[Mora et~al., 2018]{virtualelementmethodvibrationproblemkirchhoffplates2018}
+Mora, D., Rivera, G.  e Vel{\'a}squez, I. (2018).
+\newblock A virtual element method for the vibration problem of {{Kirchhoff}} plates.
+\newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis}, 52(4):1437--1456.
+
+\bibitem[Mousavi e Sukumar, 2011]{numericalintegrationpolynomialsdiscontinuousfunctionsirregularconvexpolygonspolyhedrons2011}
+Mousavi, S.~E. e Sukumar, N. (2011).
+\newblock Numerical integration of polynomials and discontinuous functions on irregular convex polygons and polyhedrons.
+\newblock {\em Computational Mechanics}, 47(5):535--554.
+
+\bibitem[Nale et~al., 2024]{enhancedcorotationalvirtualelementmethodlargedisplacementsplaneelasticity2024}
+Nale, M., Gatta, C., Addessi, D., Benvenuti, E.  e Sacco, E. (2024).
+\newblock An enhanced corotational {{Virtual Element Method}} for large displacements in plane elasticity.
+\newblock {\em Computational Mechanics}, 74(2):379--392.
+
+\bibitem[Nguyen-Thanh et~al., 2010]{nguyenthanh2010alternative}
+Nguyen-Thanh, N., Rabczuk, T., Nguyen-Xuan, H.  e Bordas, S. P.~A. (2010).
+\newblock An alternative alpha finite element method (a$\alpha$fem) for free and forced structural vibration using triangular meshes.
+\newblock {\em Journal of Computational and Applied Mathematics}, 233(9):2112--2135.
+
+\bibitem[Park et~al., 2019]{nonconvexmesheselastodynamicsusingvirtualelementmethodsexplicittimeintegration2019a}
+Park, K., Chi, H.  e Paulino, G.~H. (2019).
+\newblock On nonconvex meshes for elastodynamics using virtual element methods with explicit time integration.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 356:669--684.
+
+\bibitem[Park et~al., 2020]{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020}
+Park, K., Chi, H.  e Paulino, G.~H. (2020).
+\newblock Numerical recipes for elastodynamic virtual element methods with explicit time integration.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 121(1):1--31.
+
+\bibitem[Petyt, 2010]{introductionfiniteelementvibrationanalysis2010}
+Petyt, M. (2010).
+\newblock {\em Introduction to {{Finite Element Vibration Analysis}}}.
+\newblock Cambridge University Press, 2 edition.
+
+\bibitem[Rao, 2006]{vibrationcontinuoussystems2006}
+Rao, S.~S. (2006).
+\newblock {\em Vibration of {{Continuous Systems}}}.
+\newblock Wiley, 1 edition.
+
+\bibitem[Rao, 2017a]{rao2017finite}
+Rao, S.~S. (2017a).
+\newblock {\em The Finite Element Method in Engineering}.
+\newblock Butterworth-Heinemann, Oxford, UK, 6th edition.
+
+\bibitem[Rao, 2017b]{mechanicalvibrations2017}
+Rao, S.~S. (2017b).
+\newblock {\em Mechanical Vibrations}.
+\newblock Pearson, Hoboken, NJ London Toronto, sixth edition edition.
+
+\bibitem[Reddy, 2013]{introductioncontinuummechanics2013}
+Reddy, J.~N. (2013).
+\newblock {\em An {{Introduction}} to {{Continuum Mechanics}}}.
+\newblock Cambridge University Press, New York, 2nd ed edition.
+
+\bibitem[Russo e Sukumar, 2024]{quantitativestudystabilizationparametervirtualelementmethod2024}
+Russo, A. e Sukumar, N. (2024).
+\newblock Quantitative {{Study}} of the {{Stabilization Parameter}} in the {{Virtual Element Method}}.
+\newblock Em Beir{\~a}o Da~Veiga, H., Minh{\'o}s, F., Van~Goethem, N.  e Sanchez~Rodrigues, L., editores, {\em Nonlinear {{Differential Equations}} and {{Applications}}}, volume~7, p\'aginas 259--278. Springer International Publishing, Cham.
+
+\bibitem[Sadd, 2021]{elasticitytheoryapplicationsnumerics2021}
+Sadd, M.~H. (2021).
+\newblock {\em Elasticity: Theory, Applications, and Numerics}.
+\newblock Elsevier, Academic Press, London San Diego Cambridge Oxford, fourth edition edition.
+
+\bibitem[Sommariva e Vianello, 2007]{productgausscubaturepolygonsbasedgreensintegrationformula2007}
+Sommariva, A. e Vianello, M. (2007).
+\newblock Product {{Gauss}} cubature over polygons based on {{Green}}'s integration formula.
+\newblock {\em BIT Numerical Mathematics}, 47(2):441--453.
+
+\bibitem[Steger, 1996]{calculationarbitrarymomentspolygonsa}
+Steger, C. (1996).
+\newblock On the calculation of arbitrary moments of polygons.
+
+\bibitem[Sukumar e Tupek, 2022]{virtualelementsagglomeratedfiniteelementsincreasecriticaltimestepelastodynamicsimulations2022}
+Sukumar, N. e Tupek, M.~R. (2022).
+\newblock Virtual elements on agglomerated finite elements to increase the critical time step in elastodynamic simulations.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 123(19):4702--4725.
+
+\bibitem[Sutton, 2017]{virtualelementmethod50linesmatlab2017}
+Sutton, O.~J. (2017).
+\newblock The virtual element method in 50 lines of {{MATLAB}}.
+\newblock {\em Numerical Algorithms}, 75(4):1141--1159.
+
+\bibitem[Tadmor et~al., 2012]{tadmor2012continuum}
+Tadmor, E.~B., Miller, R.~E.  e Elliott, R.~S. (2012).
+\newblock {\em Continuum Mechanics and Thermodynamics: From Fundamental Concepts to Governing Equations}.
+\newblock Cambridge University Press.
+
+\bibitem[{Tiago Fernandes Moherdaui} e {Alfredo Gay Neto}, 2024]{virtualelementmethodoverviewformulations2024a}
+{Tiago Fernandes Moherdaui} e {Alfredo Gay Neto} (2024).
+\newblock Virtual {{Element Method}}: {{An}} overview of formulations.
+\newblock {\em Ibero-Latin American Congress on Computational Methods in Engineering (CILAMCE)}.
+
+\bibitem[Timoshenko, 1976]{resistenciadosmateriais1976}
+Timoshenko, S. (1976).
+\newblock {\em Resist\^encia Dos {{Materiais}}}, volume~1 de {\em Elementos de {{Resist\^encia}} Dos {{Materiais}}}.
+\newblock LTC, Rio de Janeiro.
+
+\bibitem[Torii, 2012]{torii2012analise}
+Torii, A.~J. (2012).
+\newblock {\em An{\'a}lise din{\^a}mica de estruturas com o m{\'e}todo dos elementos finitos generalizados}.
+\newblock Tese de doutorado, Universidade Federal do Paran{\'a}, Curitiba, PR, Brasil.
+
+\bibitem[Vacca, 2017]{virtualelementmethodshyperbolicproblemspolygonalmeshes2017}
+Vacca, G. (2017).
+\newblock Virtual {{Element Methods}} for hyperbolic problems on polygonal meshes.
+\newblock {\em Computers \& Mathematics with Applications}, 74(5):882--898.
+
+\bibitem[Vacca e Beir{\~a}o Da~Veiga, 2015]{virtualelementmethodsparabolicproblemspolygonalmeshes2015a}
+Vacca, G. e Beir{\~a}o Da~Veiga, L. (2015).
+\newblock Virtual element methods for parabolic problems on polygonal meshes.
+\newblock {\em Numerical Methods for Partial Differential Equations}, 31(6):2110--2134.
+
+\bibitem[Vellasco et~al., 2017]{modelagemestruturasacomistas2017}
+Vellasco, P., Lima, L., Andrade, S., Vellasco, M.  e {da Silva}, L. (2017).
+\newblock {\em {Modelagem de estruturas de a\c co e mistas}}.
+\newblock Elsevier.
+
+\bibitem[Wriggers et~al., 2024]{wriggers2024virtual}
+Wriggers, P., Aldakheel, F.  e Hudobivnik, B. (2024).
+\newblock {\em Virtual Element Methods in Engineering Sciences}.
+\newblock Springer International Publishing.
+
+\bibitem[Wriggers e Hudobivnik, 2017]{lowordervirtualelementformulationfiniteelastoplasticdeformations2017}
+Wriggers, P. e Hudobivnik, B. (2017).
+\newblock A low order virtual element formulation for finite elasto-plastic deformations.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 327:459--477.
+
+\bibitem[Wriggers e Junker, 2026]{spacetimeimplementationwaveequationusingvirtualelements2026}
+Wriggers, P. e Junker, {\relax Ph}. (2026).
+\newblock On a space-time implementation of the wave equation using virtual elements.
+\newblock {\em Computational Mechanics}, 77(1):197--211.
+
+\bibitem[Wriggers et~al., 2016]{virtualelementmethodcontact2016}
+Wriggers, P., Rust, W.~T.  e Reddy, B.~D. (2016).
+\newblock A virtual element method for contact.
+\newblock {\em Computational Mechanics}, 58(6):1039--1050.
+
+\bibitem[Yu, 2022]{mvemmatlabsoftwarepackagevirtualelementmethods2022}
+Yu, Y. (2022).
+\newblock {{mVEM}}: {{A MATLAB Software Package}} for the {{Virtual Element Methods}}.
+
+\bibitem[Zhao e Steven, 1996]{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996}
+Zhao, C. e Steven, G.~P. (1996).
+\newblock {{ASYMPTOTIC SOLUTIONS FOR PREDICTED NATURAL FREQUENCIES OF TWO-DIMENSIONAL ELASTIC SOLID VIBRATION PROBLEMS IN FINITE ELEMENT ANALYSIS}}.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 39(16):2821--2835.
+
+\bibitem[Zhao et~al., 2023]{computingpropertiesdisplacementresponsemultidegreefreedomstructuresdifferentcircumstances2023}
+Zhao, Z., Pan, Q.  e Huang, Y. (2023).
+\newblock Computing the {{Properties}} and {{Displacement Response}} of {{Multi-degree}} of {{Freedom Structures}} under {{Different Circumstances}}.
+\newblock {\em Theoretical and Natural Science}, 5(1):240--252.
+
+\bibitem[Zheng e Nackenhorst, 2024]{stochasticvirtualelementmethodsuncertaintypropagationstochasticlinearelasticity2024}
+Zheng, Z. e Nackenhorst, U. (2024).
+\newblock Stochastic virtual element methods for uncertainty propagation of stochastic linear elasticity.
+\newblock {\em Computational Mechanics}, 73(3):667--684.
 
 \end{thebibliography}

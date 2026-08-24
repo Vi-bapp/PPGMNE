@@ -3,11 +3,11 @@
      
 \section{Análise dinâmica de estruturas}
 
-    \indent "Qualquer movimento que se repete em um determinado período de tempo é denominado vibração ou oscilação" [1]. A análise de vibrações 
+    \indent "Qualquer movimento que se repete em um determinado período é denominado vibração ou oscilação" \citet{mechanicalvibrations2017}. A análise de vibrações 
 é a área que se preocupa com os movimentos oscilatórios e com as forças a eles associadas em corpos sólidos, bem como com os efeitos 
 mecânicos gerados no material devido a esses movimentos.  
 
-\subsection{Conceitos Básicos}
+\subsection{Conceitos Básicos} 
 
     \indent Em sistemas dinâmicos, tanto as variáveis de entrada quanto as de saída são dependentes do tempo. Para que um corpo comece a vibrar, 
     é necessária a aplicação de um esforço que gere uma excitação e, consequentemente, o faça se mover. Um sistema vibratório é composto por 
@@ -22,7 +22,7 @@ mecânicos gerados no material devido a esses movimentos.
     dinâmico pode ser linear ou não linear, sendo definido pela equação diferencial governante do problema. A definição de linearidade é 
     importante, pois o princípio de superposição modal pode ser aplicado apenas a vibrações lineares. \\
     \indent Nos sistemas vibratórios, os graus de liberdade do problema representam a quantidade mínima de coordenadas independentes 
-    necessárias para determinar as posições de todas as partes do sistema em qualquer instante de tempo [2]. Os graus de liberdade podem ser
+    necessárias para determinar as posições de todas as partes do sistema em qualquer instante de tempo \citet{vibrationcontinuoussystems2006}. Os graus de liberdade podem ser
      apresentados tanto como coordenadas cartesianas (em problemas de deslocamento das massas dos elementos do sistema) quanto como 
      coordenadas polares (em problemas torcionais). A escolha do sistema de coordenadas busca simplificar a solução do problema em estudo. 
      As coordenadas necessárias para a descrição do movimento de um sistema constituem um conjunto de coordenadas generalizadas.\\
@@ -30,58 +30,50 @@ mecânicos gerados no material devido a esses movimentos.
     alvo, para então proceder ao desenvolvimento das equações diferenciais que o governam. Em problemas discretos, a energia potencial 
     elástica e a rigidez do sistema são representadas por molas, e a energia cinética é representada pela massa ou inércia dos elementos. A 
     representação de um sistema dinâmico é feita por meio de diagramas com molas, massas e amortecedores. Um diagrama massa-mola-amortecedor 
-    permite a visualização dos elementos que compõem o sistema Figura~\ref{fig:1}. \\
+    permite a visualização dos elementos que compõem o sistema. A Figura~\ref{fig:1} apresenta um pórtico plano com dois pavimentos e massa concentrada por pavimento onde tanto a rigidez quanto o amortecimento são equivalentes por pavimento e um diagrama massa mola equivalente. \\
 
      \begin{figure}[htbp]
         \centering
-        \caption{Figura 1}
+        \caption{Diagramas de representação de problemas dinâmicos}
         \label{fig:1}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Pórtico plano com dois pavimentos e massa concentrada por pavimento. 
-            Tanto a rigidez quanto o amortecimento são equivalentes por pavimento.}
-            \includegraphics[width=\textwidth]{figuras/capitulo_3/1-a.png}
             \label{fig:1a}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Modelo com 2 graus de liberdade com representação em um sistema massa mola.}
             \includegraphics[width=\textwidth]{figuras/capitulo_3/1-b.png}
             \label{fig:1b}
         \end{subfigure}
-        \caption{Fonte: }
+        {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}    
 
-    \indent Sistemas vibratórios podem possuir mais de um ponto de massa concentrada Figura~\ref{fig:2}. Um sistema de múltiplos graus de liberdade 
-    pode ser considerado um sistema de massas pontuais conectadas por molas e amortecedores [2]. 
+    \indent Sistemas vibratórios podem possuir mais de um ponto de massa concentrada Figura~\ref{fig:2}. Um sistema de múltiplos graus de liberdade pode ser considerado um sistema de massas pontuais conectadas por molas e amortecedores \citet{vibrationcontinuoussystems2006}.  
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 2}
+        \caption{Diagramas dinâmico para sistema aporticado de dois pavimentos.}
         \label{fig:2}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Pórtico plano com dois pavimentos e massa concentrada por pavimento. 
-            Tanto a rigidez quanto o amortecimento são equivalentes por pavimento.}
             \includegraphics[width=\textwidth]{figuras/capitulo_3/2-a.png}
             \label{fig:2a}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Modelo com 2 graus de liberdade com representação em um sistema massa mola.}
             \includegraphics[width=\textwidth]{figuras/capitulo_3/2-b.png}
             \label{fig:2b}
         \end{subfigure}
-        \caption{Fonte: }
+        {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}
 
     \indent Para os modelos dinâmicos, a massa — ou inércia — do sistema engloba os elementos capazes de ganhar ou perder energia cinética, 
     considerando que o trabalho é equivalente ao produto de uma força por um deslocamento na mesma direção, e que o trabalho realizado sobre 
     uma massa é retido na forma de energia cinética. \\
     \indent Molas são elementos cuja massa e amortecimento são nulos. São componentes que, quando submetidos a um esforço de tração, exercem 
-    uma força restauradora que tende a fazê-los retornar à sua configuração geométrica original [1]. A lei de Hooke estabelece que a força 
+    uma força restauradora que tende a fazê-los retornar à sua configuração geométrica original \citet{mechanicalvibrations2017}. A lei de Hooke estabelece que a força 
     restauradora de uma mola é equivalente ao produto do coeficiente de elasticidade pelo deslocamento por ela sofrido: 
 
     \begin{equation}
@@ -91,22 +83,22 @@ mecânicos gerados no material devido a esses movimentos.
 
     \indent Nota-se que o coeficiente elástico é diretamente proporcional à tensão aplicada ao sistema; assim, a função da mola em sistemas 
     dinâmicos é representar a rigidez do sistema frente aos esforços nele aplicados.  \\
-    \indent Em problemas que envolvem rotação, é comum adotar o diagrama da Figura~\ref{fig:3}, no qual utiliza-se a inércia em vez da 
+    \indent Em problemas que envolvem rotação, é comum adotar o diagrama da Figura~\ref{fig:3}, no qual se utiliza a inércia em vez da 
     massa dos elementos: 
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 3: }
+        \caption{Diagrama massa mola de problema torcional.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/3.png}
         \label{fig:3}
-        \caption{Fonte: Autor (Adaptado de [1])}
+        {\small \textbf{Fonte:} Adaptado de \citet{mechanicalvibrations2017}}
     \end{figure}
 
 
     \indent Sistemas dinâmicos tendem a perder energia gradualmente na forma de calor ou som. A representação dessa perda de energia é feita 
     por meio de amortecedores, que são elementos sem massa ou elasticidade, nos quais a força de amortecimento existe apenas se houver uma 
     velocidade relativa entre as suas duas extremidades. Mesmo que o efeito do amortecimento seja pequeno, é importante considerá-lo para 
-    obter uma melhor exatidão na resposta do sistema aos esforços externos [1]. \\
+    obter uma melhor exatidão na resposta do sistema aos esforços externos \citet{mechanicalvibrations2017}. \\
     \indent Os mecanismos por trás do amortecimento em estruturas são diversos e complexos de serem representados; portanto, o amortecimento 
     é modelado como um modelo específico ou como uma combinação deles. Quando o corpo se encontra imerso em um fluido, utiliza-se o modelo de 
     amortecimento viscoso. Os efeitos de atrito do corpo em relação a um meio sólido seco são representados por meio do modelo de fricção 
@@ -129,30 +121,27 @@ mecânicos gerados no material devido a esses movimentos.
     externos. O estudo da vibração livre é importante para conhecer o comportamento do sistema — como os modos de vibração, $\phi_n$, e a 
     frequência natural, $\omega_n$.\\
     \indent Os modos de vibração podem ser definidos como formas de vibrar, ou padrões de vibração, quando aplicados a um sistema com 
-    diversos pontos que apresentam diferentes amplitudes e deflexões [13]. Um sistema pode exibir diferentes modos de vibração para 
+    diversos pontos que apresentam diferentes amplitudes e deflexões \citet{braun2001encyclopedia}. Um sistema pode exibir diferentes modos de vibração para 
     diferentes frequências aplicadas sobre ele. Para cada modo de vibração, existe uma frequência associada. \\
     \indent Os modos naturais de vibração são aqueles em que os deslocamentos dos graus de liberdade apresentam um movimento harmônico 
-    simples. Uma característica dos modos de vibração natural é que o formato da deflexão não se altera Figura ~\ref{fig:4} \\
+    simples. Uma característica dos modos de vibração natural é que o formato da deflexão não se altera Figura~\ref{fig:4} \\
 
  \begin{figure}[htbp]
         \centering
-        \caption{Figura 4}
+        \caption{Gráficos de deslocamento por de passo no tempo}
         \label{fig:4}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Pórtico plano com dois pavimentos e massa concentrada por pavimento. 
-            Tanto a rigidez quanto o amortecimento são equivalentes por pavimento.}
             \includegraphics[width=\textwidth]{figuras/capitulo_3/4-a.png}
             \label{fig:4a}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
-            \caption{Modelo com 2 graus de liberdade com representação em um sistema massa mola.}
             \includegraphics[width=\textwidth]{figuras/capitulo_3/4-b.png}
             \label{fig:4b}
         \end{subfigure}
-        \caption{Fonte: [14]}
+        {\small \textbf{Fonte:} \citet{chopra2023dynamics}}
     \end{figure}
 
 
@@ -168,7 +157,7 @@ escalar que varia com o tempo, $q(t)$:
 \end{equation}
 
 \indent A solução da equação diferencial de um problema com um grau de vibração em movimento harmônico é conhecida; desse modo, $q(t)$ pode 
-ser descrito utilizando dois parâmetros escalares, $A$ e $B$, que são determinados pelas condições iniciais do problema: 
+ser descrito utilizando dois parâmetros escalares, $A$ e $B$, quais são determinados pelas condições iniciais do problema: 
 
 \begin{equation}
     q_n(t) = A_n \cos{(\omega_n t)} + B_n \sin{(\omega_n t)}
@@ -182,7 +171,7 @@ ser descrito utilizando dois parâmetros escalares, $A$ e $B$, que são determin
     \label{eq:3.4}
 \end{equation}
 
-\indent Segundo [14], modos de vibração com diferentes frequência satisfazem a condição de ortogonalidade:
+\indent Segundo [14], modos de vibração com diferentes frequências satisfazem a condição de ortogonalidade:
 
 \begin{equation}
     \phi_n^T [K] \phi_r = 0 \hspace{0.5cm} \text{e} \hspace{0.5cm} \phi_n^T [M] \phi_r = 0.
@@ -223,10 +212,10 @@ multiplicadores escalares $q_r$ Figura~\ref{fig:5}, chamados de coordenadas moda
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 5: }
+        \caption{Deslocamento de um pilar equivalente à soma dos deslocamentos de seus modos de vibração}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/5.png}
         \label{fig:5}
-        \caption{Fonte: [19]}
+        {\small \textbf{Fonte:} \citet{computingpropertiesdisplacementresponsemultidegreefreedomstructuresdifferentcircumstances2023}}
     \end{figure}
 
 
@@ -240,16 +229,16 @@ multiplicadores escalares $q_r$ Figura~\ref{fig:5}, chamados de coordenadas moda
 \section{Teoria da elasticidade e estado plano} 
 	
     \indent A princípio, para descrever o comportamento de um material sob esforços, bem como as tensões e deformações internas que surgem, 
-    seria necessário considerar o movimento de seus átomos, que é governado pela mecânica quântica. Entretanto, existem maneiras mais simples 
+    seria necessário considerar o movimento de seus átomos, quais são governados pela mecânica quântica. Entretanto, existem maneiras mais simples 
     de modelar esse comportamento, como a mecânica do contínuo. A mecânica do contínuo ignora a discreticidade do mundo, tratando-o como um 
-    meio macroscópico observável [15]. 
+    meio macroscópico observável \citet{tadmor2012continuum}. 
 	
     \subsection{Conceitos básicos de mecânica do contínuo e teoria da elasticidade}
 
     \indent Os corpos são formados por partículas e moléculas nas quais atuam forças moleculares que se opõem à mudança de forma. Conforme 
     indica a terceira lei de Newton, a aplicação de forças externas resulta em forças reativas que tendem a impedir a alteração do corpo. O 
     estado de deformação ocorre com a aplicação de forças externas, e as partículas deslocam-se continuamente até que o equilíbrio entre as 
-    forças exteriores e interiores seja estabelecido [3].  \\
+    forças exteriores e interiores seja estabelecido \citet{resistenciadosmateriais1976}.  \\
     \indent Tensões são forças distribuídas em superfícies externas ou internas de um corpo. A função das tensões é servir como medida de 
     intensidade de uma força, ou seja, representar a distribuição das forças sobre determinada área. A importância da análise de tensões
      reside no fato de que falhas mecânicas não estão diretamente relacionadas à força bruta exercida no objeto, mas sim à concentração 
@@ -261,17 +250,17 @@ multiplicadores escalares $q_r$ Figura~\ref{fig:5}, chamados de coordenadas moda
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 6: }
+        \caption{Sólido sob ação de forças pontuais e distribuídas.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/6.png}
         \label{fig:6}
-        \caption{Fonte: [7]}
+        {\small \textbf{Fonte:} \citet{elasticitytheoryapplicationsnumerics2021}}
     \end{figure}
 
 	\indent Ao considerar uma área infinitesimal $dS$ em um plano, utilizando um sistema de coordenadas cartesianas $x_1$, $x_2$ e $x_3$ ao 
     redor do ponto de interesse, as tensões resultantes de um esforço interno $F$ no elemento são calculadas por: 
 
     \begin{equation}
-        \mathsf{t}_i^{(j)} =  = \frac{dF_{i}}{dA_j}, 
+        \mathsf{t}_i^{(j)}  = \frac{dF_{i}}{dA_j}, 
         \label{eq:3.10}
     \end{equation}
 
@@ -298,7 +287,7 @@ multiplicadores escalares $q_r$ Figura~\ref{fig:5}, chamados de coordenadas moda
 \indent A descrição completa do estado de tensões em um ponto exigiria o conhecimento de infinitos planos de corte. Como a variedade de 
 tensões ao redor de um ponto é infinita, descrevê-las acuradamente demandaria o uso de uma esfera infinitesimal. Todavia, graças ao método 
 de transformação de coordenadas, basta conhecer as tensões em apenas três planos ortogonais para descrever o estado de tensões em qualquer 
-superfície [4] Figura~\ref{fig:7}. A combinação dos vetores de tensões nos três planos forma o tensor de tensões: 
+superfície \citet{roarksformulasstressstrainninthedition2020} Figura~\ref{fig:7}. A combinação dos vetores de tensões nos três planos forma o tensor de tensões: 
 
     \begin{equation}
     \mathsf{T} = \begin{bmatrix} \mathsf{t}_{11} & \mathsf{t}_{12} & \mathsf{t}_{13} \\ \mathsf{t}_{21} & \mathsf{t}_{22} & \mathsf{t}_{23} \\ \mathsf{t}_{31} & \mathsf{t}_{32} & \mathsf{t}_{33}  \end{bmatrix}.
@@ -308,10 +297,10 @@ superfície [4] Figura~\ref{fig:7}. A combinação dos vetores de tensões nos t
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 7: }
+        \caption{Solido infinitesimal sob tensões.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/7.png}
         \label{fig:7}
-        \caption{Fonte: [9]}
+        \caption{Fonte: \citet{introductioncontinuummechanics2010}}
     \end{figure}
 
 
@@ -329,7 +318,7 @@ unitário:
 \indent Essa relação permite a construção de qualquer vetor de tensões por meio do tensor de tensões e do vetor normal unitário $\hat{n}$ à 
 superfície em questão. \\
 \indent Em uma classe específica de problemas de elasticidade — seja pela geometria, propriedades do material, condições de contorno ou 
-cargas externas —, a solução independe de uma das coordenadas. Esses problemas se enquadram na chamada elasticidade plana [6]. Essa hipótese 
+cargas externas —, a solução independe de uma das coordenadas. Esses problemas se enquadram na chamada elasticidade plana \citet{introductioncontinuummechanics2013}. Essa hipótese 
 simplifica o cálculo, permitindo que um problema tridimensional seja tratado como bidimensional. Considerando nulas as tensões na direção 
 $x_3$ Figura~\ref{fig:8}, chega-se à matriz: 
 
@@ -340,10 +329,10 @@ $x_3$ Figura~\ref{fig:8}, chega-se à matriz:
 
   \begin{figure}[htbp]
         \centering
-        \caption{Figura 8: }
+        \caption{Área infinitesimal sob ação de tensões normais e de cisalhamento.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/8.png}
         \label{fig:8}
-        \caption{Fonte: Autor}
+        {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}
 
 
@@ -354,15 +343,15 @@ geométrica em um plano para a obtenção das componentes da deformação.
 
  \begin{figure}[htbp]
         \centering
-        \caption{Figura 9: }
+        \caption{Elemento distorcido.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/9.png}
         \label{fig:9}
-        \caption{Fonte: [7]}
+        {\small \textbf{Fonte:} \citet{elasticitytheoryapplicationsnumerics2021}}
     \end{figure}
 
 
 \indent A deformação por alongamento (ou compressão) é a variação relativa ao comprimento inicial. Assumindo o valor de $u_1(x_1 + dx,x_2) 
-\approx u_1(x_1,x_2) + (\partial u_1 / \partial x_1) dx_1$, a deformação no eixo $x_1$ é :
+\approx u_1(x_1,x_2) + (\partial u_1 / \partial x_1) dx_1$, a deformação no eixo $x_1$ é:
 
 \begin{equation}
     \epsilon_{x_1} = \frac{A^{\prime}B^{\prime} - AB}{AB}
@@ -414,7 +403,7 @@ a Figura~\ref{fig:9}, a deformação é definida como:
     \label{eq:3.22}
 \end{equation}
 
-\indent De acordo com [8], o comportamento elástico em um corpo é caracterizado por duas premissas: \\
+\indent De acordo com \citet{continuummechanicsengineers2010}, o comportamento elástico em um corpo é caracterizado por duas premissas: \\
 \indent A tensão no material é uma função unívoca da deformação. \\
 O material possui a propriedade de retornar à sua geometria original após a remoção dos esforços aplicados. \\
 \indent As leis constitutivas permitem relacionar as tensões com as deformações do material. Assume-se que cada componente de tensão se 
@@ -428,7 +417,7 @@ relaciona linearmente com os componentes de deformação, de modo que:
 
 onde $\mathbb{C}_{ijkl}$ é um tensor elástico de quarta ordem que contém todos os parâmetros necessários para caracterizar o material. \\
 
-\indent Segundo [9], um material é dito isotrópico (modelo constitutivo de interesse neste trabalho) quando suas propriedades mecânicas podem 
+\indent Segundo \citet{introductioncontinuummechanics2013}, um material é dito isotrópico (modelo constitutivo de interesse neste trabalho) quando suas propriedades mecânicas podem 
 ser descritas independentemente da direção; caso contrário, é anisotrópico. Ao tomar uma direção com base $e_i$, a relação constitutiva será 
 igual à Eq.~\ref{eq:3.23}. Caso se analise uma direção $e_i^\prime$, a relação será: 
 
@@ -506,7 +495,7 @@ nula. A relação tensão-deformação para o sólido elástico isotrópico assu
 
 	
 e os esforços de superfície, que se encontram distribuídos, independentemente de esse elemento fazer parte da superfície delimitadora 
-externa ou ser um elemento arbitrário no interior do corpo [8]. As forças de superfície possuem dimensões de força por unidade de área. 
+externa ou ser um elemento arbitrário no interior do corpo \citet{continuummechanicsengineers2010}. As forças de superfície possuem dimensões de força por unidade de área. 
 A partir da Eq.~\ref{eq:3.10}, essas forças podem ser obtidas do produto do vetor de tensões normal superfície e um diferencial de área $dS$:
 	
 \begin{equation}
@@ -516,7 +505,7 @@ A partir da Eq.~\ref{eq:3.10}, essas forças podem ser obtidas do produto do vet
 
 
 \indent O princípio de d’Alembert introduz uma força fictícia, denominada força de inércia, que permite que o equilíbrio dinâmico seja 
-formulado com os mesmos conceitos do equilíbrio estático [5]. Em um corpo sujeito a forças de corpo, a equação de equilíbrio fica: 
+formulado com os mesmos conceitos do equilíbrio estático \citet{introductionfiniteelementvibrationanalysis2010}. Em um corpo sujeito a forças de corpo, a equação de equilíbrio fica: 
 
 \begin{equation}
     \int_S \mathsf{t}^{(\hat{n})} dS + \int_V b \, dV - \int_V \rho \frac{du(\mathbf{x},t)}{dt} dV = 0.
@@ -524,7 +513,7 @@ formulado com os mesmos conceitos do equilíbrio estático [5]. Em um corpo suje
 \end{equation}
 
 
-\indent Aplicando o princípio de Cauchy à parcelo do vetor de tensões:
+\indent Aplicando o princípio de Cauchy a parcelo do vetor de tensões:
 
 \begin{equation}
     \int_S t^{(\hat{n})} dS = \int_S \mathsf{T} \, \hat{n} \, dS,
@@ -559,8 +548,7 @@ obtendo-se a equação de movimento de Cauchy:
 \indent Embora incorpore as características dinâmicas, a equação de Cauchy pura não possui um termo explícito para o amortecimento estrutural 
 interno. Para isso, recorre-se, por exemplo, ao modelo viscoelástico de Kelvin-Voigt. \\
 \indent Formulações viscoelásticas são construídas a partir de modelos reológicos com molas (que seguem a lei de Hooke) e amortecedores 
-(assumidos como preenchidos com fluido newtoniano de viscosidade $\mu$) [10], à semelhança da formulação de sistemas discretos. O modelo r
-eológico de Kelvin-Voigt Figura~\ref{fig:10} apresenta uma mola e um amortecedor ligados em paralelo. Matematicamente, ele é descrito por: 
+(assumidos como preenchidos com fluido newtoniano de viscosidade $\mu$) \citet{principlescompositematerialmechanics2016}, à semelhança da formulação de sistemas discretos. O modelo reológico de Kelvin-Voigt Figura~\ref{fig:10} apresenta uma mola e um amortecedor unidos em paralelo. Matematicamente, ele é descrito por: 
 
 \begin{equation}
     \mathsf{T} = \mathbb{C} \epsilon + \mathbb{D} \dot{\epsilon}
@@ -570,16 +558,16 @@ eológico de Kelvin-Voigt Figura~\ref{fig:10} apresenta uma mola e um amortecedo
 	
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 10: }
+        \caption{Diagrama reológico de Voigt.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/10.png}
         \label{fig:10}
-        \caption{Fonte: [10]}
+        {\small \textbf{Fonte:} \citet{principlescompositematerialmechanics2016}}
     \end{figure}
 
 
 \subsubsection{As condições de solução de uma equação diferencial}
 
-\indent Como destaca [11], uma equação diferencial parcial pode possuir uma infinidade de soluções possíveis, incluindo aproximações 
+\indent Como destaca \citet{hillen2019partial}, uma equação diferencial parcial pode possuir uma infinidade de soluções possíveis, incluindo aproximações 
 polinomiais de diversas ordens ou combinações de funções exponenciais e trigonométricas. Condições adicionais são indispensáveis para 
 garantir a unicidade da solução, sendo elas as condições iniciais e as condições de contorno. As condições iniciais estão comumente atreladas 
 ao domínio temporal, dadas em um instante inicial: 
@@ -607,7 +595,7 @@ uma fronteira $\partial \Omega$ com $\mathbf{x} \in \partial \Omega$, assumem a 
     \label{eq:3.42}
 \end{equation}
 	
-onde $\partial u / \partial n = \nabla u \cdot n$ é a derivada direcional. Referência [12] ressalta que as condições de Neumann puras 
+onde $\partial u / \partial n = \nabla u \cdot n$ é a derivada direcional. Referência \citet{farlow1993partial} ressalta que as condições de Neumann puras 
 diferem das demais por permitirem infinitas soluções (movimentos de corpo rígido). Desse modo, exige-se pelo menos uma restrição adicional 
 (como amarrar um ponto de Dirichlet) para encontrar uma solução particular. A condição de Robin, por sua vez, é uma composição linear das 
 condições de Dirichlet e Neumann: 
@@ -624,9 +612,8 @@ com movimento totalmente restrito configuram condições de Dirichlet, enquanto 
 Tabela~\ref{tab:3.1}. 
 
     \begin{table}[htbp]
-        \caption{Tabela 3.2}
+        \caption{Representação gráfica das condições de contorno em problemas de mecânica estrutural.}
         \begin{tabular}{lll}
-            \multicolumn{3}{l}{\textbf{Tabela 1 - Representação gráfica das condições de contorno em problemas de mecânica estrutural.}} \\
             \textbf{Apoio}  & \textbf{Representação}           & \textbf{Efeito}                                      \\
             \textbf{Fixo}   & \includegraphics[width=2cm]{figuras/Capitulo_3/T1.png}   & Impede deslocamentos em ambas as direções.  \\
             \textbf{Móvel}  & \includegraphics[width=2cm]{figuras/Capitulo_3/T2.png}   & Impede deslocamentos em apenas uma direção. \\
@@ -641,7 +628,7 @@ Tabela~\ref{tab:3.1}.
 
 \indent As soluções aproximadas para equações diferenciais satisfazem o equilíbrio em um sentido médio, não pontualmente em todas as 
 coordenadas. Tais aproximações são tipicamente expandidas como uma combinação linear de um conjunto de funções de base ponderadas por 
-parâmetros arbitrários [17]. 
+parâmetros arbitrários \citet{finlayson1972method}. 
 
 \subsection{Métodos dos resíduos ponderados}
 
@@ -658,7 +645,7 @@ aplicação do operador sobre a solução aproximada $u_h$ e o termo exato $F$:
 \end{equation}
 
 \indent Nesse escopo, a solução candidata é expandida usando um conjunto predefinido de funções teste (funções de aproximação) $\varphi_i$, 
-ponderadas por coeficientes ou graus de liberdade ajustáveis $a_i$ que garantem a melhor aproximação possível [16]: 
+ponderadas por coeficientes ou graus de liberdade ajustáveis $a_i$ que garantem a melhor aproximação possível \citet{hughes1987finite}: 
 
 \begin{equation}
     u_h(\mathbf{x}) = \sum_{i=1}^n a_i \varphi_i(\mathbf{x}).
@@ -682,20 +669,19 @@ estão sintetizadas na Tabela~\ref{tab:3.2}:
     
     \begin{table}[htbp]
         \caption{Tabela 3.2}
-        \begin{tabular}{lll}
-            \multicolumn{3}{c}{\textbf{Tabela 2 - Resumo dos métodos dos resíduos ponderados}}                                                                                            \\
+        \begin{tabular}{lll}                                                                                           \\
             \multicolumn{1}{c}{\textbf{Método}} & \multicolumn{1}{c}{\textbf{Função peso ($w_i$)}}                 & \multicolumn{1}{c}{\textbf{Ideia principal}}                         \\
             \textbf{Colocação}                  & Delta de Dirac $(w = \delta(x_j - x))$                           & Impõe $(R=0)$ em pontos específicos do domínio.                      \\
             \textbf{Subdomínios}                & $(w_i=1)$ em cada subdomínio e $(0)$ fora                        & Anula o resíduo em média em cada subdomínio.                         \\
             \textbf{Mínimos Quadrados}          & $(w_i=\dfrac{\partial R}{\partial a_i})$                         & Minimiza a norma quadrática do resíduo.                              \\
-            \textbf{Galerkin}                   & (w\_i=\textbackslash{}varphi\_i) (mesmas funções de aproximação) & Utiliza as mesmas funções para aproximação e ponderação.             \\
+            \textbf{Galerkin}                   & $(w_i=\textbackslash{}varphi_i)$ (mesmas funções de aproximação) & Utiliza as mesmas funções para aproximação e ponderação.             \\
             \textbf{Petrov–Galerkin}            & $(w_i\neq varphi_i)$                                             & Utiliza funções de ponderação diferentes das funções de aproximação.
         \end{tabular}
         \label{tab:3.2}
     \end{table}
 
 
-\indent De acordo com [18], a formulação de Galerkin destaca-se por fornecer resultados altamente robustos em mecânica dos sólidos. Trata-se, historicamente, da rota mais percorrida para a derivação variacional das matrizes de elementos finitos. 
+\indent De acordo com \citet{rao2017finite}, a formulação de Galerkin destaca-se por fornecer resultados altamente robustos em mecânica dos sólidos. Trata-se, historicamente, da rota mais percorrida para a derivação variacional das matrizes de elementos finitos. 
 
 \indent Resolver a equação diferencial no seu formato "forte" (original) requer um elevado grau de regularidade (continuidade) da função aproximadora. A variável primária necessita ser diferenciável até a ordem máxima estipulada pelo operador analítico. A migração para a forma fraca, de natureza integral, relaxa drasticamente essa exigência. 
 
@@ -724,7 +710,7 @@ estão sintetizadas na Tabela~\ref{tab:3.2}:
     \label{eq:3.49}
 \end{equation}
 
-\indent Utilizando uma identidade vetorial aplicável à divergentes para expandir a primeira parcela: 
+\indent Utilizando uma identidade vetorial aplicável a divergentes para expandir a primeira parcela: 
 
 \begin{equation}
     \int_{V} \nabla \cdot (\mathsf{T}  w) dV - \int_{V} \nabla w : \mathsf{T}  \, dV  + \int_{V} w \hspace{1.5pt} b \hspace{1.5pt} dV = \int_{V} w \hspace{1.5pt} \rho \hspace{1.5pt} \ddot{u} \hspace{1.5pt} dV.
@@ -803,9 +789,9 @@ fraca:
 
 
 \indent Os termos $a(\cdot,\cdot)$ e $(\cdot,\cdot)$ são exemplos de formas simétricas e bilineares. \\
-\indent [16] afirma que a notação utilizada na Eq.~\ref{eq:3.59} é concisa e captura aspectos matemáticos importantes. Devido a isso, essa 
+\indent \citet{hughes1987finite} afirma que a notação utilizada na Eq.~\ref{eq:3.59} é concisa e captura aspectos matemáticos importantes. Devido a isso, essa 
 notação será utilizada diversas vezes no decorrer dos próximos capítulos em definições.\\
-\indent Para que haja simetria, a seguinte propriedade deve ser cumprida:
+\indent Para existir simetria, a seguinte propriedade deve ser cumprida:
 
 \begin{equation}
     a(u,v) = a(v,u) \\ (u,v) = (v,u).
@@ -849,42 +835,42 @@ frequências naturais e modos de vibração provêm da solução de um problema 
         \label{eq:3.64}
     \end{equation}
 
-\subsection{Métodos de galerkin com discretização do domínio}
+\subsection{Método de Galerkin com discretização do domínio}
 
-\indent Métodos numéricos tais como o Método dos Elementos Finitos e o Método dos Elementos Virtuais utilizam a mesma estrutura que o método 
+\indent Métodos numéricos tais como o MEF e o MEV utilizam a mesma estrutura que o método 
 de Galerkin. Contudo, esses métodos subdividem o domínio em subdomínios chamados elementos e aplicam em cada elemento a formulação fraca, 
 obtida do método dos resíduos ponderados.\\
 \indent Os métodos com discretização do domínio buscam encontrar a solução de um problema complexo ao substituí-lo por um problema mais simples. 
 Nesses métodos, divide-se a região de solução (o domínio) em sub-regiões menores interconectadas, chamadas de elementos. Os elementos são 
 conectados entre si por meio de juntas denominadas nós ou pontos nodais. Como as variações das variáveis de campo no contínuo são 
 desconhecidas, assume-se que a solução pode ser aproximada por funções simples, as quais são escritas em função do valor das variáveis de 
-campo nos nós [18]. O problema torna-se, então, solucionar um sistema linear de equações cujas incógnitas são as variáveis de campo nodais.\\
+campo nos nós \citet{rao2017finite}. O problema torna-se, então, solucionar um sistema linear de equações cujas incógnitas são as variáveis de campo nodais.\\
 \indent Esses métodos, mesmo sendo aproximados, apresentam a vantagem de a solução ser aprimorada com o aumento do poder computacional — 
 prática chamada de refino. Existem tipos principais de métodos de refino, que podem ser aplicados em conjunto. O refino $h$, por meio da 
 redução do tamanho dos elementos, aumenta a quantidade deles no objeto de análise. O refino $p$ aumenta a ordem das funções de aproximação. 
 O refino $r$ melhora a solução ao mover os nós para regiões de alto erro, sem que haja aumento no número de nós ou elementos. Em alguns casos, 
-pode ser necessário refazer a distribuição de elementos na malha. Destaca-se em [18] que, mesmo com o refino $h$, existe um limite em que a 
+pode ser necessário refazer a distribuição de elementos na malha. Destaca-se em \citet{rao2017finite} que, mesmo com o refino $h$, existe um limite em que a 
 solução para de se aproximar da solução analítica da equação diferencial Figura~\ref{fig:11}
 
  \begin{figure}[htbp]
         \centering
-        \caption{Figura 11: }
+        \caption{Curva de convergência do MEF.}
         \includegraphics[width=\textwidth]{figuras/capitulo_3/11.png}
         \label{fig:11}
-        \caption{Fonte: [11]}
+        {\small \textbf{Fonte:} [11]}
     \end{figure}
 
-\indent O processo de solução desse métodos envolve uma sequência de etapas fixas, sendo elas:
+\indent O processo de solução desses métodos envolve uma sequência de etapas fixas, sendo elas:
 
 \begin{enumerate}
     \item Discretização do domínio do problema em uma malha de elementos;
-    \item Adota-se uma interpolação adequada para o problema. A equação de aproximação deve ser simples do ponto de vista computacional e 
+    \item adota-se uma interpolação adequada para o problema. A equação de aproximação deve ser simples do ponto de vista computacional e 
     satisfazer certos requisitos de convergência;
-    \item Deriva-se as matrizes e vetores elementares, tais quais as matrizes de rigidez e de massa, e os vetores de carga, seja utilizando 
+    \item derivam-se as matrizes e vetores elementares, tais quais as matrizes de rigidez e de massa, e os vetores de carga, seja utilizando 
     um princípio variacional apropriado, através do método dos resíduos ponderados ou baseando-se em condições de equilíbrio;
-    \item Unir as equações elementares em um sistema de equações global, como exemplo: $$[K] = \boldsymbol{\mathsf{A}}_{e=1}^{n_{el}} [k_e]$$
-    \item Solucionar o sistema de equações para obtenção das variáveis de campo, e
-    \item Computar outras variáveis através das variáveis de campo obtidas.
+    \item unir as equações elementares em um sistema de equações global, como exemplo: $$[K] = \boldsymbol{\mathsf{A}}_{e=1}^{n_{el}} [k_e]$$
+    \item solucionar o sistema de equações para obtenção das variáveis de campo, e
+    \item computar outras variáveis através das variáveis de campo obtidas.
 \end{enumerate}
 
 

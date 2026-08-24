@@ -69,7 +69,7 @@ program main_free_vibration
     ! -------------------------------------------------------------------------
     ! CONFIGURAÇÕES INICIAIS E MATERIAL
     ! -------------------------------------------------------------------------
-    E_mod  = 1.0
+    E_mod  = 1.0_dp
     nu_val = 0.3_dp
     rho    = 1.0_dp
     call get_lame_parameters(E_mod, nu_val, lambda, mu_val)
@@ -220,11 +220,11 @@ program main_free_vibration
             else
                 call compute_matrix_B(B_eps, n_monomials_eps, loc_ndof, size(el%vertices), k_order - 1, 3, &
                                       edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_eps_boundary) ! <--- CHANGED
+                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_eps_boundary) 
                                       
                 call compute_matrix_B(B_0, n_monomials, loc_ndof, size(el%vertices), k_order, mesh%ndof, &
                                       edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_grad) ! <--- CHANGED
+                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_grad) 
             end if
 
             ! Aplica P0 em B_0
@@ -266,12 +266,12 @@ program main_free_vibration
             ! 2. PARÂMETROS DE ESTABILIZAÇÃO
             ! ---------------------------------------------------------
             !Estabilização de Kyoungsoo Park; Heng Chi; Glaucio H.Paulino
-            !tau_K = max(matrix_trace(K_C)/real(loc_ndof), alpha * matrix_trace(C_mat)/3.0_dp)
-            !tau_M = (rho * el%area)
+            tau_K = max(matrix_trace(K_C)/real(loc_ndof), alpha * matrix_trace(C_mat)/3.0_dp)
+            tau_M = (rho * el%area)
             !tau_M = max(matrix_trace(M_C)/real(loc_ndof), alpha * matrix_trace(C_mat)/3.0_dp)
             !Estabilização de Antonietti, P.F; Manzini, G.; Mourad, H.M.; Verani, M.
-            tau_K = max(2*mu_val,lambda)
-            tau_M = (rho * el%diameter**2)
+            !tau_K = max(2*mu_val,lambda)
+            !tau_M = (rho * el%diameter**2)
                       
             
             ! ---------------------------------------------------------

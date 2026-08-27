@@ -4,8 +4,8 @@ set output 'output_gnuplot/animacao_vem.gif'
 set title 'Evolucao Temporal da Malha (VEM)'
 set xlabel 'X'
 set ylabel 'Y'
-set xrange [  5.553306E+03:  5.568426E+03]
-set yrange [  1.265525E+03:  1.292405E+03]
+set xrange [  5.639205E+03:  5.642005E+03]
+set yrange [  1.246110E+03:  1.248910E+03]
 set size ratio -1
 set lmargin at screen 0.12
 set rmargin at screen 0.92

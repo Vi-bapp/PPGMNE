@@ -43,6 +43,6 @@
 \contentsline {section}{\numberline {5.2}Barragem de terra}{85}{section.256}%
 \contentsline {section}{\numberline {5.3}Parede estrutural}{96}{section.277}%
 \contentsline {chapter}{\numberline {6}Conclusão}{108}{chapter.299}%
-\contentsline {chapter}{REFER\^ENCIAS}{110}{chapter*.300}%
-\contentsline {section}{\numberline {.1}Apêndice A - Tabela com pontos e pesos de Gauss-Lobatto}{118}{section.301}%
+\contentsline {chapter}{REFER\^ENCIAS}{111}{chapter*.300}%
+\contentsline {section}{\numberline {.1}Apêndice A - Tabela com pontos e pesos de Gauss-Lobatto}{119}{section.301}%
 \contentsfinish 

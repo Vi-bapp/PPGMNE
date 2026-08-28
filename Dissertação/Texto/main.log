@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  23 AUG 2026 21:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  28 AUG 2026 12:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2493,15 +2493,15 @@ Cap\'{\i }tulo 6.
 
 ]
 
-[109] (./main.bbl
+[109]
 
-[110
+[110] (./main.bbl
+
+[111
 
 
 
 ]
-
-[111]
 
 [112]
 
@@ -2511,14 +2511,16 @@ Cap\'{\i }tulo 6.
 
 [115]
 
-[116])
+[116]
 
-[117]
+[117])
+
+[118]
 \openout2 = `Apendice.aux'.
 
  (./Apendice.tex)
 
-[118
+[119
 
 ] (./main.aux (./0-iniciais/catalografica.aux) (./0-iniciais/aprovacao.aux) (./0-iniciais/resumo.aux) (./0-iniciais/abstract.aux) (./0-iniciais/abreviaturas.aux) (./0-iniciais/simbolos.aux) (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./Cap_5.aux) (./Conclusoes.aux) (./Apendice.aux))
  ***********
@@ -2531,18 +2533,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 37002 strings out of 473584
- 687009 string characters out of 5732363
+ 37003 strings out of 473584
+ 687017 string characters out of 5732363
  1961908 words of memory out of 5000000
  58387 multiletter control sequences out of 15000+600000
  709262 words of font info for 321 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,27n,96p,1599b,818s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvb.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txbmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (118 pages, 2839518 bytes).
+Output written on main.pdf (119 pages, 2840773 bytes).
 PDF statistics:
- 2082 PDF objects out of 2487 (max. 8388607)
- 1697 compressed objects within 17 object streams
- 522 named destinations out of 1000 (max. 500000)
+ 2088 PDF objects out of 2487 (max. 8388607)
+ 1701 compressed objects within 18 object streams
+ 523 named destinations out of 1000 (max. 500000)
  42672 words of extra memory for PDF output out of 42996 (max. 10000000)
 

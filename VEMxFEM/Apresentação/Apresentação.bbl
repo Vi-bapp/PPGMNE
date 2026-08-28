@@ -10,6 +10,10 @@ Aldakheel, F., Hudobivnik, B., and Wriggers, P. (2019).
 \newblock {{VIRTUAL ELEMENT FORMULATION FOR PHASE-FIELD MODELING OF DUCTILE FRACTURE}}.
 \newblock {\em International Journal for Multiscale Computational Engineering}, 17(2):181--200.
 
+\bibitem[Antonietti et~al., 2019]{virtualelementmethodlinearelastodynamicsmodelsconvergencestabilitydissipationdispersionanalysis2019}
+Antonietti, P.~F., Manzini, G., Mazzieri, I., Mourad, H., and Verani, M. (2019).
+\newblock The virtual element method for linear elastodynamics models. {{Convergence}}, stability and dissipation-dispersion analysis.
+
 \bibitem[Artioli et~al., 2017]{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}
 Artioli, E., Beir{\~a}o Da~Veiga, L., Lovadina, C., and Sacco, E. (2017).
 \newblock Arbitrary order {{2D}} virtual elements for polygonal meshes: Part {{I}}, elastic problem.

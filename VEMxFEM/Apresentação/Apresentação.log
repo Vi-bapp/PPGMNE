@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  28 AUG 2026 02:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  28 AUG 2026 14:32
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -815,7 +815,7 @@ LaTeX Font Info:    Trying to load font information for OT1+mathkerncmss on inpu
 File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mathkerncmss.
 )
 
-<figuras/ppgmne jpge 2 (1).png, id=67, 513.92pt x 440.64626pt>
+<figuras/ppgmne jpge 2 (1).png, id=51, 513.92pt x 440.64626pt>
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
 Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 29.
@@ -850,7 +850,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 49--49
  [][][][]  
  []
 
-<figuras/voronoi_mesh.png, id=151, 855.195pt x 833.1125pt>
+<figuras/voronoi_mesh.png, id=128, 855.195pt x 833.1125pt>
 File: figuras/voronoi_mesh.png Graphic file (type png)
 <use figuras/voronoi_mesh.png>
 Package pdftex.def Info: figuras/voronoi_mesh.png  used on input line 49.
@@ -923,7 +923,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [6
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 80--80
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 77--77
  [][][][]  
  []
 
@@ -931,7 +931,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 80--80
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 80.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 77.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -944,7 +944,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 80.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 77.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -954,21 +954,15 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [8
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 84--84
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 82--82
  [][][][]  
  []
-
-
-Package amsmath Warning: Bracket group [M] at formula start!
-(amsmath)                It could be a misspelled positional argument.
-(amsmath)                If it belongs to the formula add a \relax in
-(amsmath)                front to hide it on input line 84.
 
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 84.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 82.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -978,7 +972,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [9
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 96--96
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 91--91
  [][][][]  
  []
 
@@ -986,7 +980,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 96--96
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 96.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 91.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -999,7 +993,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 96.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 91.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1012,7 +1006,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 96.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 91.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1022,7 +1016,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [12
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 103--103
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 102--102
  [][][][]  
  []
 
@@ -1030,7 +1024,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 103--103
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 103.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 102.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1058,10 +1052,20 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [14
 
 ]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 123--123
+ [][][][]  
+ []
+
+<figuras/Elemento.png, id=490, 534.19576pt x 207.77625pt>
+File: figuras/Elemento.png Graphic file (type png)
+<use figuras/Elemento.png>
+Package pdftex.def Info: figuras/Elemento.png  used on input line 123.
+(pdftex.def)             Requested size: 171.14764pt x 66.56584pt.
+
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 109.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 123.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1070,8 +1074,8 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [15
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 114--114
+ <./figuras/Elemento.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 135--135
  [][][][]  
  []
 
@@ -1079,7 +1083,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 114--114
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 114.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 135.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1092,7 +1096,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 114.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 135.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1102,7 +1106,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [17
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 121--121
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 144--144
  [][][][]  
  []
 
@@ -1110,7 +1114,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 121--121
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 121.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 144.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1120,7 +1124,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [18
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 129--129
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 154--154
  [][][][]  
  []
 
@@ -1128,7 +1132,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 129--129
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 129.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 154.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1141,7 +1145,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 129.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 154.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1151,20 +1155,15 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [20
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 145--145
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 163--163
  [][][][]  
  []
 
-<figuras/Elemento.png, id=679, 534.19576pt x 207.77625pt>
-File: figuras/Elemento.png Graphic file (type png)
-<use figuras/Elemento.png>
-Package pdftex.def Info: figuras/Elemento.png  used on input line 145.
-(pdftex.def)             Requested size: 171.14764pt x 66.56584pt.
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 145.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 163.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1173,16 +1172,16 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [21
 
- <./figuras/Elemento.png>]
-File: figuras/Elemento.png Graphic file (type png)
-<use figuras/Elemento.png>
-Package pdftex.def Info: figuras/Elemento.png  used on input line 145.
-(pdftex.def)             Requested size: 171.14764pt x 66.56584pt.
+]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 173--173
+ [][][][]  
+ []
+
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 145.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 173.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1192,20 +1191,15 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [22
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 154--154
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 180--180
  [][][][]  
  []
 
-<figuras/gdl (1).png, id=741, 763.85374pt x 207.77625pt>
-File: figuras/gdl (1).png Graphic file (type png)
-<use figuras/gdl (1).png>
-Package pdftex.def Info: figuras/gdl (1).png  used on input line 154.
-(pdftex.def)             Requested size: 342.2953pt x 93.10847pt.
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 154.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 180.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1214,16 +1208,16 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [23
 
- <./figuras/gdl (1).png>]
-File: figuras/gdl (1).png Graphic file (type png)
-<use figuras/gdl (1).png>
-Package pdftex.def Info: figuras/gdl (1).png  used on input line 154.
-(pdftex.def)             Requested size: 342.2953pt x 93.10847pt.
+]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 189--189
+ [][][][]  
+ []
+
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 154.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 189.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1233,7 +1227,7 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [24
 
 ]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 165--165
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 203--203
  [][][][]  
  []
 
@@ -1241,7 +1235,7 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 165--165
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 165.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 203.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1251,10 +1245,20 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 [25
 
 ]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 214--214
+ [][][][]  
+ []
+
+<figuras/Captura de tela 2026-08-27 104659.png, id=811, 593.21625pt x 148.75575pt>
+File: figuras/Captura de tela 2026-08-27 104659.png Graphic file (type png)
+<use figuras/Captura de tela 2026-08-27 104659.png>
+Package pdftex.def Info: figuras/Captura de tela 2026-08-27 104659.png  used on input line 214.
+(pdftex.def)             Requested size: 342.2953pt x 85.83803pt.
+
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 165.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 214.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1263,16 +1267,35 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [26
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 172--172
+ <./figuras/Captura de tela 2026-08-27 104659.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 231--231
  [][][][]  
+ []
+
+<figuras/M1.png, id=843, 803.0pt x 602.25pt>
+File: figuras/M1.png Graphic file (type png)
+<use figuras/M1.png>
+Package pdftex.def Info: figuras/M1.png  used on input line 231.
+(pdftex.def)             Requested size: 154.03183pt x 115.52225pt.
+<figuras/M2.png, id=844, 803.0pt x 602.25pt>
+File: figuras/M2.png Graphic file (type png)
+<use figuras/M2.png>
+Package pdftex.def Info: figuras/M2.png  used on input line 231.
+(pdftex.def)             Requested size: 154.03183pt x 115.52225pt.
+<figuras/M3.png, id=845, 803.0pt x 602.25pt>
+File: figuras/M3.png Graphic file (type png)
+<use figuras/M3.png>
+Package pdftex.def Info: figuras/M3.png  used on input line 231.
+(pdftex.def)             Requested size: 154.03183pt x 115.52225pt.
+
+Overfull \vbox (21.92393pt too high) detected at line 231
  []
 
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 172.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 231.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1281,11 +1304,21 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [27
 
-]
+ <./figuras/M1.png> <./figuras/M2.png> <./figuras/M3.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 238--238
+ [][][][]  
+ []
+
+<figuras/Frequências por modo de vibração_1.png, id=874, 439.6425pt x 272.01625pt>
+File: figuras/Frequências por modo de vibração_1.png Graphic file (type png)
+<use figuras/Frequências por modo de vibração_1.png>
+Package pdftex.def Info: figuras/Frequências por modo de vibração_1.png  used on input line 238.
+(pdftex.def)             Requested size: 342.2953pt x 211.78995pt.
+
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 172.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 238.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1294,16 +1327,31 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [28
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 181--181
+ <./figuras/Frequências por modo de vibração_1.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 254--254
  [][][][]  
  []
 
+<figuras/Malha 1.png, id=905, 439.6425pt x 272.01625pt>
+File: figuras/Malha 1.png Graphic file (type png)
+<use figuras/Malha 1.png>
+Package pdftex.def Info: figuras/Malha 1.png  used on input line 254.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
+<figuras/Malha 2.png, id=906, 439.6425pt x 272.01625pt>
+File: figuras/Malha 2.png Graphic file (type png)
+<use figuras/Malha 2.png>
+Package pdftex.def Info: figuras/Malha 2.png  used on input line 254.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
+<figuras/malha 3.png, id=907, 439.6425pt x 272.01625pt>
+File: figuras/malha 3.png Graphic file (type png)
+<use figuras/malha 3.png>
+Package pdftex.def Info: figuras/malha 3.png  used on input line 254.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 181.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 254.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1312,16 +1360,21 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [29
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 188--188
+ <./figuras/Malha 1.png> <./figuras/Malha 2.png> <./figuras/malha 3.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 261--261
  [][][][]  
  []
 
+<figuras/Frequências por modo de vibração (2).png, id=940, 903.375pt x 558.085pt>
+File: figuras/Frequências por modo de vibração (2).png Graphic file (type png)
+<use figuras/Frequências por modo de vibração (2).png>
+Package pdftex.def Info: figuras/Frequências por modo de vibração (2).png  used on input line 261.
+(pdftex.def)             Requested size: 342.2953pt x 211.46138pt.
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 188.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 261.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1330,16 +1383,30 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [30
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 205--205
+ <./figuras/Frequências por modo de vibração (2).png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 277--277
  [][][][]  
  []
 
+<figuras/F2-1 e V2-1.png, id=970, 439.6425pt x 272.01625pt>
+File: figuras/F2-1 e V2-1.png Graphic file (type png)
+<use figuras/F2-1 e V2-1.png>
+Package pdftex.def Info: figuras/F2-1 e V2-1.png  used on input line 277.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
+<figuras/F2-2 e V2-2.png, id=971, 439.6425pt x 272.01625pt>
+File: figuras/F2-2 e V2-2.png Graphic file (type png)
+<use figuras/F2-2 e V2-2.png>
+Package pdftex.def Info: figuras/F2-2 e V2-2.png  used on input line 277.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
+File: figuras/F2-2 e V2-2.png Graphic file (type png)
+<use figuras/F2-2 e V2-2.png>
+Package pdftex.def Info: figuras/F2-2 e V2-2.png  used on input line 277.
+(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
 
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 205.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 277.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1348,11 +1415,26 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [31
 
-]
+ <./figuras/F2-1 e V2-1.png> <./figuras/F2-2 e V2-2.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 290--290
+ [][][][]  
+ []
+
+<figuras/Erros médios de cada malha.png, id=1003, 602.25pt x 372.39125pt>
+File: figuras/Erros médios de cada malha.png Graphic file (type png)
+<use figuras/Erros médios de cada malha.png>
+Package pdftex.def Info: figuras/Erros médios de cada malha.png  used on input line 290.
+(pdftex.def)             Requested size: 164.30028pt x 101.5925pt.
+<figuras/Erros percentuais.png, id=1004, 602.25pt x 372.39125pt>
+File: figuras/Erros percentuais.png Graphic file (type png)
+<use figuras/Erros percentuais.png>
+Package pdftex.def Info: figuras/Erros percentuais.png  used on input line 290.
+(pdftex.def)             Requested size: 164.30028pt x 101.5925pt.
+
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 205.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 290.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1361,11 +1443,36 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [32
 
-]
+ <./figuras/Erros médios de cada malha.png> <./figuras/Erros percentuais.png>]
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 311--311
+ [][][][]  
+ []
+
+<figuras/deformed_mode_1.png, id=1034, 602.25pt x 179.16937pt>
+File: figuras/deformed_mode_1.png Graphic file (type png)
+<use figuras/deformed_mode_1.png>
+Package pdftex.def Info: figuras/deformed_mode_1.png  used on input line 311.
+(pdftex.def)             Requested size: 154.03183pt x 45.8229pt.
+<figuras/deformed_mode_2.png, id=1035, 602.25pt x 183.68625pt>
+File: figuras/deformed_mode_2.png Graphic file (type png)
+<use figuras/deformed_mode_2.png>
+Package pdftex.def Info: figuras/deformed_mode_2.png  used on input line 311.
+(pdftex.def)             Requested size: 154.03183pt x 46.9781pt.
+<figuras/deformed_mode_3.png, id=1036, 602.25pt x 170.88844pt>
+File: figuras/deformed_mode_3.png Graphic file (type png)
+<use figuras/deformed_mode_3.png>
+Package pdftex.def Info: figuras/deformed_mode_3.png  used on input line 311.
+(pdftex.def)             Requested size: 154.03183pt x 43.70505pt.
+<figuras/deformed_mode_4.png, id=1037, 602.25pt x 194.97844pt>
+File: figuras/deformed_mode_4.png Graphic file (type png)
+<use figuras/deformed_mode_4.png>
+Package pdftex.def Info: figuras/deformed_mode_4.png  used on input line 311.
+(pdftex.def)             Requested size: 154.03183pt x 49.8661pt.
+
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 205.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 311.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
@@ -1374,477 +1481,8 @@ Overfull \hbox (20.46342pt too wide) has occurred while \output is active
 
 [33
 
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 217--217
- [][][][]  
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 217.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[34
-
-]
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 217.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[35
-
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 224--224
- [][][][]  
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 224.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[36
-
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 235--235
- [][][][]  
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 235.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[37
-
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 242--242
- [][][][]  
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 242.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[38
-
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 253--253
- [][][][]  
- []
-
-<figuras/Captura de tela 2026-08-27 104659.png, id=1196, 593.21625pt x 148.75575pt>
-File: figuras/Captura de tela 2026-08-27 104659.png Graphic file (type png)
-<use figuras/Captura de tela 2026-08-27 104659.png>
-Package pdftex.def Info: figuras/Captura de tela 2026-08-27 104659.png  used on input line 253.
-(pdftex.def)             Requested size: 342.2953pt x 85.83803pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 253.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[39
-
- <./figuras/Captura de tela 2026-08-27 104659.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 269--269
- [][][][]  
- []
-
-<figuras/M1.png, id=1227, 803.0pt x 602.25pt>
-File: figuras/M1.png Graphic file (type png)
-<use figuras/M1.png>
-Package pdftex.def Info: figuras/M1.png  used on input line 269.
-(pdftex.def)             Requested size: 147.86923pt x 110.89989pt.
-<figuras/M2.png, id=1228, 803.0pt x 602.25pt>
-File: figuras/M2.png Graphic file (type png)
-<use figuras/M2.png>
-Package pdftex.def Info: figuras/M2.png  used on input line 269.
-(pdftex.def)             Requested size: 147.86923pt x 110.89989pt.
-<figuras/M3.png, id=1229, 803.0pt x 602.25pt>
-File: figuras/M3.png Graphic file (type png)
-<use figuras/M3.png>
-Package pdftex.def Info: figuras/M3.png  used on input line 269.
-(pdftex.def)             Requested size: 147.86923pt x 110.89989pt.
-
-Overfull \vbox (1.72919pt too high) detected at line 269
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 269.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[40
-
- <./figuras/M1.png> <./figuras/M2.png> <./figuras/M3.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 276--276
- [][][][]  
- []
-
-<figuras/Frequências por modo de vibração_1.png, id=1259, 439.6425pt x 272.01625pt>
-File: figuras/Frequências por modo de vibração_1.png Graphic file (type png)
-<use figuras/Frequências por modo de vibração_1.png>
-Package pdftex.def Info: figuras/Frequências por modo de vibração_1.png  used on input line 276.
-(pdftex.def)             Requested size: 342.2953pt x 211.78995pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 276.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[41
-
- <./figuras/Frequências por modo de vibração_1.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 292--292
- [][][][]  
- []
-
-<figuras/Malha 1.png, id=1289, 439.6425pt x 272.01625pt>
-File: figuras/Malha 1.png Graphic file (type png)
-<use figuras/Malha 1.png>
-Package pdftex.def Info: figuras/Malha 1.png  used on input line 292.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-<figuras/Malha 2.png, id=1290, 439.6425pt x 272.01625pt>
-File: figuras/Malha 2.png Graphic file (type png)
-<use figuras/Malha 2.png>
-Package pdftex.def Info: figuras/Malha 2.png  used on input line 292.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-<figuras/malha 3.png, id=1291, 439.6425pt x 272.01625pt>
-File: figuras/malha 3.png Graphic file (type png)
-<use figuras/malha 3.png>
-Package pdftex.def Info: figuras/malha 3.png  used on input line 292.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 292.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[42
-
- <./figuras/Malha 1.png> <./figuras/Malha 2.png> <./figuras/malha 3.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 299--299
- [][][][]  
- []
-
-<figuras/Frequências por modo de vibração (2).png, id=1323, 903.375pt x 558.085pt>
-File: figuras/Frequências por modo de vibração (2).png Graphic file (type png)
-<use figuras/Frequências por modo de vibração (2).png>
-Package pdftex.def Info: figuras/Frequências por modo de vibração (2).png  used on input line 299.
-(pdftex.def)             Requested size: 342.2953pt x 211.46138pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 299.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[43
-
- <./figuras/Frequências por modo de vibração (2).png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 315--315
- [][][][]  
- []
-
-<figuras/F2-1 e V2-1.png, id=1354, 439.6425pt x 272.01625pt>
-File: figuras/F2-1 e V2-1.png Graphic file (type png)
-<use figuras/F2-1 e V2-1.png>
-Package pdftex.def Info: figuras/F2-1 e V2-1.png  used on input line 315.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-<figuras/F2-2 e V2-2.png, id=1355, 439.6425pt x 272.01625pt>
-File: figuras/F2-2 e V2-2.png Graphic file (type png)
-<use figuras/F2-2 e V2-2.png>
-Package pdftex.def Info: figuras/F2-2 e V2-2.png  used on input line 315.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-File: figuras/F2-2 e V2-2.png Graphic file (type png)
-<use figuras/F2-2 e V2-2.png>
-Package pdftex.def Info: figuras/F2-2 e V2-2.png  used on input line 315.
-(pdftex.def)             Requested size: 147.86923pt x 91.48814pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 315.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[44
-
- <./figuras/F2-1 e V2-1.png> <./figuras/F2-2 e V2-2.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 328--328
- [][][][]  
- []
-
-<figuras/Erros médios de cada malha.png, id=1387, 602.25pt x 372.39125pt>
-File: figuras/Erros médios de cada malha.png Graphic file (type png)
-<use figuras/Erros médios de cada malha.png>
-Package pdftex.def Info: figuras/Erros médios de cada malha.png  used on input line 328.
-(pdftex.def)             Requested size: 164.30028pt x 101.5925pt.
-<figuras/Erros percentuais.png, id=1388, 602.25pt x 372.39125pt>
-File: figuras/Erros percentuais.png Graphic file (type png)
-<use figuras/Erros percentuais.png>
-Package pdftex.def Info: figuras/Erros percentuais.png  used on input line 328.
-(pdftex.def)             Requested size: 164.30028pt x 101.5925pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 328.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[45
-
- <./figuras/Erros médios de cada malha.png> <./figuras/Erros percentuais.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 351--351
- [][][][]  
- []
-
-<figuras/deformed_mode_1.png, id=1419, 602.25pt x 179.16937pt>
-File: figuras/deformed_mode_1.png Graphic file (type png)
-<use figuras/deformed_mode_1.png>
-Package pdftex.def Info: figuras/deformed_mode_1.png  used on input line 351.
-(pdftex.def)             Requested size: 171.14764pt x 50.91617pt.
-<figuras/deformed_mode_2.png, id=1420, 602.25pt x 183.68625pt>
-File: figuras/deformed_mode_2.png Graphic file (type png)
-<use figuras/deformed_mode_2.png>
-Package pdftex.def Info: figuras/deformed_mode_2.png  used on input line 351.
-(pdftex.def)             Requested size: 171.14764pt x 52.19975pt.
-<figuras/deformed_mode_3.png, id=1421, 602.25pt x 170.88844pt>
-File: figuras/deformed_mode_3.png Graphic file (type png)
-<use figuras/deformed_mode_3.png>
-Package pdftex.def Info: figuras/deformed_mode_3.png  used on input line 351.
-(pdftex.def)             Requested size: 171.14764pt x 48.5629pt.
-<figuras/deformed_mode_4.png, id=1422, 602.25pt x 194.97844pt>
-File: figuras/deformed_mode_4.png Graphic file (type png)
-<use figuras/deformed_mode_4.png>
-Package pdftex.def Info: figuras/deformed_mode_4.png  used on input line 351.
-(pdftex.def)             Requested size: 171.14764pt x 55.40877pt.
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 351.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[46
-
  <./figuras/deformed_mode_1.png> <./figuras/deformed_mode_2.png> <./figuras/deformed_mode_3.png> <./figuras/deformed_mode_4.png>]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 355--355
- [][][][]  
- []
-
-<figuras/gif/frame_00.png, id=1454, 803.0pt x 602.25pt>
-File: figuras/gif/frame_00.png Graphic file (type png)
-<use figuras/gif/frame_00.png>
-Package pdftex.def Info: figuras/gif/frame_00.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_00.png> <a0,fr0>
-<figuras/gif/frame_01.png, id=1458, 803.0pt x 602.25pt>
-File: figuras/gif/frame_01.png Graphic file (type png)
-<use figuras/gif/frame_01.png>
-Package pdftex.def Info: figuras/gif/frame_01.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_01.png> <a0,fr1>
-<figuras/gif/frame_02.png, id=1462, 803.0pt x 602.25pt>
-File: figuras/gif/frame_02.png Graphic file (type png)
-<use figuras/gif/frame_02.png>
-Package pdftex.def Info: figuras/gif/frame_02.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_02.png> <a0,fr2>
-<figuras/gif/frame_03.png, id=1466, 803.0pt x 602.25pt>
-File: figuras/gif/frame_03.png Graphic file (type png)
-<use figuras/gif/frame_03.png>
-Package pdftex.def Info: figuras/gif/frame_03.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_03.png> <a0,fr3>
-<figuras/gif/frame_04.png, id=1470, 803.0pt x 602.25pt>
-File: figuras/gif/frame_04.png Graphic file (type png)
-<use figuras/gif/frame_04.png>
-Package pdftex.def Info: figuras/gif/frame_04.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_04.png> <a0,fr4>
-<figuras/gif/frame_05.png, id=1474, 803.0pt x 602.25pt>
-File: figuras/gif/frame_05.png Graphic file (type png)
-<use figuras/gif/frame_05.png>
-Package pdftex.def Info: figuras/gif/frame_05.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_05.png> <a0,fr5>
-<figuras/gif/frame_06.png, id=1478, 803.0pt x 602.25pt>
-File: figuras/gif/frame_06.png Graphic file (type png)
-<use figuras/gif/frame_06.png>
-Package pdftex.def Info: figuras/gif/frame_06.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_06.png> <a0,fr6>
-<figuras/gif/frame_07.png, id=1482, 803.0pt x 602.25pt>
-File: figuras/gif/frame_07.png Graphic file (type png)
-<use figuras/gif/frame_07.png>
-Package pdftex.def Info: figuras/gif/frame_07.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_07.png> <a0,fr7>
-<figuras/gif/frame_08.png, id=1486, 803.0pt x 602.25pt>
-File: figuras/gif/frame_08.png Graphic file (type png)
-<use figuras/gif/frame_08.png>
-Package pdftex.def Info: figuras/gif/frame_08.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_08.png> <a0,fr8>
-<figuras/gif/frame_09.png, id=1490, 803.0pt x 602.25pt>
-File: figuras/gif/frame_09.png Graphic file (type png)
-<use figuras/gif/frame_09.png>
-Package pdftex.def Info: figuras/gif/frame_09.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_09.png> <a0,fr9>
-<figuras/gif/frame_10.png, id=1494, 803.0pt x 602.25pt>
-File: figuras/gif/frame_10.png Graphic file (type png)
-<use figuras/gif/frame_10.png>
-Package pdftex.def Info: figuras/gif/frame_10.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_10.png> <a0,fr10>
-<figuras/gif/frame_11.png, id=1498, 803.0pt x 602.25pt>
-File: figuras/gif/frame_11.png Graphic file (type png)
-<use figuras/gif/frame_11.png>
-Package pdftex.def Info: figuras/gif/frame_11.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_11.png> <a0,fr11>
-<figuras/gif/frame_12.png, id=1502, 803.0pt x 602.25pt>
-File: figuras/gif/frame_12.png Graphic file (type png)
-<use figuras/gif/frame_12.png>
-Package pdftex.def Info: figuras/gif/frame_12.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_12.png> <a0,fr12>
-<figuras/gif/frame_13.png, id=1506, 803.0pt x 602.25pt>
-File: figuras/gif/frame_13.png Graphic file (type png)
-<use figuras/gif/frame_13.png>
-Package pdftex.def Info: figuras/gif/frame_13.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_13.png> <a0,fr13>
-<figuras/gif/frame_14.png, id=1510, 803.0pt x 602.25pt>
-File: figuras/gif/frame_14.png Graphic file (type png)
-<use figuras/gif/frame_14.png>
-Package pdftex.def Info: figuras/gif/frame_14.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_14.png> <a0,fr14>
-<figuras/gif/frame_15.png, id=1514, 803.0pt x 602.25pt>
-File: figuras/gif/frame_15.png Graphic file (type png)
-<use figuras/gif/frame_15.png>
-Package pdftex.def Info: figuras/gif/frame_15.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_15.png> <a0,fr15>
-<figuras/gif/frame_16.png, id=1518, 803.0pt x 602.25pt>
-File: figuras/gif/frame_16.png Graphic file (type png)
-<use figuras/gif/frame_16.png>
-Package pdftex.def Info: figuras/gif/frame_16.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_16.png> <a0,fr16>
-<figuras/gif/frame_17.png, id=1522, 803.0pt x 602.25pt>
-File: figuras/gif/frame_17.png Graphic file (type png)
-<use figuras/gif/frame_17.png>
-Package pdftex.def Info: figuras/gif/frame_17.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_17.png> <a0,fr17>
-<figuras/gif/frame_18.png, id=1526, 803.0pt x 602.25pt>
-File: figuras/gif/frame_18.png Graphic file (type png)
-<use figuras/gif/frame_18.png>
-Package pdftex.def Info: figuras/gif/frame_18.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_18.png> <a0,fr18>
-<figuras/gif/frame_19.png, id=1530, 803.0pt x 602.25pt>
-File: figuras/gif/frame_19.png Graphic file (type png)
-<use figuras/gif/frame_19.png>
-Package pdftex.def Info: figuras/gif/frame_19.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_19.png> <a0,fr19>
-<figuras/gif/frame_20.png, id=1534, 803.0pt x 602.25pt>
-File: figuras/gif/frame_20.png Graphic file (type png)
-<use figuras/gif/frame_20.png>
-Package pdftex.def Info: figuras/gif/frame_20.png  used on input line 355.
-(pdftex.def)             Requested size: 802.99805pt x 602.24852pt.
- <./figuras/gif/frame_20.png> <a0,fr20> <a0,fr21> <a0,fr22> <a0,fr23> <a0,fr24> <a0,fr25> <a0,fr26> <a0,fr27> <a0,fr28> <a0,fr29> <a0,fr30> <a0,fr31> <a0,fr32> <a0,fr33> <a0,fr34> <a0,fr35> <a0,fr36> <a0,fr37> <a0,fr38> <a0,fr39>
-Overfull \vbox (27.65878pt too high) detected at line 355
- []
-
-
-
-File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
-<use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 355.
-(pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
-
-Overfull \hbox (20.46342pt too wide) has occurred while \output is active
- [][][][]  
- []
-
-[47
-
-]
-Overfull \hbox (20.46342pt too wide) in paragraph at lines 362--362
+Overfull \hbox (20.46342pt too wide) in paragraph at lines 318--318
  [][][][]  
  []
 
@@ -1852,14 +1490,14 @@ Overfull \hbox (20.46342pt too wide) in paragraph at lines 362--362
 
 File: figuras/ppgmne jpge 2 (1).png Graphic file (type png)
 <use figuras/ppgmne jpge 2 (1).png>
-Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 362.
+Package pdftex.def Info: figuras/ppgmne jpge 2 (1).png  used on input line 318.
 (pdftex.def)             Requested size: 68.45801pt x 58.69127pt.
 
 Overfull \hbox (20.46342pt too wide) has occurred while \output is active
  [][][][]  
  []
 
-[48
+[34
 
 ]
 \tf@nav=\write6
@@ -1877,21 +1515,21 @@ LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
  ***********
 Package rerunfilecheck Info: File `Apresentação.out' has not changed.
-(rerunfilecheck)             Checksum: BE6410715CD3618927D6C416A724A461;1356.
+(rerunfilecheck)             Checksum: C951920B67F331AE37CB47EE079C695F;787.
  ) 
 Here is how much of TeX's memory you used:
- 26925 strings out of 473584
- 526904 string characters out of 5732363
- 1943908 words of memory out of 5000000
- 49168 multiletter control sequences out of 15000+600000
+ 26375 strings out of 473584
+ 512867 string characters out of 5732363
+ 1944908 words of memory out of 5000000
+ 48649 multiletter control sequences out of 15000+600000
  570614 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  128i,16n,123p,453b,708s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Apresentação.pdf (48 pages, 1714071 bytes).
+Output written on Apresentação.pdf (34 pages, 1485618 bytes).
 PDF statistics:
- 1721 PDF objects out of 1728 (max. 8388607)
- 1479 compressed objects within 15 object streams
- 117 named destinations out of 1000 (max. 500000)
- 519 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1172 PDF objects out of 1200 (max. 8388607)
+ 1021 compressed objects within 11 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

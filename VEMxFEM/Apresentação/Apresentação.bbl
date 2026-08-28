@@ -1,0 +1,52 @@
+\begin{thebibliography}{}
+
+\bibitem[Ahmad et~al., 2013]{equivalentprojectorsvirtualelementmethods2013a}
+Ahmad, B., Alsaedi, A., Brezzi, F., Marini, L., and Russo, A. (2013).
+\newblock Equivalent projectors for virtual element methods.
+\newblock {\em Computers \& Mathematics with Applications}, 66(3):376--391.
+
+\bibitem[Aldakheel et~al., 2019]{virtualelementformulationphasefieldmodelingductilefracture2019}
+Aldakheel, F., Hudobivnik, B., and Wriggers, P. (2019).
+\newblock {{VIRTUAL ELEMENT FORMULATION FOR PHASE-FIELD MODELING OF DUCTILE FRACTURE}}.
+\newblock {\em International Journal for Multiscale Computational Engineering}, 17(2):181--200.
+
+\bibitem[Artioli et~al., 2017]{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}
+Artioli, E., Beir{\~a}o Da~Veiga, L., Lovadina, C., and Sacco, E. (2017).
+\newblock Arbitrary order {{2D}} virtual elements for polygonal meshes: Part {{I}}, elastic problem.
+\newblock {\em Computational Mechanics}, 60(3):355--377.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2013]{basicprinciplesvirtualelementmethods2013a}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Cangiani, A., Manzini, G., Marini, L.~D., and Russo, A. (2013).
+\newblock {{BASIC PRINCIPLES OF VIRTUAL ELEMENT METHODS}}.
+\newblock {\em Mathematical Models and Methods in Applied Sciences}, 23(01):199--214.
+
+\bibitem[Da~Veiga et~al., 2013]{virtualelementslinearelasticityproblems2013}
+Da~Veiga, L.~B., Brezzi, F., and Marini, L.~D. (2013).
+\newblock Virtual {{Elements}} for {{Linear Elasticity Problems}}.
+\newblock {\em SIAM Journal on Numerical Analysis}, 51(2):794--812.
+
+\bibitem[{da Veiga} et~al., 2014]{hdivhcurlconformingvem2014}
+{da Veiga}, L.~B., Brezzi, F., Marini, L.~D., and Russo, A. (2014).
+\newblock H(div) and {{H}}(curl)-conforming {{VEM}}.
+
+\bibitem[Da~Veiga and Manzini, 2014]{virtualelementmethodarbitraryregularity2014}
+Da~Veiga, L.~B. and Manzini, G. (2014).
+\newblock A virtual element method with arbitrary regularity.
+\newblock {\em IMA Journal of Numerical Analysis}, 34(2):759--781.
+
+\bibitem[Park et~al., 2020]{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020}
+Park, K., Chi, H., and Paulino, G.~H. (2020).
+\newblock Numerical recipes for elastodynamic virtual element methods with explicit time integration.
+\newblock {\em International Journal for Numerical Methods in Engineering}, 121(1):1--31.
+
+\bibitem[Wriggers et~al., 2024]{virtualelementmethodsengineeringsciences2024}
+Wriggers, P., Aldakheel, F., and Hudobivnik, B. (2024).
+\newblock {\em Virtual {{Element Methods}} in {{Engineering Sciences}}}.
+\newblock Springer International Publishing, Cham.
+
+\bibitem[Wriggers et~al., 2017]{wriggers2017efficient}
+Wriggers, P., Reddy, B., Rust, W., and Hudobivnik, B. (2017).
+\newblock Efficient virtual element formulations for compressible and incompressible finite deformations.
+\newblock {\em Computational Mechanics}, 60:253--268.
+
+\end{thebibliography}

@@ -1,0 +1,7 @@
+0.0  0.0   -10.0   -10.0     ! elem 1: q1=-10, q2=-10 → rectangular down
+0.0  0.0  0.0  0.0    ! elem 2: no load
+0.0  0.0  0.0  0.0     ! elem 3: no load
+0.0  0.0 -15.0  0.0     ! elem 4: q1=-15, q2=0 → triangular right
+0.0  0.0  0.0  0.0     ! elem 5: no load
+1
+4  1.0  0.0  0.0         ! point load at node 4: Fx = 1.0 kN

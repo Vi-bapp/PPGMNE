@@ -1,0 +1,8 @@
+4 3
+0.0 0.0     ! Nó 1
+0.0 4.0     ! Nó 2
+6.0 4.0     ! Nó 3
+6.0 0.0     ! Nó 4
+1 2         ! Elemento 1 (Coluna Esquerda, 0 graus)
+2 3         ! Elemento 2 (Viga, 90 graus)
+3 4         ! Elemento 3 (Coluna Direita, 270 ou -90 graus)

@@ -1,0 +1,8 @@
+3       !Quantidade de nós restringidos
+1 1 0   !Nó 1, gdl 1, uh = 0
+1 2 0   !Nó 1, gdl 2, uh = 0
+2 1 0   !Nó 2, gdl 1, uh = 0
+2 2 0   !Nó 2, gdl 2, uh = 0
+3 1 0   !Nó 3, gdl 1, uh = 0
+3 2 0   !Nó 3, gdl 2, uh = 0
+0       !Quantidade apoios elásticos

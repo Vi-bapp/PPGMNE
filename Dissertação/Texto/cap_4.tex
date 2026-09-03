@@ -1,6 +1,7 @@
 \chapter{O método dos elementos virtuais}
+\label{cap:4}
 
-\section{Introdução ao método dos elementos virtuais:}
+\section{Introdução ao método dos elementos virtuais}
 
 
     \indent O MEV, similar ao MEF, é uma técnica numérica voltada à solução de equações 
@@ -200,14 +201,14 @@
 
     \begin{figure}[htbp]
         \centering
-        \caption{Figura 4.5 - Geometria do elemento.}
+        \caption{Geometria do elemento.}
         \includegraphics[width=\textwidth]{figuras/Capítulo 4/4.5.png}
         \label{fig:4.5}
         {\small \textbf{Fonte:} \citet{wriggers2024virtual}}
     \end{figure}
 
 
-\section{Operadores de projeção:}
+\section{Operadores de projeção}
 
     \indent Como o espaço de soluções não é explicitamente conhecido, operadores de projeção são utilizados para capturar a parte polinomial 
     das funções de base. Os operadores de projeção são mapeamentos lineares cuja imagem corresponde à parcela polinomial do espaço de soluções.
@@ -315,7 +316,7 @@
     \indent De modo análogo ao esquema elaborado em \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}, dois operadores distintos serão utilizados para a implementação do problema 
     elastodinâmico: o primeiro é desenvolvido para a matriz de massa e o segundo para a matriz de rigidez. 
 
-\subsection{Projetor \texorpdfstring{$\Pi_{k}^{\nabla}$}{Pi k nabla}:}
+\subsection{Projetor \texorpdfstring{$\Pi_{k}^{\nabla}$}{Pi k nabla}}
 
     \indent O projetor $\Pi_k^\nabla$ foi desenvolvido em \citet{basicprinciplesvirtualelementmethods2013a} como um dos primeiros operadores de projeção atrelados ao método dos elementos 
     virtuais. Concebido inicialmente para solução do problema de Laplace, esse operador também se aplica a problemas de elasticidade, visto 
@@ -533,7 +534,7 @@
     comentadas anteriormente.
 
 
-\subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{0}$}{Pi k 0}:}
+\subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{0}$}{Pi k 0}}
 
     \indent O projetor $\Pi_{k}^0$, em contrapartida, à $\Pi_{k}^\nabla$ que projeta o gradiente de $u_h$, realiza a projeção do campo de 
     eslocamentos. Essa característica o torna ideal para aproximação dos termos de massa e de forças de corpo (termo fonte). Diferente de 
@@ -585,7 +586,7 @@
         \label{eq:4.45}
     \end{equation}
 
-\subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{\epsilon}$}{Pi k-1 epsilon}:}
+\subsection{Projetor \texorpdfstring{$\Pi_{k-1}^{\epsilon}$}{Pi k-1 epsilon}}
 
     \indent O projetor $\Pi_{k-1}^\epsilon$ foi proposto por \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} para problemas de elasticidade. Embora o operador $\Pi_k^\nabla$ aproxime o 
     gradiente, a presença de termos de ordem $k$ induz a representação de modos rígidos. Com o objetivo de filtrar os movimentos de corpo 
@@ -652,7 +653,7 @@
     \indent A matriz $\mathcal{D}^{\epsilon}$ ainda deve ser obtida para as operações envolvidas no termo de estabilidade. \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} afirma que o 
     cálculo da matriz $\mathcal{D}^{\epsilon}$ é feito da mesma maneira que $\mathcal{D}^{\nabla}$, usando $k$ ao invés de $k-1$. 
 
-\section{Matrizes de rigidez e massa:}
+\section{Matrizes de rigidez e massa}
 
     \indent Duas propriedades essenciais para garantir a existência, unicidade e estabilidade da solução no VEM são a consistência e a 
     estabilidade.
@@ -802,7 +803,7 @@
     \end{minipage} }
     \vspace{5mm}
 
-\section{Implementação:}
+\section{Implementação}
 
     \indent Abaixo apresenta-se a estrutura algorítmica para a montagem das matrizes de rigidez e massa em uma formulação VEM: 
 

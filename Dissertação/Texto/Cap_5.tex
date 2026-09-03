@@ -10,12 +10,94 @@
 
 \indent Todos os resultados aqui obtidos pelo MEV são comparados aos do MEF e aos do MEFG. Todas as três são técnicas numéricas que particionam o domínio em elementos e aproximam a solução localmente construindo sistemas de equações lineares. A principal diferença entre as técnicas é a maneira de construção da aproximação local.\\
 \indent O MEF subdivide o espaço em elementos geométricos simples ou padronizados, como triângulos e retângulos. A aproximação da solução é feita unicamente com funções polinomiais, com a acurácia da solução dependendo do grau polinomial e da quantidade de elementos. Essa característica permite o mapeamento de todos os elementos através do uso de funções de forma, e a integração das matrizes de rigidez e massa pode ser feita diretamente através da quadratura de Gauss ou analiticamente para o caso de famílias de elementos não paramétricas. Porém, devido à limitação em relação aos tipos de elementos, a construção da malha deve ser rigorosa para não existir elementos muito distorcidos, com ângulos muito obtusos ou mal formados, pois estes degradam severamente a precisão da solução numérica.\\
-\indent O MEFG é uma evolução do MEF utilizando a técnica de partição da unidade para enriquecer o espaço de aproximação. Enquanto a base do MEF é mantida, o MEFG multiplica as funções de forma por funções de enriquecimento que refletem o comportamento físico esperado do problema. Problemas abordados através do MEFG ganham graus de liberdade adicionais nos nós correspondentes aos modos de enriquecimento. As integrais são mais complexas e frequentemente exigem esquemas de integração numérica adaptativa ou mais refinados devido à aplicação de funções não polinomiais.\\[5mm]
+\indent O MEFG é uma evolução do MEF utilizando a técnica de partição da unidade para enriquecer o espaço de aproximação. Enquanto a base do MEF é mantida, o MEFG multiplica as funções de forma por funções de enriquecimento que refletem o comportamento físico esperado do problema. Problemas abordados através do MEFG ganham graus de liberdade adicionais nos nós correspondentes aos modos de enriquecimento. As integrais são mais complexas e frequentemente exigem esquemas de integração numérica adaptativa ou mais refinados devido à aplicação de funções não polinomiais.\\
+\indent Para a comparação dos resultados do MEV com resultados de referência obtidos pelo MEF e o MEFG desenvolvidos no capítulo 5 são
+utilizadas as seguintes métricas
+    \begin{enumerate}
+        \item O erro médio absoluto (MAE)
+        \item Erro percentual médio absoluto (MAPE) das frequências naturais para cada modo de vibração;
+        \item Média da raiz erro ao quadrado normalizado (NRMSE)
+        \item A média geométrica do erro (MG)
+        \item Coeficiente de ácurácia de discretização (CAD)
+        \item Ganho de precisão relativo (GPR)
+        \item Capacidade de aproximação (CA)
+    \end{enumerate}
+    
+\indent O erro relativo das frequências naturais para cada modo de vibração é calculado por:
+
+\begin{equation}
+    e_{rel} = \left| \frac{\omega - \tilde{\omega}}{\omega} \right|,
+    \label{eq:1.1}
+\end{equation}
+
+\noindent com $\omega$ sendo a frequência de referência e $\tilde{\omega}$ a frequência obtida pelo MEV. Para a avaliação de um desempenho médio representativo dos dados utiliza-se a média do erro relativo percentual (MAPE), utilizado no trabalho de \citet{custodio2022metodo} e de \citet{torii2012analise} e sendo uma das médias mais comuns em diversos trabalhos. Para cada malha, a MAPE é medida pelo quociente entre a soma dos erros absolutos e a quantidade de modos analisados:	
+
+\begin{equation}
+    e_{MAPE} = \frac{\sum_{i=1}^{n_{modos}}e_{rel,i} }{n_{modos}}.
+    \label{eq:1.2}
+\end{equation}
+
+\indent A média absoluta não pondera os resultados das frequências, de tal forma que um modo que possua um erro absoluto alto seja desconsiderado por outro modo com erro absoluto ótimo. Destarte, para estudo da eficiência global das malhas, será utilizado a raiz do erro quadrático médio (NRMSE):
+
+\begin{equation}
+    e_{NRMSE} = \sqrt{\frac{\sum_{i=1}^{n_{modos}} (\omega_i - \tilde{\omega}_i)^2}{\sum_{i=1}^{n_{modos}} (\omega_i)^2 }}. 
+    \label{eq:1.3}
+\end{equation}
+
+\indent A NMRSE é uma métrica de erro baseada na norma $L^2$ representando a relação entre da "energia do erro" em relação a "energia global" da grandeza analisada. Por elevar os erros ao quadrado, o NRMSE garante uma penalização muito maior do que a do MAPE, o que o torna ideal para visualização dos resultados de maneira global.\\
+\indent Tendo dois parâmetros de erro, propõem a utilização da média geométrica (MG) para unificação das médias dos erros como índice comparativo dos erros calculados como um índice composto:
+
+\begin{equation}
+    e_{MG} = \sqrt{e_{NRMSE} e_{MAPE} }.
+    \label{eq:1.4}
+\end{equation}
+
+A escolha da média geométrica para índice composto é porque ela permite a união de dois parâmetros sem que um domine o outro.\\
+\indent O coeficiente de acurácia de discretização (CAD) mede a evolução de uma malha conforme discretizada tomando como base a malha mais 
+grossa, que possui menor custo computacional, para a malha mais refinada de maior custo. O parâmetro serve de indicativo para qual malha o 
+refino $h$ atinge um teto de aproximação. O parâmetro é calculado por:
+
+\begin{equation}
+    CAD = \frac{\text{e}_{MG,\text{grossa}} - \text{e}_{MG,\text{atual}}}{\text{e}_{MG,\text{grossa}} - \text{e}_{MG,\text{refinada}}}.
+    \label{eq:1.5}
+\end{equation}
+
+\indent Outra relação do CAD está relacionada ao ganho de acurácia em relação à malha mais grossa e de maneira inversa a malha mais refinada. 
+Para o cálculo do CAD será utilizada a média geométrica como base.\\
+\indent Visando à comparação entre métodos, um índice similar ao CAD é proposto, o ganho de precisão relativo (GPR). Esse índice mede a melhora de precisão entre dois métodos numéricos e um terceiro resultado de referência -- Numérico ou a solução exata. O índice é calculado como:
+
+\begin{equation}
+    GPR = \frac{\text{e}_{MG,\text{MEF}} - \text{e}_{MG,\text{MEV}}}{\text{e}_{MG,\text{MEF}}}.
+    \label{eq:1.6}
+\end{equation}
+
+\indent O último parâmetro de estudo é baseado no índice CA elaborado por (\citet{cittadin2020enriquecimento}). Em seu uso original esse parâmetro mede as diferenças de
+aproximação entre duas formulações com enriquecimento de funções e uma referência de base para estimativa de acurácia. O índice foi adaptado 
+de modo que se possa comparar a diferença dos erros de duas técnicas numéricas em relação a uma terceira de referência. Este índice será 
+utilizado neste trabalho para comparação do ganho de precisão entre o MEV e o MEFG em relação ao MEF clássico.
+
+\begin{equation}
+    CA = \frac{\text{e}_{MG,\text{MEF}} - \text{e}_{MG,\text{MEV}}}{\text{e}_{MG,\text{MEF}} - \text{e}_{MG,\text{MEFG}}}.
+    \label{eq:1.7}
+\end{equation}
+
+\indent A avaliação dos resultados do CA segue:
+
+\begin{enumerate}
+    \item $CA < 0$: O MEV apresenta maior erro do que o MEF tradicional.
+    \item $0 < CA < 1$: O MEV é mais preciso que o MEF, porém menos do que o MEFG.
+    \item $CA = 1$: O MEV possui a mesma precisão do MEFG.
+    \item $CA > 1$: O MEV supera tanto o MEF quanto o MEFG em precisão.
+\end{enumerate}
+
+\indent Neste trabalho a formulação do MEV e outras rotinas computacionais são implementadas com um solver programado em Modern Fortran
+e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas são feitas com auxílio do Google planilhas. As malhas são gerados com o uso do software AutoCAD.\\[5mm]
+
 
 
 \textbf{\underline{Esclarecimentos ao leitor:}}\\[2cm]
 
-\indent Como os elementos virtuais podem possuir arestas com 180°, isso permite que malhas com a mesma quantidade de elementos, mas com diferentes quantidades de nós, existam. Assim, adota-se o seguinte padrão de nomenclatura para as malhas utilizadas daqui em diante neste trabalho: $$XX+\#\#\#+N+\#\#\#+k\#$$. 
+\indent Como os elementos virtuais podem possuir arestas com 180° entre si, podem existir malhas com a mesma quantidade de elementos, mas com diferentes quantidades de nós. Assim, adota-se o seguinte padrão de nomenclatura para as malhas utilizadas daqui em diante neste trabalho: $$XX+\#\#\#+N+\#\#\#+k\#$$. 
 
     \begin{itemize}
         \item X - Letras
@@ -23,7 +105,7 @@
     \end{itemize}
     
 \indent O primeiro conjunto de letras corresponde às iniciais do problema. O primeiro conjunto de números representa a quantidade de elementos na malha. N\#\#\# é a quantidade de nós. k\# é o grau polinomial que aqui varia de 1 a 2. Exemplo: PF32N74k1 $\rightarrow$ Placa com furo de 32 elementos, 74 nós e aproximação de primeira ordem. \\
-\indent Todos os problemas aqui tratados são de natureza vetorial, assim a quantidade de graus de liberdade por elemento equivale a duas vezes a quantidade de nós. Em aproximações de segunda ordem, haverá dois graus de liberdade internos adicionais aos dos nós. 
+\indent Todos os problemas aqui tratados são de natureza vetorial, assim a quantidade de graus de liberdade por elemento equivale a duas vezes a quantidade de nós. Em aproximações de segunda ordem, haverá dois graus de liberdade internos adicionais aos dos nós relativos a vetorização dos momentos internos para $k=2$. 
 
 \section{Chapa com furo circular}
 
@@ -117,11 +199,11 @@
 \centerline{{\small \textbf{Fonte:} Elaborado pelo autor (2026).}} 
 \end{table}
 
-\indent Como esperado, existe uma diminuição do erro conforme se aumenta a quantidade de graus de liberdade do sistema. Como notado por \citet{cittadin2020enriquecimento}, os erros na solução estão relacionados à geometria complexa do problema, sendo, assim, necessário um maior refino para que a solução convirja para a de referência. Propõem-se mais dois grupos de malhas: o primeiro grupo contendo 32 elementos e o segundo grupo com 64 elementos. A Tabela~\ref{tab:5.3} apresenta as frequências obtidas para essas duas malhas.
+\indent Como esperado, existe uma diminuição do erro conforme se aumenta a quantidade de graus de liberdade do sistema. Como notado por \citet{cittadin2020enriquecimento}, os erros na solução estão relacionados à geometria complexa do problema, sendo, assim, necessário um maior refino para que a solução convirja para a de referência. Propõem-se mais dois grupos de malhas: o primeiro grupo contendo 32 elementos e o segundo grupo com 64 elementos. Na Figura~\ref{fig:5.3a} a malha de 32 elementos possui 62, 82 e 103 nós respectivamente. Para a malha da Figura~\ref{fig:5.3b} com 64 elementos utiliza-se 105 e 114 nós. A Tabela~\ref{tab:5.3} apresenta as frequências obtidas para essas duas malhas.
 
     \begin{figure}[H]
         \centering
-        \caption{a) Malha de 32 elementos com 62, 82 e 103 nós. b) Malha com 64 elementos utilizando 105 e 114 nós.}
+        \caption{Malhas de 32 e 64 elementos}
         \label{fig:5.3}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
@@ -665,7 +747,7 @@ MG               & \cellcolor[HTML]{D9D9D9}-2,46 & \cellcolor[HTML]{D9D9D9}0,25 
 \section{Parede estrutural}
 
 \indent O terceiro problema abordado consiste em uma parede estrutural no estado plano de tensões, Figura~\ref{fig:5.23}. A parede possui módulo de elasticidade $E = 1\text{ (N/m}^2\text{)}$, massa específica $\rho = 1\text{ (kg/m}^3\text{)}$ e $\nu = 0,2$. 
-O problema foi proposto em \citet{nguyenthanh2010alternative} como benchmark para uma formulação alternativa do método dos elementos finitos $\alpha$ (A~$\alpha$~FEM). Os autores comparam a solução com elementos finitos triangulares padrão, uma solução via software ABAQUS, o método dos elementos de contorno e o método sem malha de Petrov-Galerkin local. 
+O problema foi proposto em \citet{nguyenthanh2010alternative} como benchmark para uma formulação alternativa do Método dos Elementos Finitos $\alpha$ (A~$\alpha$~FEM). Os autores comparam a solução com elementos finitos triangulares padrão, uma solução via software ABAQUS, o método dos elementos de contorno e o método sem malha de Petrov-Galerkin local. 
 
 \begin{figure}[H]
     \centering

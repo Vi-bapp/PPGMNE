@@ -1,0 +1,235 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes. Error detail: AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (allocation.cpp:44), pid=20776, tid=16964
+#
+# JRE version:  (21.0.10+7) (build )
+# Java VM: OpenJDK 64-Bit Server VM (21.0.10+7-LTS, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Xms64m -Xmx2048m -Dapp.name=ltex-ls-plus -Dapp.repo=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib -Dapp.home=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0 -Dbasedir=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0 org.bsplines.ltexls.LtexLanguageServerLauncher
+
+Host: Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz, 8 cores, 7G,  Windows 11 , 64 bit Build 26100 (10.0.26100.9168)
+Time: Thu Sep  3 01:16:13 2026 Hora oficial do Brasil elapsed time: 3.071103 seconds (0d 0h 0m 3s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000002929c0d7e90):  JavaThread "Unknown thread" [_thread_in_vm, id=16964, stack(0x000000c190d00000,0x000000c190e00000) (1024K)]
+
+Stack: [0x000000c190d00000,0x000000c190e00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6d7a39]
+V  [jvm.dll+0x8b4b26]
+V  [jvm.dll+0x8b70de]
+V  [jvm.dll+0x8b77c3]
+V  [jvm.dll+0x284346]
+V  [jvm.dll+0xc1277]
+V  [jvm.dll+0x330b55]
+V  [jvm.dll+0x87ea9f]
+V  [jvm.dll+0x3c4a81]
+V  [jvm.dll+0x867d25]
+V  [jvm.dll+0x457b31]
+V  [jvm.dll+0x459721]
+C  [jli.dll+0x52d0]
+C  [ucrtbase.dll+0x2cd30]
+C  [KERNEL32.DLL+0x2ccb7]
+C  [ntdll.dll+0xaad6c]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff9ab68a1c8, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+
+=>0x000002929c0d7e90 (exited) JavaThread "Unknown thread"    [_thread_in_vm, id=16964, stack(0x000000c190d00000,0x000000c190e00000) (1024K)]
+Total: 1
+
+Threads with active compile tasks:
+Total: 0
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap address: 0x0000000000000000, size: 0 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.032 Loaded shared library c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff78bef0000 - 0x00007ff78befe000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\java.exe
+0x00007ffa40060000 - 0x00007ffa402c6000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffa3e520000 - 0x00007ffa3e5e9000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffa3d550000 - 0x00007ffa3d94f000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffa3d270000 - 0x00007ffa3d3bc000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffa35970000 - 0x00007ffa35988000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\jli.dll
+0x00007ffa3ecd0000 - 0x00007ffa3ee96000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffa317d0000 - 0x00007ffa317ee000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\VCRUNTIME140.dll
+0x00007ffa3da10000 - 0x00007ffa3da37000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffa25e60000 - 0x00007ffa260f1000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8972_none_3e0da176e32f9d4b\COMCTL32.dll
+0x00007ffa3dea0000 - 0x00007ffa3decb000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffa3df20000 - 0x00007ffa3dfc9000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffa3dad0000 - 0x00007ffa3dbf9000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffa3d960000 - 0x00007ffa3da03000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffa3e3a0000 - 0x00007ffa3e3d2000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffa36f00000 - 0x00007ffa36f0c000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\vcruntime140_1.dll
+0x00007ffa31740000 - 0x00007ffa317cd000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\msvcp140.dll
+0x00007ff9aaa40000 - 0x00007ff9ab7e1000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\server\jvm.dll
+0x00007ffa3efe0000 - 0x00007ffa3f09c000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffa3e790000 - 0x00007ffa3e83a000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffa3f2a0000 - 0x00007ffa3f3b8000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffa3e3e0000 - 0x00007ffa3e462000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffa3bd90000 - 0x00007ffa3bdee000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffa2e730000 - 0x00007ffa2e766000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffa349f0000 - 0x00007ffa349fb000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffa3bd70000 - 0x00007ffa3bd85000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffa3c060000 - 0x00007ffa3c07b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffa36e40000 - 0x00007ffa36e4a000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\jimage.dll
+0x00007ffa3a860000 - 0x00007ffa3aaa2000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffa3fb60000 - 0x00007ffa3fee5000 	C:\WINDOWS\System32\combase.dll
+0x00007ffa3dd90000 - 0x00007ffa3de69000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffa08c20000 - 0x00007ffa08c5b000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffa3d3d0000 - 0x00007ffa3d47c000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffa31720000 - 0x00007ffa31740000 	c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\java.dll
+
+JVMTI agents: none
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.8972_none_3e0da176e32f9d4b;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7\bin\server
+
+VM Arguments:
+jvm_args: -Xms64m -Xmx2048m -Dapp.name=ltex-ls-plus -Dapp.repo=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib -Dapp.home=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0 -Dbasedir=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0 
+java_command: org.bsplines.ltexls.LtexLanguageServerLauncher
+java_class_path (initial): c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\etc;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\aho-corasick-double-array-trie-1.2.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\angus-activation-2.0.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\animal-sniffer-annotations-1.24.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\annotations-12.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\annotations-13.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\annotations-4.1.1.4.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\asturian-pos-dict-0.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\catalan-pos-dict-3.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-digester-2.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-lang3-3.18.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-logging-1.3.4.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-pool2-2.12.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-text-1.12.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\commons-validator-1.9.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\dutch-pos-dict-0.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\english-pos-dict-0.6.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\error_prone_annotations-2.48.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\failureaccess-1.0.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\fastutil-core-8.5.14.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-ext-definition-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-ext-gfm-strikethrough-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-ext-gitlab-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-ext-tables-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-ext-yaml-front-matter-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-test-util-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-ast-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-builder-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-collection-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-data-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-dependency-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-format-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-html-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-misc-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-options-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-sequence-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\flexmark-util-visitor-0.64.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\french-pos-dict-0.7.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\german-pos-dict-1.2.4.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-api-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-context-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-core-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-netty-shaded-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-protobuf-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-protobuf-lite-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-stub-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\grpc-util-1.75.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\gson-2.14.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\guava-33.5.0-jre.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\hamcrest-core-1.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\hanlp-portable-1.8.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\HdrHistogram-2.1.12.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\hppc-0.8.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\hunspell-2.1.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\icu4j-77.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\indriya-1.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\istack-commons-runtime-4.1.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\j2objc-annotations-3.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jackson-annotations-2.18.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jackson-core-2.18.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jackson-databind-2.18.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jakarta.activation-1.2.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jakarta.activation-api-2.1.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jakarta.xml.bind-api-2.3.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jansi-2.4.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\java-diff-utils-4.12.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\javax.activation-api-1.2.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\javax.annotation-api-1.3.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jaxb-api-2.3.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jaxb-core-2.3.0.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jaxb-core-4.0.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jaxb-impl-2.3.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jaxb-runtime-4.0.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jna-5.12.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jna-platform-5.12.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\json-20240303.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jsonic-1.2.11.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jspecify-1.0.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jsr305-3.0.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\junit-4.13.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\jwordsplitter-4.7.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\kotlin-stdlib-2.3.21.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-all-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ar-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ast-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-be-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-br-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ca-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-crh-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-da-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-de-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-de-DE-x-simple-language-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-detector-0.6.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-el-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-en-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-eo-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-es-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-fa-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-fr-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ga-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-gl-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-it-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ja-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-km-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-nl-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-pl-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-pt-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ro-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ru-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-sk-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-sl-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-sv-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-ta-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-tl-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-uk-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\language-zh-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\languagetool-core-6.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\languagetool-ga-dicts-0.02.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\LatencyUtils-2.0.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\linguistics.grammardb.spell.languagetool-1.0.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\lspcli-2.3.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\ltexls-plus-18.7.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\lucene-backward-codecs-5.5.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\lucene-core-5.5.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\lucene-gosen-6.2.1-ipadic.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\micrometer-core-1.7.12.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\micrometer-registry-prometheus-1.7.12.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-crh-lt-1.0.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-fsa-2.1.9.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-fsa-builders-2.1.9.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-speller-2.1.9.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-stemming-2.1.9.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morfologik-ukrainian-lt-6.8.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\morphology-el-1.0.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opennlp-chunk-models-1.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opennlp-postag-models-1.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opennlp-tokenize-models-1.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opennlp-tools-1.9.4.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\openregex-1.1.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opentelemetry-api-1.42.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opentelemetry-context-1.42.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\opentelemetry-semconv-1.30.1-alpha.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\org.eclipse.lsp4j-0.24.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\org.eclipse.lsp4j.jsonrpc-0.24.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\perfmark-api-0.27.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\picocli-4.7.7.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\portuguese-pos-dict-1.2.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\proto-google-common-protos-2.59.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\protobuf-java-3.25.8.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\resilience4j-circuitbreaker-1.7.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\resilience4j-core-1.7.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\resilience4j-micrometer-1.7.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\segment-2.0.3.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient-0.16.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient_common-0.10.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient_guava-0.16.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient_tracer_common-0.16.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient_tracer_otel-0.16.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\simpleclient_tracer_otel_agent-0.16.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\slf4j-api-2.0.16.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\slf4j-nop-2.0.18.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\spanish-pos-dict-2.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\stax2-api-4.3.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\txw2-4.0.5.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\unit-api-1.0.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\uom-lib-common-1.1.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\vavr-0.10.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\vavr-match-0.10.2.jar;c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib\woodstox-core-7.2.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 67108864                                  {product} {command line}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2147483648                                {product} {command line}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 67108864                                  {product} {command line}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2147483648                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Release file:
+<release file has not been read>
+Environment Variables:
+JAVA_HOME=c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\jdk-21.0.10+7
+CLASSPATH="c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0"\etc;"c:\Users\vi_ba\.vscode\extensions\ltex-plus.vscode-ltex-plus-15.7.1\lib\ltex-ls-plus-18.7.0\lib"\*
+JAVA_OPTS=-Xms64m -Xmx2048m
+PATH=D:\programas\gnu fortran compiler\gcc\bin;D:\programas\gnu fortran compiler\gcc\libexec\gcc\x86_64-w64-mingw32\13.2.0;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\MATLAB\R2017b\runtime\win64;C:\Program Files\MATLAB\R2017b\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Users\vi_ba\Downloads\programas\compilador intel\CMAKE\cmake-3.23.0-rc4-windows-x86_64\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Calibre2\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;D;C:\Program Files\gnuplot\bin;D:\programas\LESM\Matlab\v97\runtime\win64;C:\Users\vi_ba\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\vi_ba\AppData\Local\Programs\Python\Python313\;C:\Users\vi_ba\AppData\Local\Programs\Python\Launcher\;C:\Users\vi_ba\AppData\Local\Microsoft\WindowsApps;C:\texlive\2023\bin\windows;C:\Users\vi_ba\AppData\Local\GitHubDesktop\bin;C:\Users\vi_ba\AppData\Local\Programs\Microsoft VS Code\bin;C:\texlive\2024\bin\windows;
+USERNAME=vi_ba
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 2, GenuineIntel
+TMP=C:\Temp
+TEMP=C:\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.9168)
+OS uptime: 0 days 0:18 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 165 stepping 2 microcode 0xec, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, f16c
+Processor Information for the first 8 processors :
+  Max Mhz: 2496, Current Mhz: 2496, Mhz Limit: 2496
+
+Memory: 4k page, system-wide physical 8059M (2367M free)
+TotalPageFile size 32635M (AvailPageFile size 9M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 11M, peak: 12M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.10+7-LTS) for windows-amd64 JRE (21.0.10+7-LTS), built on 2026-01-20T00:00:00Z by "admin" with MS VC++ 17.12 (VS2022)
+
+END.

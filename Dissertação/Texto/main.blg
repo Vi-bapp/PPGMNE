@@ -18,45 +18,45 @@ A level-1 auxiliary file: Apendice.aux
 Database file #1: referencias.bib
 Warning--empty journal in vem2017virtual
 Warning--empty journal in calculationarbitrarymomentspolygonsa
-You've used 99 entries,
+You've used 101 entries,
             1935 wiz_defined-function locations,
-            1014 strings with 23813 characters,
-and the built_in function-call counts, 38816 in all, are:
-= -- 3809
-> -- 1656
-< -- 49
-+ -- 613
-- -- 549
-* -- 3407
-:= -- 6844
-add.period$ -- 295
-call.type$ -- 99
-change.case$ -- 760
-chr.to.int$ -- 93
-cite$ -- 101
-duplicate$ -- 1385
-empty$ -- 2637
-format.name$ -- 684
-if$ -- 7436
-int.to.chr$ -- 7
+            1023 strings with 24090 characters,
+and the built_in function-call counts, 39666 in all, are:
+= -- 3896
+> -- 1687
+< -- 50
++ -- 629
+- -- 559
+* -- 3484
+:= -- 6987
+add.period$ -- 301
+call.type$ -- 101
+change.case$ -- 775
+chr.to.int$ -- 91
+cite$ -- 103
+duplicate$ -- 1413
+empty$ -- 2698
+format.name$ -- 698
+if$ -- 7600
+int.to.chr$ -- 11
 int.to.str$ -- 0
-missing$ -- 107
-newline$ -- 491
-num.names$ -- 302
-pop$ -- 632
+missing$ -- 109
+newline$ -- 501
+num.names$ -- 308
+pop$ -- 642
 preamble$ -- 1
-purify$ -- 766
+purify$ -- 781
 quote$ -- 0
-skip$ -- 1021
+skip$ -- 1039
 stack$ -- 0
-substring$ -- 2782
-swap$ -- 126
+substring$ -- 2864
+swap$ -- 128
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 552
+type$ -- 564
 warning$ -- 2
-while$ -- 319
+while$ -- 327
 width$ -- 0
-write$ -- 1282
+write$ -- 1308
 (There were 2 warnings)

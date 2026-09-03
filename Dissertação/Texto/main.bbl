@@ -69,8 +69,8 @@ Ayuso De~Dios, B., Lipnikov, K.  e Manzini, G. (2016).
 \newblock The nonconforming virtual element method.
 \newblock {\em ESAIM: Mathematical Modelling and Numerical Analysis}, 50(3):879--904.
 
-\bibitem[Beir{\~a}o Da~Veiga et~al., 2013]{basicprinciplesvirtualelementmethods2013a}
-Beir{\~a}o Da~Veiga, L., Brezzi, F., Cangiani, A., Manzini, G., Marini, L.~D.  e Russo, A. (2013).
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2013a]{basicprinciplesvirtualelementmethods2013a}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Cangiani, A., Manzini, G., Marini, L.~D.  e Russo, A. (2013a).
 \newblock {{BASIC PRINCIPLES OF VIRTUAL ELEMENT METHODS}}.
 \newblock {\em Mathematical Models and Methods in Applied Sciences}, 23(01):199--214.
 
@@ -79,8 +79,17 @@ Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.  e Russo, A. (2016a).
 \newblock Serendipity {{Nodal VEM}} spaces.
 \newblock {\em Computers \& Fluids}, 141:2--12.
 
-\bibitem[Beir{\~a}o Da~Veiga et~al., 2014]{hitchhikersguidevirtualelementmethod2014a}
-Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2014).
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2013b]{virtualelementslinearelasticityproblems2013}
+Beir{\~a}o Da~Veiga, L., Brezzi, F.  e Marini, L.~D. (2013b).
+\newblock Virtual {{Elements}} for {{Linear Elasticity Problems}}.
+\newblock {\em SIAM Journal on Numerical Analysis}, 51(2):794--812.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2014a]{hdivhcurlconformingvem2014}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2014a).
+\newblock H(div) and {{H}}(curl)-conforming {{VEM}}.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2014b]{hitchhikersguidevirtualelementmethod2014a}
+Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2014b).
 \newblock The {{Hitchhiker}}'s {{Guide}} to the {{Virtual Element Method}}.
 \newblock {\em Mathematical Models and Methods in Applied Sciences}, 24(08):1541--1573.
 
@@ -89,8 +98,8 @@ Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2016b).
 \newblock Virtual {{Element Method}} for general second-order elliptic problems on polygonal meshes.
 \newblock {\em Mathematical Models and Methods in Applied Sciences}, 26(04):729--750.
 
-\bibitem[Beir{\~a}o~da Veiga et~al., 2017]{vem2017virtual}
-Beir{\~a}o~da Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2017).
+\bibitem[Beir{\~a}o~da Veiga et~al., 2017a]{vem2017virtual}
+Beir{\~a}o~da Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2017a).
 \newblock The virtual element method.
 \newblock Special Lecture / Overview on Virtual Element Methods.
 
@@ -99,10 +108,29 @@ Beir{\~a}o Da~Veiga, L., Brezzi, F., Marini, L.~D.  e Russo, A. (2020).
 \newblock Polynomial preserving virtual elements with curved edges.
 \newblock {\em Mathematical Models and Methods in Applied Sciences}, 30(08):1555--1590.
 
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2018]{exponentialconvergencehpvirtualelementmethodpresencecornersingularities2018}
+Beir{\~a}o Da~Veiga, L., Chernov, A., Mascotto, L.  e Russo, A. (2018).
+\newblock Exponential convergence of the hp virtual element method in presence of corner singularities.
+\newblock {\em Numerische Mathematik}, 138(3):581--613.
+
+\bibitem[Beir{\~a}o~da Veiga et~al., 2017b]{beiraodaveiga2017high}
+Beir{\~a}o~da Veiga, L., Dassi, F.  e Russo, A. (2017b).
+\newblock High-order virtual element method on polyhedral meshes.
+\newblock {\em Computers \& Mathematics with Applications}, 74(5):1110--1122.
+
 \bibitem[Beir{\~a}o Da~Veiga et~al., 2015]{virtualelementmethodelasticinelasticproblemspolytopemeshes2015a}
 Beir{\~a}o Da~Veiga, L., Lovadina, C.  e Mora, D. (2015).
 \newblock A {{Virtual Element Method}} for elastic and inelastic problems on polytope meshes.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering}, 295:327--346.
+
+\bibitem[Beir{\~a}o Da~Veiga et~al., 2016c]{stabilityanalysisvirtualelementmethod2016a}
+Beir{\~a}o Da~Veiga, L., Lovadina, C.  e Russo, A. (2016c).
+\newblock Stability {{Analysis}} for the {{Virtual Element Method}}.
+
+\bibitem[Beir{\~a}o Da~Veiga e Manzini, 2014]{virtualelementmethodarbitraryregularity2014}
+Beir{\~a}o Da~Veiga, L. e Manzini, G. (2014).
+\newblock A virtual element method with arbitrary regularity.
+\newblock {\em IMA Journal of Numerical Analysis}, 34(2):759--781.
 
 \bibitem[Beir{\~a}o Da~Veiga et~al., 2019]{virtualelementmethodcurvededges2019}
 Beir{\~a}o Da~Veiga, L., Russo, A.  e Vacca, G. (2019).
@@ -165,7 +193,7 @@ Cheung, Y., Zhang, Y.  e Chen, W. (2000).
 \newblock {\em Computers \& Structures}, 78(5):699--709.
 
 \bibitem[Chi et~al., 2017]{basicformulationsvirtualelementmethodvemfinitedeformations2017}
-Chi, H., Da~Veiga, L.~B.  e Paulino, G. (2017).
+Chi, H., Beir{\~a}o Da~Veiga, L.  e Paulino, G. (2017).
 \newblock Some basic formulations of the virtual element method ({{VEM}}) for finite deformations.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering}, 318:148--192.
 
@@ -204,29 +232,6 @@ Cust{\'o}dio, R. (2022).
 \newblock O m{\'e}todo dos elementos finitos generalizados aplicado com elementos triangulares na an{\'a}lise din{\^a}mica de estruturas em estado plano.
 \newblock Disserta{\c{c}}{\~a}o de mestrado, Universidade Federal do Paran{\'a}, Curitiba, PR, Brasil.
 
-\bibitem[Da~Veiga et~al., 2013]{virtualelementslinearelasticityproblems2013}
-Da~Veiga, L.~B., Brezzi, F.  e Marini, L.~D. (2013).
-\newblock Virtual {{Elements}} for {{Linear Elasticity Problems}}.
-\newblock {\em SIAM Journal on Numerical Analysis}, 51(2):794--812.
-
-\bibitem[{da Veiga} et~al., 2014]{hdivhcurlconformingvem2014}
-{da Veiga}, L.~B., Brezzi, F., Marini, L.~D.  e Russo, A. (2014).
-\newblock H(div) and {{H}}(curl)-conforming {{VEM}}.
-
-\bibitem[Da~Veiga et~al., 2018]{exponentialconvergencehpvirtualelementmethodpresencecornersingularities2018}
-Da~Veiga, L.~B., Chernov, A., Mascotto, L.  e Russo, A. (2018).
-\newblock Exponential convergence of the hp virtual element method in presence of corner singularities.
-\newblock {\em Numerische Mathematik}, 138(3):581--613.
-
-\bibitem[{da Veiga} et~al., 2016]{stabilityanalysisvirtualelementmethod2016a}
-{da Veiga}, L.~B., Lovadina, C.  e Russo, A. (2016).
-\newblock Stability {{Analysis}} for the {{Virtual Element Method}}.
-
-\bibitem[Da~Veiga e Manzini, 2014]{virtualelementmethodarbitraryregularity2014}
-Da~Veiga, L.~B. e Manzini, G. (2014).
-\newblock A virtual element method with arbitrary regularity.
-\newblock {\em IMA Journal of Numerical Analysis}, 34(2):759--781.
-
 \bibitem[Dassi et~al., 2020]{threedimensionalhellingerreissnervirtualelementmethodlinearelasticityproblems2020}
 Dassi, F., Lovadina, C.  e Visinoni, M. (2020).
 \newblock A three-dimensional {{Hellinger}}--{{Reissner}} virtual element method for linear elasticity problems.
@@ -241,6 +246,11 @@ Dassi, F. e Mascotto, L. (2018).
 De~Bellis, M., Wriggers, P.  e Hudobivnik, B. (2019).
 \newblock Serendipity virtual element formulation for nonlinear elasticity.
 \newblock {\em Computers \& Structures}, 223:106094.
+
+\bibitem[Di~Pietro e Ern, 2016]{DiPietroErn2015hybrid}
+Di~Pietro, D.~A. e Ern, A. (2016).
+\newblock A hybrid high-order locking-free method for linear elasticity on general meshes.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 306:307--329.
 
 \bibitem[D{\'i}az e Sigmund, 1995]{checkerboardpatternslayoutoptimization1995}
 D{\'i}az, A. e Sigmund, O. (1995).

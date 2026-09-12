@@ -16,33 +16,34 @@
 \contentsline {chapter}{\numberline {3}O problema dinâmico}{27}{chapter.28}%
 \contentsline {section}{\numberline {3.1}Análise dinâmica de estruturas}{27}{section.29}%
 \contentsline {subsection}{\numberline {3.1.1}Conceitos Básicos}{27}{subsection.30}%
-\contentsline {subsection}{\numberline {3.1.2}Modos de vibração}{30}{subsection.35}%
-\contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{32}{section.46}%
-\contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{32}{subsection.47}%
-\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{39}{subsection.69}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{42}{subsubsection.84}%
-\contentsline {section}{\numberline {3.3}Métodos aproximados}{42}{section.89}%
-\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{43}{subsection.90}%
-\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{44}{subsection.95}%
-\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca com análise modal para equação de vibração livre não amortecidas.}{45}{subsubsection.111}%
-\contentsline {subsection}{\numberline {3.3.3}Método de Galerkin com discretização do domínio}{46}{subsection.115}%
+\contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{30}{section.35}%
+\contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{30}{subsection.36}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Notação de Voigt}{35}{subsubsection.59}%
+\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{36}{subsection.66}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{38}{subsubsection.79}%
+\contentsline {section}{\numberline {3.3}Métodos aproximados}{39}{section.84}%
+\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{39}{subsection.85}%
+\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{40}{subsection.90}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca da equação de vibração livre não amortecida}{42}{subsubsection.101}%
+\contentsline {subsection}{\numberline {3.3.3}Método de Galerkin com discretização do domínio}{45}{subsection.115}%
 \contentsline {chapter}{\numberline {4}O método dos elementos virtuais}{48}{chapter.123}%
 \contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais}{48}{section.124}%
-\contentsline {section}{\numberline {4.2}Espaço de solução}{51}{section.133}%
-\contentsline {section}{\numberline {4.3}O elemento virtual}{53}{section.139}%
-\contentsline {section}{\numberline {4.4}Operadores de projeção}{54}{section.143}%
-\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$}{56}{subsection.153}%
-\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$}{63}{subsection.178}%
-\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$}{64}{subsection.185}%
-\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa}{65}{section.194}%
-\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{66}{subsection.199}%
-\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{67}{subsection.206}%
-\contentsline {section}{\numberline {4.6}Implementação}{69}{section.212}%
-\contentsline {chapter}{\numberline {5}Problemas de vibração livre com o método dos elementos virtuais}{71}{chapter.215}%
-\contentsline {section}{\numberline {5.1}Chapa com furo circular}{74}{section.234}%
-\contentsline {section}{\numberline {5.2}Barragem de terra}{86}{section.254}%
-\contentsline {section}{\numberline {5.3}Parede estrutural}{97}{section.275}%
-\contentsline {chapter}{\numberline {6}Conclusão}{109}{chapter.297}%
-\contentsline {chapter}{REFER\^ENCIAS}{112}{chapter*.298}%
-\contentsline {chapter}{AP\^ENDICE\ A\hskip .5em\relax -- \hskip .5em\relax \uppercase {Tabela com pontos e pesos de Gauss-Lobatto}}{120}{appendix*.300}%
+\contentsline {section}{\numberline {4.2}O elemento virtual}{52}{section.134}%
+\contentsline {section}{\numberline {4.3}Espaço de solução}{53}{section.138}%
+\contentsline {section}{\numberline {4.4}Operadores de projeção}{55}{section.145}%
+\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$}{58}{subsection.155}%
+\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$}{68}{subsection.181}%
+\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$}{69}{subsection.188}%
+\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa}{71}{section.197}%
+\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{71}{subsection.204}%
+\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{73}{subsection.213}%
+\contentsline {section}{\numberline {4.6}Implementação}{76}{section.221}%
+\contentsline {chapter}{\numberline {5}Problemas de vibração livre com o método dos elementos virtuais}{78}{chapter.226}%
+\contentsline {section}{\numberline {5.1}Chapa com furo circular}{81}{section.245}%
+\contentsline {section}{\numberline {5.2}Barragem de terra}{93}{section.265}%
+\contentsline {section}{\numberline {5.3}Parede estrutural}{104}{section.286}%
+\contentsline {chapter}{\numberline {6}Conclusão}{116}{chapter.308}%
+\contentsline {chapter}{REFER\^ENCIAS}{119}{chapter*.309}%
+\contentsline {chapter}{AP\^ENDICE\ A\hskip .5em\relax -- \hskip .5em\relax \uppercase {Tabela com pontos e pesos de Gauss-Lobatto}}{127}{appendix*.311}%
+\contentsline {chapter}{AP\^ENDICE\ B\hskip .5em\relax -- \hskip .5em\relax \uppercase {Desenvolvimento da parcela de amortecimento na equação do movimento}}{128}{appendix*.314}%
 \contentsfinish 

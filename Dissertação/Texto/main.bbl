@@ -257,6 +257,11 @@ D{\'i}az, A. e Sigmund, O. (1995).
 \newblock Checkerboard patterns in layout optimization.
 \newblock {\em Structural Optimization}, 10(1):40--45.
 
+\bibitem[Evans, 2010]{evans2010partial}
+Evans, L.~C. (2010).
+\newblock {\em Partial Differential Equations}, volume~19 de {\em Graduate Studies in Mathematics}.
+\newblock American Mathematical Society, Providence, RI, 2nd edition.
+
 \bibitem[Farlow, 1993]{farlow1993partial}
 Farlow, S.~J. (1993).
 \newblock {\em Partial Differential Equations for Scientists and Engineers}.
@@ -296,11 +301,6 @@ Hughes, T. J.~R. (1987).
 Lai, M.-J. (2026).
 \newblock A {{Bivariate Spline Construction}} of {{Orthonormal Polynomials}} over {{Polygonal Domains}} and {{Its Applications}} to {{Quadrature}}.
 
-\bibitem[Lai et~al., 2010]{introductioncontinuummechanics2010}
-Lai, W.~M., {krempl}, E.  e Rubin, D. (2010).
-\newblock {\em Introduction to {{Continuum Mechanics}}}.
-\newblock Elsevier.
-
 \bibitem[Lamperti et~al., 2023]{huwashizuvariationalapproachselfstabilizedvirtualelements2dlinearelastostatics2023}
 Lamperti, A., Cremonesi, M., Perego, U., Russo, A.  e Lovadina, C. (2023).
 \newblock A {{Hu}}--{{Washizu}} variational approach to self-stabilized virtual elements: {{2D}} linear elastostatics.
@@ -314,6 +314,11 @@ Lepe, F., Mora, D., Rivera, G.  e Vel{\'a}squez, I. (2020).
 Leung, A., Zhu, B., Zheng, J.  e Yang, H. (2004).
 \newblock Analytic trapezoidal {{Fourier}} p-element for vibrating plane problems.
 \newblock {\em Journal of Sound and Vibration}, 271(1-2):67--81.
+
+\bibitem[Manzini, 2017]{manzini2017annotations}
+Manzini, G. (2017).
+\newblock Annotations on the virtual element method for second-order elliptic problems.
+\newblock Relat\'orio t\'ecnico, Los Alamos National Lab. (LANL), Los Alamos, NM (United States).
 
 \bibitem[Mascotto, 2018]{illconditioningvirtualelementmethodstabilizationsbases2018}
 Mascotto, L. (2018).
@@ -339,6 +344,11 @@ Mengolini, M., Benedetto, M.~F.  e Arag{\'o}n, A.~M. (2019).
 Moherdaui, T.~F. (2021).
 \newblock {\em The Virtual Element Method for Wheel-Rail Contact Problems.}
 \newblock Mestrado em {{Engenharia}} de {{Estruturas}}, Universidade de S\~ao Paulo, S\~ao Paulo.
+
+\bibitem[Moherdaui e Neto, 2024]{virtualelementmethodoverviewformulations2024a}
+Moherdaui, T.~F. e Neto, A.~G. (2024).
+\newblock Virtual {{Element Method}}: {{An}} overview of formulations.
+\newblock {\em Ibero-Latin American Congress on Computational Methods in Engineering (CILAMCE)}.
 
 \bibitem[Mora et~al., 2018]{virtualelementmethodvibrationproblemkirchhoffplates2018}
 Mora, D., Rivera, G.  e Vel{\'a}squez, I. (2018).
@@ -428,11 +438,6 @@ Sutton, O.~J. (2017).
 Tadmor, E.~B., Miller, R.~E.  e Elliott, R.~S. (2012).
 \newblock {\em Continuum Mechanics and Thermodynamics: From Fundamental Concepts to Governing Equations}.
 \newblock Cambridge University Press.
-
-\bibitem[{Tiago Fernandes Moherdaui} e {Alfredo Gay Neto}, 2024]{virtualelementmethodoverviewformulations2024a}
-{Tiago Fernandes Moherdaui} e {Alfredo Gay Neto} (2024).
-\newblock Virtual {{Element Method}}: {{An}} overview of formulations.
-\newblock {\em Ibero-Latin American Congress on Computational Methods in Engineering (CILAMCE)}.
 
 \bibitem[Timoshenko, 1976]{resistenciadosmateriais1976}
 Timoshenko, S. (1976).

@@ -14,49 +14,50 @@ A level-1 auxiliary file: cap_3.aux
 A level-1 auxiliary file: cap_4.aux
 A level-1 auxiliary file: Cap_5.aux
 A level-1 auxiliary file: Conclusoes.aux
-A level-1 auxiliary file: Apendice.aux
+A level-1 auxiliary file: Apendice_A.aux
+A level-1 auxiliary file: Apendice_B.aux
 Database file #1: referencias.bib
 Warning--empty journal in vem2017virtual
 Warning--empty journal in calculationarbitrarymomentspolygonsa
-You've used 101 entries,
+You've used 102 entries,
             1935 wiz_defined-function locations,
-            1023 strings with 24090 characters,
-and the built_in function-call counts, 39666 in all, are:
-= -- 3896
-> -- 1687
-< -- 50
-+ -- 629
-- -- 559
-* -- 3484
-:= -- 6987
-add.period$ -- 301
-call.type$ -- 101
-change.case$ -- 775
-chr.to.int$ -- 91
-cite$ -- 103
-duplicate$ -- 1413
-empty$ -- 2698
-format.name$ -- 698
-if$ -- 7600
+            1032 strings with 24282 characters,
+and the built_in function-call counts, 39892 in all, are:
+= -- 3922
+> -- 1683
+< -- 53
++ -- 627
+- -- 557
+* -- 3500
+:= -- 7031
+add.period$ -- 304
+call.type$ -- 102
+change.case$ -- 781
+chr.to.int$ -- 92
+cite$ -- 104
+duplicate$ -- 1425
+empty$ -- 2717
+format.name$ -- 697
+if$ -- 7644
 int.to.chr$ -- 11
 int.to.str$ -- 0
 missing$ -- 109
-newline$ -- 501
-num.names$ -- 308
-pop$ -- 642
+newline$ -- 506
+num.names$ -- 311
+pop$ -- 640
 preamble$ -- 1
-purify$ -- 781
+purify$ -- 785
 quote$ -- 0
-skip$ -- 1039
+skip$ -- 1049
 stack$ -- 0
-substring$ -- 2864
-swap$ -- 128
-text.length$ -- 9
+substring$ -- 2876
+swap$ -- 130
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 564
+type$ -- 570
 warning$ -- 2
-while$ -- 327
+while$ -- 329
 width$ -- 0
-write$ -- 1308
+write$ -- 1324
 (There were 2 warnings)

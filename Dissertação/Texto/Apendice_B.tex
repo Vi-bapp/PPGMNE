@@ -1,0 +1,45 @@
+\chapter{Desenvolvimento da parcela de amortecimento na equação do movimento}
+
+\indent Os mecanismos por trás do amortecimento em estruturas são diversos e complexos de serem representados; portanto, o amortecimento é modelado como um modelo específico ou como uma combinação deles. Quando o corpo se encontra imerso em um fluido, utiliza-se o modelo de amortecimento viscoso. Os efeitos de atrito do corpo em relação a um meio sólido seco são representados por meio do modelo de fricção seca de Coulomb. Já as variações de energia — tanto de absorção quanto de dissipação — de um material devido à sua deformação são representadas pelo modelo de amortecimento de histerese.
+\indent Embora incorpore as características dinâmicas, a equação do movimento pura não possui um termo explícito para o amortecimento estrutural interno. Para isso, recorre-se, por exemplo, ao modelo viscoelástico de Kelvin-Voigt. \\
+\indent Formulações viscoelásticas são construídas a partir de modelos reológicos com molas (que seguem a lei de Hooke) e amortecedores (assumidos como preenchidos com fluido newtoniano de viscosidade $\mu$) (\citet{principlescompositematerialmechanics2016}), à semelhança da formulação de sistemas discretos. O modelo reológico de Kelvin-Voigt. A (Figura~\ref{fig:10}) apresenta a união em paralelo de uma mola e um amortecedor. Matematicamente, ele é descrito por: 
+
+\begin{equation}
+    \mathsf{T} = \mathbb{C} \epsilon + \mathbb{D} \dot{\epsilon}
+    \label{eq:B.1}
+\end{equation}
+
+	
+    \begin{figure}[htbp]
+        \centering
+        \caption{Diagrama reológico de Voigt.}
+        \includegraphics[width=0.4\textwidth]{figuras/capitulo_3/10.png}
+        \label{fig:10}
+
+        {\small \textbf{Fonte:} \citet{principlescompositematerialmechanics2016}}
+    \end{figure}
+    
+
+Na forma fraca da equação do movimento, Eq.~\ref{eq:3.55}, o termo de amortecimento é obtido separando-se a tensão em duas partes, uma elástica e outra viscosa, consoante a Eq.~\ref{eq:B.1}. Assim, a equação do movimento com amortecimento estrutural interno é dada por:
+
+\begin{equation}
+    \int_{V} w \hspace{1.5pt} \rho \hspace{1.5pt} \ddot{u} \hspace{1.5pt} dV + \int_{V}  \epsilon(w) : \mathbb{C} \epsilon(u) \hspace{1.5pt} dV + \int_{V}  \epsilon(w) : \mathbb{D} \dot{\epsilon}(u) \hspace{1.5pt} dV  = \int_{V} w \hspace{1.5pt} b \hspace{1.5pt} dV + \int_{S} w \cdot \mathsf{t}^{(\hat{n})} \hspace{1.5pt} dS
+    \label{eq:B.2}
+\end{equation}
+
+\indent Ao tomar os vetores de forma $N_i$ como funções de teste, a Eq.~\ref{eq:B.2} pode ser reescrita na forma matricial:
+
+\begin{equation}
+    \mathbf{M} \ddot{\mathbf{u}} + \mathbf{K} \mathbf{u} + \mathbf{C} \dot{\mathbf{u}} = \mathbf{f}
+    \label{eq:B.3}
+\end{equation}
+
+\indent A Eq~\ref{eq:B.3} é a equação de movimento de um sistema dinâmico discreto com amortecimento estrutural interno. A matriz $\mathbf{C}$ é a matriz de amortecimento, que pode ser obtida a partir da matriz de rigidez $\mathbf{K}$ e da matriz de massa $\mathbf{M}$, utilizando o modelo de Rayleigh:
+
+\begin{equation}
+    \mathbf{C} = \alpha \mathbf{M} + \beta \mathbf{K}
+    \label{eq:B.4}
+\end{equation}
+
+\indent Onde $\alpha$ e $\beta$ são os coeficientes de amortecimento de Rayleigh, que podem ser determinados a partir das razões de amortecimento desejadas para os modos de vibração do sistema. A escolha adequada desses coeficientes é crucial para garantir que o modelo represente com precisão o comportamento dinâmico da estrutura em estudo.\\
+

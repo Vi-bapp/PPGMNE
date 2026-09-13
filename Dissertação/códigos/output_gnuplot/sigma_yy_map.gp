@@ -1,7 +1,7 @@
 reset
 set terminal pngcairo size 800,600 enhanced font 'Arial,12'
 set output 'output_gnuplot/sigma_yy_map.png'
-set title 'Tensão Normal YY (Pa)'
+set title 'Tensao Normal YY (Pa)'
 set xlabel 'X'
 set ylabel 'Y'
 set size ratio -1

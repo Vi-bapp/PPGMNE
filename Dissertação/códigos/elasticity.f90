@@ -41,38 +41,33 @@ module elasticity_mod
     end subroutine get_lame_parameters
 
     ! Constrói a matriz para Estado Plano de Tensões
-    pure subroutine build_C_plane_stress(E, nu, C_mat)
-        real(dp), intent(in)  :: E, nu
+    pure subroutine build_C_plane_stress(E_mod, nu_val, C_mat)
+        real(dp), intent(in)  :: E_mod, nu_val
         real(dp), intent(out) :: C_mat(3,3)
         real(dp) :: const
 
         C_mat = 0.0_dp
+        C_mat(1,1) = E_mod / (1.0_dp - nu_val**2)
+        C_mat(2,2) = C_mat(1,1)
+        C_mat(1,2) = C_mat(1,1) * nu_val
+        C_mat(2,1) = C_mat(1,2)
+        C_mat(3,3) = E_mod / (2.0_dp * (1.0_dp + nu_val))   
 
-        C_mat(1,1) = 1.0_dp
-        C_mat(2,2) = 1.0_dp
-        C_mat(1,2) = nu
-        C_mat(2,1) = nu
-        C_mat(3,3) = E / (2.0_dp * (1.0_dp + nu)) ! Este é o próprio módulo de cisalhamento (mu)
-
-        C_mat = C_mat * E / (1.0_dp - nu**2)
     end subroutine build_C_plane_stress
 
-    ! Constrói a matriz para Estado Plano de Tensões
-    pure subroutine build_C_plane_strain(E, nu, C_mat)
-        real(dp), intent(in)  :: E, nu
+    ! Constrói a matriz para Estado Plano de Deformações
+    pure subroutine build_C_plane_strain(lambda, mu, C_mat)
+        real(dp), intent(in)  :: lambda, mu
         real(dp), intent(out) :: C_mat(3,3)
         real(dp) :: const
 
         C_mat = 0.0_dp
+        C_mat(1,1) = lambda + 2.0_dp*mu
+        C_mat(2,2) = C_mat(1,1)
+        C_mat(1,2) = lambda
+        C_mat(2,1) = lambda
+        C_mat(3,3) = mu
 
-        ! Estado Plano de Deformação
-        C_mat(1,1) = 1.0_dp - nu
-        C_mat(2,2) = 1.0_dp - nu
-        C_mat(1,2) = nu
-        C_mat(2,1) = nu
-        C_mat(3,3) = (1.0_dp - 2.0_dp * nu) / 2.0_dp
-
-        C_mat = C_mat * (E / ((1.0_dp + nu) * (1.0_dp - 2.0_dp * nu)))
     end subroutine build_C_plane_strain
 
 end module elasticity_mod

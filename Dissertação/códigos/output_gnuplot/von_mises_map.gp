@@ -1,7 +1,7 @@
 reset
 set terminal pngcairo size 800,600 enhanced font 'Arial,12'
 set output 'output_gnuplot/von_mises_map.png'
-set title 'Tensão Equivalente de Von Mises (Pa)'
+set title 'Tensao Equivalente de Von Mises (Pa)'
 set xlabel 'X'
 set ylabel 'Y'
 set size ratio -1

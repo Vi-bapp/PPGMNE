@@ -1,0 +1,32 @@
+! =====================================================================
+! PATCH TEST - Dominio unitario com 5 elementos (1 interno distorcido)
+! Nos 1-4 = contorno do quadrado, nos 5 = no interno
+! =====================================================================
+5  4  1  2
+
+! Nos
+0.0   0.0   1
+1.0   0.0   1
+1.0   1.0   1
+0.0   1.0   1
+0.3   0.4   1
+
+! Elementos (todos anti-horario)
+! E1: canto inferior esquerdo
+3
+1  2  5
+! E2: canto inferior direito
+3
+2  3  5
+! E3: canto superior direito
+3
+3  4  5
+! E4: canto superior esquerdo
+3
+4  1  5
+
+! Dirichlet (sera sobrescrito no programa de teste)
+0
+
+! Molas
+0

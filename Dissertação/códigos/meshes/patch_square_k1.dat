@@ -1,0 +1,20 @@
+! =====================================================================
+! PATCH TEST - Quadrado unitario, 1 elemento, k=1
+! =====================================================================
+4  1  1  2
+
+! Nos (vertices)
+0.0  0.0  1
+1.0  0.0  1
+1.0  1.0  1
+0.0  1.0  1
+
+! Elemento 1
+4
+1  2  3  4
+
+! Dirichlet - todos os nos serao prescritos no programa de teste
+0
+
+! Molas
+0

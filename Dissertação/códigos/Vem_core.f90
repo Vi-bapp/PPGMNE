@@ -17,6 +17,15 @@ module vem_core_mod
     public :: build_edge_dof_map
     public :: dp
     public :: read_2D_loads
+    public :: stab_park_diagonal_K
+    public :: stab_park_scalar_K
+    public :: stab_park_mass
+    public :: stab_antonietti_K
+    public :: stab_antonietti_mass
+    public :: stab_artioli_K
+    public :: stab_dofi_dofi_K
+    public :: stab_d_recipe_K
+    public :: stab_identity_mass
 
     type :: node_type
         real(dp) :: x, y
@@ -690,5 +699,210 @@ module vem_core_mod
         ! 2. Projeção Universal: A_cond = T^T * A_full * T
         A_cond = matmul(transpose(T), matmul(A_full, T))
     end subroutine condense_matrix
+
+    !===========================================================================
+    ! Utilitario: I - D*Pi
+    !===========================================================================
+    subroutine compute_IminusP(D, Pi, IminusP)
+        real(dp), intent(in)  :: D(:,:), Pi(:,:)
+        real(dp), intent(out) :: IminusP(size(D,1), size(D,1))
+        integer :: n, i
+        n = size(D, 1)
+        IminusP = 0.0_dp
+        do i = 1, n
+            IminusP(i,i) = 1.0_dp
+        end do
+        IminusP = IminusP - matmul(D, Pi)
+    end subroutine compute_IminusP
+
+    !===========================================================================
+    ! PARK ET AL. - Diagonal (Eqs. 28-29)
+    !   K_S = (I-P0)^T Lambda (I-P0)
+    !   Lambda_ii = max( K_C_ii , alpha0 * tr(C)/n_C )
+    !===========================================================================
+    subroutine stab_park_diagonal_K(K_C, D, Pi_0, C_mat, alpha0, K_S)
+        real(dp), intent(in)  :: K_C(:,:), D(:,:), Pi_0(:,:), C_mat(3,3)
+        real(dp), intent(in)  :: alpha0
+        real(dp), intent(out) :: K_S(size(K_C,1), size(K_C,2))
+        integer  :: n, i
+        real(dp) :: floor_val
+        real(dp), allocatable :: IminusP(:,:), tmp(:,:)
+
+        n = size(K_C, 1)
+        allocate(IminusP(n,n), tmp(n,n))
+        call compute_IminusP(D, Pi_0, IminusP)
+
+        floor_val = alpha0 * matrix_trace(C_mat) / 3.0_dp
+        tmp = IminusP
+        do i = 1, n
+            tmp(i,:) = max(K_C(i,i), floor_val) * IminusP(i,:)
+        end do
+        K_S = matmul(transpose(IminusP), tmp)
+        deallocate(IminusP, tmp)
+    end subroutine stab_park_diagonal_K
+
+    !===========================================================================
+    ! PARK ET AL. - Escalar (Eq. 30)
+    !   K_S = alpha_s (I-P0)^T (I-P0)
+    !   alpha_s = max_i K_C_ii  (+ piso opcional)
+    !===========================================================================
+    subroutine stab_park_scalar_K(K_C, D, Pi_0, C_mat, alpha0, use_floor, K_S)
+        real(dp), intent(in)  :: K_C(:,:), D(:,:), Pi_0(:,:), C_mat(3,3)
+        real(dp), intent(in)  :: alpha0
+        logical,  intent(in)  :: use_floor
+        real(dp), intent(out) :: K_S(size(K_C,1), size(K_C,2))
+        integer  :: n, i
+        real(dp) :: alpha_s
+        real(dp), allocatable :: IminusP(:,:)
+
+        n = size(K_C, 1)
+        allocate(IminusP(n,n))
+        call compute_IminusP(D, Pi_0, IminusP)
+
+        alpha_s = 0.0_dp
+        do i = 1, n
+            alpha_s = max(alpha_s, K_C(i,i))
+        end do
+        if (use_floor) alpha_s = max(alpha_s, alpha0*matrix_trace(C_mat)/3.0_dp)
+
+        K_S = alpha_s * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_park_scalar_K
+
+    !===========================================================================
+    ! PARK ET AL. - Massa (Eq. 24)
+    !   M_S = rho * |E| * (I-P0)^T (I-P0)
+    !===========================================================================
+    subroutine stab_park_mass(D, Pi_0, rho, area, M_S)
+        real(dp), intent(in)  :: D(:,:), Pi_0(:,:)
+        real(dp), intent(in)  :: rho, area
+        real(dp), intent(out) :: M_S(size(D,1), size(D,1))
+        real(dp), allocatable :: IminusP(:,:)
+        allocate(IminusP(size(D,1), size(D,1)))
+        call compute_IminusP(D, Pi_0, IminusP)
+        M_S = (rho * area) * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_park_mass
+
+    !===========================================================================
+    ! ANTONIETTI ET AL. - Rigidez (Eqs. 55-57)
+    !   K_S = max(2*mu, lambda) * (I-P)^T (I-P)
+    !   P = D*Pi_nabla  (ou D*Pi_0, alternativa do paper)
+    !===========================================================================
+    subroutine stab_antonietti_K(D, Pi, mu, lambda, K_S)
+        real(dp), intent(in)  :: D(:,:), Pi(:,:)
+        real(dp), intent(in)  :: mu, lambda
+        real(dp), intent(out) :: K_S(size(D,1), size(D,1))
+        real(dp), allocatable :: IminusP(:,:)
+        allocate(IminusP(size(D,1), size(D,1)))
+        call compute_IminusP(D, Pi, IminusP)
+        K_S = max(2.0_dp*mu, lambda) * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_antonietti_K
+
+    !===========================================================================
+    ! ANTONIETTI ET AL. - Massa (Eqs. 41-43)
+    !   M_S = rho * h_E^2 * (I-P0)^T (I-P0)
+    !===========================================================================
+    subroutine stab_antonietti_mass(D, Pi_0, rho, h_E, M_S)
+        real(dp), intent(in)  :: D(:,:), Pi_0(:,:)
+        real(dp), intent(in)  :: rho, h_E
+        real(dp), intent(out) :: M_S(size(D,1), size(D,1))
+        real(dp), allocatable :: IminusP(:,:)
+        allocate(IminusP(size(D,1), size(D,1)))
+        call compute_IminusP(D, Pi_0, IminusP)
+        M_S = (rho * h_E**2) * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_antonietti_mass
+
+    !===========================================================================
+    ! ARTIOLI / Beirao da Veiga / Lovadina / Sacco (Eq. 30)
+    !   K_S = tau * tr(K_C) * [ I - D (D^T D)^{-1} D^T ]
+    !   Projetor ortogonal sobre o complemento dos polinomios via matriz D
+    !===========================================================================
+    subroutine stab_artioli_K(K_C, D_poly, tau, K_S)
+        ! D_poly: matriz que mapeia coeficientes polinomiais -> DOFs
+        !         (size = n_dof x n_poly), a D do paper Artioli
+        real(dp), intent(in)  :: K_C(:,:), D_poly(:,:)
+        real(dp), intent(in)  :: tau
+        real(dp), intent(out) :: K_S(size(K_C,1), size(K_C,2))
+
+        integer :: n, m, i
+        real(dp), allocatable :: DtD(:,:), DtD_inv(:,:), P_poly(:,:), IminusP(:,:)
+
+        n = size(K_C, 1)          ! n_dof
+        m = size(D_poly, 2)       ! n_poly
+        allocate(DtD(m,m), DtD_inv(m,m), P_poly(n,n), IminusP(n,n))
+
+        DtD     = matmul(transpose(D_poly), D_poly)
+        DtD_inv = inverse_matrix(DtD)
+        P_poly  = matmul(D_poly, matmul(DtD_inv, transpose(D_poly)))  ! proj. nos polinomios
+
+        IminusP = 0.0_dp
+        do i = 1, n
+            IminusP(i,i) = 1.0_dp
+        end do
+        IminusP = IminusP - P_poly
+
+        K_S = (tau * matrix_trace(K_C)) * IminusP
+        ! Nota: IminusP ja e o projetor (simetrico idempotente),
+        ! logo (I-P)^T(I-P) = (I-P). Por isso basta escalar IminusP.
+
+        deallocate(DtD, DtD_inv, P_poly, IminusP)
+    end subroutine stab_artioli_K
+
+    !===========================================================================
+    ! dofi-dofi classico
+    !   K_S = tau * (I-P)^T (I-P)
+    !   tau tipico: tr(K_C)/n_dof  ou  max(2*mu,lambda)
+    !===========================================================================
+    subroutine stab_dofi_dofi_K(D, Pi, tau, K_S)
+        real(dp), intent(in)  :: D(:,:), Pi(:,:)
+        real(dp), intent(in)  :: tau
+        real(dp), intent(out) :: K_S(size(D,1), size(D,1))
+        real(dp), allocatable :: IminusP(:,:)
+        allocate(IminusP(size(D,1), size(D,1)))
+        call compute_IminusP(D, Pi, IminusP)
+        K_S = tau * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_dofi_dofi_K
+
+    !===========================================================================
+    ! D-recipe (Beirao da Veiga et al.)
+    !   K_S = (I-P)^T * S * (I-P)
+    !   S = diag( |K_C_ii| )   (ou max(|K_C_ii|, floor))
+    !===========================================================================
+    subroutine stab_d_recipe_K(K_C, D, Pi, K_S)
+        real(dp), intent(in)  :: K_C(:,:), D(:,:), Pi(:,:)
+        real(dp), intent(out) :: K_S(size(K_C,1), size(K_C,2))
+        integer :: n, i
+        real(dp), allocatable :: IminusP(:,:), tmp(:,:)
+
+        n = size(K_C, 1)
+        allocate(IminusP(n,n), tmp(n,n))
+        call compute_IminusP(D, Pi, IminusP)
+
+        tmp = IminusP
+        do i = 1, n
+            tmp(i,:) = abs(K_C(i,i)) * IminusP(i,:)
+        end do
+        K_S = matmul(transpose(IminusP), tmp)
+        deallocate(IminusP, tmp)
+    end subroutine stab_d_recipe_K
+
+    !===========================================================================
+    ! Massa generica tipo identidade escalada
+    !   M_S = tau_M * (I-P0)^T (I-P0)
+    !===========================================================================
+    subroutine stab_identity_mass(D, Pi_0, tau_M, M_S)
+        real(dp), intent(in)  :: D(:,:), Pi_0(:,:)
+        real(dp), intent(in)  :: tau_M
+        real(dp), intent(out) :: M_S(size(D,1), size(D,1))
+        real(dp), allocatable :: IminusP(:,:)
+        allocate(IminusP(size(D,1), size(D,1)))
+        call compute_IminusP(D, Pi_0, IminusP)
+        M_S = tau_M * matmul(transpose(IminusP), IminusP)
+        deallocate(IminusP)
+    end subroutine stab_identity_mass
 
 end module vem_core_mod

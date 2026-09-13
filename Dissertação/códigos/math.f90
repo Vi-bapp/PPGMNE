@@ -10,13 +10,16 @@ module math_geometry_mod
     public :: combination, eye, inverse_matrix, polygon_geometry, polygon_moment
     public :: matrix_trace, kronecker_product
     public :: get_monomial_exponents, find_monomial_index
-    public :: get_gauss_lobatto 
+    public :: get_gauss_lobatto, get_gauss_legendre
     public :: solve_linear_system
     public :: eval_monomial, eval_monomial_grad, eval_monomial_div, eval_monomial_lap, eval_monomial_curl
     public :: eval_lap_coeffs, eval_div_coeffs, eval_grad_coeffs
     public :: compute_monomial_domain_integral
     public :: integrate_by_reduction, one_point_quadrature, integrate_by_interpolation
     public :: get_num_monomials
+    public :: compute_jacobian_nd
+    public :: det_laplace
+    public :: get_gl_quadrature_2d
 
     ! ---------------------------------------------------------
     ! Definição do Tipo Polinômio
@@ -25,8 +28,52 @@ module math_geometry_mod
         integer :: degree
         real(8), allocatable :: coeffs(:)
     end type Polynomial
+    
 
     contains
+
+    recursive function det_laplace(A, n) result(det)
+        integer, intent(in) :: n
+        real(dp), intent(in) :: A(n,n)
+        real(dp) :: det
+
+        integer :: j, col_idx, sub_j
+        real(dp) :: subA(n-1, n-1)
+        real(dp) :: sign_val
+
+        ! Casos base para interromper a recursão
+        if (n == 1) then
+            det = A(1,1)
+            return
+        else if (n == 2) then
+            det = A(1,1)*A(2,2) - A(1,2)*A(2,1)
+            return
+        end if
+
+        det = 0.0_dp
+
+        ! Expansão pelos cofatores da primeira linha (i = 1)
+        do j = 1, n
+            ! Monta a submatriz eliminando a linha 1 e a coluna j
+            sub_j = 1
+            do col_idx = 1, n
+                if (col_idx == j) cycle
+                subA(1:n-1, sub_j) = A(2:n, col_idx)
+                sub_j = sub_j + 1
+            end do
+
+            ! Alternância de sinal: (-1)^(1 + j)
+            if (mod(1 + j, 2) == 0) then
+                sign_val = 1.0_dp
+            else
+                sign_val = -1.0_dp
+            end if
+
+            ! Acumula o termo da expansão de Laplace
+            det = det + sign_val * A(1, j) * det_laplace(subA, n - 1)
+        end do
+
+    end function det_laplace
 
     pure function compute_monomial_domain_integral(p, q, xc, yc, h_E, polygon_coords, n_verts) result(res)
         integer, intent(in) :: p, q, n_verts
@@ -104,6 +151,64 @@ module math_geometry_mod
             end do
         end select
     end subroutine get_gauss_lobatto
+
+
+    !-----------------------------------------------------------------------
+    ! Gauss-Legendre 1D em [-1, 1]
+    ! n pontos — exato para polinomios de grau <= 2n-1
+    !-----------------------------------------------------------------------
+    pure subroutine get_gauss_legendre(n, pts, w)
+        integer, intent(in) :: n
+        real(dp), intent(out) :: pts(n), w(n)
+        integer :: i, iter, k, m
+        real(dp) :: x, x_prev, p_km1, p_k, p_kp1, dp_val, pi, eps
+
+        if (n <= 0) return
+        if (n == 1) then
+            pts(1) = 0.0_dp
+            w(1)   = 2.0_dp
+            return
+        end if
+
+        pi  = 3.14159265358979323846_dp
+        eps = 1.0e-15_dp
+        m   = (n + 1) / 2
+
+        do i = 1, m
+            x = cos(pi * (real(i, dp) - 0.25_dp) / (real(n, dp) + 0.5_dp))
+
+            do iter = 1, 60
+                p_km1 = 1.0_dp
+                p_k   = x
+                do k = 1, n - 1
+                    p_kp1 = (real(2*k + 1, dp)*x*p_k - real(k, dp)*p_km1) / real(k + 1, dp)
+                    p_km1 = p_k
+                    p_k   = p_kp1
+                end do
+                dp_val = real(n, dp) * (p_km1 - x*p_k) / max(1.0e-30_dp, 1.0_dp - x*x)
+                x_prev = x
+                x = x - p_k / dp_val
+                if (abs(x - x_prev) <= eps) exit
+            end do
+
+            p_km1 = 1.0_dp
+            p_k   = x
+            do k = 1, n - 1
+                p_kp1 = (real(2*k + 1, dp)*x*p_k - real(k, dp)*p_km1) / real(k + 1, dp)
+                p_km1 = p_k
+                p_k   = p_kp1
+            end do
+            dp_val = real(n, dp) * (p_km1 - x*p_k) / max(1.0e-30_dp, 1.0_dp - x*x)
+
+            pts(i)         = -x
+            pts(n + 1 - i) =  x
+            w(i)           = 2.0_dp / max(1.0e-30_dp, (1.0_dp - x*x) * dp_val*dp_val)
+            w(n + 1 - i)   = w(i)
+        end do
+
+        if (mod(n, 2) == 1) pts(m) = 0.0_dp
+    end subroutine get_gauss_legendre
+
 
     subroutine solve_linear_system(A, b, x, n)
         integer, intent(in) :: n
@@ -511,6 +616,55 @@ module math_geometry_mod
         integral_result = coeffs(1) * domain_area
         
     end subroutine integrate_by_interpolation
+
+    ! Rotina universal para Mapeamento Isoparamétrico 2D
+    pure subroutine compute_jacobian_nd(coords, dN, J)  
+        ! coords: (ndim, nnodes) - Coordenadas físicas dos nós
+        ! dN:     (ndim, nnodes) - Derivadas isoparamétricas dN/dxi_i
+        ! J:      (ndim, ndim)   - Matriz Jacobiana de saída
+        real(dp), intent(in)  :: coords(:,:)
+        real(dp), intent(in)  :: dN(:,:)
+        real(dp), intent(out) :: J(:,:)
+
+        ! Em R^n, o Jacobiano é o produto matricial dN * X^T
+        J = matmul(dN, transpose(coords))
+    end subroutine compute_jacobian_nd
+
+    !-----------------------------------------------------------------------
+    ! Quadratura Gauss-Legendre 2D por produto tensorial
+    ! order = n  =>  n x n pontos em [-1,1]^2
+    ! Exata para polinomios de grau <= 2n-1 em cada direcao
+    !-----------------------------------------------------------------------
+    subroutine get_gl_quadrature_2d(order, n_points, xi, eta, weights)
+        integer, intent(in) :: order
+        integer, intent(out) :: n_points
+        real(dp), allocatable, intent(out) :: xi(:), eta(:), weights(:)
+
+        integer :: i, j, idx
+        real(dp), allocatable :: pts1d(:), w1d(:)
+
+        if (order < 1) then
+            error stop 'get_gl_quadrature_2d: order deve ser >= 1'
+        end if
+
+        allocate(pts1d(order), w1d(order))
+        call get_gauss_legendre(order, pts1d, w1d)
+
+        n_points = order * order
+        allocate(xi(n_points), eta(n_points), weights(n_points))
+
+        idx = 0
+        do j = 1, order
+            do i = 1, order
+                idx = idx + 1
+                xi(idx)      = pts1d(i)
+                eta(idx)     = pts1d(j)
+                weights(idx) = w1d(i) * w1d(j)
+            end do
+        end do
+
+        deallocate(pts1d, w1d)
+    end subroutine get_gl_quadrature_2d
 
     !---------------------------------------------------------
     !Matemática semi-simbólica para integração de polinômios

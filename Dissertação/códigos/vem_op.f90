@@ -57,7 +57,7 @@ module vem_operators_mod
                             p_internal, q_internal, op_coeff_func, sign_factor)
         implicit none
         integer, intent(in)  :: n_mon, n_dofs, n_verts, deg_k, dim_op, n_gauss
-        integer, intent(in)  :: edge_dof_map(n_gauss, 2, n_verts)
+        integer, intent(in)  :: edge_dof_map(:,:,:)   
         real(dp), intent(in) :: edge_length(n_verts), normals(2, n_verts)
         real(dp), intent(in) :: gauss_pts(n_gauss), gauss_w(n_gauss)
         real(dp), intent(in) :: node_coords(:,:), xc, yc, h_E
@@ -155,7 +155,7 @@ module vem_operators_mod
                                
         implicit none
         integer, intent(in)  :: n_mon, n_dofs, n_verts, deg_k, dim_op, n_gauss
-        integer, intent(in)  :: edge_dof_map(n_gauss, 2, n_verts)
+        integer, intent(in)  :: edge_dof_map(:,:,:)   ! (n_gauss, ndof, n_verts)
         real(dp), intent(in) :: edge_length(n_verts), normals(2, n_verts)
         real(dp), intent(in) :: gauss_pts(n_gauss), gauss_w(n_gauss)
         real(dp), intent(in) :: node_coords(:,:), xc, yc, h_E
@@ -183,7 +183,7 @@ module vem_operators_mod
                 y_pt = y1 + t * (y2 - y1)
                 wt = w * edge_length(e)
 
-                do d = 1, 2
+                do d = 1, size(edge_dof_map, 2)
                     col_idx = edge_dof_map(g, d, e)
                     if (col_idx > 0 .and. col_idx <= n_dofs) then
                         do m = 1, n_mon

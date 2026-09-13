@@ -3,6 +3,7 @@
 \indent Neste capítulo, são analisados três problemas de vibração livre:
 
     \begin{itemize}
+        \item Uma chapa engastada no estado plano de tensões;
         \item Uma chapa engastada com furo circular no centro no estado plano de tensões;
         \item uma barragem de terra no estado plano de deformações, e
         \item uma parede estrutural de 4 pavimentos no estado plano de tensões. 
@@ -44,7 +45,7 @@ utilizadas as seguintes métricas
     \label{eq:1.3}
 \end{equation}
 
-\indent A NMRSE é uma métrica de erro baseada na norma $L^2$ representando a relação entre da "energia do erro" em relação a "energia global" da grandeza analisada. Por elevar os erros ao quadrado, o NRMSE garante uma penalização muito maior do que a do MAPE, o que o torna ideal para visualização dos resultados de maneira global.\\
+\indent A NMRSE é uma métrica de erro baseada na norma $L^2$, Eq.~\ref{eq:4.9}, representando a relação entre da "energia do erro" em relação a "energia global" da grandeza analisada. Por elevar os erros ao quadrado, a NRMSE garante uma penalização muito maior do que a da MAPE, o que o torna ideal para visualização dos resultados de maneira global.\\
 \indent Tendo dois parâmetros de erro, propõem a utilização da média geométrica (MG) para unificação das médias dos erros como índice comparativo dos erros calculados como um índice composto:
 
 \begin{equation}
@@ -53,17 +54,38 @@ utilizadas as seguintes métricas
 \end{equation}
 
 A escolha da média geométrica para índice composto é porque ela permite a união de dois parâmetros sem que um domine o outro.\\
-\indent O coeficiente de acurácia de discretização (CAD) mede a evolução de uma malha conforme discretizada tomando como base a malha mais 
-grossa, que possui menor custo computacional, para a malha mais refinada de maior custo. O parâmetro serve de indicativo para qual malha o 
-refino $h$ atinge um teto de aproximação. O parâmetro é calculado por:
+\indent Considerando a tendência de um resultado singular alterar o resultado da MAPE, propõe se o uso da média absoluta do desvio padrão dos erros (MASD) para medir a regularidade dos erros relativos de cada modo em um grupo de malhas. O cálculo é feito por:
+
+\begin{equation}
+    e_{MASD,grossa} = \frac{1}{n_{malhas}} \sum_{j=1}^{n_{malhas}} \left(\sqrt{\frac{\sum_{i=1}^{n_{modos}}(e_{rel,i} - e_{MAPE,j})^2}{n_{modos}-1}} \right)
+    \label{eq:1.a1}
+\end{equation}
+
+\indent Para mediação do erro entre a malha mais grossa e a malha mais refinada serão utilizadas a queda absoluta por peso percentual (QA), o fator de redução (FR) e o ganho de precisão (GP). Esses valores são utilizados para avaliar os resultados da MAPE:
+
+\begin{equation}
+    QA = e_{MAPE,grossa} - e_{MAPE,refinada},
+    \label{eq:1.a2}
+\end{equation}
+
+\begin{equation}
+    FR = \frac{e_{MASD,grossa}}{e_{MASD,refinada}} \quad \text{e}
+    \label{eq:1.a3}
+\end{equation}
+
+\begin{equation}
+    GP = \frac{e_{MAPE,grossa} - e_{MAPE,refinada}}{e_{MAPE,grossa}}
+    \label{eq:1.a4}
+\end{equation}
+
+\indent O coeficiente de acurácia de discretização (CAD) mede a evolução de uma malha conforme discretizada tomando como base a malha mais grossa, que possui menor custo computacional, para a malha mais refinada de maior custo. O parâmetro serve de indicativo para qual malha o refino $h$ atinge um teto de aproximação. O parâmetro é calculado por:
 
 \begin{equation}
     CAD = \frac{\text{e}_{MG,\text{grossa}} - \text{e}_{MG,\text{atual}}}{\text{e}_{MG,\text{grossa}} - \text{e}_{MG,\text{refinada}}}.
     \label{eq:1.5}
 \end{equation}
 
-\indent Outra relação do CAD está relacionada ao ganho de acurácia em relação à malha mais grossa e de maneira inversa a malha mais refinada. 
-Para o cálculo do CAD será utilizada a média geométrica como base.\\
+\indent Outra relação do CAD está relacionada ao ganho de acurácia em relação à malha mais grossa e de maneira inversa a malha mais refinada. Para o cálculo do CAD será utilizada a média geométrica como base.\\
 \indent Visando à comparação entre métodos, um índice similar ao CAD é proposto, o ganho de precisão relativo (GPR). Esse índice mede a melhora de precisão entre dois métodos numéricos e um terceiro resultado de referência -- Numérico ou a solução exata. O índice é calculado como:
 
 \begin{equation}
@@ -91,13 +113,11 @@ utilizado neste trabalho para comparação do ganho de precisão entre o MEV e o
 \end{enumerate}
 
 \indent Neste trabalho a formulação do MEV e outras rotinas computacionais são implementadas com um solver programado em Modern Fortran
-e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas são feitas com auxílio do Google planilhas. As malhas são gerados com o uso do software AutoCAD.\\[5mm]
+e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas são feitas com auxílio do Google planilhas. As malhas são gerados com o uso do software AutoCAD.\\
 
+\textbf{\underline{Esclarecimentos ao leitor:}}\\
 
-
-\textbf{\underline{Esclarecimentos ao leitor:}}\\[2cm]
-
-\indent Como os elementos virtuais podem possuir arestas com 180° entre si, podem existir malhas com a mesma quantidade de elementos, mas com diferentes quantidades de nós. Assim, adota-se o seguinte padrão de nomenclatura para as malhas utilizadas daqui em diante neste trabalho: $$XX+\#\#\#+N+\#\#\#+k\#$$. 
+\indent Como os elementos virtuais podem possuir arestas com 180° entre si, podem existir malhas com a mesma quantidade de elementos, mas com diferentes quantidades de nós. Assim, adota-se o seguinte padrão de nomenclatura para as malhas utilizadas daqui em diante neste trabalho: $$XX\#\#\#N\#\#\#k\#$$. 
 
     \begin{itemize}
         \item X - Letras
@@ -106,6 +126,10 @@ e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas 
     
 \indent O primeiro conjunto de letras corresponde às iniciais do problema. O primeiro conjunto de números representa a quantidade de elementos na malha. N\#\#\# é a quantidade de nós. k\# é o grau polinomial que aqui varia de 1 a 2. Exemplo: PF32N74k1 $\rightarrow$ Placa com furo de 32 elementos, 74 nós e aproximação de primeira ordem. \\
 \indent Todos os problemas aqui tratados são de natureza vetorial, assim a quantidade de graus de liberdade por elemento equivale a duas vezes a quantidade de nós. Em aproximações de segunda ordem, haverá dois graus de liberdade internos adicionais aos dos nós relativos a vetorização dos momentos internos para $k=2$. 
+
+\section{Placa engastada}
+
+
 
 \section{Chapa com furo circular}
 

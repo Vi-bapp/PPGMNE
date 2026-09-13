@@ -37,8 +37,9 @@ program main_free_vibration
     integer :: N_total, N_i, N_b, eid, mode_idx, i, e, d, m_idx, idx, l
     integer :: k_order, n_gauss, n_monomials, n_monomials_eps, n_mon_int
     integer :: loc_ndof, n_bnd_nodes
+    integer :: beta(2)
     
-    real(dp) :: dx, dy, E_mod, nu_val, rho, tau_K, tau_M, omega, freq_hz
+    real(dp) :: dx, dy, E_mod, nu_val, rho, tau_K, tau_M, omega, freq_hz, t
     real(dp) :: t_start, t_end, t_montagem, t_solucao, alpha, lambda, mu_val
     real(dp) :: C_mat(3,3)
     real(dp), parameter :: pi = 3.14159265358979323846_dp
@@ -69,11 +70,12 @@ program main_free_vibration
     ! -------------------------------------------------------------------------
     ! CONFIGURAÇÕES INICIAIS E MATERIAL
     ! -------------------------------------------------------------------------
-    E_mod  = 2.1e6
-    nu_val = 0.3_dp
-    rho    = 0.00785_dp
-    call get_lame_parameters(E_mod, nu_val, lambda, mu_val)
-    
+    E_mod  = 1.0e4      ! Pa = N/m2
+    nu_val = 0.2_dp
+    rho    = 1.0_dp     ! kg/m3
+    t      = 1.0_dp        ! m
+
+    !Escolha do tipo de problema
     print *, "Estado plano de tensões digite [1], senão Estado plano de deformações [2]"
     read(*,*) l
     if (l == 1) then
@@ -82,8 +84,24 @@ program main_free_vibration
         call build_C_plane_strain(E_mod, nu_val, C_mat)
     end if
 
+    !Escolha do método de estabilização
+    print *, "Escolha o método de estabilização da matriz de rigidez"
+    print *, "Park et al. (diagonal) [1], Park et al. (escalar) [2], Antonietti et al. [3], Artioli et al. [4], D-recipe [5]"
+    read(*,*) beta(1)
+    print *, "Escolha o método de estabilização da matriz de massa"
+    print *, "Park et al. [1], senão Antonietti et al. [2]"
+    read(*,*) beta(2)
+    If (beta(1) == 1 .or. beta(1) == 2 .or. beta(1) == 4) then
+        write(*, '(a)', advance='no') 'Escreva o valor do parâmetro alpha: '
+        read(*,*) alpha
+    Else if (beta(1) == 3 .or. beta(2) == 2) then
+        call get_lame_parameters(E_mod, nu_val, lambda, mu_val)
+    end if
+
+    !Criação da pasta para os arquivos do gnuplot
     call create_output_dir('output_gnuplot')
 
+    !Leitura da malha
     do
         write(*, '(a)', advance='no') 'Enter the mesh filename (e.g., cantilever_mesh.dat): '
         read(*, '(a)', iostat=ios) filename
@@ -99,8 +117,9 @@ program main_free_vibration
     write(*, '(a, a)') 'Loading mesh file: ', filename
     call mesh%read_mesh(filename, n_dofs=2)
 
-    write(*, '(a)', advance='no') 'Escreva o valor do parâmetro alpha: '
-    read(*,*) alpha
+    !Inicialização das variação de mdeição dos tempos de montagem e solução do solver
+    t_montagem = 0.0_dp
+    t_solucao  = 0.0_dp
 
     ! -------------------------------------------------------------------------
     ! PRÉ-CÁLCULOS GLOBAIS E ALOCAÇÃO DE N_TOTAL
@@ -228,7 +247,12 @@ program main_free_vibration
             end if
 
             ! Aplica P0 em B_0
-            call apply_P0(B_0, k_order, size(el%vertices), n_monomials, loc_ndof, mesh%ndof, internal_dof_map, el%area)
+            if (k_order >= 2) then
+                call apply_P0(B_0, k_order, size(el%vertices), n_monomials, loc_ndof, mesh%ndof, &
+                              internal_dof_map, el%area)
+            else
+                call apply_P0(B_0, k_order, size(el%vertices), n_monomials, loc_ndof, mesh%ndof)
+            end if
 
             ! Chamada da subrotina compute_matrix_D otimizada
             call compute_matrix_D(D_mat= D_0, &
@@ -261,46 +285,49 @@ program main_free_vibration
             ! ---------------------------------------------------------
             M_C = rho * matmul(transpose(el%Pi_0), matmul(H0, el%Pi_0))
             call compute_vem_stiffness_consistency(el%Pi_eps, G_eps, C_mat, K_C)
+
+            call compute_vem_stiffness_consistency(el%Pi_eps, G_eps, C_mat, K_C)
             
             ! ---------------------------------------------------------
-            ! 2. PARÂMETROS DE ESTABILIZAÇÃO
+            ! 2. MATRIZES DE ESTABILIZAÇÃO
             ! ---------------------------------------------------------
-            !Estabilização de Kyoungsoo Park; Heng Chi; Glaucio H.Paulino
-            tau_K = max(matrix_trace(K_C)/real(loc_ndof), alpha * matrix_trace(C_mat)/3.0_dp)
-            tau_M = (rho * el%area)
-            !tau_M = max(matrix_trace(M_C)/real(loc_ndof), alpha * matrix_trace(C_mat)/3.0_dp)
-            !Estabilização de Antonietti, P.F; Manzini, G.; Mourad, H.M.; Verani, M.
-            !tau_K = max(2*mu_val,lambda)
-            !tau_M = (rho * el%diameter**2)
-                      
-            
-            ! ---------------------------------------------------------
-            ! 3. MATRIZES DE ESTABILIZAÇÃO
-            ! ---------------------------------------------------------
-            M_S = 0.0_dp
-            K_S = 0.0_dp
-            do i = 1, loc_ndof
-                M_S(i,i) = 1.0_dp
-                K_S(i,i) = 1.0_dp
-            end do
+            select case(beta(1))
+                case(1)
+                    ! Park diagonal:
+                    call stab_park_diagonal_K(K_C, D_0, el%Pi_0, C_mat, alpha, K_S)
+                case(2)
+                    ! Park escalar:
+                    call stab_park_scalar_K(K_C, D_0, el%Pi_0, C_mat, alpha, .true., K_S)
+                case(3)
+                    ! Antonietti:
+                    call stab_antonietti_K(D_0, el%Pi_nabla, mu_val, lambda, K_S)
+                case(4)
+                    ! Artioli (precisa da matriz D dos polinomios nos DOFs):
+                    call stab_artioli_K(K_C, D_0, alpha, K_S)
+                    !   (para k=1, D_0 do VEM ja serve como D_poly se as colunas
+                    !    forem a avaliacao dos monomios vetoriais nos DOFs)
+                case(5)
+                    ! D-recipe:
+                    call stab_d_recipe_K(K_C, D_0, el%Pi_0, K_S)
+                case default
+                    K_S = 0.0_dp
+            end select
+            select case(beta(2))
+                case(1)
+                    ! Massa Park:
+                    call stab_park_mass(D_0, el%Pi_0, rho, el%area, M_S)
+                case(2)
+                    ! Massa Antonietti:
+                    call stab_antonietti_mass(D_0, el%Pi_0, rho, el%diameter, M_S)
+                case default
+                M_S = 0.0_dp
+            end select
 
-            M_S = M_S - matmul(D_0, el%Pi_0)
-            K_S = K_S - matmul(D_0, el%Pi_nabla)
-
-            M_S = tau_M * matmul(transpose(M_S), M_S)
-            K_S = tau_K * matmul(transpose(K_S), K_S)
-            !Variação com 'D-recipe'
-            !K_S = matmul(max(eye(size(K_c,1))*K_c, alpha*eye(size(K_c,1))*E_mod) ,matmul(transpose(K_S), K_S))
-            !M_S = tau_M * matmul(max(eye(size(M_c,1))*M_c, alpha*eye(size(M_c,1))*E_mod) ,matmul(transpose(M_S), M_S))
-            !variação de K_S artioli et al.
-            !K_S = alpha * matrix_trace(K_C) * (eye(size(D_0,1)) - matmul(D_0,matmul(&
-            !inverse_matrix(matmul(transpose(D_0),D_0)),transpose(D_0))))
-
             ! ---------------------------------------------------------
-            ! 4. MATRIZES ELEMENTARES FINAIS
+            ! 3. MATRIZES ELEMENTARES FINAIS
             ! ---------------------------------------------------------
-            M_C = M_C + M_S
-            K_C = K_C + K_S
+            M_C = t * (M_C + M_S)
+            K_C = t * (K_C + K_S)
 
             ! Montagem genérica
             call assemble_matrix(K, K_C, elem_dofs(:))
@@ -353,14 +380,14 @@ program main_free_vibration
         call partition_matrix(K, internal_dofs, boundary_dofs, K_ii, K_ib, K_bi, K_bb) 
         call partition_matrix(M, internal_dofs, boundary_dofs, M_ii, M_ib, M_bi, M_bb) 
         call conditioning(K_ii, N_i)
-        
+
         t_start = get_wall_time()
         call solve_generalized_eigenvalue(K_ii, M_ii, N_i, eigenvalues, eigenvectors)
         t_end = get_wall_time()
         t_solucao = t_end - t_start
 
         write(*,'(a)') 'MODO | autovalor (w^2) | f (Hz) | w (rad/s)'
-        do mode_idx = 1, min(10, N_i)
+        do mode_idx = 1, min(12, N_i)
             omega   = sqrt(max(0.0_dp, eigenvalues(mode_idx))) 
             freq_hz = omega / (2.0_dp * pi) 
             write(*,'(i4,2x,es14.6,2x,f15.3,2x,f15.3)') mode_idx, eigenvalues(mode_idx), freq_hz, omega 
@@ -536,6 +563,12 @@ program main_free_vibration
 
         call generate_animation_gif(n_steps, 'animacao_vem.gif', x_min, x_max, y_min, y_max)
 
+        if (.not. allocated(phi_full)) allocate(phi_full(N_total))
+        phi_full = 0.0_dp
+        do i = 1, N_i
+            phi_full(internal_dofs(i)) = eigenvectors(i, 1)
+        end do
+
         deallocate(K_ii, M_ii, eigenvalues, eigenvectors) 
     else
         write(*,'(a)') 'Aviso: Nao ha graus de liberdade livres para solucao.'
@@ -551,49 +584,27 @@ program main_free_vibration
     !===========================================================================
     !------------------------ PÓS-PROCESSAMENTO --------------------------------
     !===========================================================================
+    if (allocated(phi_full)) then
+        ! Tensões / deformações no centróide via Pi_eps (rotina realoca elem_*)
+        call compute_element_strains_and_stresses(mesh, C_mat, phi_full, &
+                                                  elem_eps, elem_sigma, elem_vM)
 
-    ! 1. Alocação das matrizes e vetores de pós-processamento
-    allocate(elem_eps(mesh%nelem, 3 * n_monomials_eps))
-    allocate(elem_sigma(mesh%nelem, 3 * n_monomials_eps))
-    allocate(elem_vM(mesh%nelem))
-    allocate(node_sigma(mesh%nnodes, 3))
-    allocate(node_vM(mesh%nnodes))
+        call smooth_element_to_nodes(mesh, elem_sigma, elem_vM, node_sigma, node_vM)
 
-    ! 2. Cálculo das deformações do elemento via projetor Pi_eps
-    do eid = 1, mesh%nelem
-        associate (el => mesh%elem(eid))
-            elem_eps(eid, :) = matmul(el%Pi_eps, phi_full([ &
-                ! Graus de liberdade de contorno
-                (((el%nodes(i) - 1) * mesh%ndof + d, d = 1, mesh%ndof), i = 1, size(el%nodes)), &
-                ! Graus de liberdade virtuais internos
-                (((mesh%nnodes + (eid - 1) * n_mon_int + i - 1) * mesh%ndof + d, d = 1, mesh%ndof), i = 1, n_mon_int) &
-            ]))
-        end associate
-    end do
+        call export_element_scalar_field(mesh, elem_vM, &
+            "von_mises_map", "Tensao Equivalente de Von Mises (Pa)")
+        call export_element_scalar_field(mesh, elem_sigma(:,1), &
+            "sigma_xx_map", "Tensao Normal XX (Pa)")
+        call export_element_scalar_field(mesh, elem_sigma(:,2), &
+            "sigma_yy_map", "Tensao Normal YY (Pa)")
+        call export_element_scalar_field(mesh, elem_sigma(:,3), &
+            "tau_xy_map", "Tensao de Cisalhamento XY (Pa)")
 
-    ! Calcula as tensões elementares para o deslocamento desejado (ex: phi_full)
-    call compute_element_strains_and_stresses(mesh, C_mat, phi_full, &
-                                                 elem_eps, elem_sigma, elem_vM)
-    
-    ! Suavização Nodal (Média ponderada nos nós para visualização contínua)
-    call smooth_element_to_nodes(mesh, elem_sigma, elem_vM, node_sigma, node_vM)
-
-    ! Exporta Mapa de Calor de Von Mises no Gnuplot
-    call export_element_scalar_field(mesh, elem_vM, &
-                                "von_mises_map", &
-                                "Tensão Equivalente de Von Mises (Pa)")
-
-    ! Exporta as três componentes individuais de tensão
-    call export_element_scalar_field(mesh, elem_sigma(:,1), &
-                                            "sigma_xx_map", &
-                                            "Tensão Normal XX (Pa)")
-    call export_element_scalar_field(mesh, elem_sigma(:,2), &
-                                            "sigma_yy_map", &
-                                            "Tensão Normal YY (Pa)")
-    call export_element_scalar_field(mesh, elem_sigma(:,3), &
-                                            "tau_xy_map", &
-                                            "Tensão de Cisalhamento XY (Pa)")
-
-    deallocate(phi_full)
+        deallocate(phi_full)
+        if (allocated(elem_eps))   deallocate(elem_eps, elem_sigma, elem_vM)
+        if (allocated(node_sigma)) deallocate(node_sigma, node_vM)
+    else
+        write(*,'(a)') 'Aviso: phi_full indisponivel; pos-processamento ignorado.'
+    end if
 
 end program main_free_vibration

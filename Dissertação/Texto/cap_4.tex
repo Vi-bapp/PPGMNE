@@ -631,17 +631,17 @@
     \end{minipage} }
     \vspace{5mm}
 
-    \indent A relação entre os graus de liberdade $d_i$ e os coeficientes $a_\alpha$ é expressa por: 
+    \indent A relação entre os graus de liberdade $\vartheta_i$ e os coeficientes $a_\alpha$ é expressa por: 
     
     \begin{equation}
-        d_i = \chi_i(p) = \chi_i \left( \sum_{\alpha=1}^{2n_k} p_\alpha (x) a_\alpha \right).
+        \vartheta_i = \chi_i(p) = \chi_i \left( \sum_{\alpha=1}^{2n_k} p_\alpha (x) a_\alpha \right).
         \label{eq:4.35}
     \end{equation}
 
     \indent Através das propriedades de linearidade do funcional $\chi_i$:
     
     \begin{equation}
-        d_i = \chi_i(p) = \sum_{\alpha=1}^{2n_k} a_\alpha \chi_i \left( p_\alpha (x) \right) \Leftrightarrow d_i = \sum_{\alpha=1}^{2n_k} a_\alpha \mathcal{D}_{i\alpha}.
+        \vartheta_i = \chi_i(p) = \sum_{\alpha=1}^{2n_k} a_\alpha \chi_i \left( p_\alpha (x) \right) \Leftrightarrow \vartheta_i = \sum_{\alpha=1}^{2n_k} a_\alpha \mathcal{D}_{i\alpha}.
         \label{eq:4.36}
     \end{equation}
 
@@ -762,11 +762,11 @@
     \indent Em uma abordagem similar ao que foi feito para o projetor gradiente, a parcela do contorno é obtida da quadratura de Gauss-Lobatto\footnote{A tabela com os pontos e pesos se encontra no anexo A}. A matrix $\mathcal{B}^{(\epsilon)}$ é calculada como:
 
     \begin{equation}
-        \mathcal{B}^{(\epsilon)}_{\alpha i} = \sum_{e=1}^{n_e}\frac{l_e}{2}\sum_{q=1}^{k+1}w_q \bigl[H_k^P(\xi_q,\eta_q)\bigr]_{\alpha}\,N^{(e)}\, \delta_{\ell_e(i),\,q}\;-\; |\Omega_v|\sum_{\beta=1}^{n_{k-2}}d_{\alpha\beta}\, \delta_{m(i),\,\beta}.
+        \mathcal{B}^{(\epsilon)}_{\alpha i} = \sum_{e=1}^{n_e}\frac{l_e}{2}\sum_{q=1}^{k+1}w_q \bigl[H_k^P(\xi_q,\eta_q)\bigr]_{\alpha}\,N^{(e)}\, \delta_{\ell_e(i),\,q}\;-\; |\Omega_v|\sum_{\beta=1}^{n_{k-2}} \psi_{\alpha\beta}\, \delta_{m(i),\,\beta}.
         \label{eq:4.49}
     \end{equation}
 
-    \noindent onde $$\bigl[\nabla\cdot H_k^P\bigr] = \sum_{\beta=1}^{n_k-2} d_{\alpha\beta}  \int_{\Omega_v} p_\beta \varphi_i d\Omega,$$ igual ao que foi feito na Equação~\ref{eq:4.26} mas $d_{\alpha\beta}$ contém os coeficientes do divergente ao invés do laplaciano.\\
+    \noindent onde $$\bigl[\nabla\cdot H_k^P\bigr] = \sum_{\beta=1}^{n_k-2} d_{\alpha\beta}  \int_{\Omega_v} p_\beta \varphi_i d\Omega,$$ igual ao que foi feito na Equação~\ref{eq:4.26}, mas $\psi_{\alpha\beta}$ contém os coeficientes do divergente ao invés do laplaciano.\\
     \indent Considerando que $H_{k-1}^P \in \left[\mathbb{P}_{k-1}(\Omega) \right]^3$, a componente normal $N^{(e)}$ é modificada para:
 
     \begin{equation}
@@ -835,6 +835,8 @@
         \label{eq:4.58}
     \end{equation}
 
+    $$\mathrm{t} \quad \mathcal{t} \quad \mathbb{t} \quad \mathit{t} \quad \mathfrak{t} \quad t$$
+
     \indent Nota-se que não foi necessário um procedimento de integração para a solução da matriz de massa. \citet{hitchhikersguidevirtualelementmethod2014a} afirma que o termo de consistência deve ser computado de maneira exata enquanto o termo de estabilidade pode ser aproximado. \\
     \indent O resíduo $(I - \Pi_k^0)q$ atua como um filtro para funções polinomiais: sempre que $q\in\mathbb{P}_k(\Omega_v)$, tem-se $(I - \Pi_k^0)q = 0$. Uma consequência imediata é que o resíduo também se anula no contorno do elemento quando a função é polinomial, garantindo que a estabilização não interfira no teste de consistência (patch test) do elemento.\\
     \indent O termo de estabilidade da matriz de massa é, em princípio, dado pelo produto interno $L^2$ das componentes residuais:
@@ -842,36 +844,31 @@
         [M]^{\rm stab}_{ij} =\rho\int_{\Omega_v}(I - \Pi_k^0)\varphi_i\,(I - \Pi_k^0)\varphi_j\,d\Omega_v=\rho\bigl((I - \Pi_k^0)\varphi_i\,,(I - \Pi_k^0)\varphi_j\bigr)_{\Omega_v}.
         \label{eq:4.59}
     \end{equation}
-    \indent Como as funções virtuais não são conhecidas explicitamente no interior do elemento, esse produto interno não pode ser avaliado de forma exata. Substitui-se, então, a norma $L^2$ residual pela norma euclidiana dos graus de liberdade residuais. Essa substituição é justificada pela \emph{equivalência de normas} em espaços de dimensão finita: no núcleo do projetor $\ker(\Pi_k^0)$ existe uma constante $C$ independente do tamanho do elemento tal que
+    \indent Como as funções virtuais não são conhecidas explicitamente no interior do elemento, esse produto interno não pode ser avaliado de forma exata. Substitui-se, então, a norma $L^2$ residual pela norma euclidiana dos graus de liberdade residuais. Essa substituição é justificada pela \emph{equivalência de normas} em espaços de dimensão finita: no núcleo do projetor $\ker(\Pi_k^0)$ existe uma constante $\alpha$ independente do tamanho do elemento tal que
     \begin{equation}
         \alpha_*\,\|v\|_{L^2(\Omega_v)}^2 \;\le\; \sum_{r=1}^{n_{\mathrm{dof}}}\bigl(\chi_r(v)\bigr)^2 \;\le\; \alpha^*\,\|v\|_{L^2(\Omega_v)}^2 \qquad \forall v\in\ker(\Pi_k^0).
         \label{eq:4.60}
     \end{equation}
-    \indent A desigualdade~\eqref{eq:4.53} (propriedade de estabilização) garante que a forma bilineares $$S(v,w)=\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r(v)\,\chi_r(w)$$ é equivalente ao produto interno $L^2$ no espaço residual. Consequentemente, pode-se escrever
+    \indent A desigualdade~\eqref{eq:4.53} (propriedade de estabilização) garante que a forma bilinear 
+    \begin{equation*}
+        S(v,w)=\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r(v)\,\chi_r(w)
+    \end{equation*} 
+    é equivalente ao produto interno $L^2$ no espaço residual. Além disso, as constantes de equivalência na desigualdade~\eqref{eq:4.60} dependem da medida do elemento (espaço de dimensão finita). Agrupando a densidade $\rho$, as constantes de escala do espaço e a medida do elemento (como a área $|\Omega_v|$ ou $h_e^2$) no coeficiente de escalonamento $\tau_m$ da formulação, o produto interno residual é aproximado por:
     \begin{align*}
-        [M]^{\rm stab}_{ij}=\rho\bigl((I - \Pi_k^0)\varphi_i\,,(I - \Pi_k^0)\varphi_j\bigr)_{\Omega_v}\\\approx\rho\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r\bigl((I - \Pi_k^0)\varphi_i\bigr)\,\chi_r\bigl((I - \Pi_k^0)\varphi_j\bigr).
+        [M]^{\rm stab}_{ij}&=\rho\bigl((I - \Pi_k^0)\varphi_i\,,(I - \Pi_k^0)\varphi_j\bigr)_{\Omega_v}\\ \approx\tau_m\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r\bigl((I - \Pi_k^0)\varphi_i\bigr)\,\chi_r\bigl((I - \Pi_k^0)\varphi_j\bigr).
     \end{align*}
     \indent Em forma matricial, essa expressão torna-se
     \begin{equation}
-        [M]^{\rm stab}=\rho\bigl[(I - \mathcal{D}\Pi^0)^T(I - \mathcal{D}\Pi^0)\bigr].
+        [M]^{\rm stab}=\tau_m\bigl[(I - \mathcal{D}\Pi^0)^T(I - \mathcal{D}\Pi^0)\bigr].
         \label{eq:4.61}
     \end{equation}
 
     \indent Reunindo as parcelas, a matriz de massa elementar toma a forma:
 
     \begin{equation}
-        [M] = \rho \left( \left(\Pi^0{k,*}\right)^T\mathcal{H}^0\Pi^0{k,*} + S_M \right),
+        [M] = d \left( \left(\Pi^0{k,*}\right)^T\mathcal{H}^0\Pi^0{k,*} + \tau_m\bigl[(I - \mathcal{D}\Pi^0)^T(I - \mathcal{D}\Pi^0)\bigr] \right),
         \label{eq:4.62}
-    \end{equation}
-
-    \noindent onde $S_M$ é um operador de estabilização. \citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020} sugere a seguinte escolha para a matriz de estabilização da massa:
-    
-    \begin{equation}
-        [M]^{\text{stab}} = \tau_m (I - \mathcal{D}\Pi^0)^T (I - \mathcal{D}\Pi^0),
-        \label{eq:4.63}
-    \end{equation}
-
-    \noindent com $\tau_m$ equivalente à $\rho |\Omega_v|$.    
+    \end{equation}  
 
 \subsection{Matriz de rigidez}	
 
@@ -898,15 +895,14 @@
         \label{eq:4.66}
     \end{equation}
 
-    \noindent onde $\tau_k$ é um parâmetro escalar de estabilização relacionado à parcela de consistência e limitado inferiormente propriedades constitutivas do material. \citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020} sugere: 
-    
+    \noindent onde $\tau_k$ é coeficiente de escalonamento da parcela elástica da equação diferencial.\\ 
+    \indent Uma forma alternativa para o termo de estabilização é sugerida por \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a}. Essa estabilização se baseia em um projetor complementar construído unicamente com a matriz $D$:
+
     \begin{equation}
-        \tau_k = \max \left(\frac{\text{tr}([K]^{\text{cons}})}{n_{dof}} , \, \alpha_0 \frac{\text{tr}(\mathbb{C})}{n_c} \right), \quad \text{com} \quad n_c = 3
+        [K]^{\text{Stab}} = \tau_k \left[ I - D (D^T D)^{-1} D^T \right].
         \label{eq:4.67}
     \end{equation}
 
-        
-    \indent Essa propriedade garante que a estabilização seja escalonada de maneira similar a matriz constitutiva ao mesmo tempo que é limitada inferiormente pelo traço da matriz constitutiva e um parâmetro $\alpha_0$ definido pelo usuário\footnote{Recomenda-se a utilização de $\alpha_0 = \frac{1}{3}$ em problemas de elasticidade}. Essa estabilização será utilizada na maior parte deste trabalho.\\
     \indent A matriz de rigidez elementar completa é expressa por: 
     
     \begin{equation}
@@ -927,56 +923,68 @@
     \end{minipage} }
     \vspace{5mm}
 
-\section{Implementação}
+    \subsection{Os parâmetros de estabilização}
 
-    \indent Abaixo apresenta-se a estrutura algorítmica para a montagem das matrizes de rigidez e massa em uma formulação MEV: 
+    \indent Os coeficientes de escalonamento são amplamente debatidos na literatura porque são altamente dependentes do problema, o que motivou o desenvolvimento de formulações de elementos virtuais livres de estabilização. Para problemas de elasticidade, algumas formas encontradas na literatura de se obter o coeficiente $\tau_k$ são apresentadas a seguir.
 
-        \begin{algorithm}
+    \paragraph{Fator de escala original ou uniforme ($\max_i (K_{C_{i,i}})$)} Criado por \citet{basicprinciplesvirtualelementmethods2013a}, busca impedir que o elemento se deforme livremente sem gerar esforço interno (modos de energia nula). Para isso, penaliza essas deformações irreais aplicando um mesmo coeficiente a todos os graus de liberdade. Este método não está atrelado a um problema específico e garante que a matriz de estabilização possua as mesmas proporções da matriz de consistência. No entanto, em polígonos irregulares, aplicar o maior escalar penaliza uniformemente todas as direções de forma severa.
+
+    \paragraph{Fator de escala físico ($\max(2\mu, \lambda)$)} Foi desenvolvido por \citet{virtualelementslinearelasticityproblems2013} para evitar o problema de travamento volumétrico numérico em materiais quase incompressíveis, frequentemente causado pelo escalonamento uniforme. Sua formulação depende unicamente das características elásticas do material (com $\mu$ e $\lambda$ sendo os parâmetros de Lamé), o que mantém as unidades físicas consistentes e possui interpretação direta. É comumente utilizado na solução de problemas elastodinâmicos, como visto em \citet{antonietti2020virtual}.
+
+    \paragraph{Fator de escala pelo traço ($\alpha_0 \text{tr}(K_C)$)} Usa o traço da parcela consistente da matriz de rigidez calibrado por um coeficiente $\alpha_0$ definido pelo usuário. \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} recomendam a utilização de $\alpha_0 = 0,5$ em problemas de elasticidade linear bidimensionais. Embora apresente os mesmos problemas de travamento numérico que o escalonamento uniforme, é frequentemente utilizado junto à estabilização de energia (Eq.~\ref{eq:4.67}).
+
+    \paragraph{Fator de escala D-Recipe ($\text{diag}(\vert{}K_{C_{i,i}}\vert{})$)} Proposta por \citet{beiraodaveiga2017high} (referida como ``diagonal recipe''), esta abordagem substitui o uso de um parâmetro escalar uniforme que pode ser inadequado para aproximações de grau elevado (alto $k$), especialmente em três dimensões, onde diferentes funções de base podem carregar níveis de energia muito distintos. A D-Recipe utiliza uma matriz diagonal cujos termos são calculados com base nos valores da diagonal da matriz de consistência. Dessa forma, em vez de penalizar o elemento com um escalar uniforme que pode gerar super-rigidez, a formulação cria uma estabilização que acompanha a rigidez e a energia de cada função de base direcionalmente.
+
+    \paragraph{Fator de escala D-Recipe híbrido ($\max\left([K_{E,c}]_{ii}, \alpha_0 \frac{\text{tr}(\mathbb{C})}{n_C}\right)$)} Esta formulação aplica prioritariamente o valor da diagonal da matriz de consistência, mas impõe um limite inferior para esses termos baseado no traço da matriz de elasticidade (ou matriz constitutiva) $\mathbb{C}$. Esse limite inferior é adotado porque a rigidez obtida apenas pelo termo de consistência ($[K_{E,c}]_{ii}$) pode se tornar excessivamente pequena em elementos altamente não convexos que possuem muitos nós. Na equação, o termo é calibrado por um parâmetro adimensional $\alpha_0$ definido pelo usuário, e $n_C$ representa a dimensão (tamanho) da matriz de elasticidade $\mathbb{C}$ (\citet{nonconvexmesheselastodynamicsusingvirtualelementmethodsexplicittimeintegration2019a}). Para problemas de elastodinâmica com integração temporal explícita, os valores recomendados para o parâmetro $\alpha_0$ são $1/3$ em problemas bidimensionais e $1/9$ em problemas tridimensionais(\citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020}).
+
+    \vspace{1em}
+    \indent Para o coeficiente $\tau_m$ utilizado na estabilização da matriz de massa, existe pouca documentação sobre diferentes maneiras de se calcular o parâmetro. Na literatura, o termo corresponde à massa do elemento, sendo frequentemente calculado como o produto da massa específica $\rho$ pela área do elemento (\citet{numericalrecipeselastodynamicvirtualelementmethodsexplicittimeintegration2020}) ou pelo quadrado do diâmetro do elemento (\citet{antonietti2020virtual}).  
+
+\section{Considerações finais}
+
+    \indent O algoritmo~\ref{alg:typical_vem} apresenta-se a estrutura para o cálculo dos projetores e montagem das matrizes de rigidez e massa em uma formulação do MEV: 
+
+        \begin{algorithm}[htpb!]
         \caption{Implementação do método dos elementos virtuais}
         \label{alg:typical_vem}
         \begin{algorithmic}[1]
     
-        \Require malha, condições de contorno, $[\mathbb{C}]$, $\rho$, $k$
+        \Require malha, condições de contorno, $[\mathbb{C}]$, $\rho$, $k$, $d$, $\tau_k$ e $\tau_m$
         \State inicializar a matriz de rigidez e matriz de massa global.
         \While{cada elemento $\Omega_v$ na malha}
-            \State Determine $|\Omega_v|$, $n_v$, $h$, $(\bar{x},\bar{y})$, $le_j$, $\{\mathbf{n}_{e_j}\}$
+            \State Determine $|\Omega_v|$, $n_v$, $h$, $(\bar{x},\bar{y})$, $le$, $\{\mathbf{n}_{e}\}$
             \State $(\xi, \eta) \leftarrow \left(\frac{x-\bar{x}}{h}, \frac{y-\bar{y}}{h}\right)$
     
             \Comment{Operadores do projetor $\nabla$ e $\epsilon$}
 
-            \State $[\mathbf{B}_{\beta,i}^{\nabla}] \leftarrow a_{\Omega_v}^{\nabla}(\{\varphi_i\}, \{p_\beta\})$ \hfill Eq.~\ref{eq:4.32}
-            \State $[\mathbf{B}_{\beta,i}^{\epsilon}] \leftarrow a_{\Omega_v}^{\epsilon}(\{\varphi_i\}, \{p_\beta\})$ \hfill Eq.~\ref{eq:4.48}
-            \State $[\mathbf{D}_{i,\alpha}^{\nabla}] \leftarrow \chi_i(\{p_\alpha\})$ \hfill Eq.~\ref{eq:4.34}
-            \State $[\mathbf{D}_{i,\alpha}^{\epsilon}] \leftarrow \chi_i(\{p_\alpha\})$ \hfill Eq.~\ref{eq:4.34}
-            \State $[\mathbf{G}^{\nabla}] \leftarrow [\mathbf{B}^{\nabla}][\mathbf{D}^{\nabla}]$ \hfill Eq.~\ref{eq:4.38}
-            \State $[\mathbf{G}^{\epsilon}]  \leftarrow \mathbf{\int_{\Omega_v} \,p_\alpha \, p_\beta \, d{\Omega_v}}$ \hfill Eq.~\ref{eq:4.48}
-            \State $[\mathbf{\Pi}^{\nabla}] \leftarrow [\mathbf{G}^{\nabla}]^{-1}[\mathbf{B}^{\nabla}]$ \hfill Eq.~\ref{eq:4.24}
-            \State $[\mathbf{\Pi}^{\epsilon}] \leftarrow [\mathbf{G}^{\epsilon}]^{-1}[\mathbf{B}^{\epsilon}]$ \hfill Eq.~\ref{eq:4.49}
+            \State $[\mathcal{B}^{\nabla}] \leftarrow a_{\Omega_v}^{\nabla}(\varphi, H_k^P)$ \hfill Eq.~\ref{eq:4.32}
+            \State $[\mathcal{B}^{\epsilon}] \leftarrow a_{\Omega_v}^{\epsilon}(\varphi, H_{k-1}^P)$ \hfill Eq.~\ref{eq:4.48}
+            \State $[\mathcal{D}^{\nabla}] \leftarrow \chi(H_k^P)$ \hfill Eq.~\ref{eq:4.34}
+            \State $[\mathcal{G}^{\nabla}] \leftarrow [\mathcal{B}^{\nabla}][\mathcal{D}^{\nabla}]$ \hfill Eq.~\ref{eq:4.38}
+            \State $[\mathcal{G}^{\epsilon}]  \leftarrow \mathbf{\int_{\Omega_v} \,H_{k-1}^P \, H_{k-1}^P \, d{\Omega_v}}$ \hfill Eq.~\ref{eq:4.48}
+            \State $[\mathbf{\Pi}^{\nabla}] \leftarrow [\mathcal{G}^{\nabla}]^{-1}[\mathcal{B}^{\nabla}]$ \hfill Eq.~\ref{eq:4.24}
+            \State $[\mathbf{\Pi}^{\epsilon}] \leftarrow [\mathcal{G}^{\epsilon}]^{-1}[\mathcal{B}^{\epsilon}]$ \hfill Eq.~\ref{eq:4.49}
 
             \Comment{Cálculo da Matriz de Rigidez}
 
-            \State $[\mathbf{k}_{\Omega_v}^C] \leftarrow [\mathbf{\Pi}^{\epsilon}]^T [\mathbf{G}^{\epsilon}] [\mathbf{\mathbb{C}}] [\mathbf{\Pi}^{\epsilon}]$ \hfill Eq.~\ref{eq:4.65}
-            \State $\tau_k \leftarrow \max \left( \text{diag}([\mathbf{k}_{\Omega_v}^C]), \, \frac{1}{3} \frac{\text{tr}(\mathbb{C})}{n_c} \right)$ \hfill Eq.~\ref{eq:4.67}
-            \State $[\mathbf{k}_{\Omega_v}^S] \leftarrow \tau_k ([\mathbf{I}] - [\mathbf{D}^{\nabla}][\mathbf{\Pi}^{\nabla}])^T ([\mathbf{I}] - [\mathbf{D}^{\nabla}][\mathbf{\Pi}^{\nabla}])$ \hfill Eq.~\ref{eq:4.66}
-            \State $[\mathbf{k}_{\Omega_v}] \leftarrow [\mathbf{k}_{\Omega_v}^C] + [\mathbf{k}_{\Omega_v}^S]$ \hfill Eq.~\ref{eq:4.68}
+            \State $[\mathbf{k}_{\Omega_v}^C] \leftarrow [\mathbf{\Pi}^{\epsilon}]^T [\mathcal{G}^{\epsilon}] [\mathbf{\mathbb{C}}] [\mathbf{\Pi}^{\epsilon}]$ \hfill Eq.~\ref{eq:4.65}
+            \State $[\mathbf{k}_{\Omega_v}^S] \leftarrow \tau_k ([\mathbf{I}] - [\mathcal{D}^{\nabla}][\mathbf{\Pi}^{\nabla}])^T ([\mathbf{I}] - [\mathcal{D}^{\nabla}][\mathbf{\Pi}^{\nabla}])$ \hfill Eq.~\ref{eq:4.66}
+            \State $[\mathbf{k}_{\Omega_v}] \leftarrow d \left( [\mathbf{k}_{\Omega_v}^C] + [\mathbf{k}_{\Omega_v}^S] \right)$ \hfill Eq.~\ref{eq:4.68}
     
             \Comment{Operadores do projetor $L^2$ e Cálculo da Matriz de Massa}
 
-            \State $[\mathbf{H}_{\alpha\beta}^0] \leftarrow \mathbf{\int_{\Omega_v} \,p_\alpha \, p_\beta \, d{\Omega_v}}$ 
+            \State $[\mathcal{H}^0] \leftarrow \mathbf{\int_{\Omega_v} H_k^P \, H_k^P \, d{\Omega_v}}$ 
             \State Montar blocos de $[\mathbf{Q}]$ \hfill Eq.~\ref{eq:4.43}
-            \State $[\mathbf{\Pi}^0] \leftarrow [\mathbf{H}^0]^{-1}[\mathbf{Q}]$ \hfill Eq.~\ref{eq:4.44}
+            \State $[\mathbf{\Pi}^0] \leftarrow [\mathbf{H}^0]^{-1}[\mathcal{Q}]$ \hfill Eq.~\ref{eq:4.44}
     
             \State $[\mathbf{M}_{\Omega_v}^C] \leftarrow \rho [\mathbf{\Pi}^{0}]^T [\mathbf{H}^{0}] [\mathbf{\Pi}^{0}]$ \hfill Eq.~\ref{eq:4.61}
-            \State $[\mathbf{M}_{\Omega_v}^S] \leftarrow \rho |\Omega_v| ([\mathbf{I}] - [\mathbf{D}^{\nabla}][\mathbf{\Pi}^{0}])^T ([\mathbf{I}] - [\mathbf{D}^{\nabla}][\mathbf{\Pi}^{0}])$ \hfill Eq.~\ref{eq:4.63}
-            \State $[\mathbf{M}_E] \leftarrow [\mathbf{M}_{\Omega_v}^C] + [\mathbf{M}_{\Omega_v}^S]$ \hfill Eq.~\ref{eq:4.61}
+            \State $[\mathbf{M}_{\Omega_v}^S] \leftarrow \tau_m ([\mathbf{I}] - [\mathcal{D}^{\nabla}][\mathbf{\Pi}^{0}])^T ([\mathbf{I}] - [\mathcal{D}^{\nabla}][\mathbf{\Pi}^{0}])$ \hfill Eq.~\ref{eq:4.61}
+            \State $[\mathbf{M}_E] \leftarrow d \left( [\mathbf{M}_{\Omega_v}^C] + [\mathbf{M}_{\Omega_v}^S] \right)$ \hfill Eq.~\ref{eq:4.62}
     
             \State Juntar $[\mathbf{k}_{\Omega_v}]$ e $[\mathbf{M}_{\Omega_v}]$ em suas corretas posições nas matrizes globais 
         \EndWhile
         \end{algorithmic}
     \end{algorithm}
-
-
-    \indent Considerações finais:
 
     \indent O valor de $u_h$ não é plenamente obtido ao final do processo por conter uma parcela virtual, contudo ele pode ser aproximado de modo aceitável apenas pela parcela polinomial: 
 

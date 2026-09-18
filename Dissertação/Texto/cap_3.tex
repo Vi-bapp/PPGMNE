@@ -266,25 +266,47 @@ $$\frac{1}{1+x} = 1 - x + \mathcal{O}(x^2), \qquad |x|\ll 1,$$ e desprezando os 
     \mathbb{C}_{ijkl} = \lambda\,\delta_{ij}\delta_{kl} + \mu\bigl(\delta_{ik}\delta_{jl} + \delta_{il}\delta_{jk}\bigr),
     \label{eq:3.25}
 \end{equation}
-em que \(\lambda\) e \(\mu\) são os parâmetros de Lamé, relacionados ao módulo de Young \(E\) e ao coeficiente de Poisson \(\nu\) por
+\noindent em que \(\lambda\) e \(\mu\) são os parâmetros de Lamé, relacionados ao módulo de Young \(E\) e ao coeficiente de Poisson \(\nu\) por
 \begin{equation}
     \lambda = \frac{E\nu}{(1+\nu)(1-2\nu)}, \qquad
     \mu = \frac{E}{2(1+\nu)}.
     \label{eq:3.26}
 \end{equation}
-Equivalentemente, a relação constitutiva pode ser escrita de forma compacta como
+\noindent Equivalentemente, a relação constitutiva pode ser escrita de forma compacta como
 \begin{equation}
     \boldsymbol{\sigma} = \lambda\,(\operatorname{tr}\boldsymbol{\varepsilon})\,\mathbf{I} + 2\mu\,\boldsymbol{\varepsilon}.
     \label{eq:3.27}
 \end{equation}
 
-\indent Os problemas de estado plano são obtidos como reduções desse mesmo tensor. No estado plano de deformações (\(\varepsilon_{33}=\varepsilon_{13}=\varepsilon_{23}=0\)) e no estado plano de tensões (\(\sigma_{33}=\sigma_{13}=\sigma_{23}=0\)), a relação constitutiva se reduz a duas dimensões, e as equações de equilíbrio e compatibilidade são ajustadas consoante as condições impostas.
+\indent O tensor constitutivo de uma material isotrópico linear pode ser separado em duas parcelas, uma referente às componentes normais e outra as componentes tangenciais do tensor de deformações,
+\begin{equation} 
+    \mathbb{C} = \mathbb{C}_N + \mathbb{C}_S,
+    \label{eq:3.a1}
+\end{equation} 
+
+\noindent tal que:
+
+\begin{equation*}
+    \begin{aligned}
+        (\mathbb{C}_N)_{ijkl} = \lambda \delta_{ij} \delta_{kl} + \mu \delta_{ik} \delta_{jl} \\
+        (\mathbb{C}_N)_{ijkl} = \mu \delta_{il} \delta_{jk}
+    \end{aligned}
+\end{equation*}
+
+\indent Os problemas de estado plano são obtidos como reduções desse mesmo tensor. No estado plano de deformações (\(\varepsilon_{33}=\varepsilon_{13}=\varepsilon_{23}=0\)) e no estado plano de tensões (\(\sigma_{33}=\sigma_{13}=\sigma_{23}=0\)), a relação constitutiva se reduz a duas dimensões, e as equações de equilíbrio e compatibilidade são ajustadas consoante as condições impostas.\\
+\indent A tensão de von Mises, ou tensão efetiva, trata-se de um escalar que relaciona as componentes do tensor de tensões. Segundo \citet{elasticitytheoryapplicationsnumerics2021}, se em algum ponto a tensão de von Mises for igual à tensão de escoamento, então o material é considerado estar sob condição de falha. A tensão de von Mises, para o estado plano de tensões, é calculada por: 
+
+\begin{equation}
+    \sigma_{vM} = \sqrt{\frac{3}{2} \sigma_{ij}\sigma_{ij} - \frac{1}{2}(\sigma_{kk})^2}
+    \label{eq:3.vm}
+\end{equation}
+
 
 \subsubsection{Notação de Voigt}
 
 \indent Embora a notação tensorial seja a forma natural e mais compacta de descrever a mecânica do contínuo, em métodos numéricos (especialmente no Método dos Elementos Finitos e no Método dos Elementos Virtuais) é comum adotar a \emph{notação de Voigt}. Nessa representação, os tensores simétricos de segunda ordem (tensão e deformação) são reorganizados como vetores coluna de seis componentes (em 3D) ou três componentes (em 2D), e o tensor elástico de quarta ordem passa a ser representado por uma matriz simétrica.
 
-Em três dimensões, a correspondência é
+\noindent Em três dimensões, a correspondência é
 \begin{equation}
     \boldsymbol{\sigma}^{\text{V}} =
     \begin{Bmatrix}
@@ -308,7 +330,7 @@ A relação constitutiva \(\boldsymbol{\sigma} = \mathbb{C}:\boldsymbol{\varepsi
 \end{equation}
 onde \(\mathbf{C}\) é a matriz elástica \(6\times 6\) (em 3D) ou \(3\times 3\) (em 2D).
 
-Para o material isotrópico linear, a matriz de Voigt em três dimensões lê-se
+\noindent Para o material isotrópico linear, a matriz de Voigt em três dimensões lê-se
 \begin{equation}
     \mathbf{C} =
     \begin{bmatrix}
@@ -322,7 +344,7 @@ Para o material isotrópico linear, a matriz de Voigt em três dimensões lê-se
     \label{eq:3.30}
 \end{equation}
 
-No estado plano de deformações a matriz reduz-se a
+\noindent No estado plano de deformações a matriz reduz-se a
 \begin{equation}
     \mathbf{C}^{\text{pd}} =
     \frac{E}{(1+\nu)(1-2\nu)}
@@ -333,7 +355,7 @@ No estado plano de deformações a matriz reduz-se a
     \end{bmatrix},
     \label{eq:3.31}
 \end{equation}
-enquanto no estado plano de tensões obtém-se
+\noindent enquanto no estado plano de tensões obtém-se
 \begin{equation}
     \mathbf{C}^{\text{pt}} =
     \frac{E}{1-\nu^2}
@@ -346,6 +368,33 @@ enquanto no estado plano de tensões obtém-se
 \end{equation}
 
 \indent A notação de Voigt será adotada, sempre que conveniente, nos capítulos seguintes, por ser a forma mais prática para a implementação computacional dos métodos discretos. A correspondência com a notação tensorial permanece unívoca e será utilizada sempre que for necessário enfatizar aspectos contínuos ou propriedades de invariância.
+
+\subsection{Energia de deformação}
+
+\indent A formulação da energia de deformação constitui uma consequência direta das relações constitutivas da elasticidade linear. Conforme apresentado por \citet{continuummechanicsengineers2010}, a energia de deformação por unidade de volume, denotada por $W$, pode ser definida a partir da função de energia elástica, de modo que o tensor de tensões seja obtido pela derivação dessa função em relação ao tensor de deformações. Para pequenas deformações, tem-se
+\begin{equation}
+    \sigma_{ij}=\frac{\partial W}{\partial \varepsilon_{ij}}.
+    \label{eq:3.a2}
+\end{equation}
+
+\indent A existência de uma função de energia de deformação implica, ainda, a simetria maior do tensor constitutivo, consequentemente, a energia de deformação pode ser expressa como
+\begin{equation}
+    W=\frac{1}{2}\mathbb{C}_{ijkl}\varepsilon_{ij}\varepsilon_{kl}=\frac{1}{2}\sigma_{ij}\varepsilon_{ij}.
+    \label{eq:3.a3}
+\end{equation}
+
+\noindent A mesma formulação mostra que a taxa de trabalho realizada pelas tensões é igual à taxa de variação da energia armazenada.\\
+\indent Aplicando a separação do tensor constitutivo definido na equação~\ref{eq:3.a1} na equação~\ref{eq:3.a3}, chega-se à: $$W=\frac{1}{2}\left((\mathbb{C}_N)_{ijkl}+(\mathbb{C}_S)_{ijkl}\right)\varepsilon_{ij}\varepsilon_{kl} = $$
+\begin{equation}
+    W=\frac{1}{2}(\mathbb{C}_N)_{ijkl}\varepsilon_{ij}\varepsilon_{kl} + \frac{1}{2}(\mathbb{C}_S)_{ijkl}\varepsilon_{ij}\varepsilon_{kl}.
+    \label{eq:3.a4}
+\end{equation}
+
+\indent O que implica que a energia de deformação pode ser dividida em uma parcela normal e outra de cisalhamento:
+\begin{equation}
+    W = W_N + W_S
+    \label{eq:3.a5}
+\end{equation}
 
 \subsection{Formulação da equação governante}
 
@@ -613,6 +662,16 @@ $$a(\mathbf{u},\mathbf{v}) = a(\mathbf{v},\mathbf{u}),$$
 e bilinear quando linearidade em relação a cada uma de suas variáveis separadamente, mantendo a outra constante: 
 $$a(c_1 \mathbf{u} + c_2 \mathbf{v}, \mathbf{w}) = c_1 a(\mathbf{u},\mathbf{w}) + c_2 a(\mathbf{v},\mathbf{w}).$$\\
 \indent \citet{hughes1987finite} afirma que a notação utilizada na Eq.~\ref{eq:3.61} é concisa e captura aspectos matemáticos importantes. Devido a isso, essa notação será utilizada diversas vezes no decorrer dos próximos capítulos em definições.\\ 
+\indent Os termos descritos na equação~\ref{eq:3.58} estão em função de um diferencial de volume. Como problemas de estado plano são bidimensionais, a seguinte transformação é aplicada ao diferencial:
+\begin{equation*}
+    dV = d(x,y) \, dA,
+\end{equation*}
+\noindent onde $dA$ é um diferencial de área e $d(x,y)$ a função relacionada a espessura do sólido. Para os casos em que $d(x,y)$ é constante, a equação~\ref{eq:3.58} se torna:
+\begin{equation}
+    d \int_{A} \rho \, \mathbf{w} \cdot \ddot{\mathbf{u}} \, dA + d \int_{A}  \boldsymbol{\varepsilon}(\mathbf{w}) : \mathbb{C} : \boldsymbol{\varepsilon}(\mathbf{u})  \, dA  
+    = d\int_{A} \mathbf{w} \cdot \mathbf{b} \, dA + \int_{S} \mathbf{w} \cdot \mathbf{t}^{(\hat{n})} \, dS.  
+    \label{3.58b}  
+\end{equation}
 
 \subsubsection{Formulação fraca da equação de vibração livre não amortecida}
 
@@ -656,12 +715,14 @@ $$a(c_1 \mathbf{u} + c_2 \mathbf{v}, \mathbf{w}) = c_1 a(\mathbf{u},\mathbf{w}) 
         \label{fig:3.4}
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
+            \phantomcaption
             \includegraphics[width=\textwidth]{figuras/capitulo_3/4-a.png}
             \label{fig:3.4a}
         \end{subfigure}
         \hfill
         \begin{subfigure}[b]{0.45\textwidth}
             \centering
+            \phantomcaption
             \includegraphics[width=\textwidth]{figuras/capitulo_3/4-b.png}
             \label{fig:3.4b}
         \end{subfigure}
@@ -750,13 +811,13 @@ $$a(c_1 \mathbf{u} + c_2 \mathbf{v}, \mathbf{w}) = c_1 a(\mathbf{u},\mathbf{w}) 
 
 \indent Métodos numéricos tais como o MEF e o MEV utilizam a mesma estrutura que o método de Galerkin. Contudo, esses métodos subdividem o domínio em subdomínios chamados elementos e aplicam em cada elemento a formulação fraca, obtida do método dos resíduos ponderados.\\
 \indent Os métodos com discretização do domínio buscam encontrar a solução de um problema complexo ao substituí-lo por um problema mais simples. Nesses métodos, divide-se a região de solução (o domínio) em sub-regiões menores interconectadas, chamadas de elementos. Os elementos são conectados entre si por meio de juntas denominadas nós ou pontos nodais. Como as variações das variáveis de campo no contínuo são desconhecidas, assume-se que a solução pode ser aproximada por funções simples, as quais são escritas em função do valor das variáveis de campo nos nós \citet{rao2017finite}. O problema torna-se, então, solucionar um sistema linear de equações cujas incógnitas são as variáveis de campo nodais.\\
-\indent Esses métodos, mesmo sendo aproximados, apresentam a vantagem de a solução ser aprimorada com o aumento do poder computacional — prática chamada de refino. Existem tipos principais de métodos de refino, que podem ser aplicados em conjunto. O refino $h$, por meio da redução do tamanho dos elementos, aumenta a quantidade deles no objeto de análise. O refino $p$ aumenta a ordem das funções de aproximação. O refino $r$ melhora a solução ao mover os nós para regiões de alto erro, sem que haja aumento no número de nós ou elementos. Em alguns casos, pode ser necessário refazer a distribuição de elementos na malha. Destaca-se em \citet{rao2017finite} que, mesmo com o refino $h$, existe um limite em que a solução para de se aproximar da solução analítica da equação diferencial Figura~\ref{fig:3.10}
+\indent Esses métodos, mesmo sendo aproximados, apresentam a vantagem de a solução ser aprimorada com o aumento do poder computacional — prática chamada de refino. Existem tipos principais de métodos de refino, que podem ser aplicados em conjunto. O refino $h$, por meio da redução do tamanho dos elementos, aumenta a quantidade deles no objeto de análise. O refino $p$ aumenta a ordem das funções de aproximação. O refino $r$ melhora a solução ao mover os nós para regiões de alto erro, sem que haja aumento no número de nós ou elementos. Em alguns casos, pode ser necessário refazer a distribuição de elementos na malha. Destaca-se em \citet{rao2017finite} que, mesmo com o refino $h$, existe um limite em que a solução para de se aproximar da solução analítica da equação diferencial Figura~\ref{fig:3.10}.
 
 \begin{figure}[H]
     \centering
     \caption{Convergência da solução pelo método dos elementos finitos.}
     \resizebox{\textwidth}{!}{\input{figuras/Capitulo_3/11.tex}}
-    \label{fig:convergencia_mef}    
+    \label{fig:3.10}    
     
     {\small \textbf{Fonte:} Adaptado de (\citet{rao2017finite})}
 \end{figure}

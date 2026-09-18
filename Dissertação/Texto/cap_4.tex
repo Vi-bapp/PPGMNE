@@ -3,7 +3,7 @@
 
 \section{Introdução ao método dos elementos virtuais}
 
-    \indent Neste capítulo apresenta-se a formulação do Método dos Elementos Virtuais (MEV) aplicada a problemas elastodinâmicos bidimensionais. São desenvolvidos os espaços de aproximação, os operadores de projeção (elíptico, \(L^2\) e de deformações) e as matrizes de rigidez e de massa, com especial ênfase na construção dos projetores de forma generalizada para qualquer ordem de aproximação \(k\). Ao final, discute-se a implementação computacional do método.
+    \indent Neste capítulo apresenta-se a formulação do Método dos Elementos Virtuais (MEV) aplicada a problemas elastodinâmicos bidimensionais. São desenvolvidos os espaços de aproximação, os operadores de projeção (elíptico, \(L^2\) e de deformações) e as matrizes de rigidez e de massa, com especial ênfase na construção dos projetores de forma generalizada para qualquer ordem de aproximação \(k\). Ao final, discute-se a implementação computacional do método.\\
     \indent O MEV, similar ao MEF, é uma técnica numérica voltada à solução de equações diferenciais mediante a divisão do domínio em parcelas menores e mais simples de serem solucionadas. A principal característica do MEV é a possibilidade de utilizar funções de base que não são necessariamente polinômios, mas sim funções suaves — soluções de problemas de EDP no interior do elemento. Unindo isso ao aspecto da geometria do elemento ser indiferente à quantidade de nós no elemento permite a existência de elementos diversos em uma mesma malha como pode ser observado na Figura~\ref{fig:4.1}.
 
     \begin{figure}[H]
@@ -47,6 +47,7 @@
         \caption{Geometria de um elemento poligonal.}
         \includegraphics[width=0.7\textwidth]{figuras/Capítulo 4/4.3.png}
         \label{fig:4.3}
+
         {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
     \end{figure}
 
@@ -121,7 +122,7 @@
 
 
     \indent Cada aresta do elemento é descrita por um polinômio de grau $k$ e, de forma similar aos elementos finitos, é mapeada através dos nós. Quando $k > 1$, é necessário adicionar $k - 1$ nós intermediários, igualmente espaçados, ao longo de cada aresta. \\
-    \indent Na solução de problemas com aproximação de ordem $k > 1$, surgem termos no interior do elemento que não podem ser calculados explicitamente. Uma maneira de contornar isso é torná-los graus de liberdade do problema, denominados momentos internos. Essas variáveis surgem como forma de tratar a indeterminação da formulação, que será visto durante o cálculo dos operadores de projeção na secção~\ref{sec:projetor elíptico}, e possuem a forma: 
+    \indent Na solução de problemas com aproximação de ordem $k > 1$, surgem termos no interior do elemento que não podem ser calculados explicitamente. Uma maneira de contornar isso é torná-los graus de liberdade do problema, denominados momentos internos. Essas variáveis surgem como forma de tratar a indeterminação da formulação, que será visto durante o cálculo dos operadores de projeção na secção~\ref{sec:projetor-eliptico}, e possuem a forma: 
 
     \begin{equation}
         \mathbb{m} = \frac{1}{\vert{}\Omega_v\vert{}}\int_\Omega p\,v_h\,d\Omega\quad\forall\,p\in\mathbb{P}_{k-2}(\Omega)
@@ -163,7 +164,7 @@
         \label{eq:4.8}
     \end{equation}
 
-    \indent Como observado por \citet{basicprinciplesvirtualelementmethods2013a}, outros operadores diferenciais de segunda ordem poderiam ser utilizados no lugar do laplaciano. Contudo, tanto para a equação de Laplace quanto para a equação do movimento tratada neste trabalho, a escolha do operador de Laplace é a mais natural (essa escolha será justificada na Seção~\ref{sec:projetor elíptico}). Como o laplaciano da função virtual é, por definição, um polinômio de grau $\le k-2$, no caso de aproximação de primeira ordem ($k=1$) tem-se $\nabla^2 v = 0$. As funções no interior do elemento são, portanto, harmônicas\footnote{Diz-se que uma função $v$ é harmônica em um domínio quando satisfaz a equação de Laplace homogênea, isto é, $\nabla^2 v = 0$ no interior do domínio (para uma revisão formal, ver \citet[Capítulo~2]{evans2010partial}). O termo ``harmônica'' remete historicamente às soluções baseadas em funções senoidais que descrevem modos de vibração e oscilações acústicas, propriedades que se generalizam para as soluções de menor energia associadas ao operador de Laplace.}.\\
+    \indent Como observado por \citet{basicprinciplesvirtualelementmethods2013a}, outros operadores diferenciais de segunda ordem poderiam ser utilizados no lugar do laplaciano. Contudo, tanto para a equação de Laplace quanto para a equação do movimento tratada neste trabalho, a escolha do operador de Laplace é a mais natural (essa escolha será justificada na Seção~\ref{sec:projetor-eliptico}). Como o laplaciano da função virtual é, por definição, um polinômio de grau $\le k-2$, no caso de aproximação de primeira ordem ($k=1$) tem-se $\nabla^2 v = 0$. As funções no interior do elemento são, portanto, harmônicas\footnote{Diz-se que uma função $v$ é harmônica em um domínio quando satisfaz a equação de Laplace homogênea, isto é, $\nabla^2 v = 0$ no interior do domínio (para uma revisão formal, ver \citet[Capítulo~2]{evans2010partial}). O termo ``harmônica'' remete historicamente às soluções baseadas em funções senoidais que descrevem modos de vibração e oscilações acústicas, propriedades que se generalizam para as soluções de menor energia associadas ao operador de Laplace.}.\\
     \indent Como brevemente comentado na introdução do capítulo, as funções virtuais são, por construção, soluções de problemas de contorno locais. De fato, a unisolvência e a dimensão correta do espaço $\mathbb{V}^{\Omega_v,k}$ decorrem diretamente do fato de que, para cada par $(g,q)$ com $g\in\mathbb{B}_k(\partial \Omega_v)$ e $q\in\mathbb{P}_{k-2}(\Omega_v)$, o problema
 
     \begin{equation*}
@@ -191,7 +192,7 @@
         \label{eq:4.10}
     \end{equation}
 
-    \indent Esse espaço apresenta como característica o laplaciano de uma função pertencer ao espaço $\mathbb{P}_k(\Omega)$, em contraste com a definição clássica em que deve estar em $\mathbb{P}_{k-2}(\Omega)$ e um termo extra, cujo propósito será esclarecido na secção~\ref{sec:Projetor L2}. Na formulação estendida, os graus de liberdade coincidem com os do espaço clássico apresentando a propriedade: 
+    \indent Esse espaço apresenta como característica o laplaciano de uma função pertencer ao espaço $\mathbb{P}_k(\Omega)$, em contraste com a definição clássica em que deve estar em $\mathbb{P}_{k-2}(\Omega)$ e um termo extra, cujo propósito será esclarecido na secção~\ref{sec:projetor-L2}. Na formulação estendida, os graus de liberdade coincidem com os do espaço clássico apresentando a propriedade: 
 
     \begin{equation}
         \int_{\Omega_v} w_h p_\alpha d\Omega_v = \int_{\Omega_v} \Pi^\nabla w_h p_\alpha d\Omega_v, \hspace{5mm} \vert{}\alpha\vert{} = k-1,k 
@@ -264,7 +265,7 @@
     \vspace{5mm}
 
     \fbox{ \begin{minipage}{0.8\textwidth} 
-    \textbf{Exemplo 4.3.} Demonstre a propriedade $\varphi_{i|\partial \Omega_v} = M_{i|\partial \Omega_v}(\xi)$.
+    \textbf{Exemplo 4.2.} Demonstre a propriedade $\varphi_{i|\partial \Omega_v} = M_{i|\partial \Omega_v}(\xi)$.
     
     \hrulefill
     
@@ -378,7 +379,7 @@
     \vspace{5mm}
 \noindent\fbox{
     \begin{minipage}{0.95\textwidth}
-        \textbf{Exemplo 4.x.} Considere um elemento poligonal de $n_e = 4$ arestas com ordem de aproximação quadrática ($k = 2$) e $n_{\text{dof\_nó}} = 2$ graus de liberdade por nó (deslocamentos $u_x$ e $u_y$). Determine os valores das funções de mapeamento para as seguintes situações:
+        \textbf{Exemplo 4.3.} Considere um elemento poligonal de $n_e = 4$ arestas com ordem de aproximação quadrática ($k = 2$) e $n_{\text{dof\_nó}} = 2$ graus de liberdade por nó (deslocamentos $u_x$ e $u_y$). Determine os valores das funções de mapeamento para as seguintes situações:
 
         \textbf{a)} $\ell_3(i)$ no nó intermediário da 3ª aresta ($q = 2$) na direção $y$ ($d = 2$)
 
@@ -661,7 +662,7 @@
 
     \vspace{5mm}
     \fbox{ \begin{minipage}{0.8\textwidth} 
-        \textbf{Exemplo 4.5.} Demonstre a identidade $\mathcal{G}_{\alpha,\beta}^{(\nabla)} = \left(\mathcal{B}^{(\nabla)}\mathcal{D}^{(\nabla)}\right)_{\alpha\beta}$ 
+        \textbf{Exemplo 4.6.} Demonstre a identidade $\mathcal{G}_{\alpha,\beta}^{(\nabla)} = \left(\mathcal{B}^{(\nabla)}\mathcal{D}^{(\nabla)}\right)_{\alpha\beta}$ 
         
         \hrulefill
 
@@ -835,8 +836,6 @@
         \label{eq:4.58}
     \end{equation}
 
-    $$\mathrm{t} \quad \mathcal{t} \quad \mathbb{t} \quad \mathit{t} \quad \mathfrak{t} \quad t$$
-
     \indent Nota-se que não foi necessário um procedimento de integração para a solução da matriz de massa. \citet{hitchhikersguidevirtualelementmethod2014a} afirma que o termo de consistência deve ser computado de maneira exata enquanto o termo de estabilidade pode ser aproximado. \\
     \indent O resíduo $(I - \Pi_k^0)q$ atua como um filtro para funções polinomiais: sempre que $q\in\mathbb{P}_k(\Omega_v)$, tem-se $(I - \Pi_k^0)q = 0$. Uma consequência imediata é que o resíduo também se anula no contorno do elemento quando a função é polinomial, garantindo que a estabilização não interfira no teste de consistência (patch test) do elemento.\\
     \indent O termo de estabilidade da matriz de massa é, em princípio, dado pelo produto interno $L^2$ das componentes residuais:
@@ -853,10 +852,14 @@
     \begin{equation*}
         S(v,w)=\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r(v)\,\chi_r(w)
     \end{equation*} 
-    é equivalente ao produto interno $L^2$ no espaço residual. Além disso, as constantes de equivalência na desigualdade~\eqref{eq:4.60} dependem da medida do elemento (espaço de dimensão finita). Agrupando a densidade $\rho$, as constantes de escala do espaço e a medida do elemento (como a área $|\Omega_v|$ ou $h_e^2$) no coeficiente de escalonamento $\tau_m$ da formulação, o produto interno residual é aproximado por:
-    \begin{align*}
-        [M]^{\rm stab}_{ij}&=\rho\bigl((I - \Pi_k^0)\varphi_i\,,(I - \Pi_k^0)\varphi_j\bigr)_{\Omega_v}\\ \approx\tau_m\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r\bigl((I - \Pi_k^0)\varphi_i\bigr)\,\chi_r\bigl((I - \Pi_k^0)\varphi_j\bigr).
-    \end{align*}
+    \noindent é equivalente ao produto interno $L^2$ no espaço residual. Além disso, as constantes de equivalência na desigualdade~\eqref{eq:4.60} dependem da medida do elemento (espaço de dimensão finita). Agrupando a densidade $\rho$, as constantes de escala do espaço e a medida do elemento (como a área $|\Omega_v|$ ou $h_e^2$) no coeficiente de escalonamento $\tau_m$ da formulação, o produto interno residual é aproximado por:
+    \begin{equation}
+        \begin{aligned}
+        [M]^{\rm stab}_{ij}&=\rho\bigl((I - \Pi_k^0)\varphi_i\,,(I - \Pi_k^0)\varphi_j\bigr)_{\Omega_v}\\ 
+        \approx\tau_m\sum_{r=1}^{n_{\mathrm{dof}}}\chi_r\bigl((I - \Pi_k^0)\varphi_i\bigr)\,\chi_r\bigl((I - \Pi_k^0)\varphi_j\bigr).
+    \end{aligned}
+    \end{equation}
+
     \indent Em forma matricial, essa expressão torna-se
     \begin{equation}
         [M]^{\rm stab}=\tau_m\bigl[(I - \mathcal{D}\Pi^0)^T(I - \mathcal{D}\Pi^0)\bigr].
@@ -887,7 +890,10 @@
         \label{eq:4.65}
     \end{equation}
 
-    \indent O termo de estabilidade é:  $$[K]_{ij}^{Stab} = \int_{\Omega_v} (I - \mathcal{D}\Pi_{k-1}^{\epsilon})\epsilon\left(\varphi_i \right)^T \mathbb{C} (I - \mathcal{D}\Pi_{k-1}^{\epsilon})\epsilon\left(\varphi_j \right)^T  d\Omega.$$
+    \indent O termo de estabilidade é:
+    \begin{equation}
+        [K]_{ij}^{Stab} = \int_{\Omega_v} (I - \mathcal{D}\Pi_{k-1}^{\epsilon})\epsilon\left(\varphi_i \right)^T \mathbb{C} (I - \mathcal{D}\Pi_{k-1}^{\epsilon})\epsilon\left(\varphi_j \right)^T  d\Omega.
+    \end{equation}
     \indent Como visto na equação Eq.~\ref{eq:4.59}, o termo $(I - \mathcal{D}\Pi_{k-1}^{\epsilon})$ não é computável pelas dimensões de $\mathcal{D}$ e $\Pi^{\epsilon}$ não serem compatíveis. O termo de consistência e o termo de estabilidade são desacoplados entre si, desse modo o termo de estabilidade pode ser aproximado por\footnote{No exemplo 4.7 será realizada a demonstração dessa propriedade. A demonstração é baseada nas provas encontradas no trabalho de \citet{basicprinciplesvirtualelementmethods2013a}.}: 
 
     \begin{equation}
@@ -911,7 +917,7 @@
     \end{equation}
 
     \fbox{ \centering\begin{minipage}{.9\textwidth} 
-        \textbf{Exemplo 4.6.} Prove que os termos de consistência e de estabilidade são desacoplados.
+        \textbf{Exemplo 4.7.} Prove que os termos de consistência e de estabilidade são desacoplados.
         
         \hrulefill
 

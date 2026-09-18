@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  13 SEP 2026 08:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.12)  17 SEP 2026 20:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -943,10 +943,34 @@ Package: array 2024/06/14 v2.6d Tabular extension package (FMi)
 \everycr=\toks46
 \minrowclearance=\skip92
 \rownum=\count353
+) (c:/texlive/2024/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
+\heavyrulewidth=\dimen267
+\lightrulewidth=\dimen268
+\cmidrulewidth=\dimen269
+\belowrulesep=\dimen270
+\belowbottomsep=\dimen271
+\aboverulesep=\dimen272
+\abovetopsep=\dimen273
+\cmidrulesep=\dimen274
+\cmidrulekern=\dimen275
+\defaultaddspace=\dimen276
+\@cmidla=\count354
+\@cmidlb=\count355
+\@aboverulesep=\dimen277
+\@belowrulesep=\dimen278
+\@thisruleclass=\count356
+\@lastruleclass=\count357
+\@thisrulewidth=\dimen279
+) (c:/texlive/2024/texmf-dist/tex/latex/makecell/makecell.sty
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+\rotheadsize=\dimen280
+\c@nlinenum=\count358
+\TeXr@lab=\toks47
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks47
-\pgfutil@tempdima=\dimen267
-\pgfutil@tempdimb=\dimen268
+\pgfutil@everybye=\toks48
+\pgfutil@tempdima=\dimen281
+\pgfutil@tempdimb=\dimen282
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
 \pgfutil@abb=\box71
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/pgf.revision.tex)
@@ -956,31 +980,31 @@ Package: pgf 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks48
-\pgfkeys@temptoks=\toks49
+\pgfkeys@pathtoks=\toks49
+\pgfkeys@temptoks=\toks50
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
-\pgfkeys@tmptoks=\toks50
+\pgfkeys@tmptoks=\toks51
 ))
-\pgf@x=\dimen269
-\pgf@y=\dimen270
-\pgf@xa=\dimen271
-\pgf@ya=\dimen272
-\pgf@xb=\dimen273
-\pgf@yb=\dimen274
-\pgf@xc=\dimen275
-\pgf@yc=\dimen276
-\pgf@xd=\dimen277
-\pgf@yd=\dimen278
+\pgf@x=\dimen283
+\pgf@y=\dimen284
+\pgf@xa=\dimen285
+\pgf@ya=\dimen286
+\pgf@xb=\dimen287
+\pgf@yb=\dimen288
+\pgf@xc=\dimen289
+\pgf@yc=\dimen290
+\pgf@xd=\dimen291
+\pgf@yd=\dimen292
 \w@pgf@writea=\write3
 \r@pgf@reada=\read5
-\c@pgf@counta=\count354
-\c@pgf@countb=\count355
-\c@pgf@countc=\count356
-\c@pgf@countd=\count357
-\t@pgf@toka=\toks51
-\t@pgf@tokb=\toks52
-\t@pgf@tokc=\toks53
-\pgf@sys@id@count=\count358
+\c@pgf@counta=\count359
+\c@pgf@countb=\count360
+\c@pgf@countc=\count361
+\c@pgf@countd=\count362
+\t@pgf@toka=\toks52
+\t@pgf@tokb=\toks53
+\t@pgf@tokc=\toks54
+\pgf@sys@id@count=\count363
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
@@ -991,59 +1015,59 @@ File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count359
-\pgfsyssoftpath@bigbuffer@items=\count360
+\pgfsyssoftpath@smallbuffer@items=\count364
+\pgfsyssoftpath@bigbuffer@items=\count365
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen279
-\pgfmath@count=\count361
+\pgfmath@dimen=\dimen293
+\pgfmath@count=\count366
 \pgfmath@box=\box72
-\pgfmath@toks=\toks54
-\pgfmath@stack@operand=\toks55
-\pgfmath@stack@operation=\toks56
+\pgfmath@toks=\toks55
+\pgfmath@stack@operand=\toks56
+\pgfmath@stack@operation=\toks57
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count362
+\c@pgfmathroundto@lastzeros=\count367
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen280
-\pgf@picmaxx=\dimen281
-\pgf@picminy=\dimen282
-\pgf@picmaxy=\dimen283
-\pgf@pathminx=\dimen284
-\pgf@pathmaxx=\dimen285
-\pgf@pathminy=\dimen286
-\pgf@pathmaxy=\dimen287
-\pgf@xx=\dimen288
-\pgf@xy=\dimen289
-\pgf@yx=\dimen290
-\pgf@yy=\dimen291
-\pgf@zx=\dimen292
-\pgf@zy=\dimen293
+\pgf@picminx=\dimen294
+\pgf@picmaxx=\dimen295
+\pgf@picminy=\dimen296
+\pgf@picmaxy=\dimen297
+\pgf@pathminx=\dimen298
+\pgf@pathmaxx=\dimen299
+\pgf@pathminy=\dimen300
+\pgf@pathmaxy=\dimen301
+\pgf@xx=\dimen302
+\pgf@xy=\dimen303
+\pgf@yx=\dimen304
+\pgf@yy=\dimen305
+\pgf@zx=\dimen306
+\pgf@zy=\dimen307
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen294
-\pgf@path@lasty=\dimen295
+\pgf@path@lastx=\dimen308
+\pgf@path@lasty=\dimen309
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen296
-\pgf@shorten@start@additional=\dimen297
+\pgf@shorten@end@additional=\dimen310
+\pgf@shorten@start@additional=\dimen311
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \pgfpic=\box73
 \pgf@hbox=\box74
 \pgf@layerbox@main=\box75
-\pgf@picture@serial@count=\count363
+\pgf@picture@serial@count=\count368
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen298
+\pgflinewidth=\dimen312
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen299
-\pgf@pt@y=\dimen300
-\pgf@pt@temp=\dimen301
+\pgf@pt@x=\dimen313
+\pgf@pt@y=\dimen314
+\pgf@pt@temp=\dimen315
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -1052,12 +1076,12 @@ File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen302
+\pgfarrowsep=\dimen316
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen303
-\pgf@sys@shading@range@num=\count364
-\pgf@shadingcount=\count365
+\pgf@max=\dimen317
+\pgf@sys@shading@range@num=\count369
+\pgf@shadingcount=\count370
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
@@ -1078,46 +1102,46 @@ File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen304
-\pgf@nodesepend=\dimen305
+\pgf@nodesepstart=\dimen318
+\pgf@nodesepend=\dimen319
 ) (c:/texlive/2024/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (c:/texlive/2024/texmf-dist/tex/latex/pgf/math/pgfmath.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen306
-\pgffor@skip=\dimen307
-\pgffor@stack=\toks57
-\pgffor@toks=\toks58
+\pgffor@iter=\dimen320
+\pgffor@skip=\dimen321
+\pgffor@stack=\toks58
+\pgffor@toks=\toks59
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count366
-\pgfplotmarksize=\dimen308
+\pgf@plot@mark@count=\count371
+\pgfplotmarksize=\dimen322
 )
-\tikz@lastx=\dimen309
-\tikz@lasty=\dimen310
-\tikz@lastxsaved=\dimen311
-\tikz@lastysaved=\dimen312
-\tikz@lastmovetox=\dimen313
-\tikz@lastmovetoy=\dimen314
-\tikzleveldistance=\dimen315
-\tikzsiblingdistance=\dimen316
+\tikz@lastx=\dimen323
+\tikz@lasty=\dimen324
+\tikz@lastxsaved=\dimen325
+\tikz@lastysaved=\dimen326
+\tikz@lastmovetox=\dimen327
+\tikz@lastmovetoy=\dimen328
+\tikzleveldistance=\dimen329
+\tikzsiblingdistance=\dimen330
 \tikz@figbox=\box78
 \tikz@figbox@bg=\box79
 \tikz@tempbox=\box80
 \tikz@tempbox@bg=\box81
-\tikztreelevel=\count367
-\tikznumberofchildren=\count368
-\tikznumberofcurrentchild=\count369
-\tikz@fig@count=\count370
+\tikztreelevel=\count372
+\tikznumberofchildren=\count373
+\tikznumberofcurrentchild=\count374
+\tikz@fig@count=\count375
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count371
-\pgfmatrixcurrentcolumn=\count372
-\pgf@matrix@numberofcolumns=\count373
+\pgfmatrixcurrentrow=\count376
+\pgfmatrixcurrentcolumn=\count377
+\pgf@matrix@numberofcolumns=\count378
 )
-\tikz@expandcount=\count374
+\tikz@expandcount=\count379
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
@@ -1128,17 +1152,17 @@ File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
 File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\arrowsize=\dimen317
+\arrowsize=\dimen331
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
 File: tikzlibrarymatrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarychains.code.tex
 File: tikzlibrarychains.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowinset=\dimen318
-\pgfarrowlength=\dimen319
-\pgfarrowwidth=\dimen320
-\pgfarrowlinewidth=\dimen321
+\pgfarrowinset=\dimen332
+\pgfarrowlength=\dimen333
+\pgfarrowwidth=\dimen334
+\pgfarrowlinewidth=\dimen335
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
@@ -1148,14 +1172,14 @@ File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
 File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
-\pgfdecoratedcompleteddistance=\dimen322
-\pgfdecoratedremainingdistance=\dimen323
-\pgfdecoratedinputsegmentcompleteddistance=\dimen324
-\pgfdecoratedinputsegmentremainingdistance=\dimen325
-\pgf@decorate@distancetomove=\dimen326
-\pgf@decorate@repeatstate=\count375
-\pgfdecorationsegmentamplitude=\dimen327
-\pgfdecorationsegmentlength=\dimen328
+\pgfdecoratedcompleteddistance=\dimen336
+\pgfdecoratedremainingdistance=\dimen337
+\pgfdecoratedinputsegmentcompleteddistance=\dimen338
+\pgfdecoratedinputsegmentremainingdistance=\dimen339
+\pgf@decorate@distancetomove=\dimen340
+\pgf@decorate@repeatstate=\count380
+\pgfdecorationsegmentamplitude=\dimen341
+\pgfdecorationsegmentlength=\dimen342
 )
 \tikz@lib@dec@box=\box82
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.markings.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.markings.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.shapes.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.shapes.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
@@ -1187,20 +1211,20 @@ File: tikzlibraryanimations.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/modules/pgfmoduleanimations.code.tex
 File: pgfmoduleanimations.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/generic/pgf/systemlayer/pgfsysanimations.code.tex
-\pgfsysanim@snap@count=\count376
-\pgfsysanim@lasttime=\dimen329
+\pgfsysanim@snap@count=\count381
+\pgfsysanim@lasttime=\dimen343
 )
-\pgf@anim@dim=\dimen330
+\pgf@anim@dim=\dimen344
 )
-\tikz@anim@once@count=\count377
+\tikz@anim@once@count=\count382
 ) (c:/texlive/2024/texmf-dist/tex/latex/tikz-bbox/pgflibrarybbox.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryintersections.code.tex (c:/texlive/2024/texmf-dist/tex/generic/pgf/libraries/pgflibraryintersections.code.tex
-\pgf@intersect@solutions=\count378
+\pgf@intersect@solutions=\count383
 )) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryangles.code.tex
 File: tikzlibraryangles.code.tex 2023-01-15 v3.1.10 (3.1.10)
-) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
-File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
-(c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryspy.code.tex
+(c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryquotes.code.tex
+File: tikzlibraryquotes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryspy.code.tex
 File: tikzlibraryspy.code.tex 2023-01-15 v3.1.10 (3.1.10)
 \tikz@lib@spybox=\box85
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarythrough.code.tex
@@ -1237,25 +1261,25 @@ File: tikzlibrarytrees.code.tex 2023-01-15 v3.1.10 (3.1.10)
 File: tikzlibrarycalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
  (c:/texlive/2024/texmf-dist/tex/latex/pgf/utilities/pgfcalendar.sty (c:/texlive/2024/texmf-dist/tex/generic/pgf/utilities/pgfcalendar.code.tex
 File: pgfcalendar.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfcalendarcurrentjulian=\count379
-\pgf@cal@easter@Y=\count380
-\pgf@cal@easter@G=\count381
-\pgf@cal@easter@C=\count382
-\pgf@cal@easter@X=\count383
-\pgf@cal@easter@Z=\count384
-\pgf@cal@easter@D=\count385
-\pgf@cal@easter@E=\count386
-\pgf@cal@easter@N=\count387
-\pgf@cal@easter@M=\count388
-\pgf@cal@easter@julianday=\count389
+\pgfcalendarcurrentjulian=\count384
+\pgf@cal@easter@Y=\count385
+\pgf@cal@easter@G=\count386
+\pgf@cal@easter@C=\count387
+\pgf@cal@easter@X=\count388
+\pgf@cal@easter@Z=\count389
+\pgf@cal@easter@D=\count390
+\pgf@cal@easter@E=\count391
+\pgf@cal@easter@N=\count392
+\pgf@cal@easter@M=\count393
+\pgf@cal@easter@julianday=\count394
 ))) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfolding.code.tex
 File: tikzlibraryfolding.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\tikz@lib@fold@length=\dimen331
+\tikz@lib@fold@length=\dimen345
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymindmap.code.tex
 File: tikzlibrarymindmap.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (c:/texlive/2024/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/circuits/tikzlibrarycircuits.code.tex
-\tikz@lib@circ@count=\count390
-\tikzcircuitssizeunit=\dimen332
+\tikz@lib@circ@count=\count395
+\tikzcircuitssizeunit=\dimen346
 ))
 LaTeX Font Info:    Trying to load font information for T1+ntxtlf on input line 50.
  (c:/texlive/2024/texmf-dist/tex/latex/newtx/t1ntxtlf.fd
@@ -1263,7 +1287,29 @@ File: t1ntxtlf.fd 2021/05/24 v1.1 font definition file for T1/ntx/tlf
 )
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 12.0pt on input line 50.
- (./main.aux (./0-iniciais/catalografica.aux) (./0-iniciais/aprovacao.aux) (./0-iniciais/resumo.aux) (./0-iniciais/abstract.aux) (./0-iniciais/abreviaturas.aux) (./0-iniciais/simbolos.aux) (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./Cap_5.aux) (./Conclusoes.aux) (./Apendice_A.aux) (./Apendice_B.aux))
+ (./main.aux (./0-iniciais/catalografica.aux) (./0-iniciais/aprovacao.aux) (./0-iniciais/dedica.aux) (./0-iniciais/resumo.aux) (./0-iniciais/abstract.aux) (./0-iniciais/abreviaturas.aux) (./0-iniciais/simbolos.aux) (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./Cap_5.aux
+
+LaTeX Warning: Label `fig:5.17' multiply defined.
+
+
+LaTeX Warning: Label `fig:5.19' multiply defined.
+
+
+LaTeX Warning: Label `fig:5.21' multiply defined.
+
+
+LaTeX Warning: Label `fig:5.21a' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:5.21a' multiply defined.
+
+
+LaTeX Warning: Label `fig:5.21b' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:5.21b' multiply defined.
+
+) (./Conclusoes.aux) (./Apendice_A.aux) (./Apendice_B.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/ntxmi/m/it on input line 50.
@@ -1351,17 +1397,17 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 Package caption Info: End \AtBeginDocument code.
  (c:/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count391
-\scratchdimen=\dimen333
+\scratchcounter=\count396
+\scratchdimen=\dimen347
 \scratchbox=\box106
-\nofMPsegments=\count392
-\nofMParguments=\count393
-\everyMPshowfont=\toks59
-\MPscratchCnt=\count394
-\MPscratchDim=\dimen334
-\MPnumerator=\count395
-\makeMPintoPDFobject=\count396
-\everyMPtoPDFconversion=\toks60
+\nofMPsegments=\count397
+\nofMParguments=\count398
+\everyMPshowfont=\toks60
+\MPscratchCnt=\count399
+\MPscratchDim=\dimen348
+\MPnumerator=\count400
+\makeMPintoPDFobject=\count401
+\everyMPtoPDFconversion=\toks61
 ) (c:/texlive/2024/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1388,11 +1434,11 @@ Package microtype Info: No adjustment of character kerning.
  (c:/texlive/2024/texmf-dist/tex/latex/microtype/mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@mv@tabular=\count397
-\c@mv@boldtabular=\count398
+\c@mv@tabular=\count402
+\c@mv@boldtabular=\count403
 LaTeX Info: Command `\dddot' is already robust on input line 50.
 LaTeX Info: Command `\ddddot' is already robust on input line 50.
-\c@lstlisting=\count399
+\c@lstlisting=\count404
  (c:/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2022-10-27 v0.13 Display of landscape pages in PDF
  (c:/texlive/2024/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
@@ -1502,6 +1548,9 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 \openout2 = `0-iniciais/aprovacao.aux'.
 
  (./0-iniciais/aprovacao.tex)
+\openout2 = `0-iniciais/dedica.aux'.
+
+ (./0-iniciais/dedica.tex)
 \openout2 = `0-iniciais/resumo.aux'.
 
  (./0-iniciais/resumo.tex
@@ -1510,6 +1559,9 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 
 
 [2
+
+
+
 
 
 
@@ -1563,7 +1615,7 @@ LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 \openout2 = `0-iniciais/abreviaturas.aux'.
 
  (./0-iniciais/abreviaturas.tex
-Overfull \hbox (570.29155pt too wide) in alignment at lines 7--26
+Overfull \hbox (10.34322pt too wide) in alignment at lines 7--31
 [] [] 
  []
 
@@ -1577,25 +1629,25 @@ Overfull \hbox (570.29155pt too wide) in alignment at lines 7--26
 
  (./0-iniciais/simbolos.tex
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 12.0pt on input line 60.
+(Font)              scaled to size 12.0pt on input line 62.
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 8.8pt on input line 60.
+(Font)              scaled to size 8.8pt on input line 62.
 LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 6.6pt on input line 60.
-LaTeX Font Info:    Trying to load font information for OT1+qhv on input line 62.
+(Font)              scaled to size 6.6pt on input line 62.
+LaTeX Font Info:    Trying to load font information for OT1+qhv on input line 64.
  (c:/texlive/2024/texmf-dist/tex/latex/tex-gyre/ot1qhv.fd
 File: ot1qhv.fd 2009/09/25 v1.2 font definition file for OT1/qhv
 )
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
-(Font)              scaled to size 11.28003pt on input line 62.
+(Font)              scaled to size 11.28003pt on input line 64.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `qhv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
-(Font)              scaled to size 8.27202pt on input line 62.
+(Font)              scaled to size 8.27202pt on input line 64.
 LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
-(Font)              scaled to size 6.20401pt on input line 62.
+(Font)              scaled to size 6.20401pt on input line 64.
  [8
 
 
@@ -1780,22 +1832,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--15
 ]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.95pt on input line 18.
-<figuras/capitulo_3/1-a.png, id=780, 513.92pt x 265.99374pt>
+<figuras/capitulo_3/1-a.png, id=783, 513.92pt x 265.99374pt>
 File: figuras/capitulo_3/1-a.png Graphic file (type png)
 <use figuras/capitulo_3/1-a.png>
 Package pdftex.def Info: figuras/capitulo_3/1-a.png  used on input line 21.
 (pdftex.def)             Requested size: 204.85846pt x 106.03032pt.
-<figuras/capitulo_3/1-b.png, id=781, 513.92pt x 216.81pt>
+<figuras/capitulo_3/1-b.png, id=784, 513.92pt x 216.81pt>
 File: figuras/capitulo_3/1-b.png Graphic file (type png)
 <use figuras/capitulo_3/1-b.png>
 Package pdftex.def Info: figuras/capitulo_3/1-b.png  used on input line 27.
 (pdftex.def)             Requested size: 204.85846pt x 86.42471pt.
-<figuras/capitulo_3/2-a.png, id=785, 361.35pt x 351.3125pt>
+<figuras/capitulo_3/2-a.png, id=788, 361.35pt x 351.3125pt>
 File: figuras/capitulo_3/2-a.png Graphic file (type png)
 <use figuras/capitulo_3/2-a.png>
 Package pdftex.def Info: figuras/capitulo_3/2-a.png  used on input line 43.
 (pdftex.def)             Requested size: 159.33821pt x 154.91032pt.
-<figuras/capitulo_3/2-b.png, id=786, 513.92pt x 146.5475pt>
+<figuras/capitulo_3/2-b.png, id=789, 513.92pt x 146.5475pt>
 File: figuras/capitulo_3/2-b.png Graphic file (type png)
 <use figuras/capitulo_3/2-b.png>
 Package pdftex.def Info: figuras/capitulo_3/2-b.png  used on input line 49.
@@ -1803,7 +1855,7 @@ Package pdftex.def Info: figuras/capitulo_3/2-b.png  used on input line 49.
 
 
 [28 <./figuras/Capitulo_3/1-a.png> <./figuras/Capitulo_3/1-b.png> <./figuras/Capitulo_3/2-a.png> <./figuras/Capitulo_3/2-b.png>]
-<figuras/capitulo_3/3.png, id=794, 376.40625pt x 162.6075pt>
+<figuras/capitulo_3/3.png, id=797, 376.40625pt x 162.6075pt>
 File: figuras/capitulo_3/3.png Graphic file (type png)
 <use figuras/capitulo_3/3.png>
 Package pdftex.def Info: figuras/capitulo_3/3.png  used on input line 69.
@@ -1811,7 +1863,7 @@ Package pdftex.def Info: figuras/capitulo_3/3.png  used on input line 69.
 
 
 [29 <./figuras/Capitulo_3/3.png>]
-<figuras/capitulo_3/6.png, id=809, 513.92pt x 225.84375pt>
+<figuras/capitulo_3/6.png, id=812, 513.92pt x 225.84375pt>
 File: figuras/capitulo_3/6.png Graphic file (type png)
 <use figuras/capitulo_3/6.png>
 Package pdftex.def Info: figuras/capitulo_3/6.png  used on input line 93.
@@ -1863,7 +1915,7 @@ LaTeX Font Info:    Font shape `U/ntxexa/b/n' will be
 [30]
 
 [31 <./figuras/Capitulo_3/6.png>]
-<figuras/capitulo_3/8.png, id=835, 459.7175pt x 446.66875pt>
+<figuras/capitulo_3/8.png, id=839, 459.7175pt x 446.66875pt>
 File: figuras/capitulo_3/8.png Graphic file (type png)
 <use figuras/capitulo_3/8.png>
 Package pdftex.def Info: figuras/capitulo_3/8.png  used on input line 160.
@@ -1899,7 +1951,7 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 
 [34]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 283.
+(Font)              scaled to size 12.0pt on input line 305.
 
 
 [35]
@@ -1909,78 +1961,65 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
 [37]
 
 [38]
-Overfull \hbox (7.54721pt too wide) in paragraph at lines 516--526
+
+[39]
+Overfull \hbox (7.54721pt too wide) in paragraph at lines 565--575
  [][] 
  []
 
 
 
-[39]
-
 [40]
-Underfull \hbox (badness 10000) in paragraph at lines 614--616
-
- []
-
-
 
 [41]
-<figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png, id=987, 449.2785pt x 227.04825pt>
+
+[42]
+<figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png, id=1010, 449.2785pt x 227.04825pt>
 File: figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png Graphic file (type png)
 <use figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png>
-Package pdftex.def Info: figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png  used on input line 624.
+Package pdftex.def Info: figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png  used on input line 683.
 (pdftex.def)             Requested size: 455.24413pt x 230.07562pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 629--631
+Underfull \hbox (badness 10000) in paragraph at lines 688--690
 
  []
 
-<figuras/capitulo_3/f1.png, id=993, 181.8795pt x 130.68825pt>
+
+
+[43 <./figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png>]
+<figuras/capitulo_3/f1.png, id=1025, 181.8795pt x 130.68825pt>
 File: figuras/capitulo_3/f1.png Graphic file (type png)
 <use figuras/capitulo_3/f1.png>
-Package pdftex.def Info: figuras/capitulo_3/f1.png  used on input line 638.
+Package pdftex.def Info: figuras/capitulo_3/f1.png  used on input line 697.
 (pdftex.def)             Requested size: 204.85846pt x 147.20137pt.
-<figuras/capitulo_3/f2.png, id=994, 275.22826pt x 138.5175pt>
+<figuras/capitulo_3/f2.png, id=1026, 275.22826pt x 138.5175pt>
 File: figuras/capitulo_3/f2.png Graphic file (type png)
 <use figuras/capitulo_3/f2.png>
-Package pdftex.def Info: figuras/capitulo_3/f2.png  used on input line 644.
+Package pdftex.def Info: figuras/capitulo_3/f2.png  used on input line 703.
 (pdftex.def)             Requested size: 204.85846pt x 103.10371pt.
-
-
-[42 <./figuras/Capitulo_3/Captura de tela 2026-09-03 233659.png>]
-<figuras/capitulo_3/4-a.png, id=1010, 513.92pt x 208.78pt>
+<figuras/capitulo_3/4-a.png, id=1034, 513.92pt x 208.78pt>
 File: figuras/capitulo_3/4-a.png Graphic file (type png)
 <use figuras/capitulo_3/4-a.png>
-Package pdftex.def Info: figuras/capitulo_3/4-a.png  used on input line 659.
+Package pdftex.def Info: figuras/capitulo_3/4-a.png  used on input line 719.
 (pdftex.def)             Requested size: 204.85846pt x 83.22379pt.
-<figuras/capitulo_3/4-b.png, id=1011, 513.92pt x 221.82875pt>
+<figuras/capitulo_3/4-b.png, id=1035, 513.92pt x 221.82875pt>
 File: figuras/capitulo_3/4-b.png Graphic file (type png)
 <use figuras/capitulo_3/4-b.png>
-Package pdftex.def Info: figuras/capitulo_3/4-b.png  used on input line 665.
+Package pdftex.def Info: figuras/capitulo_3/4-b.png  used on input line 726.
 (pdftex.def)             Requested size: 204.85846pt x 88.42528pt.
 
 
-Package caption Warning: \label without proper reference on input line 666.
-See the caption package documentation for explanation.
+[44 <./figuras/Capitulo_3/f1.png> <./figuras/Capitulo_3/f2.png> <./figuras/Capitulo_3/4-a.png> <./figuras/Capitulo_3/4-b.png>]
 
-
-LaTeX Warning: Reference `fig:3.4b' on page 43 undefined on input line 673.
-
-
-
-[43 <./figuras/Capitulo_3/f1.png> <./figuras/Capitulo_3/f2.png> <./figuras/Capitulo_3/4-a.png> <./figuras/Capitulo_3/4-b.png>]
-<figuras/capitulo_3/5.png, id=1032, 454.69875pt x 230.8625pt>
+[45]
+<figuras/capitulo_3/5.png, id=1064, 454.69875pt x 230.8625pt>
 File: figuras/capitulo_3/5.png Graphic file (type png)
 <use figuras/capitulo_3/5.png>
-Package pdftex.def Info: figuras/capitulo_3/5.png  used on input line 733.
+Package pdftex.def Info: figuras/capitulo_3/5.png  used on input line 794.
 (pdftex.def)             Requested size: 455.24413pt x 231.14372pt.
 
 
-LaTeX Warning: Reference `fig:3.10' on page 44 undefined on input line 753.
-
-
-
-[44] (./figuras/Capitulo_3/11.tex
+[46 <./figuras/Capitulo_3/5.png>] (./figuras/Capitulo_3/11.tex
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
 (Font)              scaled to size 8.0pt on input line 7.
 LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
@@ -2025,23 +2064,21 @@ LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
 (Font)              scaled to size 6.2pt on input line 23.
 )
 
-[45 <./figuras/Capitulo_3/5.png>])
+[47])
 
-[46]
-
-[47]
+[48]
 \openout2 = `cap_4.aux'.
 
  (./cap_4.tex
 Cap\'{\i }tulo 4.
-<figuras/Capítulo 4/4.1.png, id=1073, 513.92pt x 505.89pt>
+<figuras/Capítulo 4/4.1.png, id=1097, 513.92pt x 505.89pt>
 File: figuras/Capítulo 4/4.1.png Graphic file (type png)
 <use figuras/Capítulo 4/4.1.png>
 Package pdftex.def Info: figuras/Capítulo 4/4.1.png  used on input line 12.
 (pdftex.def)             Requested size: 364.19669pt x 358.51283pt.
 
 
-[48
+[49
 
 
 
@@ -2053,61 +2090,47 @@ LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 26.
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
 (Font)              scaled to size 10.0pt on input line 26.
-<figuras/Capítulo 4/4.2a.png, id=1084, 513.92pt x 348.30125pt>
+<figuras/Capítulo 4/4.2a.png, id=1110, 513.92pt x 348.30125pt>
 File: figuras/Capítulo 4/4.2a.png Graphic file (type png)
 <use figuras/Capítulo 4/4.2a.png>
 Package pdftex.def Info: figuras/Capítulo 4/4.2a.png  used on input line 27.
 (pdftex.def)             Requested size: 204.85846pt x 138.8397pt.
-<figuras/Capítulo 4/4.2b.png, id=1085, 513.92pt x 388.45125pt>
+<figuras/Capítulo 4/4.2b.png, id=1111, 513.92pt x 388.45125pt>
 File: figuras/Capítulo 4/4.2b.png Graphic file (type png)
 <use figuras/Capítulo 4/4.2b.png>
 Package pdftex.def Info: figuras/Capítulo 4/4.2b.png  used on input line 34.
 (pdftex.def)             Requested size: 182.09486pt x 137.63739pt.
 
 
-[49 <./figuras/Capítulo 4/4.1.png>]
-<figuras/Capítulo 4/4.3.png, id=1094, 513.92pt x 390.45876pt>
+[50 <./figuras/Capítulo 4/4.1.png>]
+<figuras/Capítulo 4/4.3.png, id=1119, 513.92pt x 390.45876pt>
 File: figuras/Capítulo 4/4.3.png Graphic file (type png)
 <use figuras/Capítulo 4/4.3.png>
 Package pdftex.def Info: figuras/Capítulo 4/4.3.png  used on input line 48.
 (pdftex.def)             Requested size: 318.6695pt x 242.11766pt.
 
 
-[50 <./figuras/Capítulo 4/4.2a.png> <./figuras/Capítulo 4/4.2b.png> <./figuras/Capítulo 4/4.3.png>]
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 73.
+[51 <./figuras/Capítulo 4/4.2a.png> <./figuras/Capítulo 4/4.2b.png> <./figuras/Capítulo 4/4.3.png>]
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 74.
 
 
-[51]
-<figuras/Capítulo 4/4.4.png, id=1121, 463.7325pt x 217.81375pt>
+[52]
+<figuras/Capítulo 4/4.4.png, id=1145, 463.7325pt x 217.81375pt>
 File: figuras/Capítulo 4/4.4.png Graphic file (type png)
 <use figuras/Capítulo 4/4.4.png>
-Package pdftex.def Info: figuras/Capítulo 4/4.4.png  used on input line 117.
+Package pdftex.def Info: figuras/Capítulo 4/4.4.png  used on input line 118.
 (pdftex.def)             Requested size: 455.24413pt x 213.83156pt.
 
 
-LaTeX Warning: Reference `sec:projetor elíptico' on page 52 undefined on input line 124.
-
-
-
-[52 <./figuras/Capítulo 4/4.4.png>]
-<figuras/Capítulo 4/4.5.png, id=1133, 513.92pt x 133.49875pt>
+[53 <./figuras/Capítulo 4/4.4.png>]
+<figuras/Capítulo 4/4.5.png, id=1158, 513.92pt x 133.49875pt>
 File: figuras/Capítulo 4/4.5.png Graphic file (type png)
 <use figuras/Capítulo 4/4.5.png>
-Package pdftex.def Info: figuras/Capítulo 4/4.5.png  used on input line 144.
+Package pdftex.def Info: figuras/Capítulo 4/4.5.png  used on input line 145.
 (pdftex.def)             Requested size: 455.24413pt x 118.25941pt.
 
 
-[53 <./figuras/Capítulo 4/4.5.png>]
-
-LaTeX Warning: Reference `sec:projetor elíptico' on page 54 undefined on input line 166.
-
-
-
-[54]
-
-LaTeX Warning: Reference `sec:Projetor L2' on page 55 undefined on input line 194.
-
-
+[54 <./figuras/Capítulo 4/4.5.png>]
 
 [55]
 
@@ -2124,7 +2147,9 @@ LaTeX Warning: Reference `sec:Projetor L2' on page 55 undefined on input line 19
 [61]
 
 [62]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 476.
+
+[63]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 477.
  (c:/texlive/2024/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
@@ -2133,54 +2158,52 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 12.0pt on input line 479.
+(Font)              scaled to size 12.0pt on input line 480.
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/ntxtlf/m/sc/12'.
 (microtype)             Ignoring protrusion settings for this character.
 
 
-[63{c:/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}]
-Underfull \hbox (badness 1502) in paragraph at lines 530--532
+[64{c:/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}{c:/texlive/2024/texmf-dist/fonts/enc/dvips/newtx/ntx-ec-tlf-pc.enc}]
+Underfull \hbox (badness 1502) in paragraph at lines 531--533
 []\T1/ntxtlf/m/n/12 (+20) Geometria do ele-mento $\OML/ntxmi/m/it/12 E$\T1/ntxtlf/m/n/12 (+20) , or-dem $\OML/ntxmi/m/it/12 k$\T1/ntxtlf/m/n/12 (+20) , $\OML/ntxmi/m/it/12 n[]$\T1/ntxtlf/m/n/12 (+20) , ma-pas \T1/pcr/m/n/12 edge_dof_map \T1/ntxtlf/m/n/12 (+20) e
  []
 
-<figuras/Capítulo 4/4.6.png, id=1260, 383.4325pt x 271.0125pt>
+<figuras/Capítulo 4/4.6.png, id=1287, 383.4325pt x 271.0125pt>
 File: figuras/Capítulo 4/4.6.png Graphic file (type png)
 <use figuras/Capítulo 4/4.6.png>
-Package pdftex.def Info: figuras/Capítulo 4/4.6.png  used on input line 555.
+Package pdftex.def Info: figuras/Capítulo 4/4.6.png  used on input line 556.
 (pdftex.def)             Requested size: 227.62206pt x 160.88846pt.
 
 
-[64]
+[65]
 
-LaTeX Warning: Command \' invalid in math mode on input line 574.
+LaTeX Warning: Command \' invalid in math mode on input line 575.
 
 
-LaTeX Warning: Command \' invalid in math mode on input line 574.
-
-Missing character: There is no � in font ntx-Regular-tlf-ot1!
-Missing character: There is no � in font ntx-Regular-tlf-ot1!
-
-LaTeX Warning: Command \' invalid in math mode on input line 603.
+LaTeX Warning: Command \' invalid in math mode on input line 575.
 
 Missing character: There is no � in font ntx-Regular-tlf-ot1!
+Missing character: There is no � in font ntx-Regular-tlf-ot1!
 
-Overfull \hbox (26.71552pt too wide) in paragraph at lines 603--605
+LaTeX Warning: Command \' invalid in math mode on input line 604.
+
+Missing character: There is no � in font ntx-Regular-tlf-ot1!
+
+Overfull \hbox (26.71552pt too wide) in paragraph at lines 604--606
 [][]
  []
 
 
 
-[65 <./figuras/Capítulo 4/4.6.png>]
+[66 <./figuras/Capítulo 4/4.6.png>]
 
-[66]
-Underfull \hbox (badness 10000) in paragraph at lines 631--631
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 632--632
 
  []
 
 
-
-[67]
 
 [68]
 
@@ -2188,68 +2211,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 631--631
 
 [70]
 
+[71]
+
 Package amsmath Warning: Bracket group [M] at formula start!
 (amsmath)                It could be a misspelled positional argument.
 (amsmath)                If it belongs to the formula add a \relax in
-(amsmath)                front to hide it on input line 819.
+(amsmath)                front to hide it on input line 820.
 
-
-
-[71]
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 12.0pt on input line 838.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 8.8pt on input line 838.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 6.6pt on input line 838.
 
 
 [72]
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 10.0pt on input line 891.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 7.3pt on input line 891.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 5.5pt on input line 891.
+
+Package amsmath Warning: Bracket group [M] at formula start!
+(amsmath)                It could be a misspelled positional argument.
+(amsmath)                If it belongs to the formula add a \relax in
+(amsmath)                front to hide it on input line 858.
+
 
 
 [73]
-Overfull \hbox (9.95192pt too wide) in paragraph at lines 923--925
+
+[74]
+Overfull \hbox (9.95192pt too wide) in paragraph at lines 929--931
 [][]
  []
 
 
 
-[74]
-
 [75]
+
+[76]
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.8pt on input line 934.
+(Font)              scaled to size 8.8pt on input line 940.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 6.6pt on input line 934.
+(Font)              scaled to size 6.6pt on input line 940.
 
 
-[76])
-
-[77]
+[77])
 
 [78]
+
+[79]
 \openout2 = `Cap_5.aux'.
 
  (./Cap_5.tex
 Cap\'{\i }tulo 5.
 
 
-[79
+[80
 
 
 
 
 ]
 
-[80]
-
 [81]
+
+[82]
 Underfull \hbox (badness 10000) in paragraph at lines 115--117
 
  []
@@ -2259,532 +2277,475 @@ Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
  []
 
-<figuras/Capítulo 5/Placa com furo/5.1.png, id=1487, 322.20375pt x 248.93pt>
+
+
+[83]
+<figuras/Capítulo 5/Placa quadrada/Placa engastada.png, id=1526, 195.73125pt x 163.812pt>
+File: figuras/Capítulo 5/Placa quadrada/Placa engastada.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Placa engastada.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Placa engastada.png  used on input line 137.
+(pdftex.def)             Requested size: 182.09486pt x 152.40855pt.
+<figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 4 elementos).png, id=1539, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 4 elementos).png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 4 elementos).png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 4 elementos).png  used on input line 163.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
+<figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 16 elementos).png, id=1540, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 16 elementos).png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 16 elementos).png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 16 elementos).png  used on input line 170.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
+<figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 64 elementos).png, id=1541, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 64 elementos).png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 64 elementos).png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 64 elementos).png  used on input line 177.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
+
+
+[84 <./figuras/Capítulo 5/Placa quadrada/Placa engastada.png>]
+<figuras/Capítulo 5/Placa quadrada/MAPE x Malha.png, id=1554, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/MAPE x Malha.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/MAPE x Malha.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/MAPE x Malha.png  used on input line 189.
+(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
+
+
+[85 <./figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 4 elementos).png> <./figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 16 elementos).png> <./figuras/Capítulo 5/Placa quadrada/Erro absoluto x Modo de vibração (Malha de 64 elementos).png>]
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
+(Font)              scaled to size 10.29301pt on input line 200.
+LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
+(Font)              scaled to size 5.73401pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 10.95pt on input line 200.
+LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
+(Font)              scaled to size 6.1pt on input line 200.
+
+
+[86 <./figuras/Capítulo 5/Placa quadrada/MAPE x Malha.png>]
+<figuras/Capítulo 5/Placa quadrada/malha uniforme.png, id=1575, 124.66576pt x 123.46124pt>
+File: figuras/Capítulo 5/Placa quadrada/malha uniforme.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/malha uniforme.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/malha uniforme.png  used on input line 228.
+(pdftex.def)             Requested size: 136.57462pt x 135.26332pt.
+<figuras/Capítulo 5/Placa quadrada/malha distorcida.png, id=1576, 120.45pt x 120.45pt>
+File: figuras/Capítulo 5/Placa quadrada/malha distorcida.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/malha distorcida.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/malha distorcida.png  used on input line 235.
+(pdftex.def)             Requested size: 136.57462pt x 136.58842pt.
+<figuras/Capítulo 5/Placa quadrada/Malha muito distorcida.png, id=1577, 124.0635pt x 121.6545pt>
+File: figuras/Capítulo 5/Placa quadrada/Malha muito distorcida.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Malha muito distorcida.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Malha muito distorcida.png  used on input line 242.
+(pdftex.def)             Requested size: 136.57462pt x 133.92244pt.
+<figuras/Capítulo 5/Placa quadrada/MAPE x Malha - Comparação de refino e distorção.png, id=1581, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/MAPE x Malha - Comparação de refino e distorção.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/MAPE x Malha - Comparação de refino e distorção.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/MAPE x Malha - Comparação de refino e distorção.png  used on input line 283.
+(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
+
+
+[87 <./figuras/Capítulo 5/Placa quadrada/malha uniforme.png> <./figuras/Capítulo 5/Placa quadrada/malha distorcida.png> <./figuras/Capítulo 5/Placa quadrada/Malha muito distorcida.png>]
+<figuras/Capítulo 5/Placa quadrada/Erro relativo X Modo de vibração - Estudo de distorção.png, id=1590, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/Erro relativo X Modo de vibração - Estudo de distorção.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Erro relativo X Modo de vibração - Estudo de distorção.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Erro relativo X Modo de vibração - Estudo de distorção.png  used on input line 294.
+(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
+
+
+[88 <./figuras/Capítulo 5/Placa quadrada/MAPE x Malha - Comparação de refino e distorção.png>]
+<figuras/Capítulo 5/Placa quadrada/Erro relativo x Modo de vibração - Comparação entre métodos.png, id=1599, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa quadrada/Erro relativo x Modo de vibração - Comparação entre métodos.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/Erro relativo x Modo de vibração - Comparação entre métodos.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/Erro relativo x Modo de vibração - Comparação entre métodos.png  used on input line 306.
+(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
+
+
+[89 <./figuras/Capítulo 5/Placa quadrada/Erro relativo X Modo de vibração - Estudo de distorção.png>]
+<figuras/Capítulo 5/Placa quadrada/deformed_mode_1.png, id=1606, 803.0pt x 602.25pt>
+File: figuras/Capítulo 5/Placa quadrada/deformed_mode_1.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/deformed_mode_1.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/deformed_mode_1.png  used on input line 320.
+(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+<figuras/Capítulo 5/Placa quadrada/deformed_mode_2.png, id=1607, 803.0pt x 602.25pt>
+File: figuras/Capítulo 5/Placa quadrada/deformed_mode_2.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/deformed_mode_2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/deformed_mode_2.png  used on input line 326.
+(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+<figuras/Capítulo 5/Placa quadrada/deformed_mode_3.png, id=1608, 803.0pt x 602.25pt>
+File: figuras/Capítulo 5/Placa quadrada/deformed_mode_3.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/deformed_mode_3.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/deformed_mode_3.png  used on input line 332.
+(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+<figuras/Capítulo 5/Placa quadrada/deformed_mode_4.png, id=1609, 803.0pt x 602.25pt>
+File: figuras/Capítulo 5/Placa quadrada/deformed_mode_4.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa quadrada/deformed_mode_4.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa quadrada/deformed_mode_4.png  used on input line 338.
+(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+
+
+[90 <./figuras/Capítulo 5/Placa quadrada/Erro relativo x Modo de vibração - Comparação entre métodos.png>]
+<figuras/Capítulo 5/Placa com furo/5.1.png, id=1616, 322.20375pt x 248.93pt>
 File: figuras/Capítulo 5/Placa com furo/5.1.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/5.1.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/5.1.png  used on input line 141.
-(pdftex.def)             Requested size: 455.24413pt x 351.72821pt.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/5.1.png  used on input line 353.
+(pdftex.def)             Requested size: 318.6695pt x 246.20975pt.
 
 
-[82]
-<figuras/Capítulo 5/Placa com furo/f1.png, id=1504, 300.52275pt x 188.50426pt>
+[91 <./figuras/Capítulo 5/Placa quadrada/deformed_mode_1.png> <./figuras/Capítulo 5/Placa quadrada/deformed_mode_2.png> <./figuras/Capítulo 5/Placa quadrada/deformed_mode_3.png> <./figuras/Capítulo 5/Placa quadrada/deformed_mode_4.png>]
+<figuras/Capítulo 5/Placa com furo/f1.png, id=1630, 300.52275pt x 188.50426pt>
 File: figuras/Capítulo 5/Placa com furo/f1.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/f1.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/f1.png  used on input line 155.
-(pdftex.def)             Requested size: 204.85846pt x 128.50046pt.
-<figuras/Capítulo 5/Placa com furo/f2.png, id=1505, 108.405pt x 93.951pt>
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/f1.png  used on input line 368.
+(pdftex.def)             Requested size: 163.88739pt x 102.80037pt.
+<figuras/Capítulo 5/Placa com furo/f2.png, id=1631, 108.405pt x 93.951pt>
 File: figuras/Capítulo 5/Placa com furo/f2.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/f2.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/f2.png  used on input line 161.
-(pdftex.def)             Requested size: 204.85846pt x 177.5669pt.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/f2.png  used on input line 374.
+(pdftex.def)             Requested size: 143.40028pt x 124.29526pt.
 
 
-[83 <./figuras/Capítulo 5/Placa com furo/5.1.png>]
-Overfull \hbox (46.78787pt too wide) in paragraph at lines 174--201
- [][] 
- []
+[92 <./figuras/Capítulo 5/Placa com furo/5.1.png> <./figuras/Capítulo 5/Placa com furo/f1.png> <./figuras/Capítulo 5/Placa com furo/f2.png>]
 
-
-
-[84 <./figuras/Capítulo 5/Placa com furo/f1.png> <./figuras/Capítulo 5/Placa com furo/f2.png>]
-
-Package caption Warning: \label without proper reference on input line 235.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:5.3a' on page 85 undefined on input line 226.
-
-
-Package caption Warning: \label without proper reference on input line 241.
-See the caption package documentation for explanation.
-
-
-LaTeX Warning: Reference `fig:5.3b' on page 85 undefined on input line 226.
-
-<figuras/Capítulo 5/Placa com furo/malha não deformada 32.png, id=1535, 803.0pt x 602.25pt>
+[93]
+<figuras/Capítulo 5/Placa com furo/malha não deformada 32.png, id=1658, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Placa com furo/malha não deformada 32.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/malha não deformada 32.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/malha não deformada 32.png  used on input line 234.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/malha não deformada 32.png  used on input line 451.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png, id=1536, 803.0pt x 602.25pt>
+<figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png, id=1659, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png  used on input line 240.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png  used on input line 458.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-
-
-[85 <./figuras/Capítulo 5/Placa com furo/malha não deformada 32.png> <./figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png>]
-<figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png, id=1542, 633.36626pt x 392.46625pt>
+<figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png, id=1662, 633.36626pt x 392.46625pt>
 File: figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png  used on input line 269.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png  used on input line 496.
 (pdftex.def)             Requested size: 455.24413pt x 282.09639pt.
 
-Overfull \hbox (223.48784pt too wide) in paragraph at lines 281--295
- [][] 
- []
 
-
-
-[86 <./figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png>]
-LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `OML/ntxmi/m/it' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `LMS/ntxsy/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `LMX/ntxexx/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/b/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
-(Font)              scaled to size 10.29301pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/qhv/m/n' will be
-(Font)              scaled to size 5.73401pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 8.0pt on input line 309.
-LaTeX Font Info:    Font shape `OT1/minntx/m/it' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxmia/m/it' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxsym/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxsyc/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 10.95pt on input line 309.
-LaTeX Font Info:    Font shape `U/ntxexa/m/n' will be
-(Font)              scaled to size 6.1pt on input line 309.
-
-Underfull \hbox (badness 10000) in paragraph at lines 311--324
-[][]
- []
-
-
-
-[87]
-<figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png, id=1556, 602.25pt x 372.39125pt>
+[94 <./figuras/Capítulo 5/Placa com furo/malha não deformada 32.png> <./figuras/Capítulo 5/Placa com furo/mallha não deformada 64.png>]
+<figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png, id=1669, 602.25pt x 372.39125pt>
 File: figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png  used on input line 330.
-(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png  used on input line 519.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
+File: figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png  used on input line 526.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
 
 
-[88 <./figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png>]
-<figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png, id=1570, 602.25pt x 372.39125pt>
+[95 <./figuras/Capítulo 5/Placa com furo/Comparação de frequências com modos de vibração - Placa engastada com furo.png>]
+<figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png, id=1682, 525.965pt x 325.215pt>
 File: figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png  used on input line 342.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png  used on input line 540.
+(pdftex.def)             Requested size: 409.71693pt x 253.34412pt.
+
+
+[96 <./figuras/Capítulo 5/Placa com furo/Condicionamento de K por malha.png> <./figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png>]
+<figuras/Capítulo 5/Placa com furo/Erros relativos.png, id=1694, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Placa com furo/Erros relativos.png Graphic file (type png)
+<use figuras/Capítulo 5/Placa com furo/Erros relativos.png>
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Erros relativos.png  used on input line 575.
 (pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
-
-Overfull \hbox (228.16783pt too wide) in paragraph at lines 352--359
-[][]
- []
-
-<figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png, id=1571, 640.3925pt x 392.46625pt>
+<figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png, id=1696, 640.3925pt x 392.46625pt>
 File: figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png Graphic file (type png)
 <use figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png  used on input line 365.
+Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png  used on input line 586.
 (pdftex.def)             Requested size: 455.24413pt x 279.0003pt.
 
 
-[89 <./figuras/Capítulo 5/Placa com furo/Curva de erros - Placa engastada com furo.png>]
+[97 <./figuras/Capítulo 5/Placa com furo/Erros relativos.png>]
 
-[90 <./figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png>]
-<figuras/Capítulo 5/Placa com furo/time_disp_mode_1_dof_10.png, id=1594, 803.0pt x 401.5pt>
-File: figuras/Capítulo 5/Placa com furo/time_disp_mode_1_dof_10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/time_disp_mode_1_dof_10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/time_disp_mode_1_dof_10.png  used on input line 393.
-(pdftex.def)             Requested size: 204.85846pt x 102.42708pt.
-<figuras/Capítulo 5/Placa com furo/time_disp_mode_2_dof_10.png, id=1595, 803.0pt x 401.5pt>
-File: figuras/Capítulo 5/Placa com furo/time_disp_mode_2_dof_10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/time_disp_mode_2_dof_10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/time_disp_mode_2_dof_10.png  used on input line 399.
-(pdftex.def)             Requested size: 204.85846pt x 102.42708pt.
-<figuras/Capítulo 5/Placa com furo/time_disp_mode_3_dof_10.png, id=1596, 803.0pt x 401.5pt>
-File: figuras/Capítulo 5/Placa com furo/time_disp_mode_3_dof_10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/time_disp_mode_3_dof_10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/time_disp_mode_3_dof_10.png  used on input line 405.
-(pdftex.def)             Requested size: 204.85846pt x 102.42708pt.
-<figuras/Capítulo 5/Placa com furo/time_disp_mode_4_dof_10.png, id=1597, 803.0pt x 401.5pt>
-File: figuras/Capítulo 5/Placa com furo/time_disp_mode_4_dof_10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/time_disp_mode_4_dof_10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/time_disp_mode_4_dof_10.png  used on input line 411.
-(pdftex.def)             Requested size: 204.85846pt x 102.42708pt.
-<figuras/Capítulo 5/Placa com furo/Malha 8-104 deformação do modo 10.png, id=1598, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Placa com furo/Malha 8-104 deformação do modo 10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/Malha 8-104 deformação do modo 10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Malha 8-104 deformação do modo 10.png  used on input line 424.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Placa com furo/Malha 8-17 deformação do modo 10.png, id=1599, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Placa com furo/Malha 8-17 deformação do modo 10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/Malha 8-17 deformação do modo 10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Malha 8-17 deformação do modo 10.png  used on input line 430.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Placa com furo/Malha 8-33 deformação do modo 10.png, id=1600, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Placa com furo/Malha 8-33 deformação do modo 10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/Malha 8-33 deformação do modo 10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Malha 8-33 deformação do modo 10.png  used on input line 436.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Placa com furo/Malha 8-45 deformação do modo 10.png, id=1601, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Placa com furo/Malha 8-45 deformação do modo 10.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/Malha 8-45 deformação do modo 10.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/Malha 8-45 deformação do modo 10.png  used on input line 442.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+[98 <./figuras/Capítulo 5/Placa com furo/CAD - Placa engastada com furo.png>]
 
-
-[91 <./figuras/Capítulo 5/Placa com furo/time_disp_mode_1_dof_10.png> <./figuras/Capítulo 5/Placa com furo/time_disp_mode_2_dof_10.png> <./figuras/Capítulo 5/Placa com furo/time_disp_mode_3_dof_10.png> <./figuras/Capítulo 5/Placa com furo/time_disp_mode_4_dof_10.png>]
-Overfull \hbox (2.11288pt too wide) in paragraph at lines 467--467
- []|\T1/ntxtlf/m/n/12 (-20) 38,80%| 
- []
-
-
-Overfull \hbox (2.11288pt too wide) in paragraph at lines 469--469
- []|\T1/ntxtlf/m/n/12 (-20) 14,28%| 
- []
-
-
-Overfull \hbox (59.52806pt too wide) in paragraph at lines 454--473
-[][]
- []
-
-
-
-[92 <./figuras/Capítulo 5/Placa com furo/Malha 8-104 deformação do modo 10.png> <./figuras/Capítulo 5/Placa com furo/Malha 8-17 deformação do modo 10.png> <./figuras/Capítulo 5/Placa com furo/Malha 8-33 deformação do modo 10.png> <./figuras/Capítulo 5/Placa com furo/Malha 8-45 deformação do modo 10.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 481--488
-[][]
- []
-
-<figuras/Capítulo 5/Placa com furo/CA - Placa engastada com furo.png, id=1616, 633.36626pt x 392.46625pt>
-File: figuras/Capítulo 5/Placa com furo/CA - Placa engastada com furo.png Graphic file (type png)
-<use figuras/Capítulo 5/Placa com furo/CA - Placa engastada com furo.png>
-Package pdftex.def Info: figuras/Capítulo 5/Placa com furo/CA - Placa engastada com furo.png  used on input line 494.
-(pdftex.def)             Requested size: 455.24413pt x 282.09639pt.
-
-
-[93 <./figuras/Capítulo 5/Placa com furo/CA - Placa engastada com furo.png>]
-<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png, id=1623, 242.1045pt x 126.4725pt>
+[99]
+<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png, id=1733, 242.1045pt x 126.4725pt>
 File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png Graphic file (type png)
 <use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png  used on input line 511.
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png  used on input line 670.
 (pdftex.def)             Requested size: 455.24413pt x 237.82234pt.
-<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png, id=1635, 455.90324pt x 239.09325pt>
-File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png  used on input line 522.
-(pdftex.def)             Requested size: 455.24413pt x 238.76065pt.
-
-
-[94 <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png>]
-<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png, id=1647, 262.581pt x 124.0635pt>
-File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png  used on input line 531.
-(pdftex.def)             Requested size: 455.24413pt x 215.10582pt.
-<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png, id=1650, 199.947pt x 78.2925pt>
-File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png  used on input line 540.
-(pdftex.def)             Requested size: 455.24413pt x 178.2662pt.
-
-
-[95 <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png> <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png>]
-Overfull \hbox (294.01192pt too wide) in paragraph at lines 551--567
-[][]
- []
-
-
-Overfull \hbox (242.45993pt too wide) in paragraph at lines 575--583
-[][] [] 
- []
-
-<figuras/Capítulo 5/Barragem/Erros médio absolutos para cada modo de vibração.png, id=1663, 602.25pt x 372.39125pt>
-File: figuras/Capítulo 5/Barragem/Erros médio absolutos para cada modo de vibração.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Erros médio absolutos para cada modo de vibração.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Erros médio absolutos para cada modo de vibração.png  used on input line 589.
-(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
-
-
-[96 <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png>]
-
-[97 <./figuras/Capítulo 5/Barragem/Erros médio absolutos para cada modo de vibração.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 604--612
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 618--626
-[][]
- []
-
-<figuras/Capítulo 5/Barragem/Relação frequência por modo de vibração - Barragem de terra.png, id=1684, 490.83376pt x 303.1325pt>
-File: figuras/Capítulo 5/Barragem/Relação frequência por modo de vibração - Barragem de terra.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Relação frequência por modo de vibração - Barragem de terra.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Relação frequência por modo de vibração - Barragem de terra.png  used on input line 632.
-(pdftex.def)             Requested size: 455.24413pt x 281.161pt.
-
-
-[98]
-
-[99 <./figuras/Capítulo 5/Barragem/Relação frequência por modo de vibração - Barragem de terra.png>]
-<figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png, id=1711, 495.8525pt x 309.155pt>
-File: figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png  used on input line 659.
-(pdftex.def)             Requested size: 455.24413pt x 283.83638pt.
 
 
 [100]
-Overfull \hbox (60.09587pt too wide) in paragraph at lines 672--680
-[][]
- []
-
-<figuras/Capítulo 5/Barragem/Comparação entre as médias dos erros - Barragem de terra.png, id=1720, 486.81876pt x 303.1325pt>
-File: figuras/Capítulo 5/Barragem/Comparação entre as médias dos erros - Barragem de terra.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Comparação entre as médias dos erros - Barragem de terra.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Comparação entre as médias dos erros - Barragem de terra.png  used on input line 686.
-(pdftex.def)             Requested size: 455.24413pt x 283.47371pt.
-
-
-[101 <./figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png>]
-<figuras/Capítulo 5/Barragem/CAD - Barragem de terra.png, id=1726, 490.83376pt x 303.1325pt>
-File: figuras/Capítulo 5/Barragem/CAD - Barragem de terra.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/CAD - Barragem de terra.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/CAD - Barragem de terra.png  used on input line 696.
-(pdftex.def)             Requested size: 455.24413pt x 281.161pt.
+<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png, id=1749, 455.90324pt x 239.09325pt>
+File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png  used on input line 682.
+(pdftex.def)             Requested size: 364.19669pt x 191.00851pt.
+<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png, id=1752, 262.581pt x 124.0635pt>
+File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png  used on input line 692.
+(pdftex.def)             Requested size: 409.71693pt x 193.59315pt.
 
 
-[102 <./figuras/Capítulo 5/Barragem/Comparação entre as médias dos erros - Barragem de terra.png> <./figuras/Capítulo 5/Barragem/CAD - Barragem de terra.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 707--719
-[][]
- []
+[101 <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png> <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png>]
+<figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png, id=1764, 602.25pt x 245.41687pt>
+File: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png  used on input line 702.
+(pdftex.def)             Requested size: 455.24413pt x 185.51889pt.
 
-<figuras/Capítulo 5/Barragem/Comparação de erros entre os métodos.png, id=1735, 602.25pt x 372.39125pt>
-File: figuras/Capítulo 5/Barragem/Comparação de erros entre os métodos.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/Comparação de erros entre os métodos.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/Comparação de erros entre os métodos.png  used on input line 725.
-(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 738--745
-[][]
+Overfull \hbox (10.35518pt too wide) in paragraph at lines 718--733
+ [][] 
  []
 
 
 
-[103 <./figuras/Capítulo 5/Barragem/Comparação de erros entre os métodos.png>]
-<figuras/Capítulo 5/Barragem/CA - Barragem de terra.png, id=1743, 495.8525pt x 309.155pt>
-File: figuras/Capítulo 5/Barragem/CA - Barragem de terra.png Graphic file (type png)
-<use figuras/Capítulo 5/Barragem/CA - Barragem de terra.png>
-Package pdftex.def Info: figuras/Capítulo 5/Barragem/CA - Barragem de terra.png  used on input line 766.
-(pdftex.def)             Requested size: 455.24413pt x 283.83638pt.
+[102 <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png> <./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png>]
+<figuras/Capítulo 5/Barragem/Erro relativo k1.png, id=1802, 895.345pt x 554.07pt>
+File: figuras/Capítulo 5/Barragem/Erro relativo k1.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Erro relativo k1.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Erro relativo k1.png  used on input line 770.
+(pdftex.def)             Requested size: 455.24413pt x 281.72652pt.
 
 
-[104 <./figuras/Capítulo 5/Barragem/CA - Barragem de terra.png>]
-<figuras/Capítulo 5/Parede estrutural/sheer wall.png, id=1752, 159.59625pt x 221.02576pt>
+[103]
+
+[104 <./figuras/Capítulo 5/Barragem/Erro relativo k1.png>]
+<figuras/Capítulo 5/Barragem/Erro relativo k2.png, id=1824, 895.345pt x 554.07pt>
+File: figuras/Capítulo 5/Barragem/Erro relativo k2.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Erro relativo k2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Erro relativo k2.png  used on input line 831.
+(pdftex.def)             Requested size: 432.48053pt x 267.64146pt.
+
+
+[105 <./figuras/Capítulo 5/Barragem/Erro relativo k2.png>]
+
+[106]
+<figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png, id=1857, 495.8525pt x 309.155pt>
+File: figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png  used on input line 862.
+(pdftex.def)             Requested size: 218.51328pt x 136.24089pt.
+
+Overfull \hbox (36.41841pt too wide) in paragraph at lines 862--864
+ [][] 
+ []
+
+<figuras/Capítulo 5/Barragem/Condicionamento de M - Barragem de terra.png, id=1858, 495.8525pt x 309.155pt>
+File: figuras/Capítulo 5/Barragem/Condicionamento de M - Barragem de terra.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/Condicionamento de M - Barragem de terra.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/Condicionamento de M - Barragem de terra.png  used on input line 869.
+(pdftex.def)             Requested size: 218.51328pt x 136.24089pt.
+
+Overfull \hbox (36.41841pt too wide) in paragraph at lines 869--871
+ [][] 
+ []
+
+
+
+[107 <./figuras/Capítulo 5/Barragem/Condicionamento de K - Barragem de terra.png> <./figuras/Capítulo 5/Barragem/Condicionamento de M - Barragem de terra.png>]
+<figuras/Capítulo 5/Barragem/CAD médio.png, id=1870, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Barragem/CAD médio.png Graphic file (type png)
+<use figuras/Capítulo 5/Barragem/CAD médio.png>
+Package pdftex.def Info: figuras/Capítulo 5/Barragem/CAD médio.png  used on input line 905.
+(pdftex.def)             Requested size: 364.19669pt x 225.20364pt.
+<figuras/Capítulo 5/Parede estrutural/sheer wall.png, id=1875, 159.59625pt x 221.02576pt>
 File: figuras/Capítulo 5/Parede estrutural/sheer wall.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/sheer wall.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/sheer wall.png  used on input line 779.
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/sheer wall.png  used on input line 942.
 (pdftex.def)             Requested size: 227.62206pt x 315.23814pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 785--787
+
+[108 <./figuras/Capítulo 5/Barragem/CAD médio.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 948--950
 
  []
 
-<figuras/Capítulo 5/Parede estrutural/mesh_original 40.png, id=1758, 803.0pt x 602.25pt>
+<figuras/Capítulo 5/Parede estrutural/mesh_original 40.png, id=1886, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Parede estrutural/mesh_original 40.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/mesh_original 40.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 40.png  used on input line 795.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Parede estrutural/mesh_original 112.png, id=1759, 803.0pt x 602.25pt>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 40.png  used on input line 957.
+(pdftex.def)             Requested size: 163.88739pt x 122.91066pt.
+<figuras/Capítulo 5/Parede estrutural/mesh_original 112.png, id=1887, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Parede estrutural/mesh_original 112.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/mesh_original 112.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 112.png  used on input line 801.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Parede estrutural/mesh_original 360.png, id=1760, 803.0pt x 602.25pt>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 112.png  used on input line 962.
+(pdftex.def)             Requested size: 163.88739pt x 122.91066pt.
+<figuras/Capítulo 5/Parede estrutural/mesh_original 360.png, id=1888, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Parede estrutural/mesh_original 360.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/mesh_original 360.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 360.png  used on input line 807.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png, id=1761, 803.0pt x 602.25pt>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 360.png  used on input line 968.
+(pdftex.def)             Requested size: 163.88739pt x 122.91066pt.
+<figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png, id=1889, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png  used on input line 813.
-(pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png  used on input line 973.
+(pdftex.def)             Requested size: 163.88739pt x 122.91066pt.
 
 
-[105 <./figuras/Capítulo 5/Parede estrutural/sheer wall.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 828--841
-[][]
- []
-
-
-
-[106 <./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png>]
-<figuras/Capítulo 5/Parede estrutural/Relação de frequências por modo de vibração.png, id=1776, 432.61626pt x 268.00125pt>
-File: figuras/Capítulo 5/Parede estrutural/Relação de frequências por modo de vibração.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Relação de frequências por modo de vibração.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Relação de frequências por modo de vibração.png  used on input line 847.
-(pdftex.def)             Requested size: 455.24413pt x 282.03117pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 856--863
-[][]
- []
-
-
-
-[107 <./figuras/Capítulo 5/Parede estrutural/Relação de frequências por modo de vibração.png>]
-<figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png, id=1783, 411.5375pt x 253.94875pt>
+[109 <./figuras/Capítulo 5/Parede estrutural/sheer wall.png>]
+<figuras/Capítulo 5/Parede estrutural/Erros relativos k1.png, id=1899, 868.24374pt x 537.00626pt>
+File: figuras/Capítulo 5/Parede estrutural/Erros relativos k1.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Erros relativos k1.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Erros relativos k1.png  used on input line 986.
+(pdftex.def)             Requested size: 409.71693pt x 253.40903pt.
+<figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png, id=1901, 602.25pt x 372.39125pt>
 File: figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png  used on input line 873.
-(pdftex.def)             Requested size: 455.24413pt x 280.92157pt.
-<figuras/Capítulo 5/Parede estrutural/von_mises_map (k1).png, id=1789, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Parede estrutural/von_mises_map (k1).png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/von_mises_map (k1).png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/von_mises_map (k1).png  used on input line 891.
-(pdftex.def)             Requested size: 455.24413pt x 341.43895pt.
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png  used on input line 1002.
+(pdftex.def)             Requested size: 182.09486pt x 112.59329pt.
+<figuras/Capítulo 5/Parede estrutural/Condicionamento de M para as malhas triangulares.png, id=1902, 598.235pt x 372.39125pt>
+File: figuras/Capítulo 5/Parede estrutural/Condicionamento de M para as malhas triangulares.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Condicionamento de M para as malhas triangulares.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento de M para as malhas triangulares.png  used on input line 1008.
+(pdftex.def)             Requested size: 182.09486pt x 113.34903pt.
 
 
-[108 <./figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png>]
-<figuras/Capítulo 5/Parede estrutural/tau_xy_map (k1).png, id=1798, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Parede estrutural/tau_xy_map (k1).png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/tau_xy_map (k1).png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/tau_xy_map (k1).png  used on input line 900.
-(pdftex.def)             Requested size: 455.24413pt x 341.43895pt.
+[110 <./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png> <./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png> <./figuras/Capítulo 5/Parede estrutural/Erros relativos k1.png>]
+<figuras/Capítulo 5/Parede estrutural/locking_rvol_mode1 PE1000N588.png, id=1909, 903.375pt x 702.625pt>
+File: figuras/Capítulo 5/Parede estrutural/locking_rvol_mode1 PE1000N588.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/locking_rvol_mode1 PE1000N588.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/locking_rvol_mode1 PE1000N588.png  used on input line 1025.
+(pdftex.def)             Requested size: 182.09486pt x 141.62679pt.
+<figuras/Capítulo 5/Parede estrutural/locking_rshear_mode1 PE1000N588.png, id=1910, 903.375pt x 702.625pt>
+File: figuras/Capítulo 5/Parede estrutural/locking_rshear_mode1 PE1000N588.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/locking_rshear_mode1 PE1000N588.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/locking_rshear_mode1 PE1000N588.png  used on input line 1031.
+(pdftex.def)             Requested size: 182.09486pt x 141.62679pt.
 
 
-[109 <./figuras/Capítulo 5/Parede estrutural/von_mises_map (k1).png>]
-Overfull \hbox (272.47192pt too wide) in paragraph at lines 911--923
-[][] [] 
+[111 <./figuras/Capítulo 5/Parede estrutural/Condicionamento de K para as malhas triangulares.png> <./figuras/Capítulo 5/Parede estrutural/Condicionamento de M para as malhas triangulares.png>]
+<figuras/Capítulo 5/Parede estrutural/Erros relativos k2.png, id=1922, 868.24374pt x 537.00626pt>
+File: figuras/Capítulo 5/Parede estrutural/Erros relativos k2.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Erros relativos k2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Erros relativos k2.png  used on input line 1045.
+(pdftex.def)             Requested size: 364.19669pt x 225.25429pt.
+
+
+[112 <./figuras/Capítulo 5/Parede estrutural/locking_rvol_mode1 PE1000N588.png> <./figuras/Capítulo 5/Parede estrutural/locking_rshear_mode1 PE1000N588.png>]
+Overfull \hbox (11.40717pt too wide) in paragraph at lines 1060--1071
+ [][] 
  []
 
+<figuras/Capítulo 5/Parede estrutural/Erros relativos k2-2.png, id=1932, 868.24374pt x 537.00626pt>
+File: figuras/Capítulo 5/Parede estrutural/Erros relativos k2-2.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Erros relativos k2-2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Erros relativos k2-2.png  used on input line 1083.
+(pdftex.def)             Requested size: 409.71693pt x 253.40903pt.
 
 
-[110 <./figuras/Capítulo 5/Parede estrutural/tau_xy_map (k1).png>]
-Overfull \hbox (285.14392pt too wide) in paragraph at lines 929--936
-[][] [] 
- []
+[113 <./figuras/Capítulo 5/Parede estrutural/Erros relativos k2.png>]
 
-
-Overfull \hbox (285.14392pt too wide) in paragraph at lines 955--962
-[][] [] 
- []
-
-
-
-[111]
-<figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Park et al.png, id=1837, 513.92pt x 314.17375pt>
-File: figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Park et al.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Park et al.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Park et al.png  used on input line 975.
-(pdftex.def)             Requested size: 204.85846pt x 125.23581pt.
-<figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Antonietti et al.png, id=1838, 372.39125pt x 229.85875pt>
-File: figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Antonietti et al.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Antonietti et al.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Antonietti et al.png  used on input line 981.
-(pdftex.def)             Requested size: 204.85846pt x 126.45074pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 993--1005
-[][]
- []
-
-
-
-[112 <./figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Park et al.png> <./figuras/Capítulo 5/Parede estrutural/Curvas de erros absolutos com parâmetro de estabilização de Antonietti et al.png>]
-<figuras/Capítulo 5/Parede estrutural/Condicionamento da matriz de rigidez pós mudança de estabilização.png, id=1854, 492.84125pt x 306.14375pt>
-File: figuras/Capítulo 5/Parede estrutural/Condicionamento da matriz de rigidez pós mudança de estabilização.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Condicionamento da matriz de rigidez pós mudança de estabilização.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento da matriz de rigidez pós mudança de estabilização.png  used on input line 1014.
-(pdftex.def)             Requested size: 455.24413pt x 282.80481pt.
-
-
-[113 <./figuras/Capítulo 5/Parede estrutural/Condicionamento da matriz de rigidez pós mudança de estabilização.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1028--1035
-[][]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1045--1062
-[][]
- []
-
-<figuras/Capítulo 5/Parede estrutural/deformed_mode_2.png, id=1872, 803.0pt x 602.25pt>
-File: figuras/Capítulo 5/Parede estrutural/deformed_mode_2.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/deformed_mode_2.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/deformed_mode_2.png  used on input line 1073.
+[114 <./figuras/Capítulo 5/Parede estrutural/Erros relativos k2-2.png>]
+<figuras/Capítulo 5/Parede estrutural/deformed_mode_1.png, id=1957, 803.0pt x 602.25pt>
+File: figuras/Capítulo 5/Parede estrutural/deformed_mode_1.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/deformed_mode_1.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/deformed_mode_1.png  used on input line 1173.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
-<figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png, id=1873, 803.0pt x 602.25pt>
+<figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png, id=1958, 803.0pt x 602.25pt>
 File: figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png Graphic file (type png)
 <use figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png  used on input line 1079.
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png  used on input line 1179.
 (pdftex.def)             Requested size: 204.85846pt x 153.64064pt.
+<figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084739.png, id=1961, 177.66376pt x 205.9695pt>
+File: figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084739.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084739.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084739.png  used on input line 1192.
+(pdftex.def)             Requested size: 102.42923pt x 118.75209pt.
+<figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084801.png, id=1962, 154.77824pt x 198.7425pt>
+File: figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084801.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084801.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084801.png  used on input line 1198.
+(pdftex.def)             Requested size: 102.42923pt x 131.52525pt.
 
 
-[114]
-<figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=1).png, id=1880, 553.06625pt x 343.2825pt>
-File: figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=1).png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=1).png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=1).png  used on input line 1096.
-(pdftex.def)             Requested size: 204.85846pt x 127.15395pt.
-<figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=2).png, id=1881, 546.04pt x 338.26375pt>
-File: figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=2).png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=2).png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=2).png  used on input line 1102.
-(pdftex.def)             Requested size: 204.85846pt x 126.90536pt.
-<figuras/Capítulo 5/Parede estrutural/Condicionemanto x Tempo.png, id=1882, 602.25pt x 372.39125pt>
-File: figuras/Capítulo 5/Parede estrutural/Condicionemanto x Tempo.png Graphic file (type png)
-<use figuras/Capítulo 5/Parede estrutural/Condicionemanto x Tempo.png>
-Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionemanto x Tempo.png  used on input line 1112.
-(pdftex.def)             Requested size: 455.24413pt x 281.50313pt.
-)
+[115 <./figuras/Capítulo 5/Parede estrutural/deformed_mode_1.png> <./figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png>]
+<figuras/Capítulo 5/Parede estrutural/Condicionamento de K 2.png, id=1972, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Parede estrutural/Condicionamento de K 2.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Condicionamento de K 2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento de K 2.png  used on input line 1215.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
+<figuras/Capítulo 5/Parede estrutural/Condicionamento de M 2.png, id=1973, 602.25pt x 372.39125pt>
+File: figuras/Capítulo 5/Parede estrutural/Condicionamento de M 2.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/Condicionamento de M 2.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/Condicionamento de M 2.png  used on input line 1221.
+(pdftex.def)             Requested size: 204.85846pt x 126.66817pt.
 
-[115 <./figuras/Capítulo 5/Parede estrutural/deformed_mode_2.png> <./figuras/Capítulo 5/Parede estrutural/deformed_mode_8.png> <./figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=1).png> <./figuras/Capítulo 5/Parede estrutural/Tempo x Elementos (k=2).png>]
 
-[116 <./figuras/Capítulo 5/Parede estrutural/Condicionemanto x Tempo.png>]
+LaTeX Warning: Reference `fig:5.30' on page 116 undefined on input line 1228.
+
+<figuras/Capítulo 5/Parede estrutural/TxCond - K.png, id=1977, 940.51375pt x 581.17125pt>
+File: figuras/Capítulo 5/Parede estrutural/TxCond - K.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/TxCond - K.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/TxCond - K.png  used on input line 1237.
+(pdftex.def)             Requested size: 455.24413pt x 281.30904pt.
+<figuras/Capítulo 5/Parede estrutural/TxCond - M.png, id=1978, 940.51375pt x 581.17125pt>
+File: figuras/Capítulo 5/Parede estrutural/TxCond - M.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/TxCond - M.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/TxCond - M.png  used on input line 1243.
+(pdftex.def)             Requested size: 455.24413pt x 281.30904pt.
+
+
+[116 <./figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084739.png> <./figuras/Capítulo 5/Parede estrutural/Captura de tela 2026-09-16 084801.png> <./figuras/Capítulo 5/Parede estrutural/Condicionamento de K 2.png> <./figuras/Capítulo 5/Parede estrutural/Condicionamento de M 2.png>]
+<figuras/Capítulo 5/Parede estrutural/TxElementos.png, id=1988, 868.24374pt x 537.00626pt>
+File: figuras/Capítulo 5/Parede estrutural/TxElementos.png Graphic file (type png)
+<use figuras/Capítulo 5/Parede estrutural/TxElementos.png>
+Package pdftex.def Info: figuras/Capítulo 5/Parede estrutural/TxElementos.png  used on input line 1256.
+(pdftex.def)             Requested size: 455.24413pt x 281.57196pt.
+
+
+[117 <./figuras/Capítulo 5/Parede estrutural/TxCond - K.png> <./figuras/Capítulo 5/Parede estrutural/TxCond - M.png>])
+
+[118 <./figuras/Capítulo 5/Parede estrutural/TxElementos.png>]
 \openout2 = `Conclusoes.aux'.
 
  (./Conclusoes.tex
 Cap\'{\i }tulo 6.
 )
 
-[117
+[119
 
 
 
 
 ]
 
-[118]
+[120]
 
-[119] (./main.bbl
+[121] (./main.bbl
 
-[120
+[122
 
 
 
 ]
-
-[121]
-
-[122]
 
 [123]
 
@@ -2792,28 +2753,34 @@ Cap\'{\i }tulo 6.
 
 [125]
 
-[126])
+[126]
 
 [127]
+
+[128])
+
+[129]
 \openout2 = `Apendice_A.aux'.
 
  (./Apendice_A.tex)
 
-[128
+[130
 
 
 ]
+
+[131]
 \openout2 = `Apendice_B.aux'.
 
  (./Apendice_B.tex
-<figuras/capitulo_3/10.png, id=1953, 362.35374pt x 278.03876pt>
+<figuras/capitulo_3/10.png, id=2071, 362.35374pt x 278.03876pt>
 File: figuras/capitulo_3/10.png Graphic file (type png)
 <use figuras/capitulo_3/10.png>
 Package pdftex.def Info: figuras/capitulo_3/10.png  used on input line 16.
 (pdftex.def)             Requested size: 182.09486pt x 139.72328pt.
 
 
-[129
+[132
 
 
 
@@ -2825,7 +2792,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
 )
 
-[130] (./main.aux (./0-iniciais/catalografica.aux) (./0-iniciais/aprovacao.aux) (./0-iniciais/resumo.aux) (./0-iniciais/abstract.aux) (./0-iniciais/abreviaturas.aux) (./0-iniciais/simbolos.aux) (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./Cap_5.aux) (./Conclusoes.aux) (./Apendice_A.aux) (./Apendice_B.aux))
+[133] (./main.aux (./0-iniciais/catalografica.aux) (./0-iniciais/aprovacao.aux) (./0-iniciais/dedica.aux) (./0-iniciais/resumo.aux) (./0-iniciais/abstract.aux) (./0-iniciais/abreviaturas.aux) (./0-iniciais/simbolos.aux) (./cap_1.aux) (./cap_2.aux) (./cap_3.aux) (./cap_4.aux) (./Cap_5.aux) (./Conclusoes.aux) (./Apendice_A.aux) (./Apendice_B.aux))
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2020/03/25>
@@ -2834,20 +2801,23 @@ L3 programming layer <2020/03/25>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 44120 strings out of 473584
- 886785 string characters out of 5732363
+ 44459 strings out of 473584
+ 893734 string characters out of 5732363
  1965908 words of memory out of 5000000
- 65192 multiletter control sequences out of 15000+600000
- 754338 words of font info for 413 fonts, out of 8000000 for 9000
+ 65491 multiletter control sequences out of 15000+600000
+ 748460 words of font info for 409 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,18n,96p,2437b,918s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,17n,96p,2437b,918s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXBMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI5.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/NewTXMI7.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qhvr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/tex-gyre/qtmr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txbmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txexs.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsym.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/txsys.pfb><c:/texlive/2024/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmb.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmr.pfb><c:/texlive/2024/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (130 pages, 2910934 bytes).
+Output written on main.pdf (133 pages, 3210085 bytes).
 PDF statistics:
- 2308 PDF objects out of 2487 (max. 8388607)
- 1889 compressed objects within 19 object streams
- 563 named destinations out of 1000 (max. 500000)
- 65804 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 2433 PDF objects out of 2487 (max. 8388607)
+ 1988 compressed objects within 20 object streams
+ 583 named destinations out of 1000 (max. 500000)
+ 61249 words of extra memory for PDF output out of 61914 (max. 10000000)
 

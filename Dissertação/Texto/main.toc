@@ -18,39 +18,40 @@
 \contentsline {subsection}{\numberline {3.1.1}Conceitos Básicos}{27}{subsection.30}%
 \contentsline {section}{\numberline {3.2}Teoria da elasticidade e estado plano}{30}{section.35}%
 \contentsline {subsection}{\numberline {3.2.1}Conceitos básicos de mecânica do contínuo e teoria da elasticidade}{30}{subsection.36}%
-\contentsline {subsubsection}{\numberline {3.2.1.1}Notação de Voigt}{35}{subsubsection.59}%
-\contentsline {subsection}{\numberline {3.2.2}Formulação da equação governante}{36}{subsection.66}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}As condições de solução de uma equação diferencial}{38}{subsubsection.79}%
-\contentsline {section}{\numberline {3.3}Métodos aproximados}{39}{section.84}%
-\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{39}{subsection.85}%
-\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{40}{subsection.90}%
-\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca da equação de vibração livre não amortecida}{42}{subsubsection.101}%
-\contentsline {subsection}{\numberline {3.3.3}Método de Galerkin com discretização do domínio}{45}{subsection.115}%
-\contentsline {chapter}{\numberline {4}O método dos elementos virtuais}{48}{chapter.123}%
-\contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais}{48}{section.124}%
-\contentsline {section}{\numberline {4.2}O elemento virtual}{52}{section.134}%
-\contentsline {section}{\numberline {4.3}Espaço de solução}{53}{section.138}%
-\contentsline {section}{\numberline {4.4}Operadores de projeção}{55}{section.145}%
-\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$}{58}{subsection.155}%
-\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$}{68}{subsection.181}%
-\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$}{69}{subsection.188}%
-\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa}{71}{section.197}%
-\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{71}{subsection.204}%
-\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{73}{subsection.212}%
-\contentsline {subsection}{\numberline {4.5.3}Os parâmetros de estabilização}{76}{subsection.219}%
-\contentsline {paragraph}{Fator de escala original ou uniforme ($\max _i (K_{C_{i,i}})$)}{76}{paragraph*.220}%
-\contentsline {paragraph}{Fator de escala físico ($\max (2\mu , \lambda )$)}{76}{paragraph*.221}%
-\contentsline {paragraph}{Fator de escala pelo traço ($\alpha _0 \text {tr}(K_C)$)}{76}{paragraph*.222}%
-\contentsline {paragraph}{Fator de escala D-Recipe ($\text {diag}(\vert {}K_{C_{i,i}}\vert {})$)}{76}{paragraph*.223}%
-\contentsline {paragraph}{Fator de escala D-Recipe híbrido ($\max \left ([K_{E,c}]_{ii}, \alpha _0 \frac {\text {tr}(\mathbb {C})}{n_C}\right )$)}{76}{paragraph*.224}%
-\contentsline {section}{\numberline {4.6}Considerações finais}{77}{section.225}%
-\contentsline {chapter}{\numberline {5}Problemas de vibração livre com o método dos elementos virtuais}{79}{chapter.230}%
-\contentsline {section}{\numberline {5.1}Placa engastada}{82}{section.253}%
-\contentsline {section}{\numberline {5.2}Chapa com furo circular}{82}{section.254}%
-\contentsline {section}{\numberline {5.3}Barragem de terra}{94}{section.274}%
-\contentsline {section}{\numberline {5.4}Parede estrutural}{105}{section.295}%
-\contentsline {chapter}{\numberline {6}Conclusão}{117}{chapter.317}%
-\contentsline {chapter}{REFER\^ENCIAS}{120}{chapter*.318}%
-\contentsline {chapter}{AP\^ENDICE\ A\hskip .5em\relax -- \hskip .5em\relax \uppercase {Tabela com pontos e pesos de Gauss-Lobatto}}{128}{appendix*.320}%
-\contentsline {chapter}{AP\^ENDICE\ B\hskip .5em\relax -- \hskip .5em\relax \uppercase {Desenvolvimento da parcela de amortecimento na equação do movimento}}{129}{appendix*.323}%
+\contentsline {subsubsection}{\numberline {3.2.1.1}Notação de Voigt}{36}{subsubsection.61}%
+\contentsline {subsection}{\numberline {3.2.2}Energia de deformação}{37}{subsection.68}%
+\contentsline {subsection}{\numberline {3.2.3}Formulação da equação governante}{38}{subsection.73}%
+\contentsline {subsubsection}{\numberline {3.2.3.1}As condições de solução de uma equação diferencial}{39}{subsubsection.86}%
+\contentsline {section}{\numberline {3.3}Métodos aproximados}{40}{section.91}%
+\contentsline {subsection}{\numberline {3.3.1}Métodos dos resíduos ponderados}{40}{subsection.92}%
+\contentsline {subsection}{\numberline {3.3.2}Forma fraca da equação governante}{41}{subsection.97}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}Formulação fraca da equação de vibração livre não amortecida}{43}{subsubsection.109}%
+\contentsline {subsection}{\numberline {3.3.3}Método de Galerkin com discretização do domínio}{46}{subsection.123}%
+\contentsline {chapter}{\numberline {4}O método dos elementos virtuais}{49}{chapter.131}%
+\contentsline {section}{\numberline {4.1}Introdução ao método dos elementos virtuais}{49}{section.132}%
+\contentsline {section}{\numberline {4.2}O elemento virtual}{53}{section.142}%
+\contentsline {section}{\numberline {4.3}Espaço de solução}{54}{section.146}%
+\contentsline {section}{\numberline {4.4}Operadores de projeção}{56}{section.153}%
+\contentsline {subsection}{\numberline {4.4.1}Projetor $\Pi _{k}^{\nabla }$}{59}{subsection.163}%
+\contentsline {subsection}{\numberline {4.4.2}Projetor $\Pi _{k-1}^{0}$}{69}{subsection.189}%
+\contentsline {subsection}{\numberline {4.4.3}Projetor $\Pi _{k-1}^{\epsilon }$}{70}{subsection.196}%
+\contentsline {section}{\numberline {4.5}Matrizes de rigidez e massa}{72}{section.205}%
+\contentsline {subsection}{\numberline {4.5.1}Matriz de massa}{72}{subsection.212}%
+\contentsline {subsection}{\numberline {4.5.2}Matriz de rigidez}{74}{subsection.221}%
+\contentsline {subsection}{\numberline {4.5.3}Os parâmetros de estabilização}{77}{subsection.229}%
+\contentsline {paragraph}{Fator de escala original ou uniforme ($\max _i (K_{C_{i,i}})$)}{77}{paragraph*.230}%
+\contentsline {paragraph}{Fator de escala físico ($\max (2\mu , \lambda )$)}{77}{paragraph*.231}%
+\contentsline {paragraph}{Fator de escala pelo traço ($\alpha _0 \text {tr}(K_C)$)}{77}{paragraph*.232}%
+\contentsline {paragraph}{Fator de escala D-Recipe ($\text {diag}(\vert {}K_{C_{i,i}}\vert {})$)}{77}{paragraph*.233}%
+\contentsline {paragraph}{Fator de escala D-Recipe híbrido ($\max \left ([K_{E,c}]_{ii}, \alpha _0 \frac {\text {tr}(\mathbb {C})}{n_C}\right )$)}{77}{paragraph*.234}%
+\contentsline {section}{\numberline {4.6}Considerações finais}{78}{section.235}%
+\contentsline {chapter}{\numberline {5}Problemas de vibração livre com o Método dos Elementos Virtuais}{80}{chapter.240}%
+\contentsline {section}{\numberline {5.1}Chapa engastada}{84}{section.263}%
+\contentsline {section}{\numberline {5.2}Chapa com furo circular}{91}{section.279}%
+\contentsline {section}{\numberline {5.3}Barragem de terra}{100}{section.295}%
+\contentsline {section}{\numberline {5.4}Parede estrutural}{108}{section.312}%
+\contentsline {chapter}{\numberline {6}Conclusão}{119}{chapter.329}%
+\contentsline {chapter}{REFER\^ENCIAS}{122}{chapter*.330}%
+\contentsline {chapter}{AP\^ENDICE\ A\hskip .5em\relax -- \hskip .5em\relax \uppercase {Quadratura de Gauss-Lobatto}}{130}{appendix*.332}%
+\contentsline {chapter}{AP\^ENDICE\ B\hskip .5em\relax -- \hskip .5em\relax \uppercase {Desenvolvimento da parcela de amortecimento na equação do movimento}}{132}{appendix*.338}%
 \contentsfinish 

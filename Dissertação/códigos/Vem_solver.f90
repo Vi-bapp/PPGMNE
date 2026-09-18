@@ -45,8 +45,12 @@ program main_free_vibration
     real(dp), parameter :: pi = 3.14159265358979323846_dp
     
     character(len=256) :: mode_filename, filename
-    logical :: file_exists
+    logical :: file_exists, is_plane_strain
     integer :: ios
+    real(dp), allocatable :: elem_r_vol(:), elem_r_shear(:)
+    real(dp), allocatable :: r_vol_modes(:), r_shear_modes(:)
+    real(dp) :: U_vol_tot, U_dev_tot, U_shear_tot, U_normal_tot
+    integer :: n_lock_modes
 
     !Pós-processamento
     real(dp), allocatable :: elem_eps(:,:), elem_sigma(:,:), elem_vM(:)
@@ -80,16 +84,18 @@ program main_free_vibration
     read(*,*) l
     if (l == 1) then
         call build_C_plane_stress(E_mod, nu_val, C_mat)
+        is_plane_strain = .false.
     else
         call build_C_plane_strain(E_mod, nu_val, C_mat)
+        is_plane_strain = .true.
     end if
 
     !Escolha do método de estabilização
     print *, "Escolha o método de estabilização da matriz de rigidez"
-    print *, "Park et al. (diagonal) [1], Park et al. (escalar) [2], Antonietti et al. [3], Artioli et al. [4], D-recipe [5]"
+    print *, "D-Recipe híbrida [1], clássica [2], Física [3], traço da consistência [4], D-recipe [5]"
     read(*,*) beta(1)
     print *, "Escolha o método de estabilização da matriz de massa"
-    print *, "Park et al. [1], senão Antonietti et al. [2]"
+    print *, "Área [1], senão diâmetro [2]"
     read(*,*) beta(2)
     If (beta(1) == 1 .or. beta(1) == 2 .or. beta(1) == 4) then
         write(*, '(a)', advance='no') 'Escreva o valor do parâmetro alpha: '
@@ -380,6 +386,7 @@ program main_free_vibration
         call partition_matrix(K, internal_dofs, boundary_dofs, K_ii, K_ib, K_bi, K_bb) 
         call partition_matrix(M, internal_dofs, boundary_dofs, M_ii, M_ib, M_bi, M_bb) 
         call conditioning(K_ii, N_i)
+        call conditioning(M_ii, N_i)
 
         t_start = get_wall_time()
         call solve_generalized_eigenvalue(K_ii, M_ii, N_i, eigenvalues, eigenvectors)
@@ -387,7 +394,10 @@ program main_free_vibration
         t_solucao = t_end - t_start
 
         write(*,'(a)') 'MODO | autovalor (w^2) | f (Hz) | w (rad/s)'
-        do mode_idx = 1, min(12, N_i)
+        n_lock_modes = min(12, N_i)
+        allocate(r_vol_modes(n_lock_modes), r_shear_modes(n_lock_modes), source=0.0_dp)
+
+        do mode_idx = 1, n_lock_modes
             omega   = sqrt(max(0.0_dp, eigenvalues(mode_idx))) 
             freq_hz = omega / (2.0_dp * pi) 
             write(*,'(i4,2x,es14.6,2x,f15.3,2x,f15.3)') mode_idx, eigenvalues(mode_idx), freq_hz, omega 
@@ -397,13 +407,30 @@ program main_free_vibration
                 phi_full(internal_dofs(i)) = eigenvectors(i, mode_idx) 
             end do
 
+            call compute_modal_vol_energy(mesh, E_mod, nu_val, is_plane_strain, &
+                                          phi_full, U_vol_tot, U_dev_tot, elem_r_vol)
+            call compute_locking_index(U_vol_tot, U_dev_tot, r_vol_modes(mode_idx))
+
+            call compute_modal_shear_energy(mesh, E_mod, nu_val, is_plane_strain, &
+                                            phi_full, U_shear_tot, U_normal_tot, elem_r_shear)
+            call compute_locking_index(U_shear_tot, U_normal_tot, r_shear_modes(mode_idx))
+
+            if (mode_idx == 1) then
+                call export_element_scalar_field(mesh, elem_r_vol, &
+                    "locking_rvol_mode1", "Razao Energia Volumetrica r_vol (Modo 1)")
+                call export_element_scalar_field(mesh, elem_r_shear, &
+                    "locking_rshear_mode1", "Razao Energia Cisalhamento r_shear (Modo 1)")
+            end if
+            if (allocated(elem_r_vol)) deallocate(elem_r_vol)
+            if (allocated(elem_r_shear)) deallocate(elem_r_shear)
+
             x_min = minval(mesh%node(:)%x)
             x_max = maxval(mesh%node(:)%x)
             y_min = minval(mesh%node(:)%y)
             y_max = maxval(mesh%node(:)%y)
 
             char_len = sqrt((x_max - x_min)**2 + (y_max - y_min)**2)
-            target_pct = 0.05_dp
+            target_pct = 0.1_dp
 
             max_disp = maxval(abs(phi_full))
             if (max_disp > 1.0e-12_dp) then
@@ -418,6 +445,11 @@ program main_free_vibration
 
             deallocate(phi_full)
         end do
+
+        call print_energy_ratio_summary(n_lock_modes, r_vol_modes, 'r_vol')
+        call print_energy_ratio_summary(n_lock_modes, r_shear_modes, 'r_shear')
+        if (allocated(r_vol_modes)) deallocate(r_vol_modes)
+        if (allocated(r_shear_modes)) deallocate(r_shear_modes)
 
         do i = 1, min(3, N_i)
             call export_mode_surface(mesh, eigenvectors(:, i), i)

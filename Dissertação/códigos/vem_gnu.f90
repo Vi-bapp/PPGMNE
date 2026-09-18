@@ -487,23 +487,26 @@ module gnuplot_archive_mod
         end do
         close(unit_dat)
 
-        ! Script do Gnuplot
+        ! Script do Gnuplot (escala automatica no range do campo)
         open(newunit=unit_gp, file=trim(gp_file), status='replace', iostat=ios)
         write(unit_gp, '(a)') "reset"
-        write(unit_gp, '(a)') "set terminal pngcairo size 800,600 enhanced font 'Arial,12'"
+        write(unit_gp, '(a)') "set terminal pngcairo size 900,700 enhanced font 'Arial,12'"
         write(unit_gp, '(a,a,a)') "set output '", trim(png_file), "'"
         write(unit_gp, '(a,a,a)') "set title '", trim(title_str), "'"
         write(unit_gp, '(a)') "set xlabel 'X'"
         write(unit_gp, '(a)') "set ylabel 'Y'"
         write(unit_gp, '(a)') "set size ratio -1"
         write(unit_gp, '(a)') "set grid lc rgb '#e0e0e0' dt 2"
-        write(unit_gp, '(a)') "set palette defined (-2 'blue', -1 'cyan', 0 'white', 1 'yellow', 2 'red')"
+        write(unit_gp, '(a)') "set palette defined (0 'blue', 0.25 'cyan', 0.5 'green', 0.75 'yellow', 1 'red')"
         write(unit_gp, '(a)') "set colorbox"
-        write(unit_gp, '(a,a,a)') "plot '", trim(dat_file), "' using 1:2:3 with filledcurves lc palette title ''"
+        write(unit_gp, '(a,es14.6,a,es14.6,a)') "set cbrange [", minval(field_vals), ":", maxval(field_vals), "]"
+        write(unit_gp, '(a)') "set cblabel 'field'"
+        write(unit_gp, '(a,a,a)') "plot '", trim(dat_file), "' using 1:2:3 with filledcurves closed lc palette title ''"
         close(unit_gp)
 
+        write(*,'(a,a)') '  [plot] gerando ', trim(png_file)
         write(sys_cmd, '(a,a)') 'gnuplot ', trim(gp_file)
-        call execute_command_line(trim(sys_cmd))
+        call execute_command_line(trim(sys_cmd), wait=.true.)
     end subroutine export_element_scalar_field
 
 end module gnuplot_archive_mod

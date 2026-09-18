@@ -1,10 +1,5 @@
 \begin{thebibliography}{}
 
-\bibitem[Adak et~al., 2022]{adak2022convergence}
-Adak, D., Mora, D.  e Natarajan, S. (2022).
-\newblock Convergence analysis of virtual element method for nonlinear nonlocal dynamic plate equation.
-\newblock {\em Journal of Scientific Computing}, 91(1):1.
-
 \bibitem[Adak et~al., 2019]{virtualelementmethodsemilinearhyperbolicproblemspolygonalmeshes2019}
 Adak, D., Natarajan, E.  e Kumar, S. (2019).
 \newblock Virtual element method for semilinear hyperbolic problems on polygonal meshes.
@@ -172,6 +167,11 @@ Budynas, R.~G. e Sadegh, A.~M. (2020).
 \newblock {\em Roark's {{Formulas}} for {{Stress}} and {{Strain}}, {{Ninth Edition}}}.
 \newblock McGraw-Hill Education, New York, N.Y, ninth edition edition.
 
+\bibitem[Burden e Faires, 2015]{burden2015numerical}
+Burden, R.~L. e Faires, J.~D. (2015).
+\newblock {\em Numerical Analysis}.
+\newblock Cengage Learning, 10th edition.
+
 \bibitem[Cangiani et~al., 2016]{conformingnonconformingvirtualelementmethodsellipticproblems2016a}
 Cangiani, A., Manzini, G.  e Sutton, O.~J. (2016).
 \newblock Conforming and nonconforming virtual element methods for elliptic problems.
@@ -252,10 +252,10 @@ Di~Pietro, D.~A. e Ern, A. (2016).
 \newblock A hybrid high-order locking-free method for linear elasticity on general meshes.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering}, 306:307--329.
 
-\bibitem[D{\'i}az e Sigmund, 1995]{checkerboardpatternslayoutoptimization1995}
-D{\'i}az, A. e Sigmund, O. (1995).
-\newblock Checkerboard patterns in layout optimization.
-\newblock {\em Structural Optimization}, 10(1):40--45.
+\bibitem[Dibyendu et~al., 2022]{adak2022convergence}
+Dibyendu, A., David, M.  e Sundararajan, N. (2022).
+\newblock Convergence analysis of virtual element method for nonlinear nonlocal dynamic plate equation.
+\newblock {\em Journal of Scientific Computing}, 91(1):1.
 
 \bibitem[Evans, 2010]{evans2010partial}
 Evans, L.~C. (2010).
@@ -277,6 +277,11 @@ Gain, A., Talischi, C.  e Kry, P.~G. (2014).
 \newblock On the virtual element method for three-dimensional linear elasticity problems on arbitrary polyhedral meshes.
 \newblock {\em Computer Methods in Applied Mechanics and Engineering}, 282:132--160.
 
+\bibitem[Gain et~al., 2015]{gain2015topology}
+Gain, A.~L., Paulino, G.~H., Duarte, L.~S.  e Menezes, I. F.~M. (2015).
+\newblock Topology optimization using polytopes.
+\newblock {\em Computer Methods in Applied Mechanics and Engineering}, 293:411--430.
+
 \bibitem[Gibson, 2016]{principlescompositematerialmechanics2016}
 Gibson, R.~F. (2016).
 \newblock {\em Principles of {{Composite Material Mechanics}}}.
@@ -296,6 +301,11 @@ Hillen, T., Leonard, I.~E.  e van Roessel, H. (2019).
 Hughes, T. J.~R. (1987).
 \newblock {\em The Finite Element Method: Linear Static and Dynamic Finite Element Analysis}.
 \newblock Prentice-Hall, Englewood Cliffs, NJ.
+
+\bibitem[Kopriva, 2009]{kopriva2009implementing}
+Kopriva, D.~A. (2009).
+\newblock {\em Implementing Spectral Methods for Partial Differential Equations: Algorithms for Scientists and Engineers}.
+\newblock Scientific Computation. Springer.
 
 \bibitem[Lai, 2026]{bivariatesplineconstructionorthonormalpolynomialspolygonaldomainsitsapplicationsquadrature2026}
 Lai, M.-J. (2026).

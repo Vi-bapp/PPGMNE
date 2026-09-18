@@ -1,51 +1,72 @@
-\chapter{Tabela com pontos e pesos de Gauss-Lobatto}
+\chapter{Quadratura de Gauss-Lobatto}
+
+\indent Uma das formas mais clássicas de se aproximar uma integral de funções de uma variável é a regra do trapézio. O resultado de uma integral definida de uma função $f(x)$ entre dois pontos $x_1$ e $x_2$ é equivalente à área sob o gráfico de $f(x)$ entre esses pontos. A regra do trapézio consiste em calcular a área da integral por meio da soma da área de diversos trapézios com vértices equivalentes aos pontos $x_{i}$ e $x_{i+1}$ e à avaliação da função $f(x)$ nesses pontos.\\
+\indent Segundo \citet{burden2015numerical}, a técnica de quadratura busca otimizar a escolha dos pontos de avaliação da integral em vez de utilizar distâncias igualmente espaçadas. Para isso, são determinados pontos $x_1, x_2, \dots, x_N$ no intervalo $[a,b]$ e coeficientes $c_1, c_2, \dots, c_N$ são escolhidos para minimizar o erro esperado, de modo que: 
+\begin{equation}
+  \int_a^b f(x) \, dx \approx \sum_{i=1}^N c_i f(x_i).
+\end{equation}
+\noindent Uma forma de determinar o valor dos pontos e coeficientes é utilizando os polinômios de Legendre.\\
+\indent Os polinômios de Legendre ortogonais em $[-1, 1]$ apresentam propriedades importantes. Na quadratura de Gauss-Legendre padrão, os pontos correspondem às raízes do polinômio de Legendre de grau $N$, e os coeficientes são obtidos de:
+\begin{equation}
+  w_i = \int_{-1}^1 L_i(x) \, dx,
+\end{equation}
+\noindent onde $L_i(x)$ é o $i$-ésimo polinômio base de Lagrange.\\
+\indent \citet{kopriva2009implementing} comenta que, na quadratura de Gauss-Lobatto, os pontos extremos devem ser obrigatoriamente $-1$ e $1$, e os pontos internos correspondem às raízes da derivada de um polinômio de Legendre de grau $N-1$. Os coeficientes dessa quadratura são determinados analogamente por meio de:
+\begin{equation}
+  w_j = \int_{-1}^1 L_j(x) \, dx.
+\end{equation}
+\indent A tabela abaixo apresenta os pontos e os pesos da quadratura de Gauss-Lobatto para ordens de aproximação crescentes:
 
 \begin{table}[htpb]
-\begin{tabular}{|
->{\columncolor[HTML]{C0C0C0}}l |l|l|l|l}
-\cline{1-4}
-{\color[HTML]{333333} N} &
-  \cellcolor[HTML]{C0C0C0}{\color[HTML]{333333} i} &
-  \cellcolor[HTML]{C0C0C0}{\color[HTML]{333333} Ponto $x_i$} &
-  \cellcolor[HTML]{C0C0C0}{\color[HTML]{333333} Peso $w_i$} &
-   \\ \cline{1-4}
-2 & 0             & -1.0000000000 & 1.0000000000 &  \\ \cline{1-4}
-1 & 1.0000000000  & 1.0000000000  &              &  \\ \cline{1-4}
-3 & 0             & -1.0000000000 & 0.3333333333 &  \\ \cline{1-4}
-1 & 0.0000000000  & 1.3333333333  &              &  \\ \cline{1-4}
-2 & 1.0000000000  & 0.3333333333  &              &  \\ \cline{1-4}
-4 & 0             & -1.0000000000 & 0.1666666667 &  \\ \cline{1-4}
-1 & -0.5773502692 & 0.8333333333  &              &  \\ \cline{1-4}
-2 & 0.5773502692  & 0.8333333333  &              &  \\ \cline{1-4}
-3 & 1.0000000000  & 0.1666666667  &              &  \\ \cline{1-4}
-5 & 0             & -1.0000000000 & 0.1000000000 &  \\ \cline{1-4}
-1 & -0.6546536707 & 0.5444444444  &              &  \\ \cline{1-4}
-2 & 0.0000000000  & 0.7111111111  &              &  \\ \cline{1-4}
-3 & 0.6546536707  & 0.5444444444  &              &  \\ \cline{1-4}
-4 & 1.0000000000  & 0.1000000000  &              &  \\ \cline{1-4}
-6 & 0             & -1.0000000000 & 0.0666666667 &  \\ \cline{1-4}
-1 & -0.7650553239 & 0.3784749563  &              &  \\ \cline{1-4}
-2 & -0.2852315165 & 0.5548583770  &              &  \\ \cline{1-4}
-3 & 0.2852315165  & 0.5548583770  &              &  \\ \cline{1-4}
-4 & 0.7650553239  & 0.3784749563  &              &  \\ \cline{1-4}
-5 & 1.0000000000  & 0.0666666667  &              &  \\ \cline{1-4}
-7 & 0             & -1.0000000000 & 0.0476190476 &  \\ \cline{1-4}
-1 & -0.8302238963 & 0.2768260474  &              &  \\ \cline{1-4}
-2 & -0.4688487935 & 0.4317453812  &              &  \\ \cline{1-4}
-3 & 0.0000000000  & 0.4876190476  &              &  \\ \cline{1-4}
-4 & 0.4688487935  & 0.4317453812  &              &  \\ \cline{1-4}
-5 & 0.8302238963  & 0.2768260474  &              &  \\ \cline{1-4}
-6 & 1.0000000000  & 0.0476190476  &              &  \\ \cline{1-4}
-8 & 0             & -1.0000000000 & 0.0357142857 &  \\ \cline{1-4}
-1 & -0.8717401485 & 0.2107042271  &              &  \\ \cline{1-4}
-2 & -0.5917001814 & 0.3411226925  &              &  \\ \cline{1-4}
-3 & -0.2092992179 & 0.4124587947  &              &  \\ \cline{1-4}
-4 & 0.2092992179  & 0.4124587947  &              &  \\ \cline{1-4}
-5 & 0.5917001814  & 0.3411226925  &              &  \\ \cline{1-4}
-6 & 0.8717401485  & 0.2107042271  &              &  \\ \cline{1-4}
-7 & 1.0000000000  & 0.0357142857  &              &  \\ \cline{1-4}
+\centering
+\begin{tabular}{|c|c|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+{\color[HTML]{333333} \textbf{N}} & 
+{\color[HTML]{333333} \textbf{Índice ($i$)}} & 
+{\color[HTML]{333333} \textbf{Ponto ($x_i$)}} & 
+{\color[HTML]{333333} \textbf{Peso ($w_i$)}} \\ \hline
+\multirow{2}{*}{2} 
+& 0 & -1,000000 & 1,000000 \\ \cline{2-4}
+& 1 & 1,000000 & 1,000000 \\ \hline
+\multirow{3}{*}{3} 
+& 0 & -1,000000 & 0,333333 \\ \cline{2-4}
+& 1 & 0,000000 & 1,333333 \\ \cline{2-4}
+& 2 & 1,000000 & 0,333333 \\ \hline
+\multirow{4}{*}{4} 
+& 0 & -1,000000 & 0,166667 \\ \cline{2-4}
+& 1 & -0,577350 & 0,833333 \\ \cline{2-4}
+& 2 & 0,577350 & 0,833333 \\ \cline{2-4}
+& 3 & 1,000000 & 0,166667 \\ \hline
+\multirow{5}{*}{5} 
+& 0 & -1,000000 & 0,100000 \\ \cline{2-4}
+& 1 & -0,654654 & 0,544444 \\ \cline{2-4}
+& 2 &  0,000000 & 0,711111 \\ \cline{2-4}
+& 3 &  0,654654 & 0,544444 \\ \cline{2-4}
+& 4 &  1,000000 & 0,100000 \\ \hline
+\multirow{6}{*}{6} 
+& 0 & -1,000000 & 0,066667 \\ \cline{2-4}
+& 1 & -0,765055 & 0,378475 \\ \cline{2-4}
+& 2 & -0,285232 & 0,554858 \\ \cline{2-4}
+& 3 &  0,285232 & 0,554858 \\ \cline{2-4}
+& 4 &  0,765055 & 0,378475 \\ \cline{2-4}
+& 5 &  1,000000 & 0,066667 \\ \hline
+\multirow{7}{*}{7} 
+& 0 & -1,000000 & 0,047619 \\ \cline{2-4}
+& 1 & -0,830224 & 0,276826 \\ \cline{2-4}
+& 2 & -0,468849 & 0,431745 \\ \cline{2-4}
+& 3 &  0,000000 & 0,487619 \\ \cline{2-4}
+& 4 &  0,468849 & 0,431745 \\ \cline{2-4}
+& 5 &  0,830224 & 0,276826 \\ \cline{2-4}
+& 6 &  1,000000 & 0,047619 \\ \hline
+\multirow{8}{*}{8} 
+& 0 & -1,000000 & 0,035714 \\ \cline{2-4}
+& 1 & -0,871740 & 0,210704 \\ \cline{2-4}
+& 2 & -0,591700 & 0,341123 \\ \cline{2-4}
+& 3 & -0,209299 & 0,412459 \\ \cline{2-4}
+& 4 &  0,209299 & 0,412459 \\ \cline{2-4}
+& 5 &  0,591700 & 0,341123 \\ \cline{2-4}
+& 6 &  0,871740 & 0,210704 \\ \cline{2-4}
+& 7 &  1,000000 & 0,035714 \\ \hline
 \end{tabular}
 \end{table}
-
-
-

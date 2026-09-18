@@ -8,6 +8,8 @@ module measures_mod
     public :: get_wall_time, print_run_times, conditioning
     public :: compute_vem_error
     public :: compute_L2_error, compute_H1_error
+    public :: compute_locking_index
+    public :: print_energy_ratio_summary
 
     ! =========================================================
     ! INTERFACES ABSTRATAS 
@@ -73,7 +75,7 @@ module measures_mod
         if (n <= 0) return
 
         if (any(ieee_is_nan(A))) then
-            write(*, '(A)') 'Erro: Matriz K_ii contem valores NaN/Inf antes do calculo.'
+            write(*, '(A)') 'Erro: Matriz contem valores NaN/Inf antes do calculo.'
             return
         end if
 
@@ -118,9 +120,9 @@ module measures_mod
                     if (n_zero_modes > 0) then
                         write(*, '(A, I0, A)') 'Info: Detectado(s) ', n_zero_modes, &
                             ' modo(s) nulo(s) (corpo livre ou sem restricoes).'
-                        write(*, '(A, ES14.6)') 'Numero de Condicionamento Efetivo (K_ii): ', cond_num
+                        write(*, '(A, ES14.6)') 'Numero de Condicionamento Efetivo: ', cond_num
                     else
-                        write(*, '(A, ES14.6)') 'Numero de Condicionamento (K_ii): ', cond_num
+                        write(*, '(A, ES14.6)') 'Numero de Condicionamento : ', cond_num
                     end if
                 else
                     write(*, '(A)') 'Erro: Todos os autovalores sao numericamente nulos.'
@@ -236,5 +238,77 @@ module measures_mod
         
         err_H1 = sqrt(integral_res)
     end subroutine compute_H1_error
+
+
+    ! razao generica r = |Ua|/(|Ua|+|Ub|)
+    pure subroutine compute_locking_index(U_a, U_b, r)
+        real(dp), intent(in)  :: U_a, U_b
+        real(dp), intent(out) :: r
+        real(dp) :: denom
+        denom = abs(U_a) + abs(U_b)
+        if (denom > 1.0e-30_dp) then
+            r = abs(U_a) / denom
+        else
+            r = 0.0_dp
+        end if
+    end subroutine compute_locking_index
+
+    pure subroutine sort_asc(a)
+        real(dp), intent(inout) :: a(:)
+        integer :: i, j, n
+        real(dp) :: key
+        n = size(a)
+        do i = 2, n
+            key = a(i)
+            j = i - 1
+            do while (j >= 1)
+                if (a(j) <= key) exit
+                a(j+1) = a(j)
+                j = j - 1
+            end do
+            a(j+1) = key
+        end do
+    end subroutine sort_asc
+
+    ! label_ratio: ex. "r_vol" ou "r_shear"
+    subroutine print_energy_ratio_summary(n_modes, r_modes, label_ratio)
+        integer, intent(in) :: n_modes
+        real(dp), intent(in) :: r_modes(:)
+        character(len=*), intent(in) :: label_ratio
+        integer :: i, n, n_low, imax
+        real(dp) :: r_mean, r_max, r_med, r_mean_low
+        real(dp), allocatable :: sorted(:)
+
+        n = min(n_modes, size(r_modes))
+        if (n <= 0) return
+        r_mean = sum(r_modes(1:n)) / real(n, dp)
+        r_max  = maxval(r_modes(1:n))
+        imax   = maxloc(r_modes(1:n), dim=1)
+        allocate(sorted(n))
+        sorted = r_modes(1:n)
+        call sort_asc(sorted)
+        if (mod(n,2)==1) then
+            r_med = sorted((n+1)/2)
+        else
+            r_med = 0.5_dp*(sorted(n/2)+sorted(n/2+1))
+        end if
+        deallocate(sorted)
+        n_low = min(6, n)
+        r_mean_low = sum(r_modes(1:n_low))/real(n_low, dp)
+
+        write(*,'(A)') '=================================================='
+        write(*,'(A,A)') ' Indice de energia  ', trim(label_ratio)
+        write(*,'(A)') '--------------------------------------------------'
+        write(*,'(A,A)') ' Modo |   ', trim(label_ratio)
+        do i = 1, n
+            write(*,'(I5, 2X, F8.4)') i, r_modes(i)
+        end do
+        write(*,'(A)') '--------------------------------------------------'
+        write(*,'(A, F8.4)') ' Media (todos)           : ', r_mean
+        write(*,'(A, F8.4)') ' Mediana                 : ', r_med
+        write(*,'(A, F8.4)') ' Media (primeiros 6)     : ', r_mean_low
+        write(*,'(A, F8.4, A, I0, A)') ' Maximo                 : ', r_max, '  (modo ', imax, ')'
+        write(*,'(A)') '=================================================='
+    end subroutine print_energy_ratio_summary
 
 end module measures_mod

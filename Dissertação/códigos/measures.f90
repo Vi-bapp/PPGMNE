@@ -10,6 +10,7 @@ module measures_mod
     public :: compute_L2_error, compute_H1_error
     public :: compute_locking_index
     public :: print_energy_ratio_summary
+    public :: export_freq_spectrum_csv
 
     ! =========================================================
     ! INTERFACES ABSTRATAS 
@@ -310,5 +311,43 @@ module measures_mod
         write(*,'(A, F8.4, A, I0, A)') ' Maximo                 : ', r_max, '  (modo ', imax, ')'
         write(*,'(A)') '=================================================='
     end subroutine print_energy_ratio_summary
+
+    subroutine export_freq_spectrum_csv(filename, eigenvalues, r_vol, r_shear, n_modes)
+    character(len=*), intent(in) :: filename
+    real(dp), intent(in)         :: eigenvalues(:)
+    real(dp), intent(in), optional :: r_vol(:), r_shear(:)
+    integer, intent(in)          :: n_modes
+
+    integer :: i, unit, ios, n
+    real(dp) :: omega, freq_hz
+    character(len=*), parameter :: sep = ';'   ! ou ',' se preferir
+
+    n = min(n_modes, size(eigenvalues))
+    open(newunit=unit, file=filename, status='replace', iostat=ios)
+    if (ios /= 0) then
+        write(*,'(a,a)') 'ERRO ao criar arquivo de espectro: ', trim(filename)
+        return
+    end if
+
+    ! Cabeçalho
+    write(unit,'(a)') 'Modo'//sep//'omega_rad_s'//sep//'f_Hz'//sep// &
+                      'r_vol'//sep//'r_shear'//sep//'lambda'
+
+    do i = 1, n
+        omega   = sqrt(max(0.0_dp, eigenvalues(i)))
+        freq_hz = omega / (2.0_dp * 3.14159265358979323846_dp)
+
+        if (present(r_vol) .and. present(r_shear)) then
+            write(unit,'(i0,a,es16.8,a,es16.8,a,f10.6,a,f10.6,a,es16.8)') &
+                i, sep, omega, sep, freq_hz, sep, &
+                r_vol(i), sep, r_shear(i), sep, eigenvalues(i)
+        else
+            write(unit,'(i0,a,es16.8,a,es16.8,a,a,a,a,es16.8)') &
+                i, sep, omega, sep, freq_hz, sep, '', sep, '', sep, eigenvalues(i)
+        end if
+    end do
+    close(unit)
+    write(*,'(a,a)') 'Espectro exportado para LibreOffice: ', trim(filename)
+end subroutine export_freq_spectrum_csv
 
 end module measures_mod

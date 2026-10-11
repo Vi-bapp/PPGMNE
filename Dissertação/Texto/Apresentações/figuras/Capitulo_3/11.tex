@@ -1,0 +1,33 @@
+\begin{tikzpicture}[
+    >={Stealth[length=2.5pt, width=1.8pt]},
+    font=\scriptsize
+]
+
+    % --- EIXOS ---
+    \draw[->] (0,0) -- (6,0) node[right, align=left] {Número de\\elementos};
+    \draw[->] (0,0) -- (0,4);
+
+    % --- LINHA TRACEJADA SUPERIOR (Exact solution) ---
+    \draw[dashed, gray!80] (0,3) -- (5.5,3);
+    \node[left, align=right] at (0,3) {Exata\\solução};
+
+    % --- CURVA DE SOLUÇÃO (FEM) ---
+    % Sintaxe corrigida usando plot smooth em vez de controls
+    \draw[thick] plot [smooth, tension=0.7] coordinates {(0.5, 1.2) (2.0, 2.3) (3.5, 2.58) (4.5, 2.6)} -- (5.5, 2.6);
+
+    % Ponto N0
+    \fill (4.5, 2.6) circle (1.8pt);
+
+    % Projeção tracejada para N0
+    \draw[dashed, gray!80] (4.5, 0) -- (4.5, 2.6);
+    \node[below] at (4.5,0) {$N_0$};
+
+    % --- SETA E RÓTULO APONTANDO PARA A CURVA ---
+    \node[anchor=north west, align=left] (labelfem) at (4.6, 2.3) {Solução dada pelo\\Método dos Elementos Finitos};
+    % Referência corrigida sem espaços internos
+    \draw[->] (labelfem.north west) -- (4.2, 2.58);
+
+    % --- TEXTO INFERIOR ---
+    \node[below=12pt] at (3,0) {Sem melhoria significativa além de $N_0$};
+
+\end{tikzpicture}

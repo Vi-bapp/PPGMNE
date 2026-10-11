@@ -8,6 +8,6 @@ set size ratio -1
 set grid lc rgb '#e0e0e0' dt 2
 set palette defined (0 'blue', 0.25 'cyan', 0.5 'green', 0.75 'yellow', 1 'red')
 set colorbox
-set cbrange [  1.831672E-05:  9.914882E-01]
+set cbrange [  1.000000E+00:  1.000000E+00]
 set cblabel 'field'
 plot 'output_gnuplot/locking_rshear_mode1.dat' using 1:2:3 with filledcurves closed lc palette title ''

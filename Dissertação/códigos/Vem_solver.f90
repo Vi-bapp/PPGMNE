@@ -74,10 +74,10 @@ program main_free_vibration
     ! -------------------------------------------------------------------------
     ! CONFIGURAÇÕES INICIAIS E MATERIAL
     ! -------------------------------------------------------------------------
-    E_mod  = 1.0e4      ! Pa = N/m2
-    nu_val = 0.2_dp
+    E_mod  = 1.0      ! Pa = N/m2
+    nu_val = 0.3_dp
     rho    = 1.0_dp     ! kg/m3
-    t      = 1.0_dp        ! m
+    t      = 0.5_dp        ! m
 
     !Escolha do tipo de problema
     print *, "Estado plano de tensões digite [1], senão Estado plano de deformações [2]"
@@ -97,7 +97,7 @@ program main_free_vibration
     print *, "Escolha o método de estabilização da matriz de massa"
     print *, "Área [1], senão diâmetro [2]"
     read(*,*) beta(2)
-    If (beta(1) == 1 .or. beta(1) == 2 .or. beta(1) == 4) then
+    If (beta(1) == 1 .or. beta(1) == 4) then
         write(*, '(a)', advance='no') 'Escreva o valor do parâmetro alpha: '
         read(*,*) alpha
     Else if (beta(1) == 3 .or. beta(2) == 2) then
@@ -106,6 +106,7 @@ program main_free_vibration
 
     !Criação da pasta para os arquivos do gnuplot
     call create_output_dir('output_gnuplot')
+    call create_output_dir('output_gnuplot/espectro')
 
     !Leitura da malha
     do
@@ -303,7 +304,7 @@ program main_free_vibration
                     call stab_park_diagonal_K(K_C, D_0, el%Pi_0, C_mat, alpha, K_S)
                 case(2)
                     ! Park escalar:
-                    call stab_park_scalar_K(K_C, D_0, el%Pi_0, C_mat, alpha, .true., K_S)
+                    call stab_park_scalar_K(K_C, D_0, el%Pi_0, K_S)
                 case(3)
                     ! Antonietti:
                     call stab_antonietti_K(D_0, el%Pi_nabla, mu_val, lambda, K_S)
@@ -394,26 +395,34 @@ program main_free_vibration
         t_solucao = t_end - t_start
 
         write(*,'(a)') 'MODO | autovalor (w^2) | f (Hz) | w (rad/s)'
-        n_lock_modes = min(12, N_i)
-        allocate(r_vol_modes(n_lock_modes), r_shear_modes(n_lock_modes), source=0.0_dp)
+
+        !Calcula os valores de r_vol e r_shear para os primeiros 12 modos ou menos, dependendo de N_i
+
+        n_lock_modes = N_i
+
+        allocate(r_vol_modes(n_lock_modes), &
+            r_shear_modes(n_lock_modes), &
+            source=0.0_dp)
 
         do mode_idx = 1, n_lock_modes
-            omega   = sqrt(max(0.0_dp, eigenvalues(mode_idx))) 
-            freq_hz = omega / (2.0_dp * pi) 
-            write(*,'(i4,2x,es14.6,2x,f15.3,2x,f15.3)') mode_idx, eigenvalues(mode_idx), freq_hz, omega 
 
             allocate(phi_full(N_total), source = 0.0_dp)
+
             do i = 1, N_i
-                phi_full(internal_dofs(i)) = eigenvectors(i, mode_idx) 
+                phi_full(internal_dofs(i)) = eigenvectors(i, mode_idx)
             end do
 
             call compute_modal_vol_energy(mesh, E_mod, nu_val, is_plane_strain, &
-                                          phi_full, U_vol_tot, U_dev_tot, elem_r_vol)
-            call compute_locking_index(U_vol_tot, U_dev_tot, r_vol_modes(mode_idx))
+                                  phi_full, U_vol_tot, U_dev_tot, elem_r_vol)
+
+            call compute_locking_index(U_vol_tot, U_dev_tot, &
+                               r_vol_modes(mode_idx))
 
             call compute_modal_shear_energy(mesh, E_mod, nu_val, is_plane_strain, &
-                                            phi_full, U_shear_tot, U_normal_tot, elem_r_shear)
-            call compute_locking_index(U_shear_tot, U_normal_tot, r_shear_modes(mode_idx))
+                                    phi_full, U_shear_tot, U_normal_tot, elem_r_shear)
+
+            call compute_locking_index(U_shear_tot, U_normal_tot, &
+                               r_shear_modes(mode_idx))
 
             if (mode_idx == 1) then
                 call export_element_scalar_field(mesh, elem_r_vol, &
@@ -423,6 +432,37 @@ program main_free_vibration
             end if
             if (allocated(elem_r_vol)) deallocate(elem_r_vol)
             if (allocated(elem_r_shear)) deallocate(elem_r_shear)
+            deallocate(phi_full)
+        end do
+
+        call export_freq_spectrum_csv( &
+            filename = 'output_gnuplot/espectro/' // &
+            filename(index(filename,'/',back=.true.)+1 : len_trim(filename)-4) // '.csv', &
+            eigenvalues = eigenvalues, &
+            r_vol       = r_vol_modes, &
+            r_shear     = r_shear_modes, &
+            n_modes     = n_lock_modes )
+        if (allocated(r_vol_modes)) deallocate(r_vol_modes)
+        if (allocated(r_shear_modes)) deallocate(r_shear_modes)
+
+        ! -------------------------------------------------------------------------
+! IMPRESSÃO DOS MODOS E EXPORTAÇÃO DAS DEFORMADAS
+! Mantém a limitação original de 12 modos
+! -------------------------------------------------------------------------
+
+        do mode_idx = 1, min(12, N_i)
+
+            omega   = sqrt(max(0.0_dp, eigenvalues(mode_idx)))
+            freq_hz = omega / (2.0_dp * pi)
+
+            write(*,'(i4,2x,es14.6,2x,f15.3,2x,f15.3)') &
+                mode_idx, eigenvalues(mode_idx), freq_hz, omega
+
+            allocate(phi_full(N_total), source = 0.0_dp)
+
+            do i = 1, N_i
+                phi_full(internal_dofs(i)) = eigenvectors(i, mode_idx)
+            end do
 
             x_min = minval(mesh%node(:)%x)
             x_max = maxval(mesh%node(:)%x)
@@ -445,11 +485,6 @@ program main_free_vibration
 
             deallocate(phi_full)
         end do
-
-        call print_energy_ratio_summary(n_lock_modes, r_vol_modes, 'r_vol')
-        call print_energy_ratio_summary(n_lock_modes, r_shear_modes, 'r_shear')
-        if (allocated(r_vol_modes)) deallocate(r_vol_modes)
-        if (allocated(r_shear_modes)) deallocate(r_shear_modes)
 
         do i = 1, min(3, N_i)
             call export_mode_surface(mesh, eigenvectors(:, i), i)

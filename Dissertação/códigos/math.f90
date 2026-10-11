@@ -1,5 +1,6 @@
 !===============================================================================
-! MÓDULO DE ÁLGEBRA LINEAR, GEOMETRIA E OPERADORES MONOMIAIS
+! MÓDULO DE ÁLGEBRA LINEAR, GEOMETRIA, OPERADORES MONOMIAIS E
+! DIFERENCIAÇÃO AUTOMÁTICA (FORWARD-MODE / DUAL NUMBERS)
 !===============================================================================
 module math_geometry_mod
     use, intrinsic :: iso_fortran_env, only: dp => real64
@@ -21,6 +22,16 @@ module math_geometry_mod
     public :: det_laplace
     public :: get_gl_quadrature_2d
 
+    ! Diferenciacao automatica (forward-mode)
+    public :: dual
+    public :: make_independent, make_constant, set_seed, val, der
+    public :: ad_diff_1d, ad_gradient_2d
+    public :: operator(+), operator(-), operator(*), operator(/), operator(**)
+    public :: assignment(=)
+    public :: abs, sqrt, exp, log, log10, sin, cos, tan
+    public :: asin, acos, atan, sinh, cosh, tanh
+    public :: atan2, hypot, max, min
+
     ! ---------------------------------------------------------
     ! Definição do Tipo Polinômio
     ! ---------------------------------------------------------
@@ -28,7 +39,95 @@ module math_geometry_mod
         integer :: degree
         real(8), allocatable :: coeffs(:)
     end type Polynomial
-    
+
+    ! ---------------------------------------------------------
+    ! Tipo dual: valor + derivada direcional (forward-mode AD)
+    !   x = make_independent(x0)  =>  val=x0, der=1
+    !   f = sin(x)*exp(x)         =>  val(f)=f(x0), der(f)=f'(x0)
+    ! ---------------------------------------------------------
+    type :: dual
+        real(dp) :: v = 0.0_dp
+        real(dp) :: d = 0.0_dp
+    end type dual
+
+    interface assignment(=)
+        module procedure ad_assign_r64, ad_assign_i
+    end interface
+
+    interface operator(+)
+        module procedure ad_add_dd, ad_add_dr, ad_add_rd, ad_pos_d
+    end interface
+
+    interface operator(-)
+        module procedure ad_sub_dd, ad_sub_dr, ad_sub_rd, ad_neg_d
+    end interface
+
+    interface operator(*)
+        module procedure ad_mul_dd, ad_mul_dr, ad_mul_rd
+    end interface
+
+    interface operator(/)
+        module procedure ad_div_dd, ad_div_dr, ad_div_rd
+    end interface
+
+    interface operator(**)
+        module procedure ad_pow_di, ad_pow_dr, ad_pow_rd, ad_pow_dd
+    end interface
+
+    interface abs
+        module procedure ad_abs
+    end interface
+    interface sqrt
+        module procedure ad_sqrt
+    end interface
+    interface exp
+        module procedure ad_exp
+    end interface
+    interface log
+        module procedure ad_log
+    end interface
+    interface log10
+        module procedure ad_log10
+    end interface
+    interface sin
+        module procedure ad_sin
+    end interface
+    interface cos
+        module procedure ad_cos
+    end interface
+    interface tan
+        module procedure ad_tan
+    end interface
+    interface asin
+        module procedure ad_asin
+    end interface
+    interface acos
+        module procedure ad_acos
+    end interface
+    interface atan
+        module procedure ad_atan
+    end interface
+    interface sinh
+        module procedure ad_sinh
+    end interface
+    interface cosh
+        module procedure ad_cosh
+    end interface
+    interface tanh
+        module procedure ad_tanh
+    end interface
+    interface atan2
+        module procedure ad_atan2_dd, ad_atan2_dr, ad_atan2_rd
+    end interface
+    interface hypot
+        module procedure ad_hypot_dd
+    end interface
+    interface max
+        module procedure ad_max_dd, ad_max_dr, ad_max_rd
+    end interface
+    interface min
+        module procedure ad_min_dd, ad_min_dr, ad_min_rd
+    end interface
 
     contains
 
@@ -796,5 +895,430 @@ module math_geometry_mod
             op_val(3) = dyy ! Derivada parcial dupla em y
         end if
     end subroutine evaluate_monomial_hessian
+
+    !===========================================================================
+    ! DIFERENCIAÇÃO AUTOMÁTICA — forward-mode via dual numbers
+    !---------------------------------------------------------------------------
+    ! Uso tipico (1D):
+    !   type(dual) :: x, f
+    !   x = make_independent(x0)
+    !   f = sin(x)*exp(x)
+    !   fval = val(f);  fder = der(f)
+    !
+    ! Gradiente 2D: duas passagens (seed em x, depois em y) — ver ad_gradient_2d
+    !===========================================================================
+
+    pure function make_independent(x0) result(r)
+        real(dp), intent(in) :: x0
+        type(dual) :: r
+        r%v = x0
+        r%d = 1.0_dp
+    end function make_independent
+
+    pure function make_constant(c) result(r)
+        real(dp), intent(in) :: c
+        type(dual) :: r
+        r%v = c
+        r%d = 0.0_dp
+    end function make_constant
+
+    pure subroutine set_seed(a, s)
+        type(dual), intent(inout) :: a
+        real(dp), intent(in) :: s
+        a%d = s
+    end subroutine set_seed
+
+    pure function val(a) result(v)
+        type(dual), intent(in) :: a
+        real(dp) :: v
+        v = a%v
+    end function val
+
+    pure function der(a) result(d)
+        type(dual), intent(in) :: a
+        real(dp) :: d
+        d = a%d
+    end function der
+
+    !---- atribuicao ------------------------------------------------------------
+    pure subroutine ad_assign_r64(a, x)
+        type(dual), intent(out) :: a
+        real(dp), intent(in) :: x
+        a%v = x
+        a%d = 0.0_dp
+    end subroutine ad_assign_r64
+
+    pure subroutine ad_assign_i(a, n)
+        type(dual), intent(out) :: a
+        integer, intent(in) :: n
+        a%v = real(n, dp)
+        a%d = 0.0_dp
+    end subroutine ad_assign_i
+
+    !---- aritmetica ------------------------------------------------------------
+    pure function ad_add_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = a%v + b%v
+        r%d = a%d + b%d
+    end function ad_add_dd
+
+    pure function ad_add_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = a%v + x
+        r%d = a%d
+    end function ad_add_dr
+
+    pure function ad_add_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = x + a%v
+        r%d = a%d
+    end function ad_add_rd
+
+    pure function ad_pos_d(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r = a
+    end function ad_pos_d
+
+    pure function ad_sub_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = a%v - b%v
+        r%d = a%d - b%d
+    end function ad_sub_dd
+
+    pure function ad_sub_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = a%v - x
+        r%d = a%d
+    end function ad_sub_dr
+
+    pure function ad_sub_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = x - a%v
+        r%d = -a%d
+    end function ad_sub_rd
+
+    pure function ad_neg_d(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = -a%v
+        r%d = -a%d
+    end function ad_neg_d
+
+    pure function ad_mul_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = a%v * b%v
+        r%d = a%d * b%v + a%v * b%d
+    end function ad_mul_dd
+
+    pure function ad_mul_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = a%v * x
+        r%d = a%d * x
+    end function ad_mul_dr
+
+    pure function ad_mul_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = x * a%v
+        r%d = x * a%d
+    end function ad_mul_rd
+
+    pure function ad_div_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = a%v / b%v
+        r%d = (a%d * b%v - a%v * b%d) / (b%v * b%v)
+    end function ad_div_dd
+
+    pure function ad_div_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = a%v / x
+        r%d = a%d / x
+    end function ad_div_dr
+
+    pure function ad_div_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = x / a%v
+        r%d = -x * a%d / (a%v * a%v)
+    end function ad_div_rd
+
+    pure function ad_pow_di(a, n) result(r)
+        type(dual), intent(in) :: a
+        integer, intent(in) :: n
+        type(dual) :: r
+        r%v = a%v ** n
+        if (n == 0) then
+            r%d = 0.0_dp
+        else
+            r%d = real(n, dp) * (a%v ** (n - 1)) * a%d
+        end if
+    end function ad_pow_di
+
+    pure function ad_pow_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = a%v ** x
+        r%d = x * (a%v ** (x - 1.0_dp)) * a%d
+    end function ad_pow_dr
+
+    pure function ad_pow_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = x ** a%v
+        r%d = r%v * log(x) * a%d
+    end function ad_pow_rd
+
+    pure function ad_pow_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = a%v ** b%v
+        r%d = r%v * (b%d * log(a%v) + b%v * a%d / a%v)
+    end function ad_pow_dd
+
+    !---- funcoes elementares ---------------------------------------------------
+    pure function ad_abs(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = abs(a%v)
+        r%d = sign(1.0_dp, a%v) * a%d
+    end function ad_abs
+
+    pure function ad_sqrt(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = sqrt(a%v)
+        r%d = 0.5_dp * a%d / r%v
+    end function ad_sqrt
+
+    pure function ad_exp(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = exp(a%v)
+        r%d = r%v * a%d
+    end function ad_exp
+
+    pure function ad_log(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = log(a%v)
+        r%d = a%d / a%v
+    end function ad_log
+
+    pure function ad_log10(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        real(dp), parameter :: ln10 = log(10.0_dp)
+        r%v = log(a%v) / ln10
+        r%d = a%d / (a%v * ln10)
+    end function ad_log10
+
+    pure function ad_sin(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = sin(a%v)
+        r%d = cos(a%v) * a%d
+    end function ad_sin
+
+    pure function ad_cos(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = cos(a%v)
+        r%d = -sin(a%v) * a%d
+    end function ad_cos
+
+    pure function ad_tan(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = tan(a%v)
+        r%d = (1.0_dp + r%v * r%v) * a%d
+    end function ad_tan
+
+    pure function ad_asin(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = asin(a%v)
+        r%d = a%d / sqrt(1.0_dp - a%v * a%v)
+    end function ad_asin
+
+    pure function ad_acos(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = acos(a%v)
+        r%d = -a%d / sqrt(1.0_dp - a%v * a%v)
+    end function ad_acos
+
+    pure function ad_atan(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = atan(a%v)
+        r%d = a%d / (1.0_dp + a%v * a%v)
+    end function ad_atan
+
+    pure function ad_sinh(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = sinh(a%v)
+        r%d = cosh(a%v) * a%d
+    end function ad_sinh
+
+    pure function ad_cosh(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = cosh(a%v)
+        r%d = sinh(a%v) * a%d
+    end function ad_cosh
+
+    pure function ad_tanh(a) result(r)
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r%v = tanh(a%v)
+        r%d = (1.0_dp - r%v * r%v) * a%d
+    end function ad_tanh
+
+    pure function ad_atan2_dd(y, x) result(r)
+        type(dual), intent(in) :: y, x
+        type(dual) :: r
+        r%v = atan2(y%v, x%v)
+        r%d = (x%v * y%d - y%v * x%d) / (x%v * x%v + y%v * y%v)
+    end function ad_atan2_dd
+
+    pure function ad_atan2_dr(y, x) result(r)
+        type(dual), intent(in) :: y
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        r%v = atan2(y%v, x)
+        r%d = x * y%d / (x * x + y%v * y%v)
+    end function ad_atan2_dr
+
+    pure function ad_atan2_rd(y, x) result(r)
+        real(dp), intent(in) :: y
+        type(dual), intent(in) :: x
+        type(dual) :: r
+        r%v = atan2(y, x%v)
+        r%d = -y * x%d / (x%v * x%v + y * y)
+    end function ad_atan2_rd
+
+    pure function ad_hypot_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        r%v = hypot(a%v, b%v)
+        r%d = (a%v * a%d + b%v * b%d) / r%v
+    end function ad_hypot_dd
+
+    pure function ad_max_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        if (a%v > b%v) then
+            r = a
+        else if (b%v > a%v) then
+            r = b
+        else
+            r%v = a%v
+            r%d = 0.5_dp * (a%d + b%d)
+        end if
+    end function ad_max_dd
+
+    pure function ad_max_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        if (a%v >= x) then
+            r = a
+        else
+            r = dual(x, 0.0_dp)
+        end if
+    end function ad_max_dr
+
+    pure function ad_max_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r = ad_max_dr(a, x)
+    end function ad_max_rd
+
+    pure function ad_min_dd(a, b) result(r)
+        type(dual), intent(in) :: a, b
+        type(dual) :: r
+        if (a%v < b%v) then
+            r = a
+        else if (b%v < a%v) then
+            r = b
+        else
+            r%v = a%v
+            r%d = 0.5_dp * (a%d + b%d)
+        end if
+    end function ad_min_dd
+
+    pure function ad_min_dr(a, x) result(r)
+        type(dual), intent(in) :: a
+        real(dp), intent(in) :: x
+        type(dual) :: r
+        if (a%v <= x) then
+            r = a
+        else
+            r = dual(x, 0.0_dp)
+        end if
+    end function ad_min_dr
+
+    pure function ad_min_rd(x, a) result(r)
+        real(dp), intent(in) :: x
+        type(dual), intent(in) :: a
+        type(dual) :: r
+        r = ad_min_dr(a, x)
+    end function ad_min_rd
+
+    !---------------------------------------------------------------------------
+    ! Rotinas genericas de alto nivel
+    !
+    ! ad_diff_1d:  dada f ja avaliada em dual com seed 1, devolve f e f'
+    ! ad_gradient_2d: avalia gradiente de funcao escalar g(x,y) em 2 passagens
+    !
+    ! O usuario escreve a formula em dual; estas rotinas so padronizam a saida.
+    !---------------------------------------------------------------------------
+    pure subroutine ad_diff_1d(fx, fval, fder)
+        type(dual), intent(in)  :: fx
+        real(dp), intent(out)   :: fval, fder
+        fval = fx%v
+        fder = fx%d
+    end subroutine ad_diff_1d
+
+    !> Gradiente de g: R^2 -> R em (x0,y0).
+    !! O argument `g_xy` deve ser uma formula ja escrita; esta rotina NAO
+    !! recebe procedure pointer (portabilidade F2008 simples). Em vez disso,
+    !! use o padrao do exemplo abaixo no codigo cliente:
+    !!
+    !!   x = dual(x0, 1); y = dual(y0, 0); f = g(x,y); grad(1)=der(f)
+    !!   x = dual(x0, 0); y = dual(y0, 1); f = g(x,y); grad(2)=der(f)
+    !!
+    !! Esta rotina auxilia quando f_x e f_y ja foram avaliados:
+    pure subroutine ad_gradient_2d(fx, fy, fval, grad)
+        type(dual), intent(in) :: fx   ! g com seed em x
+        type(dual), intent(in) :: fy   ! g com seed em y
+        real(dp), intent(out)  :: fval, grad(2)
+        fval    = fx%v
+        grad(1) = fx%d
+        grad(2) = fy%d
+    end subroutine ad_gradient_2d
 
 end module math_geometry_mod

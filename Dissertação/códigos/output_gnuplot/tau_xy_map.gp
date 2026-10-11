@@ -8,6 +8,6 @@ set size ratio -1
 set grid lc rgb '#e0e0e0' dt 2
 set palette defined (0 'blue', 0.25 'cyan', 0.5 'green', 0.75 'yellow', 1 'red')
 set colorbox
-set cbrange [ -2.879372E+00:  1.521659E+01]
+set cbrange [ -2.217572E-03: -6.160738E-04]
 set cblabel 'field'
 plot 'output_gnuplot/tau_xy_map.dat' using 1:2:3 with filledcurves closed lc palette title ''

@@ -746,10 +746,8 @@ module vem_core_mod
     !   K_S = alpha_s (I-P0)^T (I-P0)
     !   alpha_s = max_i K_C_ii  (+ piso opcional)
     !===========================================================================
-    subroutine stab_park_scalar_K(K_C, D, Pi_0, C_mat, alpha0, use_floor, K_S)
-        real(dp), intent(in)  :: K_C(:,:), D(:,:), Pi_0(:,:), C_mat(3,3)
-        real(dp), intent(in)  :: alpha0
-        logical,  intent(in)  :: use_floor
+    subroutine stab_park_scalar_K(K_C, D, Pi_0, K_S)
+        real(dp), intent(in)  :: K_C(:,:), D(:,:), Pi_0(:,:)
         real(dp), intent(out) :: K_S(size(K_C,1), size(K_C,2))
         integer  :: n, i
         real(dp) :: alpha_s
@@ -763,7 +761,6 @@ module vem_core_mod
         do i = 1, n
             alpha_s = max(alpha_s, K_C(i,i))
         end do
-        if (use_floor) alpha_s = max(alpha_s, alpha0*matrix_trace(C_mat)/3.0_dp)
 
         K_S = alpha_s * matmul(transpose(IminusP), IminusP)
         deallocate(IminusP)

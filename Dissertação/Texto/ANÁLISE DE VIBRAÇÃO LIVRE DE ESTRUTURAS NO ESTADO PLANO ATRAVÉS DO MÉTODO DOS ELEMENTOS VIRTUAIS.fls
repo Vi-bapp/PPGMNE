@@ -1044,6 +1044,12 @@ INPUT ./figuras/Capítulo 4/4.6.png
 INPUT ./figuras/Capítulo 4/4.6.png
 INPUT ./figuras/Capítulo 4/4.6.png
 INPUT ./figuras/Capítulo 4/4.6.png
+INPUT c:/texlive/2024/texmf-dist/fonts/vf/public/newtx/ntxsy7.vf
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/txsys.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/txex-bar.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/vf/public/newtx/ntxmi7.vf
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/NewTXMI7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/stxscr.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-t1.tfm
 INPUT c:/texlive/2024/texmf-dist/fonts/vf/public/newtx/ntx-Bold-tlf-ot1.vf
@@ -1055,6 +1061,98 @@ OUTPUT Cap_5.aux
 INPUT ./Cap_5.tex
 INPUT ./Cap_5.tex
 INPUT Cap_5.tex
+INPUT ./figuras/Capítulo 5/Viga/Viga.tex
+INPUT ./figuras/Capítulo 5/Viga/Viga.tex
+INPUT figuras/Capítulo 5/Viga/Viga.tex
+INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
+INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
+INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
+INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
+INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
+INPUT ./figuras/Capítulo 5/Placa com furo/5.1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/5.1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/5.1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/5.1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/5.1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f1.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f2.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f2.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f2.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f2.png
+INPUT ./figuras/Capítulo 5/Placa com furo/f2.png
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Regular-tlf-ot1.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxmi.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxmi5.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsy.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsy5.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxexx.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxexx.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntx-Bold-tlf-ot1.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/tex-gyre/rm-qhvr.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/tex-gyre/rm-qhvr.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxmia.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxmia.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsym.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsym.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsyc.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxsyc.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxexa.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/newtx/ntxexa.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam7.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png
+INPUT ./figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/sheer wall.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/sheer wall.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/sheer wall.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/sheer wall.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/sheer wall.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 40.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 112.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 360.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png
+INPUT ./figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png
 INPUT ./Conclusoes.tex
 INPUT ./Conclusoes.tex
 OUTPUT Conclusoes.aux

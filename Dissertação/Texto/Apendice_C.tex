@@ -281,13 +281,17 @@ A matriz $\mathcal{H}$ é calculada da mesma forma que $\mathcal{G}$. Para a mat
     \end{tcolorbox}
 \vspace{5mm}
 
+\subsection{Termo fonte}
+
+
+
 \section{Montagem das matrizes de rigidez e massa globais}
 
 \indent Cada elemento possui uma matriz de rigidez e massa contendo os graus de liberdade do elemento. Para a solução do problema é preciso que as matrizes elementares sejam alocadas em uma matriz global que contem todos os graus de liberdade do sistema:
 \begin{equation}
     \mathbf{K} = \bigcup_{e=1}^{n_{el}} \mathbf{K}_e  \quad \mathbf{M} = \bigcup_{e=1}^{n_{el}} \mathbf{M}_e 
 \end{equation}
-\indent Para exemplificar o problema uma viga em balanço é modelada como um elemento de barra e discretizada em dois elementos, figura~\ref{fig:C.1}. Para efeito de cálculo a secção transversal com área e módulo de elasticidade constantes.
+\indent Para exemplificar o problema uma viga em balanço é modelada como um elemento de barra e discretizada em dois elementos, figura~\ref{fig:C.1}. A área e módulo de elasticidade são constantes.
 \begin{figure}[H]
     \centering
     \caption{Viga em balanço com lateral esquerda engastada discretizada em dois elementos.}
@@ -316,3 +320,4 @@ Para o segundo elemento:
     K = EA \begin{bmatrix} \frac{1}{L_1} & -\frac{1}{L_1} & 0 \\ -\frac{1}{L_1} & \frac{(L_1 + L_2)}{L_1L_2} & -\frac{1}{L_2} \\ 0 & -\frac{1}{L_2} & \frac{1}{L_2} \end{bmatrix} \quad
     M = \frac{\rho A}{3} \begin{bmatrix}  L_1^3 & \frac{L_1^3}{2} & 0 \\ L_1^3 & \frac{(L_1^3 + 2L_2^3)}{2} & \frac{L_2^3}{2} \\ 0 &  L_2^3 & \frac{ L_2^3}{2}  \end{bmatrix}
 \end{equation}
+

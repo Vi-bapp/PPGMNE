@@ -15,7 +15,8 @@
         {\small \textbf{Fonte:} \citet{virtualelementformulationphasefieldmodelingductilefracture2019}}
     \end{figure}
 
-    \indent O método foi projetado para lidar com discretizações politopais de formato arbitrário, o que é particularmente conveniente na construção de malhas para geometrias complexas. Ele provou-se robusto ao lidar com malhas de formatos arbitrários, mesmo aquelas com arestas que possuem ângulos de 180° (Figura~\ref{fig:4.2a}) ou ângulos convexos (Figura~\ref{fig:4.2b}). Como destacado por \citet{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a}, a geração e reconstrução de malhas com a correção dos elementos com grandes distorções é um processo que consome tempo na etapa de pré-processamento do MEF, etapa que o MEV permite desconsiderar. 
+    \indent O método foi projetado para lidar com discretizações politopais de formato arbitrário, o que é particularmente conveniente na construção de malhas para geometrias complexas. \citet{basicprinciplesvirtualelementmethods2013a} comentam que o Método dos Elementos Virtuais apresenta a capacidade de lidar com elementos contendo quantidades arbitrárias de nós e formatos complexos, evitando a rigidez artificial imposta pelo particionamento do domínio em elementos padrões.\\
+    \indent O método é robusto ao lidar com malhas de formatos arbitrários, mesmo aquelas com arestas que possuem ângulos de 180° (Figura~\ref{fig:4.2a}) ou ângulos convexos (Figura~\ref{fig:4.2b}). Como destacado por \citet{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a}, a geração e reconstrução de malhas com a correção dos elementos com grandes distorções é um processo que consome tempo na etapa de pré-processamento do MEF, etapa que o MEV permite desconsiderar. 
 
     \begin{figure}[H]
         \centering
@@ -198,6 +199,16 @@
         \int_{\Omega_v} w_h p_\alpha d\Omega_v = \int_{\Omega_v} \Pi^\nabla w_h p_\alpha d\Omega_v, \hspace{5mm} \vert{}\alpha\vert{} = k-1,k 
         \label{eq:4.11}
     \end{equation}
+
+    \indent Conforme destacado em \citet{illconditioningvirtualelementmethodstabilizationsbases2018}, o espaço de solução local pode ser particionado em uma componente polinomial e outra puramente virtual:
+
+    \begin{equation}
+        \begin{aligned}
+            V_k (\Omega) = \left\{ v_k \in V_k(\Omega) \mid v_k \in \mathbb{P}_k(\Omega) \right\} \oplus \left\{ v_k \in V_k(\Omega) \mid \Pi_k^\nabla v_k = 0 \right\}\\ = \mathbb{P}_k(\Omega) \oplus \ker(\Pi^\nabla_k) = V_{k,1} \oplus V_{k,2}
+        \end{aligned}
+    \end{equation}
+
+    \noindent de tal modo que uma função polinomial seja nula no espaço puramente virtual $V_{k,2}$ e uma função virtual se anule no espaço polinomial $V_{k,1}$. Próximo à região do furo, os campos de deformação apresentam elevados gradientes, fazendo com que a projeção polinomial não capture toda a cinemática local e resultando em uma contribuição significativa da componente puramente virtual (e, consequentemente, da matriz de estabilização).
 
 \section{Operadores de projeção}
 \label{sec:operadores-de-projecao}
@@ -786,9 +797,11 @@
 
 \section{Matrizes de rigidez e massa}
 
-    \indent Duas propriedades essenciais para garantir a existência, unicidade e estabilidade da solução no MEV são a consistência e a estabilidade.
+\subsection{Consistência e estabilidade do método}
+
+    \indent Duas propriedades essenciais para garantir a existência, unicidade e estabilidade da solução no MEV, a consistência e a estabilidade.
     \begin{enumerate}
-        \item Consistência: Garante que a solução discreta seja exata quando a solução analítica for um polinômio de grau menor ou igual a $k$: 
+        \item Consistência: Garante que a solução discreta seja exata quando a solução contínua for um polinômio de grau menor ou igual a $k$: 
         \begin{equation}
             a^{\Omega_v}(v_h,p) = a_h^{\Omega_v}(v_h,p) \hspace{5mm}p \in \mathbb{P}_k({\Omega_v}).
             \label{eq:4.52}
@@ -799,18 +812,29 @@
             \label{eq:4.53}
         \end{equation}
     \end{enumerate}
+    \indent Como destacado por \citet{stabilityanalysisvirtualelementmethod2016a}, polígonos com arestas muito menores que o diâmetro dos elementos comprometem a coercividade da constante de estabilidade, e \citet{illconditioningvirtualelementmethodstabilizationsbases2018} demonstra que polígonos malformados comprometem o condicionamento. \\
+    \indent Como notado por \citet{virtualelementmethodstekloveigenvalueproblemallowingsmalledges2020a}, o parâmetro de estabilização pode afetar a aproximação do espectro de autovalores, resultando em um problema discreto excessivamente rígido e poluindo severamente as frequências mais altas, particularmente quando malhas distorcidas são empregadas. \\
+    \citet{arbitraryorder2dvirtualelementspolygonalmeshespartelasticproblem2017a} afirma que a função da matriz de estabilização é manter a positividade da forma energética local, e, pela propriedade de estabilidade, a energia elástica computada internamente é equivalente à verdadeira, evitando modos espúrios. Como explicado anteriormente, a norma da forma bilinear é limitada por duas constantes: a constante inferior garante a coercividade e, portanto, a unicidade da solução, enquanto a constante superior garante a continuidade.\\
+    \indent \citet{virtualelementmethodgeneralsecondorderellipticproblemspolygonalmeshes2016} sustenta que o termo de estabilidade deve ser definido positivo\footnote{O termo de estabilidade é definido positivo quando obtiver um valor positivo ao aplicar a ele uma função $v \in \ker(\Pi_k^\nabla)$ ao mesmo tempo que deve ser nulo para os movimentos de corpo rigido.} no núcleo do projetor $\Pi^\nabla$, garantindo que os únicos modos de energia nula da matriz de rigidez local sejam os movimentos de corpo rígido. A má calibração da matriz de estabilização faz com que o limite inferior tenda a zero, o que implica a perda da capacidade de imposição de resistência elástica às deformações virtuais pertencentes ao $\ker(\Pi_k^\nabla)$ por parte da estabilização, fazendo com que o modelo perca a garantia de unicidade da solução.\\
+    \indent Como notado por \citet{illconditioningvirtualelementmethodstabilizationsbases2018}, a dimensão das componentes é dada por:
 
+    \begin{equation}
+        \begin{aligned}
+            \dim(V_{k,1}(\Omega)) = \dim(\mathbb{P}_{k}(\Omega)) = \frac{(k+1)(k+2)}{2} \\
+            \dim(V_{k,2}(\Omega)) = \dim(V_{k}(\Omega)) - \dim(V_{k,1}(\Omega)) = (n_v - 2) k - 1. 
+        \end{aligned}
+    \end{equation}
+
+    \indent Assim, nota-se que, com o aumento do grau polinomial, ocorre também um aumento do espaço de solução local. \citet{illconditioningvirtualelementmethodstabilizationsbases2018} também destaca que as constantes $a_*$ e $a^*$ têm uma forte dependência com o grau de interpolação, propriedade demonstrada por \citet{exponentialconvergencehpvirtualelementmethodpresencecornersingularities2018}. Essa propriedade implica que a estabilização é bastante sensível a formulações de alta ordem.\\
+    \indent \citet{engineeringperspectivevirtualelementmethoditsinterplaystandardfiniteelementmethod2019a} explica que a estabilização deve apenas escalar de maneira apropriada, por exemplo, ter a mesma ordem de magnitude que o termo de consistência independentemente da malha. Malhas grosseiras apresentam elementos com grandes proporções; uma má calibragem do parâmetro de estabilização ou um subdimensionamento em relação à escala física do elemento faz com que a estabilização se torne insignificante em relação ao termo de consistência, o que faz com que o limite inferior tenda a zero. \citet{quantitativestudystabilizationparametervirtualelementmethod2024} afirmam que, conforme a malha é refinada, a solução virtual se torna insensível ao parâmetro de estabilização porque os modos artificiais passam a possuir menores componentes na solução exata e, mesmo que sua energia não seja exata, seu impacto na solução não é severo.\\
+    \indent \citet{virtualelementmethodtopologyoptimizationpolygonalmeshesnumericalstudy2016} aponta que formulações de elementos virtuais de alta ordem e insuficiência de estabilização em malhas grosseiras levam a elevados números de condicionamentos das matrizes do sistema e ao aparecimento de modos cinemáticos irrestritos.\\
     \indent Das formulações elastodinâmicas, Eq.~\ref{eq:3.57}, definem-se as matrizes da massa e rigidez: 
 
     \begin{equation}
-        [M] = \int_{\Omega_v} \rho \varphi \varphi d\Omega_v,
+        [M] = \int_{\Omega_v} \rho \varphi \varphi d\Omega_v \quad [K] = \int_{\Omega_v} \epsilon(\varphi) \mathbb{C} \epsilon(\varphi) d\Omega_v.
         \label{eq:4.54}
     \end{equation}
-    e 
-	\begin{equation}
-        [K] = \int_{\Omega_v} \epsilon(\varphi) \mathbb{C} \epsilon(\varphi) d\Omega_v.
-        \label{eq:4.55}
-    \end{equation}
+
 \subsection{Matriz de massa}
 
     \indent Para a matriz de massa elementar com densidade $\rho$ constante, substitui-se o campo de funções de base $\varphi$ pela decomposição descrita na Eq.~\ref{eq:4.3}: $$[M] = \rho\int_{\Omega_v} (\Pi_k^0 \varphi + (I - \Pi_k^0) \varphi) (\Pi_k^0 \varphi + (I - \Pi_k^0) \varphi) d\Omega_v$$
@@ -1016,3 +1040,26 @@
     \indent Recordando alguns conceitos vistos no Capítulo~\ref{cap:2}: tal qual o MEF em sua formulação clássica, também é necessária a utilização dos procedimentos de recuperação de tensões para o MEV. Para se ter uma aproximação de $u_h$ e $\epsilon(u_h)$ considerando a utilização do termo não polinomial, é necessário a aplicação de técnicas de recuperação de funções na etapa de pós-processamento.
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    \indent Como detalhado por \citet{basicprinciplesvirtualelementmethods2013a}, a acurácia é ditada pelo grau de interpolação $k$ da projeção polinomial, levando a uma taxa de convergência $\mathcal{O}(h^{k+1})$ ótima na norma $L^2$. O aumento do número de arestas não melhora essa taxa teórica se o espaço polinomial se mantiver fixo. Portanto, existe um teto que pode ser assumido pelo termo de consistência e estabilização. \citet{virtualelementmethodwheelrailcontactproblems2021} complementa que grandes espaços de funções virtuais permitem a captura de oscilações, e sua projeção polinomial em espaços polinomiais menores efetivamente os amortece.

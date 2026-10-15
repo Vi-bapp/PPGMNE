@@ -10,4 +10,324 @@
         \item uma parede estrutural de 4 pavimentos no estado plano de tensões. 
     \end{itemize}
 
-\indent 
+\indent Para estudos de resultados será utilizado o erro relativo calculado por:
+\begin{equation}
+    e = \big| \frac{\omega_{ref} - \tilde{\omega}}{\omega_{ref}} \big|,
+\end{equation}
+com $\omega_{ref}$ sendo a frequência de referência e $\tilde{\omega}$ a frequência calculados para cada modo de vibração.\\
+\indent Neste trabalho a formulação do MEV e outras rotinas computacionais são implementadas com um solver programado em Modern Fortran
+e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas são feitas com auxílio do LibreOffice Calc. As malhas são gerados com o uso do software AutoCAD.\\
+\indent Como os elementos virtuais podem possuir arestas com 180° entre si, podem existir malhas com a mesma quantidade de elementos, mas com diferentes quantidades de nós. Assim, adota-se o seguinte padrão de nomenclatura para as malhas utilizadas daqui em diante neste trabalho: $$XX\#\#\#N\#\#\#k\#$$. 
+
+    \begin{itemize}
+        \item X - Letras
+        \item \# - Números
+    \end{itemize}
+    
+\indent O primeiro conjunto de letras corresponde às iniciais do problema. O primeiro conjunto de números representa a quantidade de elementos na malha. N\#\#\# é a quantidade de nós. Exemplo: PF32N74 $\rightarrow$ Placa com furo de 32 elementos e 74 nós. \\
+\indent Todos os problemas aqui tratados são de natureza vetorial, assim a quantidade de graus de liberdade por elemento equivale a duas vezes a quantidade de nós. Em aproximações de segunda ordem, haverá dois graus de liberdade internos adicionais aos dos nós relativos a vetorização dos momentos internos para $k=2$. 
+
+\section{Viga em balanço}
+
+\indent O primeiro problema abordado no trabalho é uma viga em balanço com bordo esquerdo engastado, (Figura~\ref{fig:5.1}). A viga possui 10 metros de comprimento e 1 metro de altura, como espessura de 0,5 metros. As propriedades do material são: Módulo de elasticidade $E = 1,0 N/m²$, massa específica $\rho = 1,0 kg/m³$ e coeficiente de Poisson $\nu = 0,3$.
+
+\begin{figure}[htbp]
+    \centering
+    \caption{Desenho esquemático da viga em balanço}
+    \label{fig:5.1}
+    \resizebox{0.6\textwidth}{!}{\input{figuras/Capítulo 5/Viga/Viga.tex}}
+\end{figure}
+
+\indent O problema apresentado possui solução conhecida. Para as formas axiais, a solução é:
+\begin{equation}
+    \omega_{n,axial} = \frac{2n - 1}{4 L} \sqrt{\frac{E}{\rho}},
+\end{equation}
+para formas de flexão:
+\begin{equation}
+    \omega_{n,flexão} = (\beta_n L^2) \sqrt{\frac {E I}{\rho A L^4}}.
+\end{equation}
+A determinação das formas para comparação com os resultados numéricos é dependente das deformadas de cada modo. Numericamente:
+
+\begin{table}[htbp!]
+\centering
+\caption{Valores analíticos, em rad/s, das frequências naturais para uma viga em balanço.}
+\label{tab:5.1}
+\begin{tabular}{@{}llllllll@{}}
+\toprule
+       & 1     & 2     & 3     & 4     & 5     & 6     & 7     \\ \midrule
+Axial  & 0,157 & 0,471 & 0,785 & 1,100 &       &       &       \\
+Flexão & 0,010 & 0,064 & 0,178 & 0,349 & 0,577 & 0,862 & 1,204 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\indent O objetivo desse problema é validar os resultados numéricos do método dos elementos virtuais com o refino-h, refino-p e refino-hp para diferentes técnicas de estabilização e assim comparar os resultados obtidos.\\
+\indent As técnicas de estabilização utilizadas para esse problema são:
+\begin{enumerate}[label=\Roman*.]
+    \item $\tau_K = \max_i(K^C_{ii})$ 
+    \item $\tau_K = \max(2\mu,\lambda)$ 
+    \item $\tau_K = \alpha_0\,\mathrm{tr}(K^C)$ 
+    \item $\Lambda_K = \mathrm{diag}\bigl(|K^C_{ii}|\bigr)$ 
+    \item $\Lambda_K = \max\!\Bigl(\mathrm{diag}\bigl(|K^C_{ii}|\bigr),\; \alpha_0\,\tfrac{\mathrm{tr}(\mathbb{C})}{n_C}\Bigr)$.
+\end{enumerate}
+
+\indent Adota-se para a variável $\alpha_0$ o valor de $1/2$ para a estabilização $III$; e $1/3$ para a estabilização $IV$ conforme se recomenda na literatura. A matriz de massa é estabilizada utilizando: $$\tau_m = \big|\Omega_v \big| \rho.$$\\
+
+
+\section{chapa engastada}
+
+\indent Para o problema da chapa engastada (Figura~\ref{fig:5.1.1}) são executados estudos do comportamento das técnicas de estabilização apresentadas no Capítulo~\ref{cap:4} em relação ao refino de uma malha uniforme, do efeito da distorção da geometria dos elementos no erro da solução e uma comparação dos resultados obtidos com o MEFG e o método dos elementos finitos hierárquicos desenvolvidos por \citet{torii2012analise}.
+
+\begin{figure}[H]
+    \centering
+    \caption{Geometria e condições de contorno do problema da chapa engastada.}
+    \includegraphics[width=0.4\textwidth]{figuras/Capítulo 5/Placa quadrada/Placa engastada.png}
+    \label{fig:5.1.1}
+
+    {\small \textbf{Fonte:} \citet{torii2012analise}.}
+\end{figure}
+
+\indent As propriedades materiais da chapa são: módulo de elasticidade $E = 2,1 \cdot 10^{11} \, \left(\frac{N}{m^2}\right)$, coeficiente de Poisson $\nu = 0,3$ e massa específica $\rho = 8000 \, \left(\frac{kg}{m^3}\right)$. A chapa apresenta dimensões de $1,0\,(m)$ e espessura $d = 0,05\,(m)$. Os movimentos na borda esquerda estão impedidos.
+
+\indent Utilizando os resultados de referência de \citet{torii2012analise}, obtidos com o MEFH polinomial em uma malha $4\times4$ de elementos finitos de ordem igual a 9,
+
+\section{Chapa com furo}
+
+\indent O segundo problema consiste em uma chapa engastada de espessura unitária com um furo no centro, apresentando módulo de elasticidade $E = 1\text{ (N/m}^2\text{)}$, densidade constante no elemento $\rho = 1\text{ (kg/m}^3\text{)}$ e coeficiente de Poisson $\nu = 0,3$. A geometria pode ser observada na Figura~\ref{fig:5.1}.
+
+    \begin{figure}[H]
+        \centering
+        \caption{Geometria e condições de contorno do problema da chapa com furo circular.}
+        \includegraphics[width=0.7\textwidth]{figuras/Capítulo 5/Placa com furo/5.1.png}
+        \label{fig:5.1}
+
+        {\small \textbf{Fonte:} \citet{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996}.}
+    \end{figure}
+
+\indent O problema foi proposto inicialmente no trabalho de \citet{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996} utilizando o estado plano de tensões. A intenção dos autores foi a utilização de correção dos resultados do MEF com o uso de soluções assintóticas, que, segundo eles, possui solução mais precisa. O mesmo problema foi abordado por \citet{cittadin2020enriquecimento} como referência de desempenho para o MEFG. \\
+\indent Para o problema da Figura~\ref{fig:5.1}, investiga-se o comportamento do MEV para uma malha fixa de 8 elementos, contudo utilizando diferentes quantidades de nós na fronteira dos elementos com o furo para simular o contorno circular, (Figura~\ref{fig:5.2}). 
+
+    \begin{figure}[H]
+        \centering
+        \caption{Elementos de uma mesma malha com diferentes quantidades de nós. Observe que em a) o furo é modelado com apenas os dois nós de vértice e um nó interno, enquanto em b) há três nós internos modelando a geometria do furo. Estes nós foram adicionados sem alterar a ordem de interpolação polinomial.}
+        \label{fig:5.2}
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Placa com furo/f1.png}
+            \label{fig:5.2a}
+        \end{subfigure}
+        \hfill
+        \begin{subfigure}[b]{0.45\textwidth}
+            \centering
+            \includegraphics[width=0.7\textwidth]{figuras/Capítulo 5/Placa com furo/f2.png}
+            \label{fig:5.2b}
+        \end{subfigure}
+
+        \centerline{{\small \textbf{Fonte:} Elaborado pelo autor (2026).}}
+    \end{figure}  
+
+\indent Comparam-se os valores das frequências naturais com as soluções do MEF com uma malha extremamente refinada, obtidas de \citet{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996}, o modelo de elementos finitos com correção assintótica de \citet{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996}, e o modelo de elementos finitos generalizados, com 480 graus de liberdade, de \citet{cittadin2020enriquecimento} para os primeiros dez modos de vibração. Os resultados se encontram resumidos na Tabela~\ref{tab:5.1}.
+
+% Nota: Certifique-se de ter o pacote \usepackage{makecell} no preâmbulo do seu documento LaTeX.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Frequências naturais obtidas para os primeiros dez modos de vibração (rad/s) para malha de 8 elementos.}
+    \label{tab:5.1}
+    \small % Reduz o tamanho da fonte para manter a tabela compacta
+    \begin{tabular}{lccccccc}
+        \toprule
+        \textbf{MODO} & \textbf{REF} & \makecell{\textbf{MEF}\\\textbf{(32 gl)}} & \makecell{\textbf{MEFG}\\\textbf{(480 gl)}} & \makecell{\textbf{MEV}\\\textbf{(17 gl)}} & \makecell{\textbf{MEV}\\\textbf{(33 gl)}} & \makecell{\textbf{MEV}\\\textbf{(45 gl)}} & \makecell{\textbf{MEV}\\\textbf{(104 gl)}} \\
+        \midrule
+        1  & 0,0744 & 0,0833 & 0,0672 & 0,0910 & 0,0900 & 0,0900 & 0,0900 \\
+        2  & 0,1648 & 0,1661 & 0,1569 & 0,1780 & 0,1760 & 0,1760 & 0,1750 \\
+        3  & 0,2055 & 0,2334 & 0,1985 & 0,2670 & 0,2660 & 0,2650 & 0,2640 \\
+        4  & 0,2939 & 0,3302 & 0,2407 & 0,3860 & 0,3770 & 0,3730 & 0,3850 \\
+        5  & 0,3243 & 0,3525 & 0,2730 & 0,4060 & 0,4000 & 0,3950 & 0,4220 \\
+        6  & 0,4399 & 0,4234 & 0,3818 & 0,4630 & 0,4480 & 0,4440 & 0,4360 \\
+        7  & 0,4482 & 0,4624 & 0,4147 & 0,4870 & 0,4690 & 0,4640 & 0,4870 \\
+        8  & 0,4973 & 0,4805 & 0,4393 & 0,4970 & 0,4870 & 0,4760 & 0,4480 \\
+        9  & 0,5332 & 0,5508 & 0,4705 & 0,5170 & 0,4980 & 0,4830 & 0,4500 \\
+        10 & 0,5485 & 0,5578 & 0,5211 & 0,5470 & 0,5020 & 0,4860 & 0,4530 \\
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{0.2cm}
+    \raggedright
+    \textbf{Fonte:} Elaborado pelo autor (2026).
+\end{table}
+
+
+
+
+\section{Barragem de terra}
+
+\indent O terceiro problema a ser estudado é uma barragem de terra modelada pelo estado plano de deformações, (Figura~\ref{fig:5.11}). O modelo de cálculo é um triângulo isósceles com módulo de elasticidade $E = 5,602 \times 10^8\text{ (N/m}^2\text{)}$, densidade $\rho = 2080\text{ (kg/m}^3\text{)}$ e coeficiente de Poisson $\nu = 0,45$.
+
+\begin{figure}[H]
+    \centering
+    \caption{Geometria da barragem de terra em estado plano de deformações.}
+    \includegraphics[width=\textwidth]{figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082612.png}
+    \label{fig:5.11}
+
+    \centerline{    {\small \textbf{Fonte:} Elaborado pelo autor (2026).}}
+
+\end{figure}
+
+\indent O problema de vibrações em barragens de terra foi proposto pela primeira vez por \citet{earthquakestressanalysisearthdams1966}, (Figura~\ref{fig:5.12}), voltado à análise de terremotos em barragens de terra. O mesmo problema foi abordado por \citet{analytictrapezoidalfourierpelementvibratingplaneproblems2004} com a utilização de elementos p-Fourier trapezoidais em problemas de vibração no plano, (Figura~\ref{fig:5.13}), por \citet{refinednonconformingplanequadrilateralelement2000} no desenvolvimento de um elemento quadrilateral plano não conforme refinado, (Figura~\ref{fig:5.14}), e por \citet{cittadin2020enriquecimento} na análise do coeficiente de Friberg junto ao MEFG.
+
+\begin{figure}[H]
+    \centering
+    \caption{Malha e geometria proposta originalmente.}
+    \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 083021.png}
+    \label{fig:5.12}
+
+    \centerline{    {\small \textbf{Fonte:} \citet{earthquakestressanalysisearthdams1966}.}}
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Discretização por elementos p-Fourier trapezoidais.}
+    \includegraphics[width=0.9\textwidth]{figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082531.png}
+    \label{fig:5.13}
+
+    \centerline{    {\small \textbf{Fonte:} \citet{analytictrapezoidalfourierpelementvibratingplaneproblems2004}.}}
+
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Modelo quadrilateral não conforme.}
+    \includegraphics[width=\textwidth]{figuras/Capítulo 5/Barragem/Captura de tela 2026-08-19 082553.png}
+    \label{fig:5.14}
+    
+     {\small \textbf{Fonte:} Elaborado pelo autor (2026).}
+\end{figure}
+
+\indent A primeira análise realizada envolve a malha de 3 elementos de \citet{analytictrapezoidalfourierpelementvibratingplaneproblems2004}. A tabela~\ref{tab:5.9a} contém os resultados obtidos pelos autores previamente citados. Para o estudo, foram utilizadas quatro malhas de elementos virtuais, três malhas de 3 elementos (Figura~\ref{fig:5.13}) contendo respectivamente 14 gl, 30 gl e 72 gl e uma malha de 35 elementos e 94 gl (Figura~\ref{fig:5.14}). Essas malhas serão utilizadas como forma de comparação com os resultados obtidos pelos demais autores. Os resultados do MEV se encontram na tabela~\ref{tab:5.9b}
+
+% Certifique-se de ter os pacotes \usepackage{booktabs} e \usepackage{makecell} no preâmbulo.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Frequências naturais dos autores citados para a barragem de terra (rad/s).}
+    \label{tab:5.9a}
+    \setlength{\tabcolsep}{4pt} % Ajusta o espaçamento lateral para acomodar os textos dos cabeçalhos
+    \small % Reduz o tamanho da fonte para o padrão acadêmico
+    \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Modo} & 
+        \makecell{\textbf{\protect\citet{chopra2023dynamics}}\\\textbf{(110 gl)}} & 
+        \makecell{\textbf{\protect\citet{analytictrapezoidalfourierpelementvibratingplaneproblems2004}}\\\textbf{(25 gl)}} & 
+        \makecell{\textbf{\protect\citet{refinednonconformingplanequadrilateralelement2000}}\\\textbf{(72 gl)}} & 
+        \makecell{\textbf{\protect\citet{cittadin2020enriquecimento}}\\\textbf{MEF (25 gl)}} & 
+        \makecell{\textbf{\protect\citet{cittadin2020enriquecimento}}\\\textbf{MEFG (182 gl)}} \\
+        \midrule
+        1 & 7,71  & 7,79  & 7,76  & 7,95  & 7,76  \\
+        2 & 12,52 & 12,52 & 12,52 & 17,71 & 12,46 \\
+        3 & 14,6  & 14,51 & 14,49 & 23,44 & 14,34 \\
+        4 & 19,31 & 18,42 & 18,36 & 30,70 & 18,36 \\
+        \bottomrule
+    \end{tabular}
+    
+    \vspace{0.2cm}
+    \raggedright
+    \textbf{Fonte:} Elaborado pelo autor (2026) a partir de \citet{chopra2023dynamics}, \citet{analytictrapezoidalfourierpelementvibratingplaneproblems2004}, \citet{refinednonconformingplanequadrilateralelement2000} e \citet{cittadin2020enriquecimento}.
+\end{table}
+
+\indent Como comentado por \citet{cittadin2020enriquecimento}, os valores do MEFG apresentam valores menores que as dos demais autores, partindo do pressuposto que a solução converge por valores superiores, isso é um indicativo de que a solução do MEFG é mais precisa que a dos demais autores considerando, principalmente, a maior quantidade de gl envolvidos. \\
+\indent Tomando a solução de \citet{cittadin2020enriquecimento} como referência, calculam-se os erros relativos obtidos pelo MEV para os quatro primeiros modos de vibração.
+
+
+
+\section{Parede estrutural}
+
+\indent O quarto problema abordado consiste em uma parede estrutural no estado plano de tensões (Figura~\ref{fig:5.23}). A parede possui módulo de elasticidade $E = 1{,}0 \times 10^{4}\,\text{N/m}^{2}$, coeficiente de Poisson $\nu = 0{,}2$, massa específica $\rho = 1\,\text{kg/m}^{3}$ e espessura $d = 1\,\text{m}$. 
+O problema foi proposto em \citet{nguyenthanh2010alternative} como ``benchmark'' para uma formulação alternativa do Método dos Elementos Finitos $\alpha$ (A~$\alpha$~FEM). Os autores comparam a solução com elementos finitos triangulares padrão, uma solução via software ABAQUS, o Método dos Elementos de Contorno e o método sem malha de Petrov-Galerkin local. 
+
+\begin{figure}[H]
+    \centering
+    \caption{Geometria e modelo da parede estrutural.}
+    \includegraphics[width=0.5\textwidth]{figuras/Capítulo 5/Parede estrutural/sheer wall.png}
+    \label{fig:5.23}
+
+    \centerline{    {\small \textbf{Fonte:} Elaborado pelo autor (2026).}}
+\end{figure}
+
+\indent O mesmo problema foi abordado por \citet{custodio2022metodo} com a utilização do MEFG enriquecido com funções trigonométricas. O autor apresenta a comparação entre um elemento enriquecido completo e um elemento enriquecido apenas com funções do tipo bolha. O autor utiliza como referência o A~$\alpha$~FEM de \citet{nguyenthanh2010alternative} e duas famílias de elementos triangulares do MEF, a primeira com aproximação linear e a segunda quadrática.\\
+\indent Para a investigação do problema, são utilizados apenas elementos triangulares em malhas uniformes. Inicialmente, elaboram-se quatro diferentes malhas com todos os elementos triangulares: PE40N48k1, PE112N66k1, PE360N262k1 e PE1000N588k1, (Figura~\ref{fig:5.24}). Nota-se que, diferentemente dos problemas anteriores, o aumento da quantidade de elementos é muito maior do que a quantidade de nós ao refinar a malha. \\
+
+\begin{figure}[H]
+    \centering
+    \caption{Discretizações triangulares para o problema da parede estrutural.}
+    \label{fig:5.24}
+    \begin{subfigure}[htpb]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Parede estrutural/mesh_original 40.png}
+        \label{fig:5.24a}
+    \end{subfigure}
+    \begin{subfigure}[htpb]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Parede estrutural/mesh_original 112.png}
+        \label{fig:5.24b}
+    \end{subfigure}
+    \vspace{2mm}
+    \begin{subfigure}[htpbb]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Parede estrutural/mesh_original 360.png}
+        \label{fig:5.24c}
+    \end{subfigure}
+    \begin{subfigure}[htpb]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.8\textwidth]{figuras/Capítulo 5/Parede estrutural/mesh_original 1000.png}
+        \label{fig:5.24d}
+    \end{subfigure}
+    \centerline{    {\small \textbf{Fonte:} Elaborado pelo autor (2026).}}
+
+\end{figure}  
+
+
+\indent Para o cálculo do erros relativos, como não há solução analítica, utiliza-se o A~$\alpha$~FEM de \citet{nguyenthanh2010alternative}. Os erros estão plotados na Figura~\ref{fig:5.17}. Observam-se erros de até 250\% em relação à solução de referência e mesmo com o aumento da quantidade de elementos os erros sofrem pouca ou nenhuma alteração, sinal de que está ocorrendo travamento numérico.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

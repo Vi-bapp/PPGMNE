@@ -589,18 +589,7 @@ e o Gnuplot para visualização de resultados. Gráficos e tabelas comparativas 
     \centerline{    {\small \textbf{Fonte:} Elaborado pelo autor (2026).}}
 \end{figure}
 
-\indent Analisando os erros, nota-se que a malha com os menores erros é a de 8 elementos a de 32. \citet{basicprinciplesvirtualelementmethods2013a} comentam que o Método dos Elementos Virtuais apresenta a capacidade de lidar com elementos contendo quantidades arbitrárias de nós e formatos complexos, evitando a rigidez artificial imposta pelo particionamento do domínio em elementos padrões.\\
-\indent O parâmetro de estabilização utilizado para penalização no termo de estabilidade emprega o traço da matriz de rigidez de consistência como constante multiplicativa. Como explicado por \citet{basicformulationsvirtualelementmethodvemfinitedeformations2017}, essa escolha evita o travamento volumétrico e aumenta a robustez computacional para sólidos submetidos a grandes deformações, fazendo com que o termo de estabilização escale na mesma ordem de grandeza da matriz de consistência.\\
-\indent Conforme destacado em \citet{illconditioningvirtualelementmethodstabilizationsbases2018}, o espaço de solução local pode ser particionado em uma componente polinomial e outra puramente virtual:
-
-\begin{equation}
-    \begin{aligned}
-        V_k (\Omega) = \left\{ v_k \in V_k(\Omega) \mid v_k \in \mathbb{P}_k(\Omega) \right\} \oplus \left\{ v_k \in V_k(\Omega) \mid \Pi_k^\nabla v_k = 0 \right\}\\ = \mathbb{P}_k(\Omega) \oplus \ker(\Pi^\nabla_k) = V_{k,1} \oplus V_{k,2}
-    \end{aligned}
-\end{equation}
-
-\noindent de tal modo que uma função polinomial seja nula no espaço puramente virtual $V_{k,2}$ e uma função virtual se anule no espaço polinomial $V_{k,1}$. Próximo à região do furo, os campos de deformação apresentam elevados gradientes, fazendo com que a projeção polinomial não capture toda a cinemática local e resultando em uma contribuição significativa da componente puramente virtual (e, consequentemente, da matriz de estabilização).\\
-\indent Como notado por \citet{virtualelementmethodstekloveigenvalueproblemallowingsmalledges2020a}, o parâmetro de estabilização pode afetar a aproximação do espectro de autovalores, resultando em um problema discreto excessivamente rígido e poluindo severamente as frequências mais altas, particularmente quando malhas distorcidas são empregadas. Assim, com o aumento da quantidade de elementos na região do furo, há também o aumento do número de matrizes de estabilização locais somadas ao sistema, impondo uma rigidez artificial global à solução que degrada os resultados da malha de 32 elementos.\\
+\indent Analisando os erros, nota-se que a malha com os menores erros é a de 8 elementos a de 32. 
 \indent Outro detalhe que pode ser visto analisando os resultados das tabelas~\ref{tab:5.3} e \ref{tab:5.2} é a malha de 8 elementos possuir maiores erros em relação aos primeiros modos de vibração quando comparada à malha de 32 elementos. Isso demonstra que o refino de uma malha de 32 seria o ideal se não fossem os erros acumulados da estabilização. Com essa consideração, trabalhos futuros podem realizar essa mesma análise utilizando a formulação livre de estabilização do MEV e comparar os resultados.\\
 \indent O estudo do ganho de precisão relativo do método foi executado para a formulação de elementos finitos clássica apresentada no trabalho de \citet{asymptoticsolutionspredictednaturalfrequenciestwodimensionalelasticsolidvibrationproblemsfiniteelementanalysis1996} -- e não a versão com correção assintótica.\\
 \indent Através do cálculo do GPR (tabela~\ref{tab:5.7}) são feitas as seguintes observações:

@@ -2,8 +2,8 @@
 # SCRIPT 2: OPÇÃO B - MÚLTIPLOS ARQUIVOS DO SOLVER (w_n / w_1 vs. n / N_total)
 # ==============================================================================
 # Liste os nomes dos arquivos CSV gerados pelo solver e as legendas do gráfico:
-ARQUIVOS = "cu4n9k1.csv cu16n25k1.csv cu64n81k1.csv cu256n289k1.csv"
-TITULOS  = "cu4 cu16 cu64 cu256"
+ARQUIVOS = "vem1-1.csv vem1-2.csv vem1-3.csv"
+TITULOS  = "vem1-1.csv vem1-2.csv vem1-3.csv"
 
 set datafile separator ";"
 set decimalsign ','      # Descomente se os CSVs do solver usarem vírgula decimal

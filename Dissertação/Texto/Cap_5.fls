@@ -1,0 +1,15 @@
+PWD d:/Programação/PPGMNE/Dissertação/Texto
+INPUT c:/texlive/2024/texmf.cnf
+INPUT c:/texlive/2024/texmf-dist/web2c/texmf.cnf
+INPUT c:/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt
+INPUT d:/Programação/PPGMNE/Dissertação/Texto/Cap_5.tex
+OUTPUT Cap_5.log
+INPUT c:/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
+INPUT ./figuras/Capítulo 5/Viga/Viga.tex
+INPUT ./figuras/Capítulo 5/Viga/Viga.tex
+INPUT figuras/Capítulo 5/Viga/Viga.tex
+OUTPUT Cap_5.pdf
+INPUT c:/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map
+INPUT c:/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc

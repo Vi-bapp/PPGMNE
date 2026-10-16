@@ -8,6 +8,6 @@ set size ratio -1
 set grid lc rgb '#e0e0e0' dt 2
 set palette defined (0 'blue', 0.25 'cyan', 0.5 'green', 0.75 'yellow', 1 'red')
 set colorbox
-set cbrange [ -3.339918E-17:  1.815261E-16]
+set cbrange [ -3.347444E-16:  1.615580E-16]
 set cblabel 'field'
 plot 'output_gnuplot/sigma_yy_map.dat' using 1:2:3 with filledcurves closed lc palette title ''

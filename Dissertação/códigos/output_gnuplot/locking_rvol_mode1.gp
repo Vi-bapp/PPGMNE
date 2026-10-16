@@ -8,6 +8,6 @@ set size ratio -1
 set grid lc rgb '#e0e0e0' dt 2
 set palette defined (0 'blue', 0.25 'cyan', 0.5 'green', 0.75 'yellow', 1 'red')
 set colorbox
-set cbrange [  1.255013E-27:  9.829517E-27]
+set cbrange [  3.461741E-29:  6.530713E-27]
 set cblabel 'field'
 plot 'output_gnuplot/locking_rvol_mode1.dat' using 1:2:3 with filledcurves closed lc palette title ''

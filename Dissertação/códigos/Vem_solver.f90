@@ -5,9 +5,7 @@ program main_free_vibration
     use gnuplot_archive_mod
     use math_geometry_mod
     use vem_operators_mod
-    use Vem_operators_aux
     use dynamics_mod
-    use measures_mod
     use elasticity_mod
     use vem_postprocessing_mod
     
@@ -70,6 +68,11 @@ program main_free_vibration
     real(dp) :: x_min, x_max, y_min, y_max, char_len, target_pct
     integer ::  dof_target, target_node, target_dir, target_global_dof
     character(len=128) :: title_str, filename_prefix, ylabel_str
+
+    ! Arrays genericos para gnuplot_archive_mod (CSR, agnostico ao metodo)
+    real(dp), allocatable :: plot_x(:), plot_y(:)
+    integer, allocatable  :: plot_elem_ptr(:), plot_elem_conn(:)
+    integer :: plot_nnodes, plot_nelem, plot_conn_len, jn
 
     ! -------------------------------------------------------------------------
     ! CONFIGURAÇÕES INICIAIS E MATERIAL
@@ -227,33 +230,43 @@ program main_free_vibration
             ! =========================================================================
             ! CÁLCULO DAS MATRIZES B E D 
             ! =========================================================================
+            ! B unificada: op_boundary + op_domain (GRAM_OP_*)
             if (n_mon_int > 0) then
-                ! Matriz B_eps (Elasticidade 2D)
-                call compute_matrix_B(B_eps, n_monomials_eps, loc_ndof, size(el%vertices), k_order - 1, 3, &
+                call compute_matrix_B(B_eps, n_monomials_eps, loc_ndof, size(el%vertices), &
+                          k_order - 1, 3, &
                           edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                          coords_verts, el%centroid(1), el%centroid(2), &   
-                          el%diameter, op_eps_boundary, el%area, n_mon_int, &
-                          internal_dof_map, p_int, q_int, op_coeff_eps_div, &
-                          sign_factor = -1.0_dp)
+                          coords_verts, el%centroid(1), el%centroid(2), el%diameter, &
+                          op_eps_boundary, GRAM_OP_DIV, &
+                          area=el%area, n_internal=n_mon_int, &
+                          internal_dof_map=internal_dof_map, &
+                          p_internal=p_int, q_internal=q_int, &
+                          sign_factor=-1.0_dp, &
+                          normal_kind=NORMAL_KIND_STRAIN_VOIGT)
 
-                ! Matriz B_0 (Projetor L2 / Laplaciano)
-                call compute_matrix_B(B_0, n_monomials, loc_ndof, size(el%vertices), k_order, mesh%ndof, &
+                call compute_matrix_B(B_0, n_monomials, loc_ndof, size(el%vertices), &
+                          k_order, mesh%ndof, &
                           edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                          coords_verts, el%centroid(1), el%centroid(2), &   
-                          el%diameter, op_grad, el%area, n_mon_int, &
-                          internal_dof_map, p_int, q_int, op_coeff_lap_generic, &
-                          sign_factor = -1.0_dp)
+                          coords_verts, el%centroid(1), el%centroid(2), el%diameter, &
+                          op_grad, GRAM_OP_LAP, &
+                          area=el%area, n_internal=n_mon_int, &
+                          internal_dof_map=internal_dof_map, &
+                          p_internal=p_int, q_internal=q_int, &
+                          sign_factor=-1.0_dp)
             else
-                call compute_matrix_B(B_eps, n_monomials_eps, loc_ndof, size(el%vertices), k_order - 1, 3, &
-                                      edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_eps_boundary) 
-                                      
-                call compute_matrix_B(B_0, n_monomials, loc_ndof, size(el%vertices), k_order, mesh%ndof, &
-                                      edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
-                                      coords_verts, el%centroid(1), el%centroid(2), el%diameter, op_grad) 
+                call compute_matrix_B(B_eps, n_monomials_eps, loc_ndof, size(el%vertices), &
+                          k_order - 1, 3, &
+                          edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
+                          coords_verts, el%centroid(1), el%centroid(2), el%diameter, &
+                          op_eps_boundary, GRAM_OP_DIV, &
+                          normal_kind=NORMAL_KIND_STRAIN_VOIGT)
+
+                call compute_matrix_B(B_0, n_monomials, loc_ndof, size(el%vertices), &
+                          k_order, mesh%ndof, &
+                          edge_dof_map, edge_length, normals, gauss_pts, gauss_w, n_gauss, &
+                          coords_verts, el%centroid(1), el%centroid(2), el%diameter, &
+                          op_grad, GRAM_OP_LAP)
             end if
 
-            ! Aplica P0 em B_0
             if (k_order >= 2) then
                 call apply_P0(B_0, k_order, size(el%vertices), n_monomials, loc_ndof, mesh%ndof, &
                               internal_dof_map, el%area)
@@ -261,38 +274,53 @@ program main_free_vibration
                 call apply_P0(B_0, k_order, size(el%vertices), n_monomials, loc_ndof, mesh%ndof)
             end if
 
-            ! Chamada da subrotina compute_matrix_D otimizada
-            call compute_matrix_D(D_mat= D_0, &
-                                boundary_pts = node_coords, &
-                                n_boundary_pts   = n_bnd_nodes, &
-                                k = k_order, &
-                                xc  = el%centroid(1), &
-                                yc               = el%centroid(2), &
-                                h_E              = el%diameter, &
-                                ndof             = mesh%ndof, &
-                                loc_ndof         = loc_ndof, &              
-                                area             = el%area, &
-                                polygon_coords   = coords_verts, &
-                                n_verts          = size(el%vertices), &
-                                internal_dof_map = internal_dof_map &      
-                                )
+            if (n_mon_int > 0) then
+                call compute_matrix_D(D_mat=D_0, &
+                                    boundary_pts=node_coords, &
+                                    n_boundary_pts=n_bnd_nodes, &
+                                    k=k_order, &
+                                    xc=el%centroid(1), &
+                                    yc=el%centroid(2), &
+                                    h_E=el%diameter, &
+                                    ndof=mesh%ndof, &
+                                    loc_ndof=loc_ndof, &
+                                    area=el%area, &
+                                    polygon_coords=coords_verts, &
+                                    n_verts=size(el%vertices), &
+                                    internal_dof_map=internal_dof_map)
+            else
+                call compute_matrix_D(D_mat=D_0, &
+                                    boundary_pts=node_coords, &
+                                    n_boundary_pts=n_bnd_nodes, &
+                                    k=k_order, &
+                                    xc=el%centroid(1), &
+                                    yc=el%centroid(2), &
+                                    h_E=el%diameter, &
+                                    ndof=mesh%ndof, &
+                                    loc_ndof=loc_ndof)
+            end if
+
             call invert_and_project(matmul(B_0, D_0), B_0, el%Pi_nabla)
             call compute_matrix_G(G_eps, k_order - 1, el%centroid(1), el%centroid(2), &
                             el%diameter, el%area, coords_verts, size(el%vertices))
             call invert_and_project(G_eps, B_eps, el%Pi_eps)
             call compute_matrix_H0_exact(coords_verts(:,1), coords_verts(:,2), &
-                                         size(el%vertices), k_order, n_monomials, mesh%ndof, el%centroid(1), el%centroid(2), &
-                                         el%diameter, H0)
-            call compute_matrix_Q(H0, el%Pi_nabla, k_order, n_monomials, mesh%ndof, loc_ndof, &
-                                  n_mon_int, internal_dof_map, el%area, Q_0)
+                                         size(el%vertices), k_order, n_monomials, mesh%ndof, &
+                                         el%centroid(1), el%centroid(2), el%diameter, H0)
+
+            if (n_mon_int > 0) then
+                call compute_matrix_Q(H0, el%Pi_nabla, k_order, n_monomials, mesh%ndof, loc_ndof, &
+                                      n_mon_int, internal_dof_map, el%area, Q_0)
+            else
+                call compute_matrix_Q(H0, el%Pi_nabla, k_order, n_monomials, mesh%ndof, loc_ndof, &
+                                      0, area=el%area, Q_mat=Q_0)
+            end if
             call invert_and_project(H0, Q_0, el%Pi_0)
 
             ! ---------------------------------------------------------
             ! 1. MATRIZES DE CONSISTÊNCIA
             ! ---------------------------------------------------------
             M_C = rho * matmul(transpose(el%Pi_0), matmul(H0, el%Pi_0))
-            call compute_vem_stiffness_consistency(el%Pi_eps, G_eps, C_mat, K_C)
-
             call compute_vem_stiffness_consistency(el%Pi_eps, G_eps, C_mat, K_C)
             
             ! ---------------------------------------------------------
@@ -381,7 +409,34 @@ program main_free_vibration
         internal_dofs(N_i) = i
     end do
 
-    call export_gnuplot_mesh(mesh, 'output_gnuplot/mesh_original.gp.dat')
+    ! --- Arrays genericos para plots (CSR) a partir da mesh VEM ---
+    ! Contorno = VERTICES ordenados por angulo em torno do centroide (CCW),
+    ! para evitar poligonos cruzados quando a ordem no arquivo nao e ciclica.
+    plot_nnodes = mesh%nnodes
+    plot_nelem  = mesh%nelem
+    allocate(plot_x(plot_nnodes), plot_y(plot_nnodes))
+    do i = 1, plot_nnodes
+        plot_x(i) = mesh%node(i)%x
+        plot_y(i) = mesh%node(i)%y
+    end do
+    plot_conn_len = 0
+    do eid = 1, plot_nelem
+        if (allocated(mesh%elem(eid)%vertices)) then
+            plot_conn_len = plot_conn_len + size(mesh%elem(eid)%vertices)
+        else
+            plot_conn_len = plot_conn_len + size(mesh%elem(eid)%nodes)
+        end if
+    end do
+    allocate(plot_elem_ptr(plot_nelem + 1), plot_elem_conn(plot_conn_len))
+    plot_elem_ptr(1) = 1
+    jn = 1
+    do eid = 1, plot_nelem
+        call append_element_boundary_ccw(mesh, eid, plot_elem_conn, jn)
+        plot_elem_ptr(eid + 1) = jn
+    end do
+
+    call export_gnuplot_mesh(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+                             'output_gnuplot/mesh_original.gp.dat')
 
     if (N_i > 0) then
         call partition_matrix(K, internal_dofs, boundary_dofs, K_ii, K_ib, K_bi, K_bb) 
@@ -425,10 +480,10 @@ program main_free_vibration
                                r_shear_modes(mode_idx))
 
             if (mode_idx == 1) then
-                call export_element_scalar_field(mesh, elem_r_vol, &
-                    "locking_rvol_mode1", "Razao Energia Volumetrica r_vol (Modo 1)")
-                call export_element_scalar_field(mesh, elem_r_shear, &
-                    "locking_rshear_mode1", "Razao Energia Cisalhamento r_shear (Modo 1)")
+                call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+                    elem_r_vol, "locking_rvol_mode1", "Razao Energia Volumetrica r_vol (Modo 1)")
+                call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+                    elem_r_shear, "locking_rshear_mode1", "Razao Energia Cisalhamento r_shear (Modo 1)")
             end if
             if (allocated(elem_r_vol)) deallocate(elem_r_vol)
             if (allocated(elem_r_shear)) deallocate(elem_r_shear)
@@ -442,6 +497,15 @@ program main_free_vibration
             r_vol       = r_vol_modes, &
             r_shear     = r_shear_modes, &
             n_modes     = n_lock_modes )
+
+        call export_locking_spectrum( &
+            filename_prefix = filename(index(filename,'/',back=.true.)+1 : len_trim(filename)-4) // '_locking', &
+            r_vol           = r_vol_modes, &
+            r_shear         = r_shear_modes, &
+            n_modes         = n_lock_modes, &
+            n_total_dof     = N_i, &
+            title_str       = 'Indices de locking (VEM) vs ordem modal adimensional' )
+
         if (allocated(r_vol_modes)) deallocate(r_vol_modes)
         if (allocated(r_shear_modes)) deallocate(r_shear_modes)
 
@@ -472,7 +536,9 @@ program main_free_vibration
             char_len = sqrt((x_max - x_min)**2 + (y_max - y_min)**2)
             target_pct = 0.1_dp
 
-            max_disp = maxval(abs(phi_full))
+            ! Escala so com DOFs nodais (1:nnodes*ndof); momentos internos
+            ! nao sao deslocamentos e enviesam max_disp.
+            max_disp = maxval(abs(phi_full(1:mesh%nnodes * mesh%ndof)))
             if (max_disp > 1.0e-12_dp) then
                 auto_scale = (target_pct * char_len) / max_disp
             else
@@ -480,14 +546,20 @@ program main_free_vibration
             end if
 
             write(mode_filename, '("output_gnuplot/mode_",i0,"_mesh_def.gp.dat")') mode_idx
-            call export_gnuplot_deformed_mesh(mesh, phi_full, auto_scale, trim(mode_filename), mode_idx, &
+            call export_gnuplot_deformed_mesh(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+                                  mesh%ndof, phi_full, auto_scale, trim(mode_filename), mode_idx, &
                                   orig_mesh_filename='output_gnuplot/mesh_original.gp.dat')
 
             deallocate(phi_full)
         end do
 
         do i = 1, min(3, N_i)
-            call export_mode_surface(mesh, eigenvectors(:, i), i)
+            allocate(phi_full(N_total), source=0.0_dp)
+            do jn = 1, N_i
+                phi_full(internal_dofs(jn)) = eigenvectors(jn, i)
+            end do
+            call export_mode_surface(plot_x, plot_y, plot_nnodes, mesh%ndof, phi_full, i)
+            deallocate(phi_full)
         end do
 
         ! =========================================================================
@@ -511,14 +583,13 @@ program main_free_vibration
 
         ! Validação caso o nó/GL esteja engastado (preso)
         if (dof_target == 0) then
-            write(*, '(A, I0, A)') "Aviso: O GL ", target_global_dof, " esta restrito (engastado). Escolha outro GL livre."
-            return
-        end if
-
+            write(*, '(A, I0, A)') "Aviso: O GL ", target_global_dof, &
+                " esta restrito (engastado). Escolha outro GL livre."
+        else
         ! =========================================================================
         ! CÁLCULO E PLOTAGEM DA RESPOSTA TEMPORAL
         ! =========================================================================
-        n_modes    = 5 ! <-- CORREÇÃO: Definindo o valor de n_modes
+        n_modes    = 5
 
         ! Período baseado no Modo 1 (frequência mais baixa)
         omega_1    = sqrt(max(1.0e-12_dp, eigenvalues(1)))
@@ -564,6 +635,8 @@ program main_free_vibration
         if (allocated(omegas)) deallocate(omegas, q0, dq0)
         if (allocated(t_vec)) deallocate(t_vec, u_vec)
 
+        end if  ! dof_target /= 0 (resposta temporal)
+
         ! =====================================================================
         ! ANIMAÇÃO GIF
         ! =====================================================================
@@ -582,12 +655,18 @@ program main_free_vibration
         char_len   = sqrt((x_max - x_min)**2 + (y_max - y_min)**2)
         target_pct = 0.10_dp
         
-        max_disp = maxval(abs(eigenvectors(:, mode_anim)))
+        ! Reconstroi modo no espaco global e escala so a parte nodal
+        allocate(phi_full(N_total), source=0.0_dp)
+        do i = 1, N_i
+            phi_full(internal_dofs(i)) = eigenvectors(i, mode_anim)
+        end do
+        max_disp = maxval(abs(phi_full(1:mesh%nnodes * mesh%ndof)))
         if (max_disp > 1.0e-12_dp) then
             scale_anim = (target_pct * char_len) / max_disp
         else
             scale_anim = 1.0_dp
         end if
+        deallocate(phi_full)
 
         if (omega_anim > 1.0e-6_dp) then
             dt_sim = (2.0_dp * pi / omega_anim) / real(n_steps, dp)
@@ -622,7 +701,8 @@ program main_free_vibration
             end do
 
             write(frame_filename, '("output_gnuplot/deformed_frame_",i0.4,".gp.dat")') step
-            call export_gnuplot_deformed_mesh(mesh, phi_full, scale_anim, trim(frame_filename))
+            call export_gnuplot_deformed_mesh(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+                                          mesh%ndof, phi_full, scale_anim, trim(frame_filename))
 
             if (allocated(q_t)) deallocate(q_t)
         end do
@@ -658,14 +738,14 @@ program main_free_vibration
 
         call smooth_element_to_nodes(mesh, elem_sigma, elem_vM, node_sigma, node_vM)
 
-        call export_element_scalar_field(mesh, elem_vM, &
-            "von_mises_map", "Tensao Equivalente de Von Mises (Pa)")
-        call export_element_scalar_field(mesh, elem_sigma(:,1), &
-            "sigma_xx_map", "Tensao Normal XX (Pa)")
-        call export_element_scalar_field(mesh, elem_sigma(:,2), &
-            "sigma_yy_map", "Tensao Normal YY (Pa)")
-        call export_element_scalar_field(mesh, elem_sigma(:,3), &
-            "tau_xy_map", "Tensao de Cisalhamento XY (Pa)")
+        call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+            elem_vM, "von_mises_map", "Tensao Equivalente de Von Mises (Pa)")
+        call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+            elem_sigma(:,1), "sigma_xx_map", "Tensao Normal XX (Pa)")
+        call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+            elem_sigma(:,2), "sigma_yy_map", "Tensao Normal YY (Pa)")
+        call export_element_scalar_field(plot_x, plot_y, plot_nelem, plot_elem_ptr, plot_elem_conn, &
+            elem_sigma(:,3), "tau_xy_map", "Tensao de Cisalhamento XY (Pa)")
 
         deallocate(phi_full)
         if (allocated(elem_eps))   deallocate(elem_eps, elem_sigma, elem_vM)
@@ -673,5 +753,130 @@ program main_free_vibration
     else
         write(*,'(a)') 'Aviso: phi_full indisponivel; pos-processamento ignorado.'
     end if
+
+contains
+
+
+    ! Ordena vertices do elemento no sentido anti-horario em torno do centroide
+    ! e acrescenta em conn a partir da posicao jn (jn avanca).
+    subroutine append_element_boundary_ccw(mesh, eid, conn, jn)
+        type(mesh_type), intent(in) :: mesh
+        integer, intent(in) :: eid
+        integer, intent(inout) :: conn(:), jn
+        integer :: nv, i, j, tmp, v
+        integer, allocatable :: verts(:), order(:)
+        real(dp), allocatable :: ang(:)
+        real(dp) :: xc, yc
+
+        if (allocated(mesh%elem(eid)%vertices) .and. size(mesh%elem(eid)%vertices) >= 3) then
+            nv = size(mesh%elem(eid)%vertices)
+            allocate(verts(nv))
+            verts = mesh%elem(eid)%vertices
+        else
+            nv = size(mesh%elem(eid)%nodes)
+            allocate(verts(nv))
+            verts = mesh%elem(eid)%nodes
+        end if
+
+        xc = 0.0_dp; yc = 0.0_dp
+        do i = 1, nv
+            xc = xc + mesh%node(verts(i))%x
+            yc = yc + mesh%node(verts(i))%y
+        end do
+        xc = xc / real(nv, dp)
+        yc = yc / real(nv, dp)
+
+        allocate(ang(nv), order(nv))
+        do i = 1, nv
+            ang(i) = atan2(mesh%node(verts(i))%y - yc, mesh%node(verts(i))%x - xc)
+            order(i) = i
+        end do
+        ! bubble sort by angle (CCW)
+        do i = 1, nv - 1
+            do j = 1, nv - i
+                if (ang(order(j)) > ang(order(j + 1))) then
+                    tmp = order(j)
+                    order(j) = order(j + 1)
+                    order(j + 1) = tmp
+                end if
+            end do
+        end do
+
+        do i = 1, nv
+            conn(jn) = verts(order(i))
+            jn = jn + 1
+        end do
+        deallocate(verts, ang, order)
+    end subroutine append_element_boundary_ccw
+
+    function get_wall_time() result(t)
+        real(dp) :: t
+        integer :: count, count_rate
+        call system_clock(count, count_rate)
+        if (count_rate > 0) then
+            t = real(count, dp) / real(count_rate, dp)
+        else
+            call cpu_time(t)
+        end if
+    end function get_wall_time
+
+    subroutine print_run_times(t_assembly, t_solve)
+        real(dp), intent(in) :: t_assembly, t_solve
+        write(*,'(a)') '---------------------------------------------------'
+        write(*,'(a,es12.4,a)') ' Tempo de montagem : ', t_assembly, ' s'
+        write(*,'(a,es12.4,a)') ' Tempo de solucao  : ', t_solve, ' s'
+        write(*,'(a,es12.4,a)') ' Tempo total       : ', t_assembly + t_solve, ' s'
+        write(*,'(a)') '---------------------------------------------------'
+    end subroutine print_run_times
+
+    subroutine conditioning(A, n)
+        integer, intent(in) :: n
+        real(dp), intent(inout) :: A(n, n)
+        integer :: i
+        real(dp) :: scale, eps
+        scale = 0.0_dp
+        do i = 1, n
+            scale = scale + abs(A(i, i))
+        end do
+        if (n > 0) scale = scale / real(n, dp)
+        eps = max(1.0e-14_dp * scale, 1.0e-18_dp)
+        do i = 1, n
+            A(i, i) = A(i, i) + eps
+        end do
+    end subroutine conditioning
+
+    subroutine compute_locking_index(U_a, U_b, r)
+        real(dp), intent(in)  :: U_a, U_b
+        real(dp), intent(out) :: r
+        real(dp) :: den
+        den = U_a + U_b
+        if (abs(den) > 1.0e-30_dp) then
+            r = U_a / den
+        else
+            r = 0.0_dp
+        end if
+    end subroutine compute_locking_index
+
+    subroutine export_freq_spectrum_csv(filename, eigenvalues, r_vol, r_shear, n_modes)
+        character(len=*), intent(in) :: filename
+        real(dp), intent(in) :: eigenvalues(:), r_vol(:), r_shear(:)
+        integer, intent(in) :: n_modes
+        integer :: iunit, i, ios
+        real(dp) :: omega, freq_hz
+        real(dp), parameter :: pi_loc = 3.14159265358979323846_dp
+        open(newunit=iunit, file=filename, status='replace', iostat=ios)
+        if (ios /= 0) then
+            write(*,'(a,a)') 'Aviso: nao foi possivel criar ', trim(filename)
+            return
+        end if
+        write(iunit, '(a)') '# mode, omega2, omega_rad_s, freq_Hz, r_vol, r_shear'
+        do i = 1, min(n_modes, size(eigenvalues))
+            omega = sqrt(max(0.0_dp, eigenvalues(i)))
+            freq_hz = omega / (2.0_dp * pi_loc)
+            write(iunit, '(i6,5(1x,es16.8))') i, eigenvalues(i), omega, freq_hz, &
+                r_vol(i), r_shear(i)
+        end do
+        close(iunit)
+    end subroutine export_freq_spectrum_csv
 
 end program main_free_vibration

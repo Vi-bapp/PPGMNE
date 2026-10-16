@@ -1,7 +1,7 @@
 reset
 set terminal gif animate delay 8 loop 0 size 800,600 enhanced font 'Arial,10'
 set output 'output_gnuplot/animacao_vem.gif'
-set title 'Evolucao Temporal da Malha (VEM)'
+set title 'Evolucao Temporal da Malha'
 set xlabel 'X'
 set ylabel 'Y'
 set xrange [  5.625799E+03:  5.639799E+03]

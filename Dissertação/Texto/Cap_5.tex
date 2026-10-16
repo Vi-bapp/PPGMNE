@@ -71,6 +71,240 @@ Flexão & 0,010 & 0,064 & 0,178 & 0,349 & 0,577 & 0,862 & 1,204 \\ \bottomrule
 \end{enumerate}
 
 \indent Adota-se para a variável $\alpha_0$ o valor de $1/2$ para a estabilização $III$; e $1/3$ para a estabilização $IV$ conforme se recomenda na literatura. A matriz de massa é estabilizada utilizando: $$\tau_m = \big|\Omega_v \big| \rho.$$\\
+\indent Para a primeira análise são calculadas as frequências em rad/s para os dez primeiros modos de vibração, tabelas~Y à X, em malhas de 4, 16 e 64 elementos retangulares uniformes, figura X, para uma aproximação de primeira ordem. 
+
+\begin{figure}[htbp!]
+    \centering
+    \caption{}
+    \label{fig:5.2}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{figuras/Capítulo 5/Viga/mesh_original 4.png}
+    \end{subfigure}
+    \hfil
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{figuras/Capítulo 5/Viga/mesh_original 16.png}
+    \end{subfigure}
+    \hfil
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{figuras/Capítulo 5/Viga/mesh_original.png}
+    \end{subfigure}
+    \vspace{2mm}
+\end{figure}
+
+
+\begin{table}[H]
+\centering
+\caption{Sua legenda aqui}
+\label{tab:5.2}
+\resizebox{\textwidth}{!}{% Redimensiona proporcionalmente para a largura da página
+\begin{tabular}{@{} l *{15}{c} @{}}
+\toprule
+\multirow{2}{*}{Modo} & 
+  \multicolumn{3}{c}{Estabilização I} & 
+  \multicolumn{3}{c}{Estabilização II} & 
+  \multicolumn{3}{c}{Estabilização III} & 
+  \multicolumn{3}{c}{Estabilização IV} & 
+  \multicolumn{3}{c}{Estabilização V} \\ 
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13} \cmidrule(lr){14-16}
+ & VE4N10 & VE16N27 & VE64N85 & VE4N10 & VE16N27 & VE64N85 & VE4N10 & VE16N27 & VE64N85 & VE4N10 & VE16N27 & VE64N85 & VE4N10 & VE16N27 & VE64N85 \\ 
+\midrule
+1  & 0,023 & 0,015 & 0,011 & 0,024 & 0,015 & 0,011 & 0,050 & 0,029 & 0,014 & 0,025 & 0,015 & 0,012 & 0,025 & 0,015 & 0,012 \\
+2  & 0,138 & 0,088 & 0,069 & 0,141 & 0,090 & 0,069 & 0,161 & 0,151 & 0,083 & 0,146 & 0,093 & 0,070 & 0,146 & 0,093 & 0,070 \\
+3  & 0,159 & 0,158 & 0,157 & 0,159 & 0,158 & 0,157 & 0,216 & 0,159 & 0,158 & 0,159 & 0,158 & 0,157 & 0,159 & 0,158 & 0,157 \\
+4  & 0,345 & 0,236 & 0,182 & 0,351 & 0,239 & 0,183 & 0,487 & 0,357 & 0,216 & 0,363 & 0,246 & 0,186 & 0,363 & 0,246 & 0,186 \\
+5  & 0,500 & 0,436 & 0,335 & 0,500 & 0,441 & 0,337 & 0,509 & 0,483 & 0,386 & 0,501 & 0,451 & 0,341 & 0,501 & 0,451 & 0,341 \\
+6  & 0,515 & 0,480 & 0,474 & 0,529 & 0,480 & 0,474 & 0,754 & 0,600 & 0,474 & 0,555 & 0,480 & 0,474 & 0,555 & 0,480 & 0,474 \\
+7  & 0,573 & 0,673 & 0,517 & 0,588 & 0,680 & 0,520 & 0,730 & 0,830 & 0,590 & 0,618 & 0,694 & 0,526 & 0,618 & 0,694 & 0,526 \\
+8  & 0,628 & 0,819 & 0,724 & 0,637 & 0,819 & 0,728 & 0,930 & 0,871 & 0,796 & 0,656 & 0,819 & 0,735 & 0,656 & 0,819 & 0,735 \\
+9  & 0,843 & 0,923 & 0,794 & 0,849 & 0,934 & 0,794 & 1,308 & 1,160 & 0,813 & 0,864 & 0,953 & 0,794 & 0,864 & 0,953 & 0,794 \\ 
+\midrule
+10 & 0,851 & 1,070 & 0,951 & 0,857 & 1,101 & 0,995 & 1,317 & 1,211 & 1,054 & 0,866 & 1,163 & 0,964 & 0,866 & 1,163 & 0,964 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
+\indent O uso de diferentes estabilizações resultou em diferentes modos de deformação. A tabela~\ref{tab:5.3} resume os tipos de deformações por modo de vibração para cada um dos métodos de estabilização utilizados. Nota-se que a estabilização III apresenta os modos 8, 9 e 10 invertidos.
+%O que siginifica os modos superiores estarem invertidos?
+
+\begin{table}[H]
+\centering
+\caption{Tipos de deformação por modo de vibração para o problema da viga engastada com interpolação polinomial de ordem 1}
+\label{tab:5.3}
+\begin{tabular}{@{}llllll@{}}
+Modo & I      & II     & III    & IV     & V      \\
+1    & Flexão & Flexão & Flexão & Flexão & Flexão \\
+2    & Flexão & Flexão & Flexão & Flexão & Flexão \\
+3    & Axial  & Axial  & Axial  & Axial  & Axial  \\
+4    & Flexão & Flexão & Flexão & Flexão & Flexão \\
+5    & Flexão & Flexão & Flexão & Flexão & Flexão \\
+6    & Axial  & Axial  & Axial  & Axial  & Axial  \\
+7    & Flexão & Flexão & Flexão & Flexão & Flexão \\
+8    & Flexão & Flexão & Axial  & Flexão & Flexão \\
+9    & Axial  & Axial  & Flexão & Axial  & Axial  \\
+10   & Flexão & Flexão & Axial  & Flexão & Flexão
+\end{tabular}
+\end{table}
+
+
+\indent Para análise dos resultados, plota-se o gráfico de espectro de frequências, figura~\ref{fig:5.3}. A primeira observação é que em todos os gráficos os modos correspondente a deformações axiais possuem frequências quase idênticas à frequência analítica do problema e os erros se concentram nos modos de flexão.\\
+\indent Em todos os gráficos é possível notar a convergência da malha de 4 a 64 elementos. Todavia, a malha de 4 elementos não demonstra um comportamento similar as malhas de 16 e 64 elementos em relação aos modos de vibração. Em todos os casos as malhas mais grosseiras apresentaram maiores desvios nos primeiros modos de vibração comparados aos modos superiores.
+
+
+\begin{figure}[H]
+    \centering
+    \caption{}
+    \label{fig:5.3}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \caption{Estabilização I}
+        \label{fig:5.3a}
+        \includegraphics[width=1.15\textwidth]{figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \caption{Estabilização II}
+        \label{fig:5.3b}
+        \includegraphics[width=1.15\textwidth]{figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \caption{Estabilização III}
+        \label{fig:5.3c}
+        \includegraphics[width=1.15\textwidth]{figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png}
+    \end{subfigure}
+    \vspace{5mm}
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \caption{Estabilização IV}
+        \label{fig:5.3d}
+        \includegraphics[width=0.9\textwidth]{figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \caption{Estabilização V}
+        \label{fig:5.3e}
+        \includegraphics[width=0.9\textwidth]{figuras/Capítulo 5/Viga/espectro_frequencias_Va.png}
+    \end{subfigure}
+    
+\end{figure}
+
+\indent Analisando os erros relativos, figura~\ref{fig:5.4}, os modos iniciais apresentam convergência até o 4º modo de vibração para todas as malhas. Os modos superiores tendem a ter erros maiores com o refino da malha de 16 para 64 elementos. Em alguns casos, nos modos superiores, a malha de 4 elementos possui melhores resultados que as malhas de 16 e 64 elementos.\\
+\indent Para os primeiros modos de vibração, todas as estabilizações tendem a superestimar as frequências, comportamento que tende a se inverter para as frequências superiores. Estabilizações como a I, III e V apresentam erros nos primeiros modos beirando a 100\%, entretanto ele obtiveram erros menores nas frequências superiores comparadas as estabilizações II e IV.\\
+\indent Percebe-se que as malhas II e IV apresentaram os mesmos valores. A estabilização II é baseada nos parâmetros de Lamé e a IV na matriz de rigidez consistente diagonal. Esse comportamento estranho é justificado pelos parâmetros materiais utilizados e o grau de interpolação. em elementos de baixa ordem e materiais com módulos da ordem de grandeza das entradas de $K^C$ - como $E = 1$, as duas escalas coincidem, as matrizes de rigidez resultantes ficam quase idênticas.
+
+\begin{figure}[H]
+    \centering
+    \caption{}
+    \label{fig:5.4}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Estabilização I}
+        \label{fig:5.4a}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/Erro relativo I - k1.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Estabilização II}
+        \label{fig:5.4b}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/Erro relativo II - k1.png}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \caption{Estabilização III}
+        \label{fig:5.4c}
+        \includegraphics[width=\textwidth]{figuras/Capítulo 5/Viga/Erro relativo III - k1.png}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Estabilização IV}
+        \label{fig:5.4d}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/Erro relativo IV - k1.png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Estabilização V}
+        \label{fig:5.4e}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/Erro relativo V - k1.png}
+    \end{subfigure}
+    
+\end{figure}
+
+\indent Comparando as estabilizações por quantidade de elementos. A estabilização com maiores erros é a III, implicando que o parâmetro de escala confere uma rigidez excessiva a matriz de rigidez, mesmo nos modos axiais onde as demais estabilizações demonstram uma resposta ótima. Todavia, na malha mais refinada, para os modos superiores o seu resultado é inferior as demais malhas, com exceção do modo 9. \\
+\indent Observando a malha de 4 elementos, é possível concluir que a estabilização IV apresenta os menores erros e, portanto, é a melhor estabilização. Entretanto, Para a malha de 64 elementos seu erro é maior que as demais malhas, principalmente nos modos superiores. \\
+\indent Enquanto as estabilizações I e II tendem a possuir valores semelhantes conforme o refino-h, a malha V demonstra um comportamento mais equilibrado. Pode ser observado que para os primeiros modos a estabilização V tende a adicionar rigidez, mas essa mesma rigidez adicionada serve como penalização nos modos de vibração superiores, permitindo que a resposta da malha seja equilibrada em todos os modos de vibração independente da discretização.\\
+\indent Ressalta-se que o comportamento de cada estabilização depende do problema analisado. Algumas estabilizações permitem aproximar melhor os modos de flexão em relação a outra. Assim, um mesmo estudo de estabilizações pode apresentar respostas diferentes. Contudo, Como pode ser observado nos gráficos, as diferenças entre as estabilizações é pequena, com algumas exceções para determinados modos e discretizações.
+
+\begin{figure}[H]
+    \centering
+    \caption{}
+    \label{fig:5.5}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Malha de 4 elementos}
+        \label{fig:5.5a}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/ModoXErro (4elem).png}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \caption{Malha de 16 elementos}
+        \label{fig:5.5b}
+        \includegraphics[width=1.1\textwidth]{figuras/Capítulo 5/Viga/ModoXErro (16elem).png}
+    \end{subfigure}
+    
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \caption{Malha de 64 elementos}
+        \label{fig:5.5c}
+        \includegraphics[width=\textwidth]{figuras/Capítulo 5/Viga/ModoXErro (64elem).png}
+    \end{subfigure}
+  
+\end{figure}
+
+\indent Para o refino-p:
+
+
+\begin{table}[htbp]
+\centering
+\caption{Sua legenda aqui}
+\label{tab:sua-tabela-2}
+\resizebox{\textwidth}{!}{% Redimensiona proporcionalmente para a largura da página
+\begin{tabular}{@{} l *{15}{c} @{}}
+\toprule
+\multirow{2}{*}{Modo} & 
+  \multicolumn{3}{c}{Estabilização I} & 
+  \multicolumn{3}{c}{Estabilização II} & 
+  \multicolumn{3}{c}{Estabilização III} & 
+  \multicolumn{3}{c}{Estabilização IV} & 
+  \multicolumn{3}{c}{Estabilização V} \\ 
+\cmidrule(lr){2-4} \cmidrule(lr){5-7} \cmidrule(lr){8-10} \cmidrule(lr){11-13} \cmidrule(lr){14-16}
+ & VB4N23 & VE16N69 & VE64N233 & VB4N23 & VE16N69 & VE64N233 & VB4N23 & VE16N69 & VE64N233 & VB4N23 & VE16N69 & VE64N233 & VB4N23 & VE16N69 & VE64N233 \\ 
+\midrule
+1  & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 & 0,010 \\
+2  & 0,067 & 0,062 & 0,061 & 0,064 & 0,061 & 0,061 & 0,067 & 0,062 & 0,061 & 0,062 & 0,061 & 0,061 & 0,064 & 0,061 & 0,061 \\
+3  & 0,158 & 0,158 & 0,157 & 0,158 & 0,157 & 0,157 & 0,158 & 0,158 & 0,157 & 0,158 & 0,157 & 0,157 & 0,158 & 0,157 & 0,157 \\
+4  & 0,199 & 0,169 & 0,161 & 0,178 & 0,161 & 0,160 & 0,199 & 0,169 & 0,162 & 0,166 & 0,160 & 0,159 & 0,181 & 0,162 & 0,160 \\
+5  & 0,448 & 0,318 & 0,296 & 0,343 & 0,295 & 0,290 & 0,448 & 0,318 & 0,296 & 0,284 & 0,291 & 0,296 & 0,362 & 0,297 & 0,290 \\
+6  & 0,475 & 0,473 & 0,455 & 0,472 & 0,454 & 0,443 & 0,475 & 0,473 & 0,455 & 0,366 & 0,444 & 0,442 & 0,473 & 0,458 & 0,443 \\
+7  & 0,581 & 0,504 & 0,472 & 0,489 & 0,472 & 0,472 & 0,581 & 0,504 & 0,472 & 0,387 & 0,472 & 0,472 & 0,505 & 0,472 & 0,472 \\
+8  & 0,801 & 0,719 & 0,631 & 0,553 & 0,629 & 0,610 & 0,801 & 0,719 & 0,632 & 0,413 & 0,606 & 0,609 & 0,588 & 0,636 & 0,611 \\
+9  & 1,099 & 0,787 & 0,785 & 0,555 & 0,785 & 0,785 & 1,099 & 0,787 & 0,785 & 0,417 & 0,727 & 0,785 & 0,592 & 0,786 & 0,785 \\ 
+10 & 1,149 & 0,956 & 0,821 & 0,555 & 0,811 & 0,788 & 1,149 & 0,956 & 0,822 & 0,424 & 0,734 & 0,785 & 0,596 & 0,825 & 0,789 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+
 
 
 \section{chapa engastada}
@@ -156,9 +390,6 @@ Flexão & 0,010 & 0,064 & 0,178 & 0,349 & 0,577 & 0,862 & 1,204 \\ \bottomrule
     \textbf{Fonte:} Elaborado pelo autor (2026).
 \end{table}
 
-
-
-
 \section{Barragem de terra}
 
 \indent O terceiro problema a ser estudado é uma barragem de terra modelada pelo estado plano de deformações, (Figura~\ref{fig:5.11}). O modelo de cálculo é um triângulo isósceles com módulo de elasticidade $E = 5,602 \times 10^8\text{ (N/m}^2\text{)}$, densidade $\rho = 2080\text{ (kg/m}^3\text{)}$ e coeficiente de Poisson $\nu = 0,45$.
@@ -237,8 +468,6 @@ Flexão & 0,010 & 0,064 & 0,178 & 0,349 & 0,577 & 0,862 & 1,204 \\ \bottomrule
 
 \indent Como comentado por \citet{cittadin2020enriquecimento}, os valores do MEFG apresentam valores menores que as dos demais autores, partindo do pressuposto que a solução converge por valores superiores, isso é um indicativo de que a solução do MEFG é mais precisa que a dos demais autores considerando, principalmente, a maior quantidade de gl envolvidos. \\
 \indent Tomando a solução de \citet{cittadin2020enriquecimento} como referência, calculam-se os erros relativos obtidos pelo MEV para os quatro primeiros modos de vibração.
-
-
 
 \section{Parede estrutural}
 

@@ -6,7 +6,7 @@
 # =====================================================================
 
 # ------------------------- CONFIGURACAO -------------------------------
-FICHEIRO = "dados_excel_V.csv"
+FICHEIRO = "dados_excel_V2.csv"
 SAIDA    = "espectro_frequencias_Vb.png"
 
 COL_REF = 1

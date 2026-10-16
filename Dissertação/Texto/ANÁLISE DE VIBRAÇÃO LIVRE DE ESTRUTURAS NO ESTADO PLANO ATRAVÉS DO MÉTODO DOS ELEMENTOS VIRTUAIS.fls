@@ -679,8 +679,8 @@ INPUT c:/texlive/2024/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 INPUT c:/texlive/2024/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 INPUT c:/texlive/2024/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 INPUT c:/texlive/2024/texmf-dist/fonts/tfm/public/tex-gyre/ts1-qtmr.tfm
-OUTPUT ANÁLISE DE VIBRAÇÃO LIVRE DE ESTRUTURAS NO ESTADO PLANO ATRAVÉS DO MÉTODO DOS ELEMENTOS VIRTUAIS.lof
 INPUT c:/texlive/2024/texmf-dist/fonts/enc/dvips/tex-gyre/q-ts1.enc
+OUTPUT ANÁLISE DE VIBRAÇÃO LIVRE DE ESTRUTURAS NO ESTADO PLANO ATRAVÉS DO MÉTODO DOS ELEMENTOS VIRTUAIS.lof
 INPUT ./ANÁLISE DE VIBRAÇÃO LIVRE DE ESTRUTURAS NO ESTADO PLANO ATRAVÉS DO MÉTODO DOS ELEMENTOS VIRTUAIS.lot
 INPUT ./ANÁLISE DE VIBRAÇÃO LIVRE DE ESTRUTURAS NO ESTADO PLANO ATRAVÉS DO MÉTODO DOS ELEMENTOS VIRTUAIS.lot
 INPUT ANÁLISE DE VIBRAÇÃO LIVRE DE ESTRUTURAS NO ESTADO PLANO ATRAVÉS DO MÉTODO DOS ELEMENTOS VIRTUAIS.lot
@@ -1064,6 +1064,86 @@ INPUT Cap_5.tex
 INPUT ./figuras/Capítulo 5/Viga/Viga.tex
 INPUT ./figuras/Capítulo 5/Viga/Viga.tex
 INPUT figuras/Capítulo 5/Viga/Viga.tex
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 4.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 4.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 4.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 4.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 4.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 16.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 16.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 16.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 16.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original 16.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original.png
+INPUT ./figuras/Capítulo 5/Viga/mesh_original.png
+INPUT ./figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png
+INPUT ./figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png
+INPUT ./figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png
+INPUT ./figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png
+INPUT ./figuras/Capítulo 5/Viga/espectro de frequencias - Estabilização Ia.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IIIa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_IVa.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_Va.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_Va.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_Va.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_Va.png
+INPUT ./figuras/Capítulo 5/Viga/espectro_frequencias_Va.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo I - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo I - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo I - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo I - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo I - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo II - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo II - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo II - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo II - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo II - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo III - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo III - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo III - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo III - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo III - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo IV - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo IV - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo IV - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo IV - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo IV - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo V - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo V - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo V - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo V - k1.png
+INPUT ./figuras/Capítulo 5/Viga/Erro relativo V - k1.png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (4elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (4elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (4elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (4elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (4elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (16elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (16elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (16elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (16elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (16elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (64elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (64elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (64elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (64elem).png
+INPUT ./figuras/Capítulo 5/Viga/ModoXErro (64elem).png
 INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
 INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
 INPUT ./figuras/Capítulo 5/Placa quadrada/Placa engastada.png
